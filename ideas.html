@@ -118,6 +118,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
 .sunf{fill:var(--sun)} .glow{fill:var(--sun);opacity:.22} .band{fill:var(--sun)}
 .polf{fill:var(--pol)} .tio2{fill:var(--tio2);stroke:var(--tio2-edge);stroke-width:1.5} .cns{stroke:var(--cn)} .cnl{stroke:var(--surface);opacity:.45}
 .wall{fill:none;stroke:var(--slab);stroke-width:5;stroke-linejoin:round}
+.hang{stroke:var(--slab);stroke-width:2}
 .shaft{stroke:var(--slab);stroke-width:4;stroke-linecap:round}
 .mix{fill:none;stroke:var(--teal);stroke-width:2.5;stroke-linecap:round}
 .mixhead{fill:var(--teal)}
@@ -145,7 +146,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
   <header class="hero">
     <div class="eyebrow" data-i18n="eyebrow">فريق Thea · مياهثون 2026</div>
     <h1 data-i18n="h1">سولارشيلد في لمحة</h1>
-    <p class="tagline" data-i18n="tagline">حوض يعالج الملوثات العضوية الناشئة بضوء الشمس: لوح زجاجي مطلي بمحفز نانوي في القاع على عمق مترين، مع تحريك مستمر للماء.</p>
+    <p class="tagline" data-i18n="tagline">حوض يعالج الملوثات العضوية الناشئة بضوء الشمس: لوح زجاجي مطلي بمحفز نانوي معلّق وسط الحوض على عمق مترين، مع تحريك مستمر للماء.</p>
     <nav class="toc" aria-label="أقسام الصفحة" data-i18n-label="tocLabel">
       <a href="#idea"><b>1</b><span data-i18n="n1">الفكرة</span></a>
       <a href="#micro"><b>2</b><span data-i18n="n2">التركيب الدقيق</span></a>
@@ -205,7 +206,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
         <div class="row"><span class="lbl" data-i18n="cWater">الماء</span>
           <div class="seg" role="group" aria-label="الماء" data-i18n-label="cWater"><button type="button" data-k="water" data-v="0" aria-pressed="true" data-i18n="w0">صافٍ بعد معالجة مسبقة</button><button type="button" data-k="water" data-v="1" aria-pressed="false" data-i18n="w1">مرشّح من العكارة فقط</button><button type="button" data-k="water" data-v="2" aria-pressed="false" data-i18n="w2">صرف زراعي خام</button></div></div>
         <div class="row"><span class="lbl" data-i18n="cGlass">الزجاج</span>
-          <div class="seg" role="group" aria-label="الزجاج" data-i18n-label="cGlass"><button type="button" data-k="full" data-v="0" aria-pressed="true" data-i18n="one">لوح واحد</button><button type="button" data-k="full" data-v="1" aria-pressed="false" data-i18n="floor">القاع كاملًا</button></div></div>
+          <div class="seg" role="group" aria-label="الزجاج" data-i18n-label="cGlass"><button type="button" data-k="full" data-v="0" aria-pressed="true" data-i18n="one">لوح واحد</button><button type="button" data-k="full" data-v="1" aria-pressed="false" data-i18n="floor">ألواح بعرض الحوض</button></div></div>
         <div class="readout">
           <div class="ro"><span data-i18n="r1">الضوء الواصل إلى الزجاج</span><b id="rLight">—</b></div>
           <div class="ro"><span data-i18n="r2">الملوث المُزال</span><b id="rRem">—</b></div>
@@ -228,7 +229,7 @@ window.I18N_EN = {
   back: "← Home · Team Thea",
   eyebrow: "Team Thea · Miyahthon 2026",
   h1: "SolarShield at a Glance",
-  tagline: "A tank that removes emerging organic contaminants with sunlight: a glass plate coated with a nano photocatalyst on the floor, two metres deep, with the water stirred continuously.",
+  tagline: "A tank that removes emerging organic contaminants with sunlight: a glass plate coated with a nano photocatalyst, suspended mid-tank two metres below the surface, with the water stirred continuously.",
   tocLabel: "Page sections",
   n1: "The idea", n2: "Microstructure", n3: "How it works", n4: "Work steps", n5: "Run the model",
   s1: "The idea", s2: "Microstructure", s3: "How it works", s4: "Work steps", s5: "Run the model",
@@ -236,7 +237,7 @@ window.I18N_EN = {
   dayLabel: "Operating time", cSpeed: "Speed", sp1: "1 day/s", sp7: "1 week/s", sp30: "1 month/s", sp365: "1 year/s",
   cStir: "Stirring", on: "On", off: "Off",
   cWater: "Water", w0: "Clear after pre-treatment", w1: "Filtered for turbidity only", w2: "Raw drainage water",
-  cGlass: "Glass", one: "One plate", floor: "Whole floor",
+  cGlass: "Glass", one: "One plate", floor: "Plates across the tank",
   r1: "Light reaching the glass", r2: "Contaminant removed", r3: "Left, in µg/L",
   demoNote: "Illustrative: the degradation rate and water clarity are assumptions until measured in the lab.",
   foot1: "SolarShield · Team Thea · Miyahthon 2026",
@@ -273,33 +274,35 @@ window.I18N_EN = {
   /* ---------- 1. the idea: the tank ---------- */
   function artTank(){
     const W = 720, H = 400;
-    const mols = [[200,140],[260,200],[300,128],[430,170],[520,130],[470,226],[230,268],[540,290],[310,300],[180,210],[420,280],[560,200]];
-    const geo = `<defs><linearGradient id="rayG" gradientUnits="userSpaceOnUse" x1="0" y1="40" x2="0" y2="345">
+    const mols = [[200,140],[260,226],[300,128],[430,150],[520,130],[470,232],[230,336],[560,300],[310,350],[160,226],[420,342],[560,200]];
+    const geo = `<defs><linearGradient id="rayG" gradientUnits="userSpaceOnUse" x1="0" y1="40" x2="0" y2="272">
         <stop offset="0" stop-color="var(--sun)" stop-opacity=".9"/><stop offset="1" stop-color="var(--sun)" stop-opacity=".12"/></linearGradient></defs>
       <rect class="sky" x="0" y="0" width="720" height="400"/>
       <rect class="slab" x="0" y="372" width="720" height="28"/>
       <rect class="water" x="122" y="96" width="476" height="274"/>
-      ${bands(122, 96, 476, 274, 14, 0.9, 2, 1)}
-      ${[[250,345],[360,345],[470,345]].map(([x,y]) => `<line x1="560" y1="56" x2="${x}" y2="${y}" stroke="url(#rayG)" stroke-width="2.4" stroke-dasharray="6 7"/>`).join('')}
+      ${bands(122, 96, 476, 274, 14, 0.9, 3, 1)}
+      ${[[250,268],[360,268],[470,268]].map(([x,y]) => `<line x1="560" y1="56" x2="${x}" y2="${y}" stroke="url(#rayG)" stroke-width="2.4" stroke-dasharray="6 7"/>`).join('')}
       <circle class="glow" cx="560" cy="44" r="32"/><circle class="sunf" cx="560" cy="44" r="20"/>
       <rect class="slab" x="344" y="52" width="32" height="22" rx="4"/>
-      <line class="shaft" x1="360" y1="74" x2="360" y2="246"/>
-      <ellipse class="slab" cx="340" cy="248" rx="19" ry="6"/><ellipse class="slab" cx="380" cy="248" rx="19" ry="6"/>
-      ${loop(268, 232, 52, 34, 1)}${loop(452, 232, 52, 34, -1)}
+      <line class="shaft" x1="360" y1="74" x2="360" y2="196"/>
+      <ellipse class="slab" cx="340" cy="198" rx="19" ry="6"/><ellipse class="slab" cx="380" cy="198" rx="19" ry="6"/>
+      ${loop(268, 186, 52, 30, 1)}${loop(452, 186, 52, 30, -1)}
       ${mols.map(([x,y]) => hex(x, y, 7)).join('')}
-      ${hex(250, 330, 6, .35)}${hex(450, 334, 6, .3)}
-      ${sparks([[210,336],[290,332],[380,338],[430,330],[500,336]])}
-      <rect class="tealf" x="170" y="344" width="380" height="5"/>
-      <rect class="glass" x="170" y="349" width="380" height="17" rx="2"/>
+      ${hex(250, 256, 6, .35)}${hex(450, 258, 6, .3)}
+      ${sparks([[210,262],[290,258],[380,264],[430,256],[500,262]])}
+      <line class="hang" x1="196" y1="70" x2="196" y2="268"/><line class="hang" x1="524" y1="70" x2="524" y2="268"/>
+      <rect class="tealf" x="190" y="268" width="340" height="5"/>
+      <rect class="glass" x="190" y="273" width="340" height="14" rx="2"/>
       <path class="wall" d="M120 70 V372 H600 V70"/>
-      <line class="dim" x1="640" y1="98" x2="640" y2="344"/><path class="dim" d="M632 106 l8 -8 l8 8 M632 336 l8 8 l8 -8" fill="none"/>`;
-    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('مقطع لحوض تحت الشمس فيه ملوثات عضوية ناشئة، مع محرّك يقلّب الماء ولوح زجاجي مطلي في القاع على عمق مترين','Cross-section of a sunlit tank holding emerging organic contaminants, with a stirrer mixing the water and a coated glass plate on the floor two metres down')}">
+      <line class="dim" x1="640" y1="98" x2="640" y2="268"/><path class="dim" d="M632 106 l8 -8 l8 8 M632 260 l8 8 l8 -8" fill="none"/>`;
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('مقطع لحوض تحت الشمس فيه ملوثات عضوية ناشئة، مع محرّك يقلّب الماء ولوح زجاجي مطلي معلّق وسط الحوض على عمق مترين','Cross-section of a sunlit tank holding emerging organic contaminants, with a stirrer mixing the water and a coated glass plate suspended mid-tank two metres down')}">
       ${mirror(W, geo)}
-      ${T(W, 676, 226, L('مترين','2 m'))}
+      ${T(W, 676, 188, L('مترين','2 m'))}
       ${T(W, 60, 102, L('سطح الماء','Water surface'))}
-      ${T(W, 360, 300, L('تحريك مستمر','Continuous stirring'), 't2')}
+      ${T(W, 360, 240, L('تحريك مستمر','Continuous stirring'), 't2')}
       ${T(W, 290, 112, L('ملوثات ناشئة','Emerging contaminants'), 't2')}
-      ${T(W, 360, 392, L('زجاج مطلي بالمحفز في القاع','Catalyst-coated glass on the floor'), 'tw')}
+      ${T(W, 360, 308, L('زجاج مطلي معلّق على عمق مترين','Coated glass hung two metres deep'), 't2')}
+      ${T(W, 360, 392, L('قاع الحوض','Tank floor'), 'tw')}
     </svg>`;
   }
   const EC_ICONS = {
@@ -314,12 +317,13 @@ window.I18N_EN = {
   const ZOOM = '<span class="zoom" aria-hidden="true">←</span>';
   function ladder(){
     const W = 220, H = 160;
-    const t1 = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('حوض صغير في قاعه لوح مطلي','A small tank with a coated plate on the floor')}">
-      ${mirror(W, `<rect class="sky" x="0" y="0" width="220" height="160"/><rect class="water" x="34" y="24" width="152" height="116"/>${bands(34, 24, 152, 116, 8, 0.9, 2, 1)}
-        <line class="shaft" x1="110" y1="14" x2="110" y2="80" style="stroke-width:3"/><ellipse class="slab" cx="100" cy="82" rx="10" ry="3.5"/><ellipse class="slab" cx="120" cy="82" rx="10" ry="3.5"/>
-        <rect class="tealf" x="52" y="128" width="116" height="3"/><rect class="glass" x="52" y="131" width="116" height="7"/>
-        <path class="wall" d="M33 14 V141 H187 V14" style="stroke-width:3"/><line class="dim" x1="200" y1="26" x2="200" y2="128"/>`)}
-      ${T(W, 110, 156, L('اللوح في القاع','Plate on the floor'), 't2')}
+    const t1 = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('حوض صغير فيه لوح مطلي معلّق على عمق مترين','A small tank with a coated plate hung two metres deep')}">
+      ${mirror(W, `<rect class="sky" x="0" y="0" width="220" height="160"/><rect class="water" x="34" y="24" width="152" height="116"/>${bands(34, 24, 152, 116, 8, 0.9, 3, 1)}
+        <line class="shaft" x1="110" y1="14" x2="110" y2="56" style="stroke-width:3"/><ellipse class="slab" cx="100" cy="58" rx="10" ry="3.5"/><ellipse class="slab" cx="120" cy="58" rx="10" ry="3.5"/>
+        <line class="hang" x1="55" y1="14" x2="55" y2="99" style="stroke-width:1.5"/><line class="hang" x1="165" y1="14" x2="165" y2="99" style="stroke-width:1.5"/>
+        <rect class="tealf" x="52" y="99" width="116" height="3"/><rect class="glass" x="52" y="102" width="116" height="6"/>
+        <path class="wall" d="M33 14 V141 H187 V14" style="stroke-width:3"/><line class="dim" x1="200" y1="26" x2="200" y2="99"/>`)}
+      ${T(W, 110, 156, L('لوح معلّق وسط الحوض','Plate hung mid-tank'), 't2')}
     </svg>`;
     const layer = Array.from({length: 2}, (_, row) => Array.from({length: 15}, (_, i) => `<circle class="${(i + row) % 3 === 0 ? 'tio2' : 'tealf'}" cx="${8 + i*14.5 + row*7}" cy="${108 - row*12}" r="7"/>`).join('')).join('');
     const t2 = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('طبقة جسيمات نانوية على الزجاج، والتحريك يقرّب جزيئات الملوث منها','A layer of nanoparticles on glass, with stirring carrying contaminant molecules toward it')}">
@@ -336,14 +340,14 @@ window.I18N_EN = {
       <text class="chem2" x="${mx(W, 182)}" y="40" text-anchor="middle">${CN}</text>
       ${T(W, 110, 150, L('وصلة بين مادتين','Two-material junction'), 't2')}
     </svg>`;
-    return tile(t1, L('متر','Metre'), L('حوض عمقه متران وفي قاعه لوح مطلي','A two-metre-deep tank with a coated plate on its floor')) + ZOOM
+    return tile(t1, L('متر','Metre'), L('لوح مطلي معلّق على عمق مترين والماء حوله','A coated plate hung two metres deep, with water all around it')) + ZOOM
          + tile(t2, L('ميكرومتر','Micrometre'), L('طبقة جسيمات بحجم 10 إلى 15 نانومترًا','A layer of 10 to 15 nm particles')) + ZOOM
          + tile(t3, L('نانومتر','Nanometre'), L('جسيم يولّد الجذور المؤكسدة بالضوء','A particle that makes oxidizing radicals in light'));
   }
 
   /* ---------- 3. mechanism ---------- */
   const STAGES = () => [
-    [L('الضوء يعبر الماء','Light crosses the water'), L('يصل إلى القاع إذا كان الماء صافيًا','Reaches the floor if the water is clear')],
+    [L('الضوء يعبر الماء','Light crosses the water'), L('يصل إلى اللوح على عمق مترين إذا كان الماء صافيًا','Reaches the plate two metres down if the water is clear')],
     [L('التحريك يقرّب الملوث','Stirring brings the contaminant'), L('يحمل الجزيئات إلى سطح الزجاج','Carries molecules to the glass surface')],
     [L('الجسيم يُستثار','The particle is excited'), L('إلكترون وفجوة موجبة','An electron and a positive hole')],
     [L('جذور مؤكسدة','Oxidizing radicals'), L('من الماء والأكسجين','From water and oxygen')],
@@ -382,11 +386,12 @@ window.I18N_EN = {
   }
 
   /* ---------- 4. steps ---------- */
-  const STEPS = () => [L('تنظيف الزجاج وطلاؤه بالمحفز','Clean the glass and coat it with the catalyst'), L('تثبيت اللوح في القاع على عمق مترين','Fix the plate on the floor, two metres deep'), L('ترشيح العكارة قبل تعبئة الحوض','Filter out turbidity before filling the tank'), L('تشغيل التحريك المستمر','Run the stirrer continuously'), L('الشمس تفعّل المحفز طوال النهار','Sunlight activates the catalyst all day'), L('قياس الملوثات قبل تفريغ الماء','Measure the contaminants before draining')];
+  const STEPS = () => [L('تنظيف الزجاج وطلاؤه بالمحفز','Clean the glass and coat it with the catalyst'), L('تعليق اللوح وسط الحوض على عمق مترين','Hang the plate mid-tank, two metres deep'), L('ترشيح العكارة قبل تعبئة الحوض','Filter out turbidity before filling the tank'), L('تشغيل التحريك المستمر','Run the stirrer continuously'), L('الشمس تفعّل المحفز طوال النهار','Sunlight activates the catalyst all day'), L('قياس الملوثات قبل تفريغ الماء','Measure the contaminants before draining')];
 
   /* ---------- 5. tank model ---------- */
   // Batch tank, first order: ln(C0/C) = Σ ∫ k_eff·A/V dt, with k_eff = 1/(1/k_s + 1/k_m), k_s = k_Q·E_glass, E_glass = E·τ·e^(−K_d·2 m)
-  // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 200 Wh/m² of UV a day over 8 sunny hours, floor 13.3 m² × 2 m deep.
+  // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 200 Wh/m² of UV a day over 8 sunny hours, 26.6 m³ of water, plate hung 2 m deep
+  // (one 1 m² plate, or plates across the 13.3 m² tank section). Total tank depth is not specified yet; the drawing shows 3 m.
   const S = {stir: 1, water: 0, full: 0, speed: 30};
   const FLOOR = 13.3, V = FLOOR*2, DEPTH = 2, C0 = 10, HORIZON = 3650;
   const uv = h => (h <= 6 || h >= 18) ? 0 : 200*Math.PI/24*Math.sin(Math.PI*(h - 6)/12);
@@ -414,15 +419,18 @@ window.I18N_EN = {
   let molEls = [], impEls = [];
   function buildDemo(){
     K = perDay();
-    const W = 400, H = 260, A = S.full ? 316 : 60, ax = S.full ? 42 : 170;
+    const W = 400, H = 260;
+    // plate(s) hung two thirds down the drawn water column, i.e. 2 m below the surface
+    const spans = S.full ? [0,1,2,3,4].map(i => [46 + i*63.5, 56]) : [[170, 60]];
+    const plates = spans.map(([x, w]) => `<line class="hang" x1="${x + w/2}" y1="30" x2="${x + w/2}" y2="171" style="stroke-width:1.5"/><rect class="tealf" x="${x}" y="171" width="${w}" height="4"/><rect class="glass" x="${x}" y="175" width="${w}" height="8"/>`).join('');
     const geo = `<rect class="sky" x="0" y="0" width="400" height="260"/><rect class="slab" x="0" y="242" width="400" height="18"/>
-      <rect class="water" x="42" y="44" width="316" height="196"/>${bands(42, 44, 316, 196, 12, kd(), DEPTH, 1)}
+      <rect class="water" x="42" y="44" width="316" height="196"/>${bands(42, 44, 316, 196, 12, kd(), DEPTH*1.5, 1)}
       <circle class="glow" cx="300" cy="24" r="20"/><circle class="sunf" cx="300" cy="24" r="12"/>
-      <rect class="tealf" x="${ax}" y="226" width="${A}" height="4"/><rect class="glass" x="${ax}" y="230" width="${A}" height="9"/>
-      ${S.stir ? loop(135, 150, 34, 24, 1) + loop(265, 150, 34, 24, -1) : ''}
+      ${plates}
+      ${S.stir ? loop(135, 104, 34, 22, 1) + loop(265, 104, 34, 22, -1) : ''}
       <g id="molG">${MOL.map(() => `<polygon class="polf" points="${hexPts(6)}"/>`).join('')}</g>
-      <rect class="slab" x="190" y="18" width="20" height="14" rx="3"/><line class="shaft" x1="200" y1="32" x2="200" y2="150" style="stroke-width:3"/>
-      <g id="imp"><ellipse class="slab" cx="188" cy="152" rx="12" ry="4"/><ellipse class="slab" cx="212" cy="152" rx="12" ry="4"/></g>
+      <rect class="slab" x="190" y="18" width="20" height="14" rx="3"/><line class="shaft" x1="200" y1="32" x2="200" y2="104" style="stroke-width:3"/>
+      <g id="imp"><ellipse class="slab" cx="188" cy="106" rx="12" ry="4"/><ellipse class="slab" cx="212" cy="106" rx="12" ry="4"/></g>
       <path class="wall" d="M40 30 V242 H360 V30" style="stroke-width:4"/>`;
     $('#demo').innerHTML = `<svg class="${S.stir ? 'stirring' : ''}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('نموذج الحوض','The tank model')}">${mirror(W, geo)}</svg>`;
     molEls = [...document.querySelectorAll('#molG polygon')]; impEls = [...document.querySelectorAll('#imp ellipse')];
