@@ -104,11 +104,21 @@ section{display:grid;gap:16px;scroll-margin-top:12px}
 .ro{padding:8px 10px;border-radius:10px;background:var(--surface2);display:grid;align-content:start}
 .ro span{font-size:12.5px;color:var(--ink2);line-height:1.4}
 .ro b{font-size:22px;font-variant-numeric:tabular-nums;line-height:1.35}
-.clock{font-variant-numeric:tabular-nums;font-weight:700;min-width:5ch;text-align:center}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;min-width:9ch;text-align:center;white-space:nowrap}
 .note{font-size:13px;color:var(--ink2)}
 .demo-vis{display:grid;gap:10px;min-width:0}
 .curve{border-radius:12px;background:var(--surface2);border:1px solid var(--line);padding:4px 6px 0}
-.t90{font-weight:500;font-size:14.5px}
+.sizer{display:grid;gap:6px;padding:10px 12px;border-radius:12px;background:var(--surface2)}
+.lbl2{font-size:14px;font-weight:500}
+.sizer input[type=text]{width:9.5em;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-variant-numeric:tabular-nums;text-align:center}
+.presets{display:flex;flex-wrap:wrap;gap:4px}
+.presets button{font:inherit;font-size:13px;font-variant-numeric:tabular-nums;border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:999px;padding:1px 10px;cursor:pointer}
+.presets button[aria-pressed="true"]{border-color:var(--teal);color:var(--teal);font-weight:700}
+.units-box{display:grid;gap:6px;padding:10px 12px;border-radius:12px;background:var(--surface2);border:1px solid var(--line)}
+.units-h{font-size:13.5px;color:var(--ink2)}
+.units{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.units i{display:block;width:20px;height:14px;border-radius:3px;background:var(--glass);border:1px solid var(--glass-edge);border-top:4px solid var(--teal)}
+.units .more{font-size:13px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums}
 .gl{stroke:var(--line);stroke-width:1} .ax{fill:var(--ink2);font:400 11.5px var(--f-body)} .axt{fill:var(--ink2);font:500 12px var(--f-body)}
 .curveLn{fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linejoin:round} .curveAr{fill:var(--teal);opacity:.12}
 .nowLn{stroke:var(--sun);stroke-width:1.8} .nowDot{fill:var(--sun);stroke:var(--surface);stroke-width:2}
@@ -196,27 +206,34 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
     <div class="card demo">
       <div class="demo-vis">
         <div class="art" id="demo"></div>
-        <div class="curve" id="curve"></div>
+        <div class="units-box">
+          <div class="units-h" id="unitsH"></div>
+          <div class="units" id="units" aria-hidden="true"></div>
+        </div>
       </div>
       <div class="ctrls">
         <div class="row">
           <button class="btn" id="play" type="button"></button>
-          <input type="range" id="day" min="0" max="3650" step="1" value="0" aria-label="زمن التشغيل" data-i18n-label="dayLabel">
-          <span class="clock" id="dayOut"></span>
+          <input type="range" id="hour" min="6" max="42" step="0.05" value="6" aria-label="زمن التشغيل خلال يومين" data-i18n-label="hourLabel">
+          <span class="clock" id="clock"></span>
         </div>
         <div class="row"><span class="lbl" data-i18n="cSpeed">السرعة</span>
-          <div class="seg" role="group" aria-label="سرعة التشغيل" data-i18n-label="cSpeed"><button type="button" data-k="speed" data-v="1" aria-pressed="false" data-i18n="sp1">يوم/ث</button><button type="button" data-k="speed" data-v="7" aria-pressed="false" data-i18n="sp7">أسبوع/ث</button><button type="button" data-k="speed" data-v="30" aria-pressed="true" data-i18n="sp30">شهر/ث</button><button type="button" data-k="speed" data-v="365" aria-pressed="false" data-i18n="sp365">سنة/ث</button></div></div>
+          <div class="seg" role="group" aria-label="سرعة التشغيل" data-i18n-label="cSpeed"><button type="button" data-k="speed" data-v="1" aria-pressed="true" data-i18n="sp1">ساعة/ث</button><button type="button" data-k="speed" data-v="3" aria-pressed="false" data-i18n="sp3">3 ساعات/ث</button><button type="button" data-k="speed" data-v="10" aria-pressed="false" data-i18n="sp10">10 ساعات/ث</button></div></div>
         <div class="row"><span class="lbl" data-i18n="cStir">التحريك</span>
           <div class="seg" role="group" aria-label="التحريك" data-i18n-label="cStir"><button type="button" data-k="stir" data-v="1" aria-pressed="true" data-i18n="on">يعمل</button><button type="button" data-k="stir" data-v="0" aria-pressed="false" data-i18n="off">متوقف</button></div></div>
-        <div class="row"><span class="lbl" data-i18n="cWater">الماء</span>
-          <div class="seg" role="group" aria-label="الماء" data-i18n-label="cWater"><button type="button" data-k="water" data-v="0" aria-pressed="false" data-i18n="w0">صافٍ بعد معالجة مسبقة</button><button type="button" data-k="water" data-v="1" aria-pressed="false" data-i18n="w1">مرشّح من العكارة فقط</button><button type="button" data-k="water" data-v="2" aria-pressed="true" data-i18n="w2">ماء الفريق: عكارة 10 إلى 15</button></div></div>
-        <div class="readout">
-          <div class="ro"><span data-i18n="r1">الضوء الواصل إلى الزجاج</span><b id="rLight">—</b></div>
-          <div class="ro"><span data-i18n="r2">الملوث المُزال</span><b id="rRem">—</b></div>
-          <div class="ro"><span data-i18n="r3">المتبقي بالملغم/لتر</span><b id="rLeft">—</b></div>
+        <div class="sizer">
+          <label for="vol" class="lbl2" data-i18n="volLabel">حجم الماء اليومي باللتر</label>
+          <div class="row"><input type="range" id="volR" min="4" max="7" step="any" value="4.425975" aria-label="حجم الماء اليومي" data-i18n-label="volLabel"><input type="text" id="vol" value="26667" inputmode="numeric" lang="en" dir="ltr" autocomplete="off" aria-label="حجم الماء اليومي باللتر" data-i18n-label="volLabel"></div>
+          <div class="presets" id="volPresets">
+            <button type="button" data-v="26667">26,667</button><button type="button" data-v="53334">53,334</button><button type="button" data-v="266670">266,670</button><button type="button" data-v="1000000">1,000,000</button>
+          </div>
         </div>
-        <p class="t90" id="t90"></p>
-        <p class="note" data-i18n="demoNote">توضيحي: سرعة التكسير وصفاء الماء افتراضان حتى يُقاسا في المختبر.</p>
+        <div class="readout">
+          <div class="ro"><span data-i18n="r1">الوحدات المطلوبة</span><b id="rUnits">—</b></div>
+          <div class="ro"><span data-i18n="r2">مساحة الزجاج</span><b id="rArea">—</b></div>
+          <div class="ro"><span data-i18n="r3">كمية المحفز</span><b id="rCat">—</b></div>
+        </div>
+        <p class="note" data-i18n="demoNote">قاعدة التصميم من بيانات الفريق: وحدة واحدة، لوح 1 م × 1 م × 1 سم مغطى بـ 0.1 كجم من المحفز، لكل 26,667 لترًا لإزالة 100٪ من الملوث. ضعف الحجم يحتاج وحدتين، وهكذا.</p>
       </div>
     </div>
   </section>
@@ -238,12 +255,12 @@ window.I18N_EN = {
   n1: "The idea", n2: "Microstructure", n3: "How it works", n4: "Work steps", n5: "Run the model",
   s1: "The idea", s2: "Microstructure", s3: "How it works", s4: "Work steps", s5: "Run the model",
   ecNote: "Conventional treatment does not fully remove emerging organic contaminants.",
-  dayLabel: "Operating time", cSpeed: "Speed", sp1: "1 day/s", sp7: "1 week/s", sp30: "1 month/s", sp365: "1 year/s",
+  hourLabel: "Operating time over two days", cSpeed: "Speed", sp1: "1 h/s", sp3: "3 h/s", sp10: "10 h/s", volLabel: "Daily water volume in litres",
   cStir: "Stirring", on: "On", off: "Off",
   cWater: "Water", w0: "Clear after pre-treatment", w1: "Filtered for turbidity only", w2: "Team's water: turbidity 10 to 15",
  
-  r1: "Light reaching the glass", r2: "Contaminant removed", r3: "Left, in mg/L",
-  demoNote: "Illustrative: the degradation rate and water clarity are assumptions until measured in the lab.",
+  r1: "Units needed", r2: "Glass area", r3: "Catalyst",
+  demoNote: "Design rule from the team's data: one unit, a 1 m × 1 m × 1 cm plate coated with 0.1 kg of catalyst, per 26,667 L for 100% contaminant removal. Twice the volume needs two units, and so on.",
   foot1: "SolarShield · Team Thea · Miyahthon 2026",
   foot2: "Equations: Herrmann 1999 · Malato 2009 · Chen 2000 · Morris 1995"
 };
@@ -315,12 +332,12 @@ window.I18N_EN = {
     bottle: `<path class="icon" d="M12 4 h6 v5 l3 4 v13 h-12 v-13 l3 -4 z"/><line class="icon" x1="9" y1="17" x2="21" y2="17"/>`
   };
   const SPEC = () => [
-    L('وحدة واحدة لكل <b>26,667</b> لترًا يوميًا', 'One unit per <b>26,667</b> L a day'),
+    L('وحدة واحدة لكل <b>26,667</b> لترًا لإزالة <b>100٪</b>', 'One unit per <b>26,667</b> L for <b>100%</b> removal'),
     L('لوح زجاجي <b>1 م × 1 م × 1 سم</b> مطلي بالكامل', 'Glass plate <b>1 m × 1 m × 1 cm</b>, fully coated'),
     L('<b>0.1 كجم</b> من ثاني أكسيد التيتانيوم ونتريد الكربون، جسيمات <b>10 إلى 15</b> نانومترًا', '<b>0.1 kg</b> of TiO<sub>2</sub> with g-C<sub>3</sub>N<sub>4</sub>, particles <b>10 to 15</b> nm'),
     L('صرف زراعي بالأحساء: عكارة <b>10 إلى 15</b>، مواد عالقة <b>10 إلى 20</b> ملغم/لتر', 'Al-Ahsa drainage water: turbidity <b>10 to 15</b>, suspended solids <b>10 to 20</b> mg/L'),
     L('ملوثات عضوية حتى <b>25</b> ملغم/لتر، حرارة <b>20 إلى 50</b>، حموضة <b>4 إلى 8</b>', 'Organic contaminants up to <b>25</b> mg/L, <b>20 to 50</b> °C, pH <b>4 to 8</b>'),
-    L('الهدف: إزالة <b>100٪</b> في <b>8</b> ساعات شمس', 'Target: <b>100%</b> removal in <b>8</b> sun hours')
+    L('ضعف الحجم يحتاج <b>وحدتين</b>، وهكذا', 'Twice the volume needs <b>two units</b>, and so on')
   ];
   const ECS = () => [['pill', L('أدوية ومضادات حيوية','Pharmaceuticals and antibiotics')], ['leaf', L('مبيدات زراعية','Agricultural pesticides')], ['bottle', L('مركبات بلاستيكية وهرمونية','Plasticizers and hormone disruptors')]];
 
@@ -407,107 +424,88 @@ window.I18N_EN = {
     L('تجديد المحفز كل ستة أشهر', 'Regenerate the catalyst every six months')
   ];
 
-  /* ---------- 5. tank model ---------- */
-  // Batch tank, first order: ln(C0/C) = Σ ∫ k_eff·A/V dt, with k_eff = 1/(1/k_s + 1/k_m), k_s = k_Q·E_glass, E_glass = E·τ·e^(−K_d·2 m)
-  // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 190 Wh/m² of UV a day over 8 sunny hours. Total tank depth is not specified yet; the drawing shows 3 m.
-  const S = {stir: 1, water: 2, speed: 30};   // water 2 = the team's raw drainage water
-  const A_UNIT = 1, V = 26.667, DEPTH = 2, C0 = 25, HORIZON = 3650;   // C0 in mg/L (team data)   // the team's spec: one 1 m × 1 m unit per 26,667 L, hung 2 m deep
-  const uv = h => (h <= 6 || h >= 18) ? 0 : 190*Math.PI/24*Math.sin(Math.PI*(h - 6)/12);   // Al-Ahsa: ~190 Wh/m² of UV a day
-  const kd = () => [0.5, 4, 7][S.water];   // UV attenuation per metre: pre-treated / turbidity-filtered (dissolved organics remain) / raw drainage
-  const att = () => Math.exp(-kd()*DEPTH);
-  function perDay(){
-    const A = A_UNIT, km = (S.stir ? 20 : 2)*1e-6, n = 64; let I = 0;
-    for (let i = 0; i < n; i++){ const h = 8 + (i + .5)*8/n, ks = 0.1*uv(h)*0.9*att()*1e-6; if (ks > 0) I += 1/(1/ks + 1/km)*A/V*(8/n)*3600; }
-    return I;
-  }
-  let K = perDay();                                   // ln-units removed per operating day
-  let simDay = 0, playing = false, last = 0;          // simulated time is kept as a float; the slider only shows it
-  const remaining = d => Math.exp(-d*K);
-  function fmtPct(x){ if (x <= 0) return '0' + PC(); if (x < 0.01) return '<0.01' + PC(); if (x < 1) return x.toFixed(2) + PC(); if (x < 10) return x.toFixed(1) + PC(); return Math.round(x) + PC(); }
-  function span(d){
-    if (!isFinite(d) || d > 36500) return L('أكثر من 100 سنة', 'over 100 years');
-    if (d < 60) return L(`${Math.round(d)} يوم`, `${Math.round(d)} days`);
-    if (d < 730) return L(`${(d/30.4).toFixed(1)} شهر`, `${(d/30.4).toFixed(1)} months`);
-    return L(`${(d/365).toFixed(1)} سنة`, `${(d/365).toFixed(1)} years`);
-  }
-  const clock = d => d < 60 ? L(`اليوم ${Math.round(d)}`, `Day ${Math.round(d)}`) : span(d);
+  /* ---------- 5. the team's sizing rule + one operating day in the tank ---------- */
+  // Sizing follows the team's rule only: units = ceil(volume / 26,667 L); each unit = 1 m² of glass and 0.1 kg of catalyst.
+  // The tank animation is a schematic of one operating day; no removal times are computed or shown on this page.
+  const L_PER_UNIT = 26667, CAT_PER_UNIT = 0.1;
+  const S = {stir: 1, speed: 1};
+  const END = 42;   // playback runs two days at most: 6:00 on day 1 to 18:00 on day 2
+  const uv = t => { const h = ((t % 24) + 24) % 24; return (h <= 6 || h >= 18) ? 0 : 190*Math.PI/24*Math.sin(Math.PI*(h - 6)/12); };   // Al-Ahsa: ~190 Wh/m² of UV a day
+  let simHour = 6, playing = false, last = 0, vol = L_PER_UNIT;   // the hour is kept as a float; the slider only shows it
+  const hm = h => { const H = Math.floor(h + 1e-9), M = Math.round((h - H)*60); return (M === 60 ? H + 1 : H) + ':' + String(M === 60 ? 0 : M).padStart(2, '0'); };
+  const nf = (v, d = 0) => v.toLocaleString('en-US', {maximumFractionDigits: d, minimumFractionDigits: d});
+  const unitsFor = v => Math.max(1, Math.ceil(v/L_PER_UNIT - 1e-9));
   const hexPts = r => [0,1,2,3,4,5].map(k => `${(r*Math.cos(k*Math.PI/3)).toFixed(1)},${(r*Math.sin(k*Math.PI/3)).toFixed(1)}`).join(' ');
-  // 30 molecules circulating in the two stirring loops; molecule i disappears once the remaining fraction drops below its threshold u
-  const MOL = Array.from({length: 30}, (_, i) => ({side: i % 2, a: (i*2.399) % (2*Math.PI), rr: 0.25 + 0.75*((i*17) % 30)/30, u: (((i*53) % 30) + .5)/30*0.96}));
-  let molEls = [], impEls = [];
+  const MOL = Array.from({length: 26}, (_, i) => ({side: i % 2, a: (i*2.399) % (2*Math.PI), rr: 0.25 + 0.75*((i*17) % 26)/26}));
+  const SPARK_X = [178, 190, 202, 214, 226];
+  let molEls = [], impEls = [], sparkEls = [], sunEl = null, glowEl = null, bandsEl = null;
   function buildDemo(){
-    K = perDay();
     const W = 400, H = 260;
-    // plate(s) hung two thirds down the drawn water column, i.e. 2 m below the surface
-    const spans = [[170, 60]];
-    const plates = spans.map(([x, w]) => `<line class="hang" x1="${x + w/2}" y1="30" x2="${x + w/2}" y2="171" style="stroke-width:1.5"/><rect class="tealf" x="${x}" y="171" width="${w}" height="4"/><rect class="glass" x="${x}" y="175" width="${w}" height="8"/>`).join('');
     const geo = `<rect class="sky" x="0" y="0" width="400" height="260"/><rect class="slab" x="0" y="242" width="400" height="18"/>
-      <rect class="water" x="42" y="44" width="316" height="196"/>${bands(42, 44, 316, 196, 12, kd(), DEPTH*1.5, 1)}
-      <circle class="glow" cx="300" cy="24" r="20"/><circle class="sunf" cx="300" cy="24" r="12"/>
-      ${plates}
+      <rect class="water" x="42" y="44" width="316" height="196"/><g id="bandsG">${bands(42, 44, 316, 196, 12, 0.9, 3, 1)}</g>
+      <circle id="dGlow" class="glow" cx="340" cy="30" r="18"/><circle id="dSun" class="sunf" cx="340" cy="30" r="11"/>
+      <line class="hang" x1="200" y1="30" x2="200" y2="171" style="stroke-width:1.5"/><rect class="tealf" x="170" y="171" width="60" height="4"/><rect class="glass" x="170" y="175" width="60" height="8"/>
+      <g id="sparkG">${SPARK_X.map(x => `<circle class="sunf" cx="${x}" cy="166" r="3"/>`).join('')}</g>
       ${S.stir ? loop(135, 104, 34, 22, 1) + loop(265, 104, 34, 22, -1) : ''}
       <g id="molG">${MOL.map(() => `<polygon class="polf" points="${hexPts(6)}"/>`).join('')}</g>
       <rect class="slab" x="190" y="18" width="20" height="14" rx="3"/><line class="shaft" x1="200" y1="32" x2="200" y2="104" style="stroke-width:3"/>
       <g id="imp"><ellipse class="slab" cx="188" cy="106" rx="12" ry="4"/><ellipse class="slab" cx="212" cy="106" rx="12" ry="4"/></g>
       <path class="wall" d="M40 30 V242 H360 V30" style="stroke-width:4"/>`;
-    $('#demo').innerHTML = `<svg class="${S.stir ? 'stirring' : ''}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('نموذج الحوض','The tank model')}">${mirror(W, geo)}</svg>`;
+    $('#demo').innerHTML = `<svg class="${S.stir ? 'stirring' : ''}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('يوم تشغيل في حوض وحدة واحدة','One operating day in a one-unit tank')}">${mirror(W, geo)}</svg>`;
     molEls = [...document.querySelectorAll('#molG polygon')]; impEls = [...document.querySelectorAll('#imp ellipse')];
-    buildCurve(); updateDemo(); animate(performance.now()/1000);
+    sparkEls = [...document.querySelectorAll('#sparkG circle')]; sunEl = $('#dSun'); glowEl = $('#dGlow'); bandsEl = $('#bandsG');
+    updateDay(); animate(performance.now()/1000);
+  }
+  function updateDay(){
+    const E = uv(simHour), hod = simHour % 24, t = Math.max(0, Math.min(1, (hod - 6)/12)), u = 1 - t, lit = Math.min(1, E/25);
+    const sx = u*u*340 + 2*u*t*200 + t*t*60, sy = u*u*34 + 2*u*t*(-6) + t*t*34;   // morning on the reading-start side
+    if (sunEl){ [sunEl, glowEl].forEach(el => { el.setAttribute('cx', sx.toFixed(1)); el.setAttribute('cy', sy.toFixed(1)); });
+      sunEl.style.opacity = E > 0 ? (.45 + .55*lit).toFixed(2) : 0; glowEl.style.opacity = E > 0 ? '' : 0; bandsEl.style.opacity = lit.toFixed(2); }
+    $('#hour').value = simHour.toFixed(2);
+    const day = Math.floor(simHour/24) + 1;
+    $('#clock').textContent = L(`اليوم ${day} · ${hm(hod)}`, `Day ${day} · ${hm(hod)}`);
+  }
+  function renderSizing(){
+    const n = unitsFor(vol), SHOW = 60;
+    if (document.activeElement !== $('#vol')) $('#vol').value = nf(Math.round(vol));
+    $('#volR').value = Math.log10(Math.max(10000, Math.min(1e7, vol)));
+    document.querySelectorAll('#volPresets button').forEach(b => b.setAttribute('aria-pressed', String(Math.abs(+b.dataset.v - vol) < 0.5)));
+    $('#rUnits').textContent = nf(n);
+    $('#rArea').textContent = `${nf(n)} ${L('م²','m²')}`;
+    $('#rCat').textContent = `${nf(n*CAT_PER_UNIT, 1)} ${L('كجم','kg')}`;
+    $('#unitsH').textContent = L(`${nf(Math.round(vol))} لتر ÷ 26,667 = ${nf(n)} ${n === 1 ? 'وحدة' : 'وحدات'}`, `${nf(Math.round(vol))} L ÷ 26,667 = ${nf(n)} unit${n === 1 ? '' : 's'}`);
+    $('#units').innerHTML = '<i></i>'.repeat(Math.min(n, SHOW)) + (n > SHOW ? `<span class="more">+${nf(n - SHOW)}</span>` : '');
   }
   function animate(t){
-    const w = S.stir ? 0.8 : 0.05, frac = remaining(simDay), still = reduce ? 0 : t;
+    const w = S.stir ? 0.8 : 0.05, still = reduce ? 0 : t;
     MOL.forEach((m, i) => {
-      const cx = m.side ? 265 : 135, dir = m.side ? -1 : 1, rx = 26 + 58*m.rr, ry = 20 + 62*m.rr;
-      const ang = m.a + dir*w*still/(0.5 + m.rr);
+      const cx = m.side ? 265 : 135, dir = m.side ? -1 : 1, rx = 26 + 58*m.rr, ry = 20 + 62*m.rr, ang = m.a + dir*w*still/(0.5 + m.rr);
       const x = Math.max(50, Math.min(350, cx + rx*Math.cos(ang))), y = Math.max(52, Math.min(220, 150 + ry*Math.sin(ang)));
       molEls[i].setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
-      molEls[i].setAttribute('opacity', Math.max(0, Math.min(1, (frac - m.u)/0.04)).toFixed(2));
     });
     if (impEls.length === 2){ const ph = S.stir && !reduce ? t*7 : 0, c = Math.cos(ph);
       impEls[0].setAttribute('cx', (200 - 12*c).toFixed(1)); impEls[1].setAttribute('cx', (200 + 12*c).toFixed(1));
       impEls.forEach(e => e.setAttribute('rx', (3 + 9*Math.abs(c)).toFixed(1))); }
-  }
-  // progress curve: remaining contaminant over ten years, time running in the reading direction
-  let curveX = null;
-  function buildCurve(){
-    const W = 400, H = 120, rt = rtl(), m = {t: 10, b: 30, l: rt ? 10 : 40, r: rt ? 40 : 10}, pw = W - m.l - m.r, ph = H - m.t - m.b;
-    const X = d => rt ? (W - m.r) - d/HORIZON*pw : m.l + d/HORIZON*pw, Y = v => m.t + (1 - v/100)*ph;
-    const pts = Array.from({length: 121}, (_, i) => { const d = i/120*HORIZON; return `${X(d).toFixed(1)} ${Y(100*remaining(d)).toFixed(1)}`; });
-    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('منحنى الملوث المتبقي على عشر سنوات','Remaining contaminant over ten years')}">`;
-    [0, 50, 100].forEach(v => { s += `<line class="gl" x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${rt ? W - m.r + 6 : m.l - 6}" y="${Y(v) + 4}" text-anchor="${rt ? 'start' : 'end'}">${v}${PC()}</text>`; });
-    [0, 2, 4, 6, 8, 10].forEach(yr => { s += `<text class="ax" x="${X(yr*365)}" y="${H - m.b + 15}" text-anchor="middle">${yr}</text>`; });
-    s += `<text class="axt" x="${m.l + pw/2}" y="${H - 2}" text-anchor="middle">${L('سنوات التشغيل · المتبقي من الملوث','Years of operation · contaminant left')}</text>`;
-    s += `<path class="curveAr" d="M${pts.join(' L')} L${X(HORIZON)} ${Y(0)} L${X(0)} ${Y(0)} Z"/><path class="curveLn" d="M${pts.join(' L')}"/>`;
-    s += `<line class="nowLn" id="nowLn" y1="${m.t}" y2="${H - m.b}" x1="${X(0)}" x2="${X(0)}"/><circle class="nowDot" id="nowDot" r="5" cx="${X(0)}" cy="${Y(100)}"/></svg>`;
-    $('#curve').innerHTML = s;
-    curveX = {X, Y};
-  }
-  function updateDemo(){
-    const frac = remaining(simDay);
-    $('#day').value = Math.round(simDay);
-    $('#dayOut').textContent = clock(simDay);
-    $('#rLight').textContent = fmtPct(att()*100);
-    $('#rRem').textContent = fmtPct((1 - frac)*100);
-    $('#rLeft').textContent = (C0*frac).toFixed(C0*frac < 1 ? 2 : 1);
-    const t90 = Math.LN10/K, long = !isFinite(t90) || t90 > 36500;
-    $('#t90').textContent = L(`هدف الفريق إزالة 100٪ في 8 ساعات. بسرعة التكسير المفترضة قبل القياس، إزالة 90٪ تحتاج ${long ? 'أكثر من 100 سنة' : 'نحو ' + span(t90)} من التشغيل.`,
-      `The team's target is 100% removal in 8 hours. At the assumed degradation rate (not yet measured), 90% removal takes ${long ? 'more than 100 years' : 'about ' + span(t90)} of operation.`);
-    if (curveX){ const x = curveX.X(simDay), y = curveX.Y(100*frac); const ln = $('#nowLn'), dot = $('#nowDot');
-      if (ln){ ln.setAttribute('x1', x); ln.setAttribute('x2', x); dot.setAttribute('cx', x); dot.setAttribute('cy', y); } }
+    const lit = Math.min(1, uv(simHour)/25);   // schematic: the plate flashes while the sun is up
+    sparkEls.forEach((el, i) => el.setAttribute('opacity', (lit*(reduce ? 1 : 0.5 + 0.5*Math.sin(t*5 + i*1.7))).toFixed(2)));
   }
   const playLabel = () => playing ? L('إيقاف','Pause') : L('تشغيل','Play');
   function tick(ts){
-    const dt = Math.min(.25, last ? (ts - last)/1000 : 0); last = ts;   // real elapsed time, so the chosen speed holds on slow devices
+    const dt = Math.min(.5, last ? (ts - last)/1000 : 0); last = ts;   // real elapsed time, so the chosen speed holds on slow devices
     if (playing){
-      simDay = Math.min(HORIZON, simDay + dt*S.speed);
-      if (simDay >= HORIZON){ playing = false; $('#play').textContent = playLabel(); }
-      updateDemo();
+      simHour = Math.min(END, simHour + dt*S.speed);
+      if (simHour >= END){ playing = false; $('#play').textContent = playLabel(); }
+      updateDay();
     }
     if (!reduce || playing) animate(ts/1000);
     requestAnimationFrame(tick);
   }
-  $('#play').addEventListener('click', () => { if (!playing && simDay >= HORIZON) simDay = 0; playing = !playing; $('#play').textContent = playLabel(); });
-  $('#day').addEventListener('input', () => { playing = false; simDay = +$('#day').value; $('#play').textContent = playLabel(); updateDemo(); animate(performance.now()/1000); });
+  $('#play').addEventListener('click', () => { if (!playing && simHour >= END) simHour = 6; playing = !playing; $('#play').textContent = playLabel(); });
+  $('#hour').addEventListener('input', () => { playing = false; simHour = +$('#hour').value; $('#play').textContent = playLabel(); updateDay(); animate(performance.now()/1000); });
+  // text box (number inputs show the browser's locale digits): accept Western or Arabic-Indic digits and ignore separators
+  $('#vol').addEventListener('change', () => { const raw = $('#vol').value.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[^0-9.]/g, ''); const v = +raw; if (v > 0){ vol = v; renderSizing(); } else renderSizing(); });
+  $('#volR').addEventListener('input', () => { vol = Math.round(Math.pow(10, +$('#volR').value)); renderSizing(); });
+  document.querySelectorAll('#volPresets button').forEach(b => b.addEventListener('click', () => { vol = +b.dataset.v; renderSizing(); }));
   document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
     S[b.dataset.k] = +b.dataset.v;
     document.querySelectorAll(`.seg button[data-k="${b.dataset.k}"]`).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
@@ -524,7 +522,7 @@ window.I18N_EN = {
     $('#stages').innerHTML = STAGES().map(([b, s]) => `<li><b>${b}</b><span>${s}</span></li>`).join('');
     $('#stepList').innerHTML = STEPS().map(s => `<li>${s}</li>`).join('');
     $('#play').textContent = playLabel();
-    buildDemo(); showStage(stage);
+    buildDemo(); renderSizing(); showStage(stage);
   }
   window.addEventListener('langchange', renderAll);
   renderAll(); startMech();
