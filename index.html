@@ -31,6 +31,7 @@ p{margin:0}
 .cards{display:grid;gap:14px}
 a.card{display:grid;gap:6px;padding:18px 18px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:inherit;text-decoration:none;transition:border-color .15s}
 a.card:hover{border-color:var(--teal)}
+a.card.glance{border-color:var(--teal);background:var(--surface)}
 a.card:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
 .card .kind{font-size:13px;font-weight:500;color:var(--teal)}
 .card p{color:var(--ink2);font-size:15px}
@@ -53,6 +54,11 @@ a.card:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
   <div class="eyebrow" data-i18n="eyebrow">فريق Thea · مياهثون 2026</div>
   <h1 data-i18n="h1">نماذج سولارشيلد</h1>
   <p class="lede" data-i18n="lede">محفز ضوئي نانوي يستعمل ضوء الشمس ليولّد جذورًا مؤكسدة على سطح ملامس للماء. هنا نموذجان تفاعليان لطريقتين في استعماله. يعملان على الجوال مباشرة دون تثبيت أي شيء.</p>
+  <a class="card glance" href="ideas.html" data-keep-lang>
+    <span class="kind" data-i18n="k0">الفكرتان في صفحة واحدة</span>
+    <h2 data-i18n="t0">سولارشيلد في لمحة</h2>
+    <span class="go" data-i18n="go0">افتح الصفحة البصرية ←</span>
+  </a>
   <div class="cards">
     <a class="card" href="coating.html" data-keep-lang>
       <span class="kind" data-i18n="k1">الطلاء الوقائي · الفكرة المقدَّمة</span>
@@ -103,7 +109,10 @@ window.I18N_EN = {
  "s3": "Environmental science",
  "m4": "Azwardi Imani",
  "s4": "Environmental engineering",
- "note": "Both models are illustrative: the equations come from published, peer-reviewed research, and the constants will be calibrated with lab measurements as they become available."
+ "note": "Both models are illustrative: the equations come from published, peer-reviewed research, and the constants will be calibrated with lab measurements as they become available.",
+ "k0": "Both ideas on one page",
+ "t0": "SolarShield at a Glance",
+ "go0": "Open the visual page →"
 };
 </script>
 <script src="i18n.js"></script>

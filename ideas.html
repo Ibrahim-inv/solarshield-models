@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-title-en="SolarShield at a Glance">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>سولارشيلد في لمحة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap">
+<style>
+/* Layout: one visual column; each section shows the two ideas side by side (coating | panel), stacked on phones. */
+:root{
+  --bg:#F1F6F7; --surface:#FFFFFF; --surface2:#E8F0F1; --ink:#142E35; --ink2:#47646B; --line:#D3E2E4;
+  --teal:#0E7D8E; --blue:#2C64B8; --sun:#E8A020; --algae:#4E8A33; --water:#BFE0E6; --pol:#9A5B06;
+  --glass:#D6EBEF; --glass-edge:#8FB6BD; --coat:#EFE6CC; --coat-edge:#B19A5C; --slab:#8A8F93; --sky:#E6F2F5;
+  --tio2:#F4EAD0; --tio2-edge:#C9B27A; --cn:#4B4E7A; --onslab:#FFFFFF;
+  --f-display:"El Messiri","IBM Plex Sans Arabic","Geeza Pro",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic","Geeza Pro",Tahoma,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1D22; --surface:#10272D; --surface2:#16323A; --ink:#E4EFF0; --ink2:#A6BEC2; --line:#24444C;
+    --teal:#46BCCD; --blue:#4E8BD8; --sun:#F0B44E; --algae:#7CBB5A; --water:#1F4E59; --pol:#F0A23C;
+    --glass:#1C4651; --glass-edge:#4F8794; --coat:#5E5538; --coat-edge:#A8935A; --slab:#5A6A70; --sky:#0E2A33;
+    --tio2:#6B6046; --tio2-edge:#B9A26A; --cn:#8A8EC8; --onslab:#FFFFFF; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1D22; --surface:#10272D; --surface2:#16323A; --ink:#E4EFF0; --ink2:#A6BEC2; --line:#24444C;
+  --teal:#46BCCD; --blue:#4E8BD8; --sun:#F0B44E; --algae:#7CBB5A; --water:#1F4E59; --pol:#F0A23C;
+  --glass:#1C4651; --glass-edge:#4F8794; --coat:#5E5538; --coat-edge:#A8935A; --slab:#5A6A70; --sky:#0E2A33;
+  --tio2:#6B6046; --tio2-edge:#B9A26A; --cn:#8A8EC8; --onslab:#FFFFFF; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3vw,32px);padding-block:calc(env(safe-area-inset-top,0px) + 14px) 56px;display:grid;gap:44px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.3;margin:0;text-wrap:balance}
+h1{font-size:clamp(30px,5.5vw,46px)}
+h2{font-size:clamp(22px,3vw,28px)}
+h3{font-size:18px}
+p{margin:0}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--sun);outline-offset:2px;border-radius:4px}
+svg{display:block;width:100%;height:auto;direction:ltr}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.backlink{font-weight:500;font-size:14px;color:var(--teal);text-decoration:none}
+.langbtn{font:500 14px var(--f-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 14px;cursor:pointer}
+.langbtn:hover{border-color:var(--teal);color:var(--teal)}
+.hero{display:grid;gap:10px}
+.eyebrow{font-size:14px;color:var(--ink2)}
+.tagline{font-size:18px;color:var(--ink2)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.toc a{display:inline-flex;align-items:center;gap:6px;font-size:14px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px 4px 6px}
+[dir="ltr"] .toc a{padding:4px 6px 4px 12px}
+.toc a b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--surface2);font-size:12.5px;color:var(--teal)}
+.toc a:hover{border-color:var(--teal)}
+section{display:grid;gap:16px;scroll-margin-top:12px}
+.sec-head{display:flex;align-items:center;gap:12px}
+.num{display:inline-grid;place-items:center;flex:none;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--bg);font-family:var(--f-display);font-size:19px}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:10px;align-content:start;min-width:0}
+.card .art{border-radius:12px;overflow:hidden;background:var(--sky)}
+.idea-tag{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.idea-tag i{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;color:var(--surface);font-style:normal;font-size:13px;font-family:var(--f-display)}
+.A .idea-tag i{background:var(--teal)} .B .idea-tag i{background:var(--blue)}
+.A{--acc:var(--teal)} .B{--acc:var(--blue)}
+.card.A{border-top:4px solid var(--teal)} .card.B{border-top:4px solid var(--blue)}
+.cap{font-size:15px;color:var(--ink2)}
+/* zoom ladder */
+.ladder{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
+.tile{display:grid;gap:6px;min-width:0}
+.tile .art{border-radius:12px;overflow:hidden;background:var(--surface2);border:1px solid var(--line)}
+.tile .lvl{font-size:13px;font-weight:700;color:var(--acc)}
+.tile .cap{font-size:14px}
+.zoom{font-size:22px;color:var(--ink2)}
+[dir="ltr"] .zoom{transform:scaleX(-1)}
+/* mechanism */
+.mech .art{background:var(--surface2);border-radius:14px;border:1px solid var(--line);overflow:hidden}
+.stg{transition:opacity .45s}
+.mech.anim .stg{opacity:.28}
+.mech.anim .stg.on{opacity:1}
+.stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;margin:0;padding:0;counter-reset:s}
+.stages li{display:grid;gap:2px;padding:10px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);transition:border-color .3s,background .3s}
+.stages li b{font-size:15px}
+.stages li span{font-size:13.5px;color:var(--ink2)}
+.stages li.on{border-color:var(--sun)}
+.outcomes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.outcome{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-weight:500}
+.outcome i{flex:none;width:12px;height:12px;border-radius:50%;background:var(--acc)}
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:st}
+.steps li{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:var(--surface2)}
+.steps li::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:var(--acc);color:var(--surface);font-weight:700;font-size:14px}
+.steps li b{font-weight:500}
+/* demos */
+.ctrls{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.ctrls input[type=range]{flex:1 1 160px;accent-color:var(--acc)}
+.btn{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:9px;padding:5px 12px;cursor:pointer}
+.btn.primary{background:var(--acc);color:var(--surface)}
+.seg{display:inline-flex;padding:3px;border-radius:9px;background:var(--surface2);gap:3px}
+.seg button{font:inherit;font-size:13.5px;border:0;background:transparent;color:var(--ink2);padding:4px 10px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--acc);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.chk{display:inline-flex;align-items:center;gap:6px;font-size:14px;cursor:pointer}
+.chk input{accent-color:var(--acc);width:16px;height:16px}
+.readout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ro{padding:8px 12px;border-radius:10px;background:var(--surface2);display:grid}
+.ro span{font-size:13px;color:var(--ink2)}
+.ro b{font-size:24px;font-variant-numeric:tabular-nums;line-height:1.3}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;min-width:4.6ch;text-align:center}
+.note{font-size:13px;color:var(--ink2)}
+.open{font-weight:500;text-decoration:none}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13.5px;color:var(--ink2);border-top:1px solid var(--line);padding-top:14px}
+/* svg classes */
+.sky{fill:var(--sky)} .water{fill:var(--water)} .slab{fill:var(--slab)} .coatf{fill:var(--coat);stroke:var(--coat-edge);stroke-width:.8}
+.glass{fill:var(--glass);stroke:var(--glass-edge);stroke-width:1.2} .tealf{fill:var(--teal)} .bluef{fill:var(--blue)}
+.sunf{fill:var(--sun)} .glow{fill:var(--sun);opacity:.22} .ray{stroke:var(--sun);stroke-width:2;stroke-dasharray:5 6;opacity:.75}
+.alg{stroke:var(--algae);stroke-width:3;fill:none;stroke-linecap:round} .algf{fill:var(--algae)}
+.polf{fill:var(--pol)} .tio2{fill:var(--tio2);stroke:var(--tio2-edge);stroke-width:1.5} .cn{fill:var(--cn)} .cns{stroke:var(--cn)} .cnl{stroke:var(--surface);opacity:.45}
+.pipe{fill:none;stroke:var(--slab);stroke-width:8;stroke-linecap:round} .leg{stroke:var(--slab);stroke-width:4;stroke-linecap:round}
+.trough{fill:var(--surface);stroke:var(--slab);stroke-width:2}
+.div{stroke:var(--ink2);stroke-dasharray:4 5;opacity:.6}
+.t{fill:var(--ink);font:700 15px var(--f-body)} .t2{fill:var(--ink2);font:500 13px var(--f-body)} .tw{fill:var(--onslab);font:500 13px var(--f-body)}
+.chem{fill:var(--ink);font:700 15px var(--f-body)} .chem2{fill:var(--ink);font:600 13px var(--f-body)}
+.arrow{fill:none;stroke:var(--ink2);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.photon{fill:none;stroke:var(--sun);stroke-width:2.5}
+.lead{stroke:var(--ink2);stroke-width:1}
+@media (max-width:860px){
+  .duo,.outcomes{grid-template-columns:minmax(0,1fr)}
+  .stages{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ladder{grid-template-columns:minmax(0,1fr)}
+  .zoom{transform:rotate(-90deg);justify-self:center}
+  [dir="ltr"] .zoom{transform:rotate(90deg) scaleX(-1)}
+}
+@media (prefers-reduced-motion: reduce){ .stg,.stages li{transition:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar"><a class="backlink" href="./" data-keep-lang data-i18n="back">→ كل النماذج · فريق Thea</a><button class="langbtn" id="langBtn" type="button" lang="en">English</button></div>
+
+  <header class="hero">
+    <div class="eyebrow" data-i18n="eyebrow">فريق Thea · مياهثون 2026</div>
+    <h1 data-i18n="h1">سولارشيلد في لمحة</h1>
+    <p class="tagline" data-i18n="tagline">ضوء الشمس + محفز نانوي = ماء وأسطح أنظف</p>
+    <nav class="toc" aria-label="أقسام الصفحة" data-i18n-label="tocLabel">
+      <a href="#idea"><b>1</b><span data-i18n="n1">الفكرة</span></a>
+      <a href="#micro"><b>2</b><span data-i18n="n2">التركيب الدقيق</span></a>
+      <a href="#mech"><b>3</b><span data-i18n="n3">آلية العمل</span></a>
+      <a href="#steps"><b>4</b><span data-i18n="n4">خطوات العمل</span></a>
+      <a href="#run"><b>5</b><span data-i18n="n5">تشغيل النموذج</span></a>
+    </nav>
+  </header>
+
+  <!-- 1 -->
+  <section id="idea">
+    <div class="sec-head"><span class="num">1</span><h2 data-i18n="s1">الفكرة</h2></div>
+    <div class="duo">
+      <div class="card A">
+        <div class="idea-tag"><i>A</i><span data-i18n="ideaA">الطلاء الوقائي</span></div>
+        <div class="art" id="artA"></div>
+        <p class="cap" data-i18n="capA">طلاء يمنع الطحالب والغشاء الحيوي من الاستقرار على الأسطح الملامسة للماء.</p>
+      </div>
+      <div class="card B">
+        <div class="idea-tag"><i>B</i><span data-i18n="ideaB">لوح المعالجة</span></div>
+        <div class="art" id="artB"></div>
+        <p class="cap" data-i18n="capB">لوح زجاجي مطلي يكسّر الملوثات العضوية في الماء المنساب عليه.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="micro">
+    <div class="sec-head"><span class="num">2</span><h2 data-i18n="s2">التركيب الدقيق</h2></div>
+    <div class="card A">
+      <div class="idea-tag"><i>A</i><span data-i18n="ideaA2">الطلاء الوقائي</span></div>
+      <div class="ladder" id="ladA"></div>
+    </div>
+    <div class="card B">
+      <div class="idea-tag"><i>B</i><span data-i18n="ideaB2">لوح المعالجة</span></div>
+      <div class="ladder" id="ladB"></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="mech" class="mech">
+    <div class="sec-head"><span class="num">3</span><h2 data-i18n="s3">آلية العمل</h2></div>
+    <div class="art" id="mechArt"></div>
+    <ol class="stages" id="stages"></ol>
+    <div class="outcomes">
+      <div class="outcome A"><i></i><span data-i18n="outA">الطلاء: خلايا الطحالب لا تثبت على السطح</span></div>
+      <div class="outcome B"><i></i><span data-i18n="outB">اللوح: الملوث يتحول إلى ماء وثاني أكسيد الكربون</span></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="steps">
+    <div class="sec-head"><span class="num">4</span><h2 data-i18n="s4">خطوات العمل</h2></div>
+    <div class="duo">
+      <div class="card A">
+        <div class="idea-tag"><i>A</i><span data-i18n="ideaA3">الطلاء الوقائي</span></div>
+        <ol class="steps" id="stepsA"></ol>
+      </div>
+      <div class="card B">
+        <div class="idea-tag"><i>B</i><span data-i18n="ideaB3">لوح المعالجة</span></div>
+        <ol class="steps" id="stepsB"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="run">
+    <div class="sec-head"><span class="num">5</span><h2 data-i18n="s5">تشغيل النموذج</h2></div>
+    <div class="duo">
+      <div class="card A">
+        <div class="idea-tag"><i>A</i><span data-i18n="runA">أسطح على مدى 8 أسابيع</span></div>
+        <div class="art" id="demoA"></div>
+        <div class="ctrls">
+          <button class="btn primary" id="playA" type="button"></button>
+          <input type="range" id="dayA" min="0" max="56" step="1" value="56" aria-label="اليوم" data-i18n-label="dayLabel">
+          <span class="clock" id="dayOutA"></span>
+        </div>
+        <label class="chk"><input type="checkbox" id="sunA" checked><span data-i18n="sunA">ضوء الشمس</span></label>
+        <div class="readout">
+          <div class="ro"><span data-i18n="roA1">تغطية الطحالب: بدون طلاء</span><b id="covC">—</b></div>
+          <div class="ro"><span data-i18n="roA2">تغطية الطحالب: سولارشيلد</span><b id="covS">—</b></div>
+        </div>
+        <p class="note" data-i18n="noteA">أطفئ الشمس لترى أن المحفز يحتاج الضوء، ويبقى أثر النسيج وحده.</p>
+        <a class="open" href="coating.html" data-keep-lang data-i18n="openA">افتح المحاكي الكامل ←</a>
+      </div>
+      <div class="card B">
+        <div class="idea-tag"><i>B</i><span data-i18n="runB">يوم على اللوح</span></div>
+        <div class="art" id="demoB"></div>
+        <div class="ctrls">
+          <button class="btn primary" id="playB" type="button"></button>
+          <input type="range" id="hourB" min="6" max="18" step="0.1" value="12" aria-label="ساعة اليوم" data-i18n-label="hourLabel">
+          <span class="clock" id="hourOutB"></span>
+        </div>
+        <div class="seg" role="group" aria-label="سرعة الماء" data-i18n-label="flowLabel">
+          <button type="button" id="slowB" aria-pressed="true" data-i18n="slow">ماء بطيء</button>
+          <button type="button" id="fastB" aria-pressed="false" data-i18n="fast">ماء سريع</button>
+        </div>
+        <div class="readout">
+          <div class="ro"><span data-i18n="roB1">الملوث المُزال</span><b id="remB">—</b></div>
+          <div class="ro"><span data-i18n="roB2">الماء المعالج</span><b id="flowOut">—</b></div>
+        </div>
+        <p class="note" data-i18n="noteB">الماء الأبطأ يتلقى ضوءًا أكثر لكل لتر فيُزال منه أكثر.</p>
+        <a class="open" href="panel.html" data-keep-lang data-i18n="openB">افتح النموذج الكامل ←</a>
+      </div>
+    </div>
+    <p class="note" data-i18n="illus">النموذجان المصغران توضيحيان، مبنيان على المعادلات نفسها في النموذجين الكاملين.</p>
+  </section>
+
+  <footer>
+    <span data-i18n="foot1">سولارشيلد · فريق Thea · مياهثون 2026</span>
+    <a href="./" data-keep-lang data-i18n="foot2">كل النماذج</a>
+  </footer>
+</div>
+
+<script>
+window.I18N_EN = {
+  back: "← All models · Team Thea",
+  eyebrow: "Team Thea · Miyahthon 2026",
+  h1: "SolarShield at a Glance",
+  tagline: "Sunlight + a nano photocatalyst = cleaner water and surfaces",
+  tocLabel: "Page sections",
+  n1: "The idea", n2: "Microstructure", n3: "How it works", n4: "Work steps", n5: "Run the model",
+  s1: "The idea", s2: "Microstructure", s3: "How it works", s4: "Work steps", s5: "Run the model",
+  ideaA: "Protective coating", ideaB: "Treatment panel", ideaA2: "Protective coating", ideaB2: "Treatment panel", ideaA3: "Protective coating", ideaB3: "Treatment panel",
+  capA: "A coating that keeps algae and biofilm from settling on surfaces in contact with water.",
+  capB: "A coated glass panel that breaks down organic pollutants in the water flowing over it.",
+  outA: "Coating: algae cells cannot settle on the surface",
+  outB: "Panel: the pollutant turns into water and carbon dioxide",
+  runA: "Surfaces over 8 weeks", runB: "A day on the panel",
+  dayLabel: "Day", hourLabel: "Time of day", flowLabel: "Water speed",
+  sunA: "Sunlight",
+  roA1: "Algae cover: uncoated", roA2: "Algae cover: SolarShield",
+  noteA: "Switch the sun off to see that the catalyst needs light, leaving only the texture effect.",
+  openA: "Open the full simulator →",
+  slow: "Slow water", fast: "Fast water",
+  roB1: "Pollutant removed", roB2: "Water treated",
+  noteB: "Slower water receives more light per litre, so more of the pollutant is removed.",
+  openB: "Open the full model →",
+  illus: "Both mini models are illustrative and use the same equations as the full models.",
+  foot1: "SolarShield · Team Thea · Miyahthon 2026", foot2: "All models"
+};
+</script>
+<script src="i18n.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const rtl = () => document.documentElement.dir === 'rtl';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PC = () => L('٪', '%');
+  // Drawings are designed for Arabic (reading starts on the right); English mirrors the geometry and re-places the labels.
+  const mirror = (W, inner) => rtl() ? inner : `<g transform="translate(${W} 0) scale(-1 1)">${inner}</g>`;
+  const mx = (W, x) => rtl() ? x : W - x;
+  const T = (W, x, y, txt, cls = 't', anchor = 'middle') => {
+    let a = anchor; if (!rtl() && anchor !== 'middle') a = anchor === 'start' ? 'end' : 'start';
+    return `<text class="${cls}" x="${mx(W, x)}" y="${y}" text-anchor="${a}">${txt}</text>`;
+  };
+  const tufts = (x0, x1, base, n, h) => { let s = ''; for (let i = 0; i < n; i++){ const x = x0 + (i + .5)*(x1 - x0)/n, hh = h*(0.7 + 0.3*((i*37)%10)/10); s += `<path class="alg" d="M${x} ${base} q -5 ${-hh*.5} 0 ${-hh} M${x} ${base} q 6 ${-hh*.4} 3 ${-hh*.75}"/>`; } return s; };
+
+  /* ---------- 1. the two ideas ---------- */
+  function artA(){
+    const W = 400, H = 240;
+    const geo = `<rect class="sky" x="0" y="0" width="400" height="70"/>
+      <rect class="water" x="0" y="70" width="400" height="110"/>
+      <rect class="slab" x="0" y="180" width="400" height="60"/>
+      <circle class="glow" cx="200" cy="34" r="26"/><circle class="sunf" cx="200" cy="34" r="15"/>
+      <line class="ray" x1="190" y1="48" x2="60" y2="172"/><line class="ray" x1="198" y1="50" x2="130" y2="172"/><line class="ray" x1="210" y1="48" x2="300" y2="168"/>
+      <line class="div" x1="200" y1="70" x2="200" y2="240"/>
+      <rect class="algf" x="200" y="170" width="200" height="10" opacity=".55"/>
+      ${tufts(205, 395, 172, 9, 46)}
+      <rect class="tealf" x="0" y="175" width="200" height="5"/>
+      ${Array.from({length: 13}, (_, i) => `<rect class="tealf" x="${6 + i*15}" y="170" width="7" height="6" rx="1.5"/>`).join('')}
+      ${[[40,150],[85,158],[120,146],[160,156],[62,132],[140,128]].map(([x,y]) => `<circle class="sunf" cx="${x}" cy="${y}" r="2.6"/>`).join('')}
+      ${[[30,120],[110,108],[175,124]].map(([x,y]) => `<circle class="algf" cx="${x}" cy="${y}" r="5" opacity=".28"/>`).join('')}`;
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('سطح مائي نصفه بلا طلاء تغطيه الطحالب ونصفه بطلاء سولارشيلد نظيف','A water-contact surface: the uncoated half is covered in algae, the SolarShield half stays clean')}">
+      ${mirror(W, geo)}
+      ${T(W, 300, 98, L('بدون طلاء','Uncoated'))}
+      ${T(W, 100, 98, L('مع سولارشيلد','SolarShield'))}
+      ${T(W, 300, 216, L('طحالب وغشاء حيوي','Algae and biofilm'), 'tw')}
+      ${T(W, 100, 216, L('سطح نظيف','Clean surface'), 'tw')}
+    </svg>`;
+  }
+  function panelGeo(id, outletOpacity){
+    return `<defs><linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="150" y1="0" x2="-150" y2="0">
+        <stop offset="0" stop-color="var(--pol)" stop-opacity=".85"/><stop offset="1" stop-color="var(--pol)" stop-opacity="${outletOpacity}" id="${id}-out"/></linearGradient></defs>
+      <rect class="sky" x="0" y="0" width="400" height="240"/>
+      <line class="leg" x1="175" y1="158" x2="175" y2="232"/><line class="leg" x1="300" y1="125" x2="300" y2="232"/>
+      <rect x="0" y="232" width="400" height="8" class="slab"/>
+      <path class="pipe" d="M398 92 H356 Q346 92 343 100"/>
+      <g transform="translate(200 140) rotate(-15)">
+        <rect class="water" x="-150" y="-16" width="300" height="12"/>
+        <rect x="-150" y="-16" width="300" height="12" fill="url(#${id})"/>
+        <rect class="tealf" x="-150" y="-4" width="300" height="4"/>
+        <rect class="glass" x="-150" y="0" width="300" height="12" rx="2"/>
+      </g>
+      <path class="pipe" d="M58 182 Q52 190 52 196" style="stroke-width:5"/>
+      <rect class="trough" x="22" y="196" width="64" height="28" rx="4"/>
+      <rect class="water" x="25" y="206" width="58" height="15"/>
+      <rect x="25" y="206" width="58" height="15" class="polf" id="${id}-tr" opacity="${outletOpacity}"/>`;
+  }
+  function artB(){
+    const W = 400, H = 240;
+    const geo = panelGeo('gB', .08) + `<circle class="glow" cx="200" cy="34" r="26"/><circle class="sunf" cx="200" cy="34" r="15"/>
+      <line class="ray" x1="190" y1="48" x2="120" y2="150"/><line class="ray" x1="200" y1="50" x2="200" y2="128"/><line class="ray" x1="210" y1="48" x2="285" y2="106"/>`;
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('لوح زجاجي مائل تحت الشمس يدخله ماء ملوث من أعلاه ويخرج أنظف من أسفله','A tilted glass panel in the sun: polluted water enters at the top and leaves cleaner at the bottom')}">
+      ${mirror(W, geo)}
+      ${T(W, 326, 76, L('ماء ملوث','Polluted water'))}
+      ${T(W, 136, 214, L('ماء أنظف','Cleaner water'))}
+    </svg>`;
+  }
+
+  /* ---------- 2. microstructure: millimetre → micrometre → nanometre ---------- */
+  function particle(W, cx, cy, r){
+    // TiO2 sphere with a layered g-C3N4 sheet wrapped around one side (the heterojunction)
+    const P = (R, deg) => `${(cx + R*Math.cos(deg*Math.PI/180)).toFixed(1)} ${(cy + R*Math.sin(deg*Math.PI/180)).toFixed(1)}`;
+    const arc = (R, cls, w, extra = '') => `<path d="M${P(R,-72)} A ${R} ${R} 0 0 1 ${P(R,72)}" fill="none" class="${cls}" style="stroke-width:${w};stroke-linecap:round${extra}"/>`;
+    return `<circle class="tio2" cx="${cx}" cy="${cy}" r="${r}"/>`
+      + arc(r*1.1, 'cns', r*.3)
+      + arc(r*1.02, 'cnl', 1) + arc(r*1.1, 'cnl', 1) + arc(r*1.18, 'cnl', 1);
+  }
+  function tile(svg, lvl, cap){ return `<div class="tile"><div class="art">${svg}</div><div class="lvl">${lvl}</div><div class="cap">${cap}</div></div>`; }
+  const ZOOM = '<span class="zoom" aria-hidden="true">←</span>';
+  function nanoTile(){
+    const W = 220, H = 160;
+    const geo = particle(W, 96, 82, 46);
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('جسيم من ثاني أكسيد التيتانيوم يغلفه جزئيًا نتريد الكربون الجرافيتي','A titanium dioxide particle partly wrapped in graphitic carbon nitride')}">
+      ${mirror(W, geo)}
+      <text class="chem" x="${mx(W, 84)}" y="88" text-anchor="middle">TiO<tspan dy="4" font-size="72%">2</tspan></text>
+      <text class="chem2" x="${mx(W, 182)}" y="40" text-anchor="middle">g-C<tspan dy="4" font-size="72%">3</tspan><tspan dy="-4">N</tspan><tspan dy="4" font-size="72%">4</tspan></text>
+      <text class="t2" x="${W/2}" y="150" text-anchor="middle">${L('وصلة بين مادتين','Two-material junction')}</text>
+    </svg>`;
+  }
+  function ladderA(){
+    const W = 220, H = 160;
+    const t1 = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('مقطع لسطح حوض عليه طبقة طلاء رقيقة','Cross-section of a basin surface with a thin coating')}">
+      ${mirror(W, `<rect class="water" x="0" y="0" width="220" height="88"/><rect class="tealf" x="0" y="88" width="220" height="7"/><rect class="slab" x="0" y="95" width="220" height="65"/>`)}
+      ${T(W, 110, 48, L('ماء','Water'), 't2')}
+      ${T(W, 110, 80, L('طبقة الطلاء','Coating layer'), 't2')}
+      ${T(W, 110, 134, L('سطح الحوض','Basin surface'), 'tw')}
+    </svg>`;
+    const ridges = Array.from({length: 6}, (_, i) => { const x = 8 + i*36; return `<rect class="coatf" x="${x}" y="72" width="22" height="42" rx="6"/>` + [[x+4,71],[x+11,69],[x+18,71],[x+1,86],[x+21,92]].map(([px,py]) => `<circle class="tealf" cx="${px}" cy="${py}" r="3.4"/>`).join(''); }).join('');
+    const t2 = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('نتوءات دقيقة على مادة رابطة تحمل جسيمات المحفز','Micro-ridges on a binder carrying catalyst particles')}">
+      ${mirror(W, `<rect class="water" x="0" y="0" width="220" height="114"/><rect class="coatf" x="0" y="112" width="220" height="48"/>${ridges}
+        ${[[30,40],[120,52],[180,34]].map(([x,y]) => `<circle class="sunf" cx="${x}" cy="${y}" r="2.6"/>`).join('')}`)}
+      ${T(W, 110, 30, L('جسيمات المحفز على القمم','Catalyst on the ridge tops'), 't2')}
+      ${T(W, 110, 142, L('نتوءات دقيقة ومادة رابطة','Micro-ridges on a binder'), 't2')}
+    </svg>`;
+    return tile(t1, L('مليمتر','Millimetre'), L('طبقة رقيقة على السطح','A thin layer on the surface')) + ZOOM
+         + tile(t2, L('ميكرومتر','Micrometre'), L('نسيج يقلل التصاق الخلايا','A texture that reduces cell adhesion')) + ZOOM
+         + tile(nanoTile(), L('نانومتر','Nanometre'), L('جسيم يولّد الجذور المؤكسدة بالضوء','A particle that makes oxidizing radicals in light'));
+  }
+  function ladderB(){
+    const W = 220, H = 160;
+    const t1 = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('مقطع لزجاج مطلي فوقه غشاء ماء رقيق','Cross-section of coated glass under a thin water film')}">
+      ${mirror(W, `<rect class="sky" x="0" y="0" width="220" height="64"/><line class="ray" x1="60" y1="0" x2="80" y2="64"/><line class="ray" x1="150" y1="0" x2="170" y2="64"/>
+        <rect class="water" x="0" y="64" width="220" height="16"/><rect class="tealf" x="0" y="80" width="220" height="6"/><rect class="glass" x="0" y="86" width="220" height="74"/>`)}
+      ${T(W, 110, 56, L('غشاء ماء رقيق','Thin water film'), 't2')}
+      ${T(W, 110, 108, L('↑ طبقة المحفز','↑ Catalyst layer'), 't2')}
+      ${T(W, 110, 138, L('زجاج بوروسيليكات','Borosilicate glass'), 't2')}
+    </svg>`;
+    const layer = Array.from({length: 2}, (_, row) => Array.from({length: 15}, (_, i) => `<circle class="${(i + row) % 3 === 0 ? 'tio2' : 'tealf'}" cx="${8 + i*14.5 + row*7}" cy="${108 - row*12}" r="7"/>`).join('')).join('');
+    const t2 = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('طبقة جسيمات نانوية على الزجاج وفوقها ماء فيه ملوث','A layer of nanoparticles on glass under water carrying a pollutant')}">
+      ${mirror(W, `<rect class="water" x="0" y="0" width="220" height="114"/><rect class="glass" x="0" y="114" width="220" height="46"/>${layer}
+        ${[[40,40],[96,30],[160,46],[190,22]].map(([x,y]) => `<polygon class="polf" points="${[0,1,2,3,4,5].map(k => `${x + 6*Math.cos(k*Math.PI/3)},${y + 6*Math.sin(k*Math.PI/3)}`).join(' ')}"/>`).join('')}
+        ${[[70,78],[130,74],[176,80]].map(([x,y]) => `<circle class="sunf" cx="${x}" cy="${y}" r="2.6"/>`).join('')}`)}
+      ${T(W, 110, 62, L('ملوث عضوي','Organic pollutant'), 't2')}
+      ${T(W, 110, 144, L('زجاج','Glass'), 't2')}
+    </svg>`;
+    return tile(t1, L('مليمتر','Millimetre'), L('زجاج مطلي وغشاء ماء','Coated glass and a water film')) + ZOOM
+         + tile(t2, L('ميكرومتر','Micrometre'), L('جسيمات بحجم 10 إلى 15 نانومترًا','Particles 10 to 15 nm across')) + ZOOM
+         + tile(nanoTile(), L('نانومتر','Nanometre'), L('الجسيم نفسه في الفكرتين','The same particle in both ideas'));
+  }
+
+  /* ---------- 3. mechanism ---------- */
+  const STAGES = () => [
+    [L('ضوء الشمس','Sunlight'), L('فوتونات فوق بنفسجية ومرئية','Ultraviolet and visible photons')],
+    [L('الجسيم يُستثار','The particle is excited'), L('إلكترون وفجوة موجبة','An electron and a positive hole')],
+    [L('جذور مؤكسدة','Oxidizing radicals'), L('من الماء والأكسجين','From water and oxygen')],
+    [L('الهدف يتفكك','The target breaks down'), L('خلية طحلب أو ملوث عضوي','An algae cell or organic pollutant')]
+  ];
+  function mechArt(){
+    const W = 760, H = 230;
+    const geo = `
+      <g class="stg" data-s="0"><circle class="glow" cx="680" cy="92" r="40"/><circle class="sunf" cx="680" cy="92" r="24"/>
+        <path class="photon" d="M650 100 q -8 -10 -16 0 t -16 0 t -16 0"/><path class="arrow" d="M592 100 l 8 -6 m -8 6 l 8 6"/></g>
+      <g class="stg" data-s="1">${particle(W, 500, 112, 40)}
+        <circle class="bluef" cx="520" cy="70" r="5"/><circle class="sunf" cx="520" cy="156" r="5"/>
+        <path class="arrow" d="M440 86 l -40 -24"/><path class="arrow" d="M440 140 l -40 22"/></g>
+      <g class="stg" data-s="2">${[[340,56],[352,72],[330,166],[346,178]].map(([x,y]) => `<circle class="sunf" cx="${x}" cy="${y}" r="4"/>`).join('')}
+        <path class="arrow" d="M270 64 l -50 10 m 0 0 l 9 -7 m -9 7 l 10 4"/><path class="arrow" d="M270 168 l -50 -10 m 0 0 l 10 -4 m -10 4 l 9 7"/></g>
+      <g class="stg" data-s="3"><ellipse class="algf" cx="150" cy="72" rx="30" ry="20" opacity=".85"/><path class="arrow" d="M132 62 l 10 8 m 8 -10 l -6 12" style="stroke:var(--surface)"/>
+        <polygon class="polf" points="${[0,1,2,3,4,5].map(k => `${150 + 20*Math.cos(k*Math.PI/3)},${158 + 20*Math.sin(k*Math.PI/3)}`).join(' ')}"/>
+        <path class="arrow" d="M112 158 l -26 0 m 0 0 l 7 -6 m -7 6 l 7 6"/></g>`;
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('سلسلة العمل: ضوء الشمس يستثير الجسيم فتتولد جذور مؤكسدة تفكك الخلية أو الملوث','The chain: sunlight excites the particle, oxidizing radicals form and break down the cell or pollutant')}">
+      ${mirror(W, geo)}
+      <g class="stg" data-s="1"><text class="chem2" x="${mx(W, 538)}" y="66" text-anchor="middle">e<tspan dy="-6" font-size="72%">−</tspan></text><text class="chem2" x="${mx(W, 538)}" y="164" text-anchor="middle">h<tspan dy="-6" font-size="72%">+</tspan></text><text class="chem" x="${mx(W, 500)}" y="117" text-anchor="middle">TiO<tspan dy="4" font-size="72%">2</tspan></text></g>
+      <g class="stg" data-s="2"><text class="chem" x="${mx(W, 360)}" y="48" text-anchor="middle">O<tspan dy="4" font-size="72%">2</tspan><tspan dy="-4"> → •O</tspan><tspan dy="4" font-size="72%">2</tspan><tspan dy="-10" font-size="72%">−</tspan></text><text class="chem" x="${mx(W, 360)}" y="204" text-anchor="middle">H<tspan dy="4" font-size="72%">2</tspan><tspan dy="-4">O → •OH</tspan></text></g>
+      <g class="stg" data-s="3"><text class="chem" x="${mx(W, 42)}" y="164" text-anchor="middle">CO<tspan dy="4" font-size="72%">2</tspan><tspan dy="-4"> + H</tspan><tspan dy="4" font-size="72%">2</tspan><tspan dy="-4">O</tspan></text><text class="t2" x="${mx(W, 150)}" y="114" text-anchor="middle">${L('خلية طحلب','Algae cell')}</text><text class="t2" x="${mx(W, 150)}" y="200" text-anchor="middle">${L('ملوث','Pollutant')}</text></g>
+    </svg>`;
+  }
+  let stage = 0, mechTimer = null;
+  function showStage(i){
+    stage = i;
+    document.querySelectorAll('#mechArt .stg').forEach(g => g.classList.toggle('on', +g.dataset.s === i));
+    document.querySelectorAll('#stages li').forEach((li, k) => li.classList.toggle('on', k === i));
+  }
+  function startMech(){
+    if (reduce){ $('#mech').classList.remove('anim'); return; }
+    $('#mech').classList.add('anim'); showStage(stage);
+    clearInterval(mechTimer); mechTimer = setInterval(() => showStage((stage + 1) % 4), 1600);
+  }
+
+  /* ---------- 4. steps ---------- */
+  const STEPS_A = () => [L('تنظيف السطح وتجفيفه','Clean and dry the surface'), L('طبقة مادة رابطة','Apply a binder layer'), L('نقش النسيج الدقيق','Imprint the micro-texture'), L('تثبيت جسيمات المحفز','Fix the catalyst particles'), L('الشمس تحمي السطح كل يوم','Sunlight protects the surface every day')];
+  const STEPS_B = () => [L('تنظيف الزجاج','Clean the glass'), L('طلاء المحفز وتثبيته','Coat and fix the catalyst'), L('تركيب اللوح مائلًا نحو الشمس','Mount the panel tilted to the sun'), L('تمرير الماء في غشاء رقيق','Run the water in a thin film'), L('جمع الماء المعالج','Collect the treated water')];
+
+  /* ---------- 5a. coating demo: algae cover over 56 days ---------- */
+  // dA/dt = c + r·A·(1 − A/100) − k·sun·A   (illustrative; the full simulator has the sourced version)
+  function cover(days, r, k, sun){ let A = 1; for (let d = 0; d < days; d++) A = Math.min(100, Math.max(0, A + 0.5 + r*A*(1 - A/100) - k*sun*A)); return A; }
+  function demoA(){
+    const day = +$('#dayA').value, sun = $('#sunA').checked ? 1 : 0;
+    const cC = cover(day, 0.22, 0, sun), cS = cover(day, 0.12, 0.30, sun);
+    const W = 400, H = 190;
+    const half = (x0, A) => `<rect class="water" x="${x0}" y="0" width="190" height="140"/><rect class="slab" x="${x0}" y="140" width="190" height="50"/>
+      <rect class="algf" x="${x0}" y="132" width="190" height="8" opacity="${(0.1 + A/100*0.6).toFixed(2)}"/>${tufts(x0 + 4, x0 + 186, 134, Math.round(A/100*12), 20 + A*0.6)}`;
+    const geo = `<rect class="sky" x="0" y="0" width="400" height="20"/>${half(210, cC)}${half(0, cS)}<rect class="tealf" x="0" y="137" width="190" height="4"/>
+      ${sun ? `<circle class="sunf" cx="200" cy="14" r="10"/>` : ''}`;
+    $('#demoA').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${L('حوضان: بدون طلاء ومع سولارشيلد','Two surfaces: uncoated and SolarShield')}">${mirror(W, geo)}
+      ${T(W, 305, 176, L('بدون طلاء','Uncoated'), 'tw')}${T(W, 95, 176, L('سولارشيلد','SolarShield'), 'tw')}</svg>`;
+    $('#covC').textContent = Math.round(cC) + PC();
+    $('#covS').textContent = Math.round(cS) + PC();
+    $('#dayOutA').textContent = L(`اليوم ${day}`, `Day ${day}`);
+  }
+
+  /* ---------- 5b. panel demo: removal through the day ---------- */
+  const uv = h => (h <= 6 || h >= 18) ? 0 : 200*Math.PI/24*Math.sin(Math.PI*(h - 6)/12);   // W/m², 200 Wh/m² a day
+  let fast = false;
+  function removal(h){
+    const E = uv(h)*0.9, ks = 0.1*E*1e-6, km = 5e-6, F = (fast ? 10 : 2)/3.6e6;   // 0.1 L/kJ, 5 µm/s, 1 m²
+    if (E <= 0) return 0;
+    const k = 1/(1/ks + 1/km); return 1 - Math.exp(-k*1/F);
+  }
+  function demoB(){
+    const h = +$('#hourB').value, R = removal(h), E = uv(h);
+    const t = (h - 6)/12, u = 1 - t, sx = u*u*380 + 2*u*t*200 + t*t*20, sy = u*u*90 + 2*u*t*(-40) + t*t*90;
+    const geo = panelGeo('gD', (0.85*(1 - R)).toFixed(3)) + (E > 0 ? `<circle class="glow" cx="${sx}" cy="${sy}" r="24"/><circle class="sunf" cx="${sx}" cy="${sy}" r="14"/>` : '');
+    $('#demoB').innerHTML = `<svg viewBox="0 0 400 240" role="img" aria-label="${L('لوح المعالجة خلال اليوم','The treatment panel through the day')}">${mirror(400, geo)}
+      ${T(400, 326, 76, L('ماء ملوث','Polluted water'))}${T(400, 136, 214, L('ماء أنظف','Cleaner water'))}</svg>`;
+    $('#remB').textContent = E > 0 ? Math.round(R*100) + PC() : '—';
+    $('#flowOut').textContent = E > 0 ? L(`${fast ? 10 : 2} لتر/ساعة`, `${fast ? 10 : 2} L/h`) : L('متوقف ليلًا','Off at night');
+    const H = Math.floor(h), M = Math.round((h - H)*60); $('#hourOutB').textContent = `${M === 60 ? H + 1 : H}:${String(M === 60 ? 0 : M).padStart(2, '0')}`;
+  }
+
+  /* ---------- play buttons ---------- */
+  let playA = false, playB = false, last = 0;
+  const label = on => on ? L('إيقاف','Pause') : L('تشغيل','Play');
+  function tick(ts){
+    const dt = Math.min(.05, last ? (ts - last)/1000 : 0); last = ts;
+    if (playA){ const s = $('#dayA'); let v = +s.value + dt*8; if (v >= 56){ v = 56; playA = false; $('#playA').textContent = label(false); } s.value = v; demoA(); }
+    if (playB){ const s = $('#hourB'); let v = +s.value + dt*1.2; if (v >= 18){ v = 18; playB = false; $('#playB').textContent = label(false); } s.value = v; demoB(); }
+    requestAnimationFrame(tick);
+  }
+  $('#playA').addEventListener('click', () => { playA = !playA; if (playA && +$('#dayA').value >= 56) $('#dayA').value = 0; $('#playA').textContent = label(playA); });
+  $('#playB').addEventListener('click', () => { playB = !playB; if (playB && +$('#hourB').value >= 17.9) $('#hourB').value = 6; $('#playB').textContent = label(playB); });
+  $('#dayA').addEventListener('input', () => { playA = false; $('#playA').textContent = label(false); demoA(); });
+  $('#sunA').addEventListener('change', demoA);
+  $('#hourB').addEventListener('input', () => { playB = false; $('#playB').textContent = label(false); demoB(); });
+  [['#slowB', false], ['#fastB', true]].forEach(([id, v]) => $(id).addEventListener('click', () => { fast = v; $('#slowB').setAttribute('aria-pressed', String(!v)); $('#fastB').setAttribute('aria-pressed', String(v)); demoB(); }));
+
+  /* ---------- render ---------- */
+  function renderAll(){
+    $('#artA').innerHTML = artA();
+    $('#artB').innerHTML = artB();
+    $('#ladA').innerHTML = ladderA();
+    $('#ladB').innerHTML = ladderB();
+    $('#mechArt').innerHTML = mechArt();
+    $('#stages').innerHTML = STAGES().map(([b, s]) => `<li><b>${b}</b><span>${s}</span></li>`).join('');
+    $('#stepsA').innerHTML = STEPS_A().map(s => `<li><b>${s}</b></li>`).join('');
+    $('#stepsB').innerHTML = STEPS_B().map(s => `<li><b>${s}</b></li>`).join('');
+    $('#playA').textContent = label(playA); $('#playB').textContent = label(playB);
+    demoA(); demoB(); showStage(stage);
+  }
+  window.addEventListener('langchange', renderAll);
+  renderAll(); startMech();
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
