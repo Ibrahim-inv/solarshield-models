@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}.backlink{display:inline-block;margin:14px clamp(16px,3vw,32px) 0;font:500 14px "IBM Plex Sans Arabic",Tahoma,sans-serif;color:var(--teal);text-decoration:none}</style>
+<title>محاكي سولارشيلد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap">
+
+<style>
+/* ---------- الرموز اللونية: فاتح (الأساس) ---------- */
+:root{
+  --bg:#F1F6F7; --surface:#FFFFFF; --surface2:#E8F0F1; --ink:#142E35; --ink2:#47646B;
+  --line:#D3E2E4; --sun:#E8A020; --sun-ink:#9A6708; --teal:#0E7D8E; --algae:#4E8A33;
+  --danger:#B3452E; --chip-lit:#0E7D8E; --chip-range:#2C64B8; --chip-demo:#9A6708; --chip-pilot:#A34E86;
+  --s-control:#A34E86; --s-texture:#2C64B8; --s-catalyst:#C07A0E; --s-shield:#0A8FA0;
+  --water:#BFE0E6; --water-deep:#8FC6D0; --sky:#EAF4F7; --slab:#8A8F93; --shadow:0 2px 10px rgba(20,46,53,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1D22; --surface:#10272D; --surface2:#16323A; --ink:#E4EFF0; --ink2:#9DB6BA;
+    --line:#24444C; --sun:#F0B44E; --sun-ink:#F0B44E; --teal:#46BCCD; --algae:#7CBB5A;
+    --danger:#E07B5F; --chip-lit:#46BCCD; --chip-range:#4E8BD8; --chip-demo:#F0B44E; --chip-pilot:#C77BAB;
+    --s-control:#A8547F; --s-texture:#4E8BD8; --s-catalyst:#BD8630; --s-shield:#2C9FB4;
+    --water:#173C46; --water-deep:#11333C; --sky:#0E2A33; --slab:#5A6A70; --shadow:0 2px 12px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1D22; --surface:#10272D; --surface2:#16323A; --ink:#E4EFF0; --ink2:#9DB6BA;
+  --line:#24444C; --sun:#F0B44E; --sun-ink:#F0B44E; --teal:#46BCCD; --algae:#7CBB5A;
+  --danger:#E07B5F; --chip-lit:#46BCCD; --chip-range:#4E8BD8; --chip-demo:#F0B44E; --chip-pilot:#C77BAB;
+  --s-control:#A8547F; --s-texture:#4E8BD8; --s-catalyst:#BD8630; --s-shield:#2C9FB4;
+  --water:#173C46; --water-deep:#11333C; --sky:#0E2A33; --slab:#5A6A70; --shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html{direction:rtl}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Geeza Pro",Tahoma,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:"El Messiri","IBM Plex Sans Arabic","Geeza Pro",sans-serif; line-height:1.35; text-wrap:balance; margin:0}
+.ltr{direction:ltr; unicode-bidi:isolate; font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif}
+.num{font-variant-numeric:tabular-nums}
+a{color:var(--teal)}
+button{font:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:2px solid var(--teal); outline-offset:2px; border-radius:6px}
+
+.wrap{max-width:1060px; margin:0 auto; padding:0 20px 64px}
+
+/* ---------- الترويسة ---------- */
+header.top{display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:26px 0 18px}
+.brand{display:flex; align-items:center; gap:14px}
+.brand svg{flex:none}
+.brand h1{font-size:1.7rem}
+.brand .tag{color:var(--ink2); font-size:.86rem; margin-top:2px}
+.spacer{flex:1}
+.tabs{display:flex; gap:6px; background:var(--surface2); border:1px solid var(--line); border-radius:12px; padding:5px}
+.tabs button{border:0; background:transparent; border-radius:8px; padding:8px 16px; font-weight:500; color:var(--ink2)}
+.tabs button[aria-selected="true"]{background:var(--surface); color:var(--ink); box-shadow:var(--shadow); font-weight:700}
+
+/* ---------- بطاقات عامة ---------- */
+.card{background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow)}
+.pad{padding:20px 22px}
+section[hidden]{display:none}
+
+/* ---------- وضع القصة ---------- */
+.story{display:grid; grid-template-columns:210px 1fr; gap:18px; align-items:start}
+@media (max-width:760px){.story{grid-template-columns:1fr}}
+.steps{display:flex; flex-direction:column; gap:6px; padding:10px}
+.steps button{display:flex; gap:10px; align-items:baseline; text-align:start; border:0; background:transparent; padding:10px 12px; border-radius:10px; color:var(--ink2); line-height:1.45}
+.steps button .n{font-family:"El Messiri",sans-serif; font-weight:700; font-size:1.05rem; color:var(--ink2); min-width:1.2em}
+.steps button[aria-current="step"]{background:var(--surface2); color:var(--ink); font-weight:700}
+.steps button[aria-current="step"] .n{color:var(--teal)}
+.stageCard{overflow:hidden}
+.stage{background:linear-gradient(var(--sky), var(--water)); border-bottom:1px solid var(--line)}
+.stage svg{display:block; width:100%; height:auto}
+.stageText{padding:20px 24px 22px}
+.stageText h2{font-size:1.3rem; margin-bottom:8px}
+.stageText p{margin:0 0 10px; max-width:62ch; color:var(--ink)}
+.basis{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); font-size:.85rem; color:var(--ink2)}
+.nav{display:flex; gap:8px; margin-top:16px}
+.nav button{border:1px solid var(--line); background:var(--surface2); border-radius:10px; padding:8px 18px; font-weight:700}
+.nav button.primary{background:var(--teal); border-color:var(--teal); color:#fff}
+.nav button:disabled{opacity:.4; cursor:default}
+
+/* ---------- وسوم ---------- */
+.chip{display:inline-block; border-radius:99px; padding:1px 11px 2px; font-size:.78rem; font-weight:700; border:1.5px solid; background:transparent; white-space:nowrap}
+.chip.lit{color:var(--chip-lit); border-color:var(--chip-lit)}
+.chip.range{color:var(--chip-range); border-color:var(--chip-range)}
+.chip.demo{color:var(--chip-demo); border-color:var(--chip-demo)}
+.chip.pilot{color:var(--chip-pilot); border-color:var(--chip-pilot)}
+
+/* ---------- المختبر ---------- */
+.labGrid{display:grid; gap:18px}
+.controls{display:flex; flex-wrap:wrap; gap:20px 28px; align-items:flex-end}
+.ctl{display:flex; flex-direction:column; gap:6px; min-width:180px}
+.ctl label{font-size:.85rem; font-weight:700; color:var(--ink2)}
+.ctl output{font-size:.85rem; color:var(--ink2)}
+input[type=range]{accent-color:var(--teal); width:180px}
+select{font:inherit; color:var(--ink); background:var(--surface2); border:1px solid var(--line); border-radius:8px; padding:6px 10px}
+.check{display:flex; align-items:center; gap:8px; font-weight:500; padding-bottom:4px}
+.check input{width:17px; height:17px; accent-color:var(--sun-ink)}
+.runRow{display:flex; gap:8px; align-items:center}
+.runRow button{border:1px solid var(--line); background:var(--surface2); border-radius:10px; padding:8px 16px; font-weight:700}
+.runRow button.primary{background:var(--teal); border-color:var(--teal); color:#fff}
+.dayBadge{margin-inline-start:auto; display:flex; align-items:center; gap:8px; font-weight:700}
+.dayBadge .sunmoon{font-size:1.1rem}
+
+.surfaces{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+@media (max-width:860px){.surfaces{grid-template-columns:repeat(2,1fr)}}
+.sCard{border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow:hidden}
+.sCard .bar{height:4px}
+.sCard h3{font-size:.95rem; padding:10px 14px 0}
+.sCard .mini{display:block; width:100%; height:auto; background:linear-gradient(var(--sky),var(--water))}
+.sCard .meta{display:flex; justify-content:space-between; align-items:baseline; padding:8px 14px 12px; font-size:.85rem; color:var(--ink2)}
+.sCard .meta b{font-size:1.15rem; color:var(--ink); font-family:"El Messiri",sans-serif}
+.cleanFlash{animation:flash .6s ease}
+@keyframes flash{0%{background:var(--surface2)}100%{background:var(--surface)}}
+
+.chartHead{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.chartHead h2{font-size:1.1rem}
+.legend{display:flex; gap:14px; flex-wrap:wrap; font-size:.85rem; color:var(--ink2)}
+.legend .k{display:inline-flex; align-items:center; gap:6px}
+.legend .dot{width:11px; height:11px; border-radius:3px; display:inline-block}
+.tblBtn{margin-inline-start:auto; border:1px solid var(--line); background:var(--surface2); border-radius:8px; padding:5px 12px; font-size:.82rem}
+.chartBox{direction:ltr; position:relative; margin-top:8px}
+.chartBox svg{display:block; width:100%; height:auto}
+.tip{position:absolute; pointer-events:none; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:10px; padding:8px 12px; font-size:.8rem; direction:rtl; min-width:150px; display:none; z-index:3}
+.tip .row{display:flex; justify-content:space-between; gap:14px}
+.tip .row .v{font-variant-numeric:tabular-nums; font-weight:700}
+.summary{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+.sumChip{border:1px solid var(--line); background:var(--surface2); border-radius:10px; padding:8px 14px; font-size:.85rem}
+.sumChip b{font-family:"El Messiri",sans-serif; font-size:1.05rem}
+.integrity{border:1.5px solid var(--sun-ink); background:color-mix(in srgb, var(--sun) 9%, var(--surface)); border-radius:12px; padding:12px 18px; font-size:.88rem; color:var(--ink); display:flex; gap:10px; align-items:flex-start}
+.integrity svg{flex:none; margin-top:3px}
+table.data{border-collapse:collapse; width:100%; margin-top:12px; font-size:.85rem}
+table.data th, table.data td{border:1px solid var(--line); padding:6px 10px; text-align:center}
+table.data th{background:var(--surface2)}
+table.data td{font-variant-numeric:tabular-nums}
+table.data td:first-child, table.data th:first-child{text-align:start}
+
+/* ---------- بروتوكول التجربة ---------- */
+.protoHead{display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap}
+.protoHead .lead{max-width:66ch; color:var(--ink); margin:0}
+.printBtn{margin-inline-start:auto; border:1px solid var(--line); background:var(--surface2); border-radius:10px; padding:8px 16px; font-weight:700; white-space:nowrap}
+.designFig{margin:18px 0 6px}
+.designFig svg{display:block; width:100%; height:auto; max-width:820px; margin:0 auto}
+.designFig figcaption{text-align:center; font-size:.85rem; color:var(--ink2); margin-top:6px; max-width:70ch; margin-inline:auto}
+.phases{display:grid; gap:14px; margin-top:18px}
+.phase{border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:16px 20px; break-inside:avoid}
+.phase h3{font-size:1.05rem; display:flex; gap:10px; align-items:baseline; margin-bottom:8px}
+.phase h3 .pn{font-family:"El Messiri",sans-serif; color:var(--teal); font-size:1.2rem}
+.phase .who{font-size:.8rem; color:var(--ink2); font-weight:400; margin-inline-start:auto}
+ul.ck{list-style:none; margin:0; padding:0; display:grid; gap:7px}
+ul.ck li{position:relative; padding-inline-start:30px; max-width:75ch}
+ul.ck li::before{content:"☐"; position:absolute; inset-inline-start:2px; top:-1px; font-size:1.05rem; color:var(--teal)}
+.protoBoxes{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px}
+@media (max-width:760px){.protoBoxes{grid-template-columns:1fr}}
+.pBox{border:1px solid var(--line); border-radius:12px; padding:16px 20px; background:var(--surface2); break-inside:avoid}
+.pBox h3{font-size:1rem; margin-bottom:8px}
+.pBox ul{margin:0; padding-inline-start:20px; display:grid; gap:6px}
+.pBox.success{border-color:var(--teal); border-width:1.5px; background:color-mix(in srgb, var(--teal) 7%, var(--surface))}
+.pBox.safety{border-color:var(--sun-ink); border-width:1.5px; background:color-mix(in srgb, var(--sun) 8%, var(--surface))}
+.tl{display:grid; gap:10px}
+.tl .track{display:flex; gap:12px; align-items:baseline}
+.tl .track b{white-space:nowrap; color:var(--teal)}
+@media print{
+  .tabs,.printBtn,.nav,.runRow{display:none !important}
+  body{background:#fff; color:#111}
+  .card,.pBox,.phase{box-shadow:none; break-inside:avoid}
+  header.top{padding-top:6px}
+}
+
+/* ---------- الأسس العلمية ---------- */
+.sci h2{font-size:1.15rem; margin:26px 0 10px}
+.sci h2:first-child{margin-top:0}
+.sci table.ev{border-collapse:collapse; width:100%; font-size:.88rem}
+.sci table.ev th,.sci table.ev td{border:1px solid var(--line); padding:9px 12px; text-align:start; vertical-align:top}
+.sci table.ev th{background:var(--surface2); white-space:nowrap}
+.sci .tblScroll{overflow-x:auto}
+dl.gloss{display:grid; grid-template-columns:max-content 1fr; gap:6px 18px; margin:0}
+dl.gloss dt{font-weight:700; color:var(--teal); white-space:nowrap}
+dl.gloss dd{margin:0; color:var(--ink); max-width:70ch}
+@media (max-width:640px){dl.gloss{grid-template-columns:1fr} dl.gloss dd{margin-bottom:8px}}
+
+footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between}
+
+/* ---------- حركة ---------- */
+.pulse{animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+.driftUp{animation:driftUp 3.2s ease-in-out infinite}
+@keyframes driftUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.spin{transform-origin:center; animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){
+  .pulse,.driftUp,.spin{animation:none}
+  .cleanFlash{animation:none}
+}
+</style>
+
+</head>
+<body>
+<a class="backlink" href="./">→ كل النماذج</a>
+<div class="wrap">
+
+<header class="top">
+  <div class="brand">
+    <svg width="52" height="52" viewBox="0 0 52 52" role="img" aria-label="شعار سولارشيلد: درع يجمع شمسًا وموجة ماء">
+      <path d="M26 3 45 10 v14 c0 12-8 20-19 25 C15 44 7 36 7 24 V10 Z" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="26" cy="19" r="6" fill="var(--sun)"/>
+      <g stroke="var(--sun)" stroke-width="2" stroke-linecap="round">
+        <line x1="26" y1="8"  x2="26" y2="11"/><line x1="16" y1="19" x2="19" y2="19"/>
+        <line x1="33" y1="19" x2="36" y2="19"/><line x1="19" y1="12" x2="21" y2="14"/><line x1="33" y1="14" x2="31" y2="12"/>
+      </g>
+      <path d="M13 32 q4 -4 8 0 t8 0 t8 0" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M16 38 q3.5 -3.5 7 0 t7 0 t6 0" fill="none" stroke="var(--teal)" stroke-width="2.2" stroke-linecap="round" opacity=".6"/>
+    </svg>
+    <div>
+      <h1>محاكي سولارشيلد</h1>
+      <div class="tag">كيف يحرس الطلاءُ الأسطحَ المائية بالشمس — عرض تفاعلي لآلية العمل</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <nav class="tabs" role="tablist" aria-label="أوضاع العرض">
+    <button role="tab" id="tab-story" aria-selected="true" aria-controls="panel-story">القصة</button>
+    <button role="tab" id="tab-lab" aria-selected="false" aria-controls="panel-lab">المختبر الافتراضي</button>
+    <button role="tab" id="tab-sci" aria-selected="false" aria-controls="panel-sci">الأسس العلمية</button>
+  </nav>
+</header>
+
+<!-- ================= القصة ================= -->
+<section id="panel-story" role="tabpanel" aria-labelledby="tab-story">
+  <div class="story">
+    <div class="card steps" id="stepList" aria-label="خطوات القصة"></div>
+    <div>
+      <div class="card stageCard">
+        <div class="stage" id="stage"></div>
+        <div class="stageText">
+          <h2 id="stTitle"></h2>
+          <div id="stBody"></div>
+          <div class="basis" id="stBasis"></div>
+          <div class="nav">
+            <button id="prevBtn">السابقة</button>
+            <button id="nextBtn" class="primary">الخطوة التالية</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= المختبر ================= -->
+<section id="panel-lab" role="tabpanel" aria-labelledby="tab-lab" hidden>
+  <div class="labGrid">
+
+    <div class="card pad">
+      <div class="controls">
+        <div class="ctl">
+          <label for="sun">شدة الإشعاع الشمسي</label>
+          <input type="range" id="sun" min="0" max="150" value="100" step="5">
+          <output id="sunOut" class="num">100٪ — يوم مشمس اعتيادي</output>
+        </div>
+        <div class="ctl">
+          <label for="turb">صفاء الماء</label>
+          <select id="turb">
+            <option value="1" selected>صافٍ — الضوء يصل كاملًا تقريبًا</option>
+            <option value="0.7">متوسط العكارة — يصل نحو ثلثي الضوء</option>
+            <option value="0.4">معكّر — يصل أقل من نصف الضوء</option>
+          </select>
+        </div>
+        <div class="ctl">
+          <label class="check" for="closed" style="margin-top:18px">
+            <input type="checkbox" id="closed">
+            وضع الخزان المغلق (بلا ضوء إطلاقًا)
+          </label>
+        </div>
+        <div class="ctl">
+          <label>تشغيل حي</label>
+          <div class="runRow">
+            <button id="playBtn" class="primary">إعادة التشغيل الحي</button>
+            <button id="pauseBtn" hidden>إيقاف مؤقت</button>
+          </div>
+        </div>
+        <div class="dayBadge"><span class="sunmoon" id="clockIcon" aria-hidden="true">☀️</span><span class="num" id="dayOut">اليوم 56 من 56</span></div>
+      </div>
+    </div>
+
+    <div class="surfaces" id="surfaceCards"></div>
+
+    <div class="card pad">
+      <div class="chartHead">
+        <h2>مؤشر التراكم الحيوي على مدى ثمانية أسابيع</h2>
+        <div class="legend" id="legend"></div>
+        <button class="tblBtn" id="tblBtn" aria-expanded="false">عرض الجدول</button>
+      </div>
+      <div class="chartBox" id="chartBox">
+        <svg id="chart" viewBox="0 0 720 300" role="img" aria-label="منحنيات مؤشر التراكم الحيوي للأسطح الأربعة عبر ستة وخمسين يومًا"></svg>
+        <div class="tip" id="tip"></div>
+      </div>
+      <div id="tblWrap" hidden></div>
+      <div class="summary" id="summary"></div>
+    </div>
+
+    <div class="integrity">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 18 17 H2 Z" fill="none" stroke="var(--sun-ink)" stroke-width="1.8" stroke-linejoin="round"/><line x1="10" y1="8" x2="10" y2="12.5" stroke="var(--sun-ink)" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="14.8" r="1" fill="var(--sun-ink)"/></svg>
+      <div><b>محاكاة توضيحية لآلية العمل، لا قياسات مخبرية.</b> الاتجاهات والظواهر موثقة من الأدبيات المحكمة، أما معدلات النمو والإزالة فقيَم توضيحية تُعاير بالقياسات المخبرية فور توفرها. «مؤشر التراكم» رقم نسبي من صفر إلى مئة وليس وحدة فيزيائية. راجع تبويب «الأسس العلمية» لوسم كل قيمة.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= الأسس العلمية ================= -->
+<section id="panel-sci" role="tabpanel" aria-labelledby="tab-sci" hidden>
+  <div class="card pad sci">
+
+    <h2>ماذا نستمد من الأدبيات المحكمة؟</h2>
+    <div class="tblScroll">
+    <table class="ev">
+      <tr><th>الآلية</th><th>خلاصة الدليل</th><th>الوسم</th><th>المصدر</th></tr>
+      <tr>
+        <td>خفض الالتصاق بهندسة السطح الدقيقة</td>
+        <td>أسطح منسّجة بمقاييس دقيقة خفّضت استقرار أبواغ الطحالب مخبريًا بنسب تراوحت من 31٪ إلى 77٪ حسب شكل النقوش ومقياسها مقارنة بالسطح الأملس.</td>
+        <td><span class="chip range">نطاق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/35b4d4c727ff5a2899af3bc24175c35b/?utm_source=claude_desktop" target="_blank" rel="noopener">شوماخر وزملاؤه 2007</a></td>
+      </tr>
+      <tr>
+        <td>تعطيل الطحالب بالمحفز الضوئي تحت الضوء المرئي</td>
+        <td>مركّب نتريد الكربون مع ثاني أكسيد التيتانيوم أزال نحو 88٪ من خلايا الطحالب الضارة وأكثر من نصف سمومها خلال ست ساعات من الضوء المرئي (في صورة مسحوق معلّق عالي التركيز — لذا سقف ادعاء الطلاء الثابت أدنى).</td>
+        <td><span class="chip lit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/ca544d1473725342932d7c06835f4dd8/?utm_source=claude_desktop" target="_blank" rel="noopener">سونغ وزملاؤه 2018</a></td>
+      </tr>
+      <tr>
+        <td>تعقيم شمسي بالوصلة غير المتجانسة</td>
+        <td>الوصلة بين المادتين تحسّن فصل الشحنات وترفع إنتاج الجذور المؤكسدة؛ تعطيل كامل لبكتيريا القولونية خلال ثلاثين دقيقة تحت ضوء شمسي.</td>
+        <td><span class="chip lit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/bd6e6c8863335108844cbe763cc31b44/?utm_source=claude_desktop" target="_blank" rel="noopener">ليو وزملاؤه 2019</a></td>
+      </tr>
+      <tr>
+        <td>التآزر بين النسيج والتحفيز الضوئي</td>
+        <td>الجمع بين نقوش السطح والنشاط الضوئي أعطى حماية أفضل من كل منهما منفردًا ضد الدياتومات والبكتيريا الملوِّثة، وخفض الالتصاق نحو 70٪ مع تعطيل أغلب الملتصق عند الإضاءة.</td>
+        <td><span class="chip lit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/8d5ca5474df6524e9e2b17c19582aeef/?utm_source=claude_desktop" target="_blank" rel="noopener">يي وزملاؤه 2022</a> · <a href="https://consensus.app/papers/details/186c541780fb5a7fa9067dc6f34e26fa/?utm_source=claude_desktop" target="_blank" rel="noopener">دوندار وزملاؤها 2018</a></td>
+      </tr>
+      <tr>
+        <td>الفعالية القاتلة مشروطة بالإضاءة</td>
+        <td>المقارنة المباشرة بين الظلام والإضاءة أثبتت أن القتل الضوئي يحدث عند الإضاءة فقط، بينما يبقى أثر البنية السطحية قائمًا في الحالين — وهذا مجسَّد في «وضع الخزان المغلق» بالمختبر الافتراضي.</td>
+        <td><span class="chip lit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/bf730153184152cf993d3857fd76ecbe/?utm_source=claude_desktop" target="_blank" rel="noopener">ديبلوك وزملاؤها 2025</a></td>
+      </tr>
+      <tr>
+        <td>الصمود الميداني للمصفوفة السيليكية</td>
+        <td>معالجة تيتانيوم في مصفوفة سيليكا حافظت ميدانيًا على خفض النمو الحيوي بنسبة 61٪ بعد أربع سنوات، مع تراجع ملموس بعد أول سنتين — مدخل واقعي لجدولة إعادة الطلاء.</td>
+        <td><span class="chip lit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/585e08a9999353baac996e435ec1ff31/?utm_source=claude_desktop" target="_blank" rel="noopener">جيميلي وزملاؤها 2022</a></td>
+      </tr>
+      <tr>
+        <td>اختراق الضوء لعمود الماء</td>
+        <td>الأشعة فوق البنفسجية تتوهّن في الماء أسرع بكثير من الطيف المرئي؛ ولذلك فإن توسيع امتصاص المحفز نحو المرئي هو ما يجعل العمل تحت سطح الماء ممكنًا أصلًا.</td>
+        <td><span class="chip lit">فيزياء موثقة</span></td>
+        <td>بصريات المياه الأساسية</td>
+      </tr>
+    </table>
+    </div>
+
+    <h2>ثوابت المحاكاة ووسم كل قيمة</h2>
+    <div class="tblScroll">
+    <table class="ev">
+      <tr><th>الثابت</th><th>قيمته في المحاكي</th><th>وسمه</th></tr>
+      <tr><td>معدل الالتصاق الأساسي على السطح الأملس</td><td class="num">1.1 وحدة مؤشر يوميًا</td><td><span class="chip demo">توضيحي</span></td></tr>
+      <tr><td>خفض الالتصاق بفعل النسيج الدقيق</td><td class="num">65٪ (منتصف نطاق الأدبيات من 31٪ إلى 77٪)</td><td><span class="chip range">نطاق أدبيات</span></td></tr>
+      <tr><td>معدل نمو الغشاء الحيوي الذاتي</td><td class="num">6٪ يوميًا (نموذج لوجستي)</td><td><span class="chip demo">توضيحي</span></td></tr>
+      <tr><td>ثابت الإزالة الضوئية — من الدرجة الأولى: نسبةٌ من الغشاء الفتي تُزال يوميًا عند شمس كاملة وماء صافٍ</td><td class="num">50٪ يوميًا</td><td><span class="chip demo">توضيحي</span></td></tr>
+      <tr><td>عتبة «التدريع»: الغشاء الناضج يحجب المحفز تدريجيًا حتى تتلاشى الإزالة عند مؤشر</td><td class="num">60</td><td><span class="chip demo">توضيحي — يجسّد مبدأ «وقاية لا معالجة»</span></td></tr>
+      <tr><td>عتبة التنظيف الاضطراري وإعادة الضبط بعده</td><td class="num">85 ثم العودة إلى 8</td><td><span class="chip demo">إجرائي للمحاكاة</span></td></tr>
+      <tr><td>توهين الضوء بالعكارة (صافٍ / متوسط / معكّر)</td><td class="num">1.0 / 0.7 / 0.4</td><td><span class="chip demo">الاتجاه فيزيائي موثق والقيم توضيحية</span></td></tr>
+      <tr><td>لترات الماء الموفرة لكل تنظيف مُجنَّب</td><td>لا قيمة معلنة عمدًا</td><td><span class="chip pilot">يُقاس في البايلوت</span></td></tr>
+    </table>
+    </div>
+
+    <h2>شرح المصطلحات</h2>
+    <dl class="gloss">
+      <dt>الغشاء الحيوي</dt><dd>طبقة حية لزجة تبنيها الكائنات الدقيقة على الأسطح المبتلة <span class="ltr">(biofilm)</span>؛ تبدأ خلال ساعات وتنضج خلال أيام، وهي مهد استيطان الطحالب.</dd>
+      <dt>طبقة التكييف</dt><dd>أول ما يلتصق بالسطح خلال دقائق: بروتينات وسكريات ذائبة تمهّد الأرضية لالتصاق البكتيريا.</dd>
+      <dt>المحفز الضوئي</dt><dd>مادة شبه موصلة تمتص الضوء فتطلق تفاعلات أكسدة على سطحها دون أن تُستهلك هي نفسها.</dd>
+      <dt>أنواع الأكسجين التفاعلية</dt><dd>جذور مؤكسدة قصيرة العمر <span class="ltr">(ROS)</span> تتولد على سطح المحفز المضاء وتفكك المواد العضوية الملاصقة؛ مداها أقل من ميكرومتر، فهي تعمل حيث يتكون الغشاء بالضبط.</dd>
+      <dt>الوصلة غير المتجانسة</dt><dd>تلامس بين مادتين شبه موصلتين مختلفتين يفصل الشحنات المتولدة ضوئيًا فيقلل التحامها من جديد ويرفع إنتاج الجذور.</dd>
+      <dt>الأناتاز</dt><dd>الطور البلوري الأنشط ضوئيًا من ثاني أكسيد التيتانيوم <span class="ltr">(TiO₂ anatase)</span>، يمتص فوق البنفسجي أساسًا.</dd>
+      <dt>نتريد الكربون الجرافيتي</dt><dd>محفز عضوي رقائقي رخيص خالٍ من المعادن <span class="ltr">(g-C₃N₄)</span> يمتص الطيف المرئي، فيمدّ عمل الطلاء إلى الضوء الذي يخترق الماء فعلًا.</dd>
+      <dt>العكارة</dt><dd>مقياس تشتت الضوء في الماء بفعل العوالق؛ كلما ارتفعت قلّ الضوء الواصل إلى السطح المطلي.</dd>
+      <dt>مؤشر التراكم الحيوي</dt><dd>رقم نسبي في هذا المحاكي من صفر (سطح نظيف) إلى مئة (تلوث كامل)؛ ليس وحدة قياس معيارية، ويُستبدل في البايلوت بقياس الكلوروفيل والعد الخلوي.</dd>
+    </dl>
+
+  </div>
+</section>
+
+<footer class="foot">
+  <span>سولارشيلد — مياهثون 2026</span>
+  <span>نسخة توضيحية · الثوابت تُعاير بالقياسات المخبرية</span>
+</footer>
+
+</div>
+
+<script>
+"use strict";
+
+/* ============================================================
+   أدوات عامة
+============================================================ */
+const $ = s => document.querySelector(s);
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ============================================================
+   وضع القصة — ست خطوات، مشهد SVG لكل خطوة
+============================================================ */
+
+/* عناصر مشتركة للمشاهد */
+const sunG = (x,y,r=22,cls="pulse") => `
+  <g class="${cls}">
+    <circle cx="${x}" cy="${y}" r="${r}" fill="var(--sun)"/>
+    <g stroke="var(--sun)" stroke-width="3" stroke-linecap="round">
+      ${[0,45,90,135,180,225,270,315].map(a=>{
+        const rad=a*Math.PI/180, x1=x+Math.cos(rad)*(r+7), y1=y+Math.sin(rad)*(r+7), x2=x+Math.cos(rad)*(r+15), y2=y+Math.sin(rad)*(r+15);
+        return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+      }).join("")}
+    </g>
+  </g>`;
+
+const waterBand = (y,w=760) => `
+  <rect x="0" y="${y}" width="${w}" height="420" fill="var(--water)" opacity=".55"/>
+  <path d="M0 ${y} q30 -8 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" fill="none" stroke="var(--teal)" stroke-width="2.5" opacity=".7"/>`;
+
+const slab = (x,y,w,h) => `
+  <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="var(--slab)"/>
+  <rect x="${x}" y="${y-8}" width="${w}" height="10" rx="3" fill="var(--teal)" opacity=".9"/>`;
+
+const algaeTuft = (x,y,s=1,o=1) => `
+  <g opacity="${o}" transform="translate(${x} ${y}) scale(${s})">
+    <path d="M0 0 C-3 -10 -6 -14 -4 -22 M0 0 C1 -12 4 -16 2 -24 M0 0 C4 -8 8 -12 8 -18" stroke="var(--algae)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <circle cx="-4" cy="-23" r="2.4" fill="var(--algae)"/><circle cx="2" cy="-25" r="2.4" fill="var(--algae)"/><circle cx="8" cy="-19" r="2.2" fill="var(--algae)"/>
+  </g>`;
+
+const rosSpark = (x,y,s=1) => `
+  <g class="pulse" transform="translate(${x} ${y}) scale(${s})">
+    <path d="M0 -7 L2 -2 L7 0 L2 2 L0 7 L-2 2 L-7 0 L-2 -2 Z" fill="var(--sun)"/>
+  </g>`;
+
+/* نقوش النسيج الدقيق */
+const texture = (x,y,w,n=14) => {
+  let t="", step=w/n;
+  for(let i=0;i<n;i++){ const bx=x+i*step; t+=`<rect x="${(bx+step*0.2).toFixed(1)}" y="${y-9}" width="${(step*0.55).toFixed(1)}" height="9" rx="2.5" fill="var(--teal)"/>`; }
+  return t;
+};
+
+const scenes = [
+
+/* 1 — كيف يتلوث السطح */
+() => {
+  const panel=(x,label,content)=>`
+    ${content}
+    <text x="${x+80}" y="392" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${label}</text>`;
+  const base=(x)=>`<rect x="${x}" y="290" width="160" height="52" rx="4" fill="var(--slab)"/>`;
+  return `<svg viewBox="0 0 760 420" role="img" aria-label="أربع مراحل لتلوث سطح مغمور: طبقة التكييف خلال دقائق، ثم بكتيريا خلال ساعات، ثم غشاء ناضج خلال أيام، ثم طحالب خلال أسابيع">
+    ${waterBand(64)}
+    ${sunG(66,52,18,"")}
+    <text x="380" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">التسلسل الزمني للتلوث الحيوي — من اليمين إلى اليسار</text>
+    ${panel(585,"دقائق: طبقة التكييف", base(585)+`<rect x="585" y="284" width="160" height="7" rx="3" fill="var(--sun)" opacity=".65"/>`)}
+    ${panel(393,"ساعات: بكتيريا رائدة", base(393)+`<rect x="393" y="284" width="160" height="7" rx="3" fill="var(--sun)" opacity=".65"/>`+
+      [417,445,477,509,531].map((bx,i)=>`<ellipse cx="${bx}" cy="${278-(i%2)*4}" rx="6.5" ry="4" fill="var(--ink2)"/>`).join(""))}
+    ${panel(201,"أيام: غشاء حيوي ناضج", base(201)+`<path d="M201 288 q20 -14 40 -4 t40 -6 t40 2 t40 -6 v18 h-160 Z" fill="var(--algae)" opacity=".45"/>`+
+      [221,255,287,321,341].map((bx,i)=>`<ellipse cx="${bx}" cy="${276-(i%3)*5}" rx="6" ry="4" fill="var(--ink2)"/>`).join(""))}
+    ${panel(9,"أسابيع: استيطان الطحالب", base(9)+`<path d="M9 286 q20 -16 40 -6 t40 -8 t40 4 t40 -8 v22 h-160 Z" fill="var(--algae)" opacity=".6"/>`+
+      algaeTuft(45,288,1.15)+algaeTuft(85,286,1.35)+algaeTuft(127,288,1.1)+algaeTuft(155,287,0.9))}
+    <g stroke="var(--ink2)" stroke-width="2" marker-end="url(#arr1)">
+      <line x1="575" y1="316" x2="561" y2="316"/><line x1="383" y1="316" x2="369" y2="316"/><line x1="191" y1="316" x2="177" y2="316"/>
+    </g>
+    <defs><marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--ink2)"/></marker></defs>
+  </svg>`;
+},
+
+/* 2 — بنية الطلاء */
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="مقطع عرضي في الطلاء: ركيزة، ثم مصفوفة رابطة غير عضوية تحتضن جسيمات المحفز المكشوفة جزئيًا للماء والضوء، وسطح منسّج بنقوش دقيقة">
+  ${waterBand(60)}
+  ${sunG(80,52,18,"")}
+  <g stroke="var(--sun)" stroke-width="2.5" stroke-linecap="round" opacity=".85">
+    <line x1="150" y1="70" x2="255" y2="205"/><line x1="330" y1="60" x2="370" y2="200"/><line x1="600" y1="66" x2="520" y2="203"/>
+  </g>
+  <rect x="90" y="300" width="580" height="70" rx="5" fill="var(--slab)"/>
+  <rect x="90" y="240" width="580" height="60" fill="var(--surface2)" stroke="var(--line)"/>
+  ${texture(90,240,580,26)}
+  ${[135,205,300,395,470,560,625].map((cx,i)=>`
+     <circle cx="${cx}" cy="${i%2? 244:252}" r="11" fill="var(--s-catalyst)"/>
+     <circle cx="${cx+13}" cy="${i%2? 252:244}" r="8" fill="var(--teal)"/>`).join("")}
+  <g font-family="IBM Plex Sans Arabic" font-size="14" fill="var(--ink)">
+    <text x="700" y="340" text-anchor="middle" font-weight="700">الركيزة</text>
+    <text x="700" y="358" text-anchor="middle" font-size="12" fill="var(--ink2)">خرسانة أو فيبرجلاس</text>
+    <text x="380" y="410" text-anchor="middle" font-weight="700">مصفوفة رابطة غير عضوية مقاومة للجذور المؤكسدة</text>
+    <text x="380" y="226" text-anchor="middle" font-weight="700">نسيج دقيق يقلل نقاط الالتصاق</text>
+    <text x="160" y="180" text-anchor="middle" font-weight="700" fill="var(--sun-ink)">ضوء الشمس</text>
+    <text x="612" y="290" text-anchor="middle" font-size="13"><tspan font-weight="700">جسيمات المحفز الثنائي</tspan></text>
+    <text x="612" y="307" text-anchor="middle" font-size="12" fill="var(--ink2)">مثبتة داخل الطلاء ومكشوفة للماء والضوء</text>
+  </g>
+  <line x1="612" y1="272" x2="638" y2="252" stroke="var(--ink2)" stroke-width="1.5"/>
+  <line x1="380" y1="230" x2="380" y2="238" stroke="var(--ink2)" stroke-width="1.5"/>
+</svg>`,
+
+/* 3 — الدفاع الأول: النسيج */
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="مقارنة: على السطح الأملس تلتصق الخلية بكامل قاعها، وعلى السطح المنسّج لا تجد إلا نقاط تماس قليلة فيجرفها التيار">
+  ${waterBand(46)}
+  <text x="380" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">لماذا يعجز الطحلب عن الاستقرار؟</text>
+
+  <g>
+    <rect x="420" y="300" width="290" height="46" rx="4" fill="var(--slab)"/>
+    <rect x="420" y="292" width="290" height="10" rx="3" fill="var(--ink2)" opacity=".55"/>
+    <ellipse cx="565" cy="281" rx="34" ry="15" fill="var(--algae)"/>
+    <g stroke="var(--danger)" stroke-width="2.5" stroke-linecap="round">
+      ${[537,551,565,579,593].map(x=>`<line x1="${x}" y1="293" x2="${x}" y2="299"/>`).join("")}
+    </g>
+    <text x="565" y="375" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح أملس: تماس كامل والتصاق محكم</text>
+  </g>
+
+  <g>
+    <rect x="55" y="300" width="290" height="46" rx="4" fill="var(--slab)"/>
+    ${texture(55,300,290,15)}
+    <g class="driftUp">
+      <ellipse cx="200" cy="272" rx="34" ry="15" fill="var(--algae)"/>
+      <g stroke="var(--danger)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="186" y1="284" x2="186" y2="290"/><line x1="214" y1="284" x2="214" y2="290"/>
+      </g>
+    </g>
+    <path d="M258 250 q34 10 44 34" fill="none" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#arr3)"/>
+    <text x="298" y="240" text-anchor="middle" font-size="13" fill="var(--teal)" font-weight="700" font-family="IBM Plex Sans Arabic">التيار يجرفها</text>
+    <text x="200" y="375" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح منسّج: نقطتا تماس فقط</text>
+  </g>
+
+  <defs><marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--teal)"/></marker></defs>
+</svg>`,
+
+/* 4 — الدفاع الثاني: التحفيز الضوئي */
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="فوتون يضرب زوج المحفز فتنفصل الشحنات عبر الوصلة وتتولد جذور مؤكسدة على السطح تفكك المادة العضوية الملاصقة">
+  ${waterBand(52)}
+  ${sunG(84,54,18,"")}
+  <g stroke="var(--sun)" stroke-width="3" stroke-linecap="round">
+    <line x1="130" y1="80" x2="330" y2="205" class="pulse"/>
+  </g>
+  <text x="205" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">فوتون مرئي</text>
+
+  <circle cx="360" cy="252" r="46" fill="var(--s-catalyst)"/>
+  <path d="M418 214 l30 17 v34 l-30 17 -30 -17 v-34 Z" fill="var(--teal)"/>
+  <text x="360" y="257" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="IBM Plex Sans Arabic">أكسيد التيتانيوم</text>
+  <text x="418" y="253" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="IBM Plex Sans Arabic">نتريد الكربون</text>
+  <line x1="399" y1="252" x2="392" y2="252" stroke="var(--ink)" stroke-width="2"/>
+
+  <g font-family="IBM Plex Sans Arabic" font-size="13" font-weight="700">
+    <circle cx="452" cy="200" r="11" fill="none" stroke="var(--teal)" stroke-width="2.5"/><text x="452" y="205" text-anchor="middle" fill="var(--teal)">−</text>
+    <circle cx="330" cy="310" r="11" fill="none" stroke="var(--danger)" stroke-width="2.5"/><text x="330" y="315" text-anchor="middle" fill="var(--danger)">+</text>
+    <text x="508" y="188" text-anchor="middle" fill="var(--ink)">إلكترون</text>
+    <text x="292" y="336" text-anchor="middle" fill="var(--ink)">فجوة موجبة</text>
+  </g>
+  <path d="M408 226 q26 -14 34 -20" fill="none" stroke="var(--teal)" stroke-width="2" marker-end="url(#arr4t)"/>
+  <path d="M346 288 q-8 12 -8 14" fill="none" stroke="var(--danger)" stroke-width="2" marker-end="url(#arr4d)"/>
+  <text x="388" y="180" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">الوصلة تفصل الشحنات فلا تلتحم من جديد</text>
+
+  ${rosSpark(520,262,1.2)} ${rosSpark(556,238,0.9)} ${rosSpark(548,292,1)}
+  <text x="540" y="330" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">جذور مؤكسدة على السطح مباشرة</text>
+
+  <g opacity=".85">
+    <path d="M628 250 q10 -18 30 -12 q16 -14 30 0 q14 -4 12 14 q6 16 -12 18 q-8 12 -24 6 q-18 6 -24 -8 q-16 -2 -12 -18 Z" fill="var(--algae)" opacity=".55" stroke-dasharray="5 4" stroke="var(--algae)"/>
+    <text x="660" y="300" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="IBM Plex Sans Arabic" font-weight="700">المادة العضوية تتفكك</text>
+  </g>
+  <line x1="574" y1="262" x2="612" y2="258" stroke="var(--sun-ink)" stroke-width="2" marker-end="url(#arr4s)"/>
+
+  <defs>
+    <marker id="arr4t" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--teal)"/></marker>
+    <marker id="arr4d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--danger)"/></marker>
+    <marker id="arr4s" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--sun-ink)"/></marker>
+  </defs>
+</svg>`,
+
+/* 5 — الدورة اليومية */
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="دورة يومية: نهارًا تنشط الجذور فتعيد ضبط السطح، وليلًا يصمد النسيج وحده، فلا يبلغ الغشاء طور النضوج أبدًا">
+  <path d="M110 150 A 270 270 0 0 1 650 150" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="6 7"/>
+  ${sunG(596,128,17,"")}
+  <g transform="translate(152 122)"><path d="M8 -14 a15 15 0 1 0 10 26 a12.5 12.5 0 0 1 -10 -26" fill="var(--ink2)"/></g>
+  <text x="596" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">نهار</text>
+  <text x="152" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">ليل</text>
+
+  <g>
+    <rect x="415" y="250" width="280" height="44" rx="4" fill="var(--slab)"/>
+    ${texture(415,250,280,15)}
+    ${rosSpark(470,232,0.85)} ${rosSpark(540,228,1)} ${rosSpark(615,234,0.8)}
+    <text x="555" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">النهار: الجذور تمسح طبقة التكييف أولًا بأول</text>
+  </g>
+  <g>
+    <rect x="65" y="250" width="280" height="44" rx="4" fill="var(--slab)"/>
+    ${texture(65,250,280,15)}
+    <ellipse cx="150" cy="240" rx="6" ry="4" fill="var(--ink2)"/><ellipse cx="230" cy="242" rx="6" ry="4" fill="var(--ink2)"/><ellipse cx="292" cy="239" rx="6" ry="4" fill="var(--ink2)"/>
+    <text x="205" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">الليل: النسيج وحده يبطئ الالتصاق</text>
+  </g>
+
+  <path d="M395 370 q-15 14 -30 0 M395 370 q15 14 30 0" fill="none" stroke="var(--teal)" stroke-width="0"/>
+  <path d="M330 384 q50 26 100 0" fill="none" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#arr5)"/>
+  <text x="380" y="414" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--teal)" font-family="IBM Plex Sans Arabic">كل صباح يبدأ السطح من نقطة شبه نظيفة — الغشاء لا يبلغ النضوج</text>
+  <defs><marker id="arr5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--teal)"/></marker></defs>
+</svg>`,
+
+/* 6 — النتيجة */
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="مقارنة بعد ثمانية أسابيع: السطح غير المطلي مكسو بالطحالب، وسطح سولارشيلد شبه نظيف">
+  ${waterBand(48)}
+  <text x="380" y="36" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">بعد ثمانية أسابيع من الغمر المشمس</text>
+
+  <g>
+    <rect x="410" y="262" width="300" height="52" rx="4" fill="var(--slab)"/>
+    <path d="M410 258 q24 -18 48 -6 t48 -8 t48 4 t48 -10 t48 4 t48 -6 v26 h-288 Z" fill="var(--algae)" opacity=".62"/>
+    ${algaeTuft(448,262,1.3)}${algaeTuft(500,258,1.6)}${algaeTuft(556,262,1.2)}${algaeTuft(608,259,1.5)}${algaeTuft(664,262,1.25)}
+    <text x="560" y="352" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح غير مطلي</text>
+    <text x="560" y="372" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">تنظيف اضطراري متكرر واستهلاك ماء</text>
+  </g>
+  <g>
+    <rect x="50" y="262" width="300" height="52" rx="4" fill="var(--slab)"/>
+    ${texture(50,262,300,16)}
+    <ellipse cx="130" cy="252" rx="5.5" ry="3.5" fill="var(--ink2)" opacity=".8"/>
+    <ellipse cx="252" cy="253" rx="5.5" ry="3.5" fill="var(--ink2)" opacity=".8"/>
+    ${rosSpark(200,240,0.8)}
+    <text x="200" y="352" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح بطلاء سولارشيلد</text>
+    <text x="200" y="372" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">التراكم في الطور المبكر دائمًا</text>
+  </g>
+</svg>`
+];
+
+const stepsData = [
+  {
+    t:"كيف يتلوث السطح أصلًا؟",
+    b:`<p>التلوث الحيوي لا يبدأ بالطحالب — يبدأ خلال <b>دقائق</b> بطبقة تكييف عضوية غير مرئية، تتبعها بكتيريا رائدة خلال ساعات، فغشاء حيوي لزج خلال أيام، ثم تستوطن الطحالب فوقه خلال أسابيع.</p><p>التنظيف التقليدي يعالج آخر السلسلة ويستهلك ماءً وموادَّ كيميائية مرارًا. سولارشيلد يستهدف أولها.</p>`,
+    tag:'<span class="chip lit">موثق أدبيات</span>', src:null
+  },
+  {
+    t:"بنية الطلاء في مقطع واحد",
+    b:`<p>ثلاث طبقات وظيفية: <b>ركيزة</b> (جدار الحوض أو النافورة)، ثم <b>مصفوفة رابطة غير عضوية</b> تقاوم الجذور المؤكسدة كي لا يأكل الطلاء نفسه، تحتضن <b>جسيمات المحفز الثنائي</b> — أكسيد التيتانيوم مع نتريد الكربون — مثبتةً داخل الطلاء ومكشوفةً للماء والضوء في آن، وفوق ذلك كله <b>نسيج سطحي دقيق</b>.</p>`,
+    tag:'<span class="chip lit">موثق أدبيات</span>', src:'https://consensus.app/papers/details/585e08a9999353baac996e435ec1ff31/?utm_source=claude_desktop'
+  },
+  {
+    t:"خط الدفاع الأول: هندسة السطح",
+    b:`<p>خلية الطحلب تحتاج مساحة تماس كافية لتلتصق. النقوش الدقيقة — المصممة بمقياس أصغر من الخلية أو قريب منها — تحرمها ذلك: بدل تماس كامل على سطح أملس، نقطتا ارتكاز هشتان يجرفهما أدنى تيار.</p><p>هذا الخط يعمل <b>ليلًا ونهارًا</b> ولا يحتاج ضوءًا، وخفضُه للالتصاق مثبت مخبريًا بنسب من 31٪ إلى 77٪ حسب هندسة النقش.</p>`,
+    tag:'<span class="chip range">نطاق أدبيات</span>', src:'https://consensus.app/papers/details/35b4d4c727ff5a2899af3bc24175c35b/?utm_source=claude_desktop'
+  },
+  {
+    t:"خط الدفاع الثاني: التحفيز الضوئي",
+    b:`<p>حين يضرب فوتونٌ زوجَ المحفز تنفصل شحنتان: إلكترون وفجوة. <b>الوصلة غير المتجانسة</b> بين المادتين تمنعهما من الالتحام مجددًا، فيتفرغان لإنتاج <b>جذور مؤكسدة</b> على السطح تفكك طبقة التكييف والمستوطنين الأوائل.</p><p>ولماذا المادتان معًا؟ لأن أكسيد التيتانيوم وحده يشرب فوق البنفسجي الذي يتوهن سريعًا في الماء، بينما يوسّع نتريد الكربون الامتصاص إلى <b>الطيف المرئي الذي يخترق الماء فعلًا</b> — وهذا ما يجعل العمل تحت السطح ممكنًا.</p>`,
+    tag:'<span class="chip lit">موثق أدبيات</span>', src:'https://consensus.app/papers/details/bd6e6c8863335108844cbe763cc31b44/?utm_source=claude_desktop'
+  },
+  {
+    t:"الدورة اليومية: الشمس تعيد ضبط الساعة",
+    b:`<p>الفعالية القاتلة نهارية — وهذا حد صادق نعلنه. لكن الغشاء الحيوي يحتاج <b>أيامًا متصلة</b> لينضج، والنسيج يبطئه طوال الليل، ثم تمسح شمس الصباح ما تراكم قبل أن يتماسك.</p><p>النتيجة المقصودة بالتصميم: سطح محبوس في الطور المبكر إلى الأبد — <b>وقاية لا معالجة</b>.</p>`,
+    tag:'<span class="chip lit">موثق أدبيات</span>', src:'https://consensus.app/papers/details/bf730153184152cf993d3857fd76ecbe/?utm_source=claude_desktop'
+  },
+  {
+    t:"النتيجة — وكيف سنقيسها",
+    b:`<p>المحصلة المتوقعة: تراكم أبطأ بكثير، وتباعد كبير بين دورات التنظيف الاضطراري، وماء ومواد أقل.</p><p>مؤشرا النجاح المعلنان للبايلوت: <b>لترات ماء التنظيف الموفرة لكل متر مربع سنويًا</b>، و<b>نسبة خفض تكرار التنظيف</b> — نقيسهما ولا ندّعيهما. جرّب الآن «المختبر الافتراضي» وحرّك الشمس والعكارة بنفسك.</p>`,
+    tag:'<span class="chip pilot">يُقاس في البايلوت</span>', src:null
+  }
+];
+
+let curStep = 0;
+function renderStepList(){
+  $("#stepList").innerHTML = stepsData.map((s,i)=>`
+    <button data-i="${i}" ${i===curStep?'aria-current="step"':''}><span class="n num">${i+1}</span><span>${s.t}</span></button>`).join("");
+  $("#stepList").querySelectorAll("button").forEach(b=>b.onclick=()=>go(+b.dataset.i));
+}
+function go(i){
+  curStep = Math.max(0, Math.min(scenes.length-1, i));
+  $("#stage").innerHTML = scenes[curStep]();
+  $("#stTitle").textContent = `${curStep+1}. ${stepsData[curStep].t}`;
+  $("#stBody").innerHTML = stepsData[curStep].b;
+  const s = stepsData[curStep];
+  $("#stBasis").innerHTML = `<span>أساس هذه الخطوة:</span> ${s.tag}` + (s.src?` <a href="${s.src}" target="_blank" rel="noopener">المصدر المحكم</a>`:"");
+  $("#prevBtn").disabled = curStep===0;
+  $("#nextBtn").textContent = curStep===scenes.length-1 ? "افتح المختبر الافتراضي" : "الخطوة التالية";
+  renderStepList();
+}
+$("#prevBtn").onclick = ()=>go(curStep-1);
+$("#nextBtn").onclick = ()=>{ if(curStep===scenes.length-1){ switchTab("lab"); } else go(curStep+1); };
+document.addEventListener("keydown", e=>{
+  if($("#panel-story").hidden) return;
+  if(e.key==="ArrowLeft") go(curStep+1);   /* في RTL: اليسار = التالي */
+  if(e.key==="ArrowRight") go(curStep-1);
+});
+
+/* ============================================================
+   محرك المحاكاة — كل الثوابت توضيحية موسومة (تبويب الأسس)
+============================================================ */
+const P = { attach:1.1, textureFactor:0.35, growth:0.06, photoK:0.5, shieldF:60, cleanAt:85, cleanReset:8 };
+const SURFACES = [
+  {id:"control",  name:"الشاهد",      texture:false, catalyst:false, color:"var(--s-control)"},
+  {id:"texture",  name:"نسيج فقط",    texture:true,  catalyst:false, color:"var(--s-texture)"},
+  {id:"catalyst", name:"محفز فقط",    texture:false, catalyst:true,  color:"var(--s-catalyst)"},
+  {id:"shield",   name:"سولارشيلد",   texture:true,  catalyst:true,  color:"var(--s-shield)"}
+];
+const DAYS = 56;
+
+const daylight = h => (h>=6 && h<18) ? Math.sin(Math.PI*(h-6)/12) : 0;
+
+function simulate(sun, turb, closed){
+  const F = SURFACES.map(()=>0);
+  const cleanings = SURFACES.map(()=>0);
+  const events = SURFACES.map(()=>[]);
+  const samples = SURFACES.map(()=>[0]);
+  for(let d=0; d<DAYS; d++){
+    for(let h=0; h<24; h++){
+      const light = closed ? 0 : sun * daylight(h) * turb;
+      SURFACES.forEach((s,i)=>{
+        let f = F[i];
+        const att  = P.attach * (s.texture?P.textureFactor:1) * (1 - f/100) / 24;
+        const grow = P.growth * f * (1 - f/100) / 24;
+        const photo = s.catalyst ? P.photoK * light * f * Math.max(0, 1 - f/P.shieldF) / 24 : 0;
+        f = Math.max(0, Math.min(100, f + att + grow - photo));
+        if(f >= P.cleanAt){ cleanings[i]++; events[i].push(d+1); f = P.cleanReset; }
+        F[i] = f;
+      });
+    }
+    SURFACES.forEach((s,i)=>samples[i].push(F[i]));
+  }
+  return {samples, cleanings, events, final:F.slice()};
+}
+
+/* ---------- عناصر المختبر ---------- */
+function surfaceCardHTML(s){
+  return `<div class="sCard" id="card-${s.id}">
+    <div class="bar" style="background:${s.color}"></div>
+    <h3>${s.name}</h3>
+    <svg class="mini" viewBox="0 0 160 84" role="img" aria-label="حالة سطح ${s.name}">
+      <rect x="10" y="58" width="140" height="16" rx="3" fill="var(--slab)"/>
+      ${s.texture ? texture(10,58,140,12) : `<rect x="10" y="52" width="140" height="6" rx="2" fill="var(--ink2)" opacity=".4"/>`}
+      ${s.catalyst ? [30,62,96,128].map(x=>`<circle cx="${x}" cy="55" r="3.4" fill="var(--s-catalyst)"/><circle cx="${x+5}" cy="52" r="2.6" fill="var(--teal)"/>`).join("") : ""}
+      <g id="foul-${s.id}"></g>
+    </svg>
+    <div class="meta"><span>المؤشر <b class="num" id="f-${s.id}">0</b></span><span>تنظيفات <b class="num" id="c-${s.id}">0</b></span></div>
+  </div>`;
+}
+function renderFoul(s, f){
+  const g = document.getElementById("foul-"+s.id);
+  const n = Math.round(f/7);
+  let out = f>2 ? `<path d="M10 56 q18 ${-4-f/14} 35 ${-f/28} t35 ${-f/24} t35 ${f/30} t35 ${-f/22} v${6+f/12} h-140 Z" fill="var(--algae)" opacity="${(0.12+f/160).toFixed(2)}"/>` : "";
+  for(let i=0;i<n;i++){
+    const x = 16 + ((i*53)%132), sc = 0.45 + (i%4)*0.14, o = Math.min(1, 0.35+f/90);
+    out += algaeTuft(x, 58, sc, o.toFixed(2));
+  }
+  g.innerHTML = out;
+}
+
+/* ---------- الرسم البياني ---------- */
+const M = {l:44, r:118, t:16, b:34}, CW=720, CH=300;
+const X = d => M.l + (CW-M.l-M.r) * d/DAYS;
+const Y = f => CH-M.b - (CH-M.t-M.b) * f/100;
+
+function drawChart(res){
+  const upto = res.upto ?? DAYS;
+  const grid = [0,25,50,75,100].map(v=>`
+    <line x1="${M.l}" y1="${Y(v)}" x2="${CW-M.r}" y2="${Y(v)}" stroke="var(--line)" stroke-width="1"/>
+    <text x="${M.l-8}" y="${Y(v)+4}" text-anchor="end" font-size="11" fill="var(--ink2)" class="num">${v}</text>`).join("");
+  const xt = [0,7,14,21,28,35,42,49,56].map(d=>`
+    <text x="${X(d)}" y="${CH-M.b+18}" text-anchor="middle" font-size="11" fill="var(--ink2)" class="num">${d}</text>`).join("");
+
+  const paths = SURFACES.map((s,i)=>{
+    const pts = res.samples[i].slice(0,upto+1).map((f,d)=>`${X(d).toFixed(1)},${Y(f).toFixed(1)}`).join(" ");
+    const ev = res.events[i].filter(d=>d<=upto).map(d=>`<path d="M${X(d)-5} ${Y(P.cleanAt)-7} h10 l-5 9 Z" fill="${s.color}" stroke="var(--surface)" stroke-width="1.6"/>`).join("");
+    return `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="${s.id==="shield"?3:2}" stroke-linejoin="round"/>${ev}`;
+  }).join("");
+
+  /* تسميات مباشرة عند نهاية كل خط مع فض التصادم */
+  const ends = SURFACES.map((s,i)=>({s, i, y: Y(res.samples[i][upto])})).sort((a,b)=>a.y-b.y);
+  for(let k=1;k<ends.length;k++) if(ends[k].y - ends[k-1].y < 16) ends[k].y = ends[k-1].y + 16;
+  const labels = ends.map(e=>`
+    <circle cx="${(X(upto)+6).toFixed(1)}" cy="${Y(res.samples[e.i][upto]).toFixed(1)}" r="3.5" fill="${e.s.color}"/>
+    <text x="${CW-M.r+14}" y="${(e.y+4).toFixed(1)}" font-size="12" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${e.s.name}</text>`).join("");
+
+  $("#chart").innerHTML = `
+    ${grid}${xt}
+    <text x="${(M.l+CW-M.r)/2}" y="${CH-4}" text-anchor="middle" font-size="11.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">الأيام</text>
+    <line x1="${M.l}" y1="${Y(P.cleanAt)}" x2="${CW-M.r}" y2="${Y(P.cleanAt)}" stroke="var(--danger)" stroke-width="1.2" stroke-dasharray="5 5" opacity=".65"/>
+    <text x="${M.l+4}" y="${Y(P.cleanAt)-6}" font-size="10.5" fill="var(--danger)" font-family="IBM Plex Sans Arabic">عتبة التنظيف الاضطراري</text>
+    ${paths}${labels}
+    <line id="cross" x1="0" y1="${M.t}" x2="0" y2="${CH-M.b}" stroke="var(--ink2)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>`;
+}
+
+/* تلميح التحويم */
+const tip = $("#tip");
+$("#chartBox").addEventListener("pointermove", e=>{
+  const svg = $("#chart"), r = svg.getBoundingClientRect();
+  const px = (e.clientX - r.left) * CW / r.width;
+  if(px < M.l || px > CW-M.r){ tip.style.display="none"; $("#cross")?.setAttribute("opacity","0"); return; }
+  const d = Math.round((px - M.l)/(CW-M.l-M.r)*DAYS);
+  const cross = $("#cross"); if(cross){ cross.setAttribute("x1",X(d)); cross.setAttribute("x2",X(d)); cross.setAttribute("opacity",".7"); }
+  tip.innerHTML = `<div style="font-weight:700; margin-bottom:4px" class="num">اليوم ${d}</div>` +
+    SURFACES.map((s,i)=>`<div class="row"><span><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${s.color};margin-inline-start:6px"></span>${s.name}</span><span class="v num">${simRes.samples[i][d].toFixed(0)}</span></div>`).join("");
+  tip.style.display="block";
+  const bx = $("#chartBox").getBoundingClientRect();
+  let lx = e.clientX - bx.left + 14; if(lx > bx.width-170) lx = e.clientX - bx.left - 178;
+  tip.style.left = lx+"px"; tip.style.top = Math.max(4,(e.clientY - bx.top - 30))+"px";
+});
+$("#chartBox").addEventListener("pointerleave", ()=>{ tip.style.display="none"; $("#cross")?.setAttribute("opacity","0"); });
+
+/* الجدول البديل */
+function drawTable(res){
+  const weeks=[0,7,14,21,28,35,42,49,56];
+  $("#tblWrap").innerHTML = `<table class="data">
+    <tr><th>السطح</th>${weeks.map(w=>`<th class="num">يوم ${w}</th>`).join("")}<th>تنظيفات</th></tr>
+    ${SURFACES.map((s,i)=>`<tr><td>${s.name}</td>${weeks.map(w=>`<td>${res.samples[i][w].toFixed(0)}</td>`).join("")}<td>${res.cleanings[i]}</td></tr>`).join("")}
+  </table>`;
+}
+$("#tblBtn").onclick = ()=>{
+  const w=$("#tblWrap"); w.hidden=!w.hidden;
+  $("#tblBtn").textContent = w.hidden?"عرض الجدول":"إخفاء الجدول";
+  $("#tblBtn").setAttribute("aria-expanded", String(!w.hidden));
+};
+
+/* الملخص */
+function drawSummary(res){
+  const ctrl = res.cleanings[0];
+  $("#summary").innerHTML =
+    `<span class="sumChip">الشاهد احتاج <b class="num">${ctrl}</b> ${ctrl===1?"تنظيفًا":ctrl===2?"تنظيفين":"تنظيفات"} في ثمانية أسابيع</span>` +
+    SURFACES.slice(1).map((s,j)=>{
+      const i=j+1, saved = ctrl - res.cleanings[i];
+      return `<span class="sumChip">${s.name}: <b class="num">${res.cleanings[i]}</b> — وفّر <b class="num">${saved}</b> مقابل الشاهد</span>`;
+    }).join("");
+}
+
+/* ---------- الحالة والتحديث ---------- */
+let simRes = null, live=null;
+
+function controlsState(){
+  return { sun: +$("#sun").value/100, turb: +$("#turb").value, closed: $("#closed").checked };
+}
+function refresh(){
+  stopLive();
+  const c = controlsState();
+  simRes = simulate(c.sun, c.turb, c.closed);
+  drawChart(simRes); drawTable(simRes); drawSummary(simRes);
+  SURFACES.forEach((s,i)=>{
+    renderFoul(s, simRes.final[i]);
+    document.getElementById("f-"+s.id).textContent = simRes.final[i].toFixed(0);
+    document.getElementById("c-"+s.id).textContent = simRes.cleanings[i];
+  });
+  $("#dayOut").textContent = `اليوم ${DAYS} من ${DAYS}`;
+  $("#clockIcon").textContent = c.closed ? "🔒" : "☀️";
+  const sunV=+$("#sun").value;
+  $("#sunOut").textContent = c.closed ? "لا ضوء — الشق الضوئي معطل" :
+    sunV+"٪ — " + (sunV<40?"يوم شديد الغيم":sunV<85?"يوم غائم جزئيًا":sunV<=110?"يوم مشمس اعتيادي":"صيف شديد السطوع");
+}
+
+/* تشغيل حي متدرج */
+function stopLive(){ if(live){ cancelAnimationFrame(live.raf); live=null; $("#playBtn").hidden=false; $("#pauseBtn").hidden=true; } }
+$("#playBtn").onclick = ()=>{
+  const c = controlsState();
+  const F = SURFACES.map(()=>0), cleanings=SURFACES.map(()=>0), events=SURFACES.map(()=>[]), samples=SURFACES.map(()=>[0]);
+  live = {h:0, raf:0};
+  $("#playBtn").hidden=true; $("#pauseBtn").hidden=false;
+  const hoursPerFrame = reduced ? 24 : 3;
+  const tick = ()=>{
+    for(let k=0;k<hoursPerFrame && live.h<DAYS*24;k++){
+      const h = live.h%24, light = c.closed?0 : c.sun*daylight(h)*c.turb;
+      SURFACES.forEach((s,i)=>{
+        let f=F[i];
+        const att=P.attach*(s.texture?P.textureFactor:1)*(1-f/100)/24;
+        const grow=P.growth*f*(1-f/100)/24;
+        const photo=s.catalyst?P.photoK*light*f*Math.max(0,1-f/P.shieldF)/24:0;
+        f=Math.max(0,Math.min(100,f+att+grow-photo));
+        if(f>=P.cleanAt){cleanings[i]++;events[i].push(Math.floor(live.h/24)+1);f=P.cleanReset;
+          const card=document.getElementById("card-"+s.id); card.classList.remove("cleanFlash"); void card.offsetWidth; card.classList.add("cleanFlash");}
+        F[i]=f;
+      });
+      live.h++;
+      if(live.h%24===0) SURFACES.forEach((s,i)=>samples[i].push(F[i]));
+    }
+    const day=Math.floor(live.h/24), hh=live.h%24;
+    $("#dayOut").textContent=`اليوم ${Math.min(day+1,DAYS)} من ${DAYS}`;
+    $("#clockIcon").textContent = c.closed?"🔒":(hh>=6&&hh<18?"☀️":"🌙");
+    SURFACES.forEach((s,i)=>{ renderFoul(s,F[i]);
+      document.getElementById("f-"+s.id).textContent=F[i].toFixed(0);
+      document.getElementById("c-"+s.id).textContent=cleanings[i]; });
+    simRes={samples:samples.map((a,i)=>{const out=a.slice(); while(out.length<=DAYS) out.push(F[i]); return out;}), events, cleanings, final:F.slice(), upto:Math.min(day,DAYS)};
+    if(live.h%(24*2)===0 || live.h>=DAYS*24) { drawChart(simRes); }
+    if(live.h<DAYS*24){ live.raf=requestAnimationFrame(tick); }
+    else { drawChart(simRes); drawTable(simRes); drawSummary(simRes); stopLive(); }
+  };
+  live.raf=requestAnimationFrame(tick);
+};
+$("#pauseBtn").onclick = stopLive;
+
+["sun","turb","closed"].forEach(id=>$("#"+id).addEventListener("input", refresh));
+
+/* ---------- التبويبات ---------- */
+const panels={story:"#panel-story",lab:"#panel-lab",sci:"#panel-sci"};
+function switchTab(key){
+  Object.keys(panels).forEach(k=>{
+    $(panels[k]).hidden = k!==key;
+    $("#tab-"+k).setAttribute("aria-selected", String(k===key));
+  });
+}
+$("#tab-story").onclick=()=>switchTab("story");
+$("#tab-lab").onclick=()=>switchTab("lab");
+$("#tab-sci").onclick=()=>switchTab("sci");
+
+/* ---------- الإقلاع ---------- */
+$("#legend").innerHTML = SURFACES.map(s=>`<span class="k"><span class="dot" style="background:${s.color}"></span>${s.name}</span>`).join("");
+$("#surfaceCards").innerHTML = SURFACES.map(surfaceCardHTML).join("");
+renderStepList(); go(0); refresh();
+</script>
+
+</body>
+</html>

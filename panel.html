@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}.backlink{display:inline-block;margin:14px clamp(16px,3vw,32px) 0;font:500 14px "IBM Plex Sans Arabic",Tahoma,sans-serif;color:var(--teal);text-decoration:none}</style>
+<title>نموذج لوح سولارشيلد</title>
+<meta name="description" content="نموذج بصري تفاعلي للوح زجاجي مطلي بمحفز ضوئي نانوي يكسر الملوثات بضوء الشمس، مع فحص رقم الإنتاجية والتكلفة وقائمة البيانات المطلوبة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky control rail on the start (right) side + one main column of model sections, the live panel scene first. */
+:root{
+  --bg:#F1F6F7; --surface:#FFFFFF; --surface2:#E8F0F1; --ink:#142E35; --ink2:#47646B; --ink3:#6E878D;
+  --line:#D3E2E4; --grid:#E2EBED; --band:#FBF1DC;
+  --teal:#0E7D8E; --sun:#E8A020; --danger:#B3452E; --ok:#2F7D4A; --warn:#8A5C06;
+  --water:#BFE0E6; --pol:#9A5B06; --glass:#D6EBEF; --glass-edge:#8FB6BD; --coat:#EFE6CC; --coat-edge:#B19A5C;
+  --sky:#E6F2F5; --ground:#C5D3D0; --pipe:#7E9399;
+  --c-claim:#C07A0E; --c-ceil:#A34E86; --c-model:#2C64B8;
+  --t-file:#0E7D8E; --t-ref:#2C64B8; --t-assume:#8A5C06; --t-need:#A34E86;
+  --f-display:"El Messiri","IBM Plex Sans Arabic","Geeza Pro",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic","Geeza Pro",Tahoma,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:0 1px 2px rgba(20,46,53,.05),0 6px 18px rgba(20,46,53,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1D22; --surface:#10272D; --surface2:#16323A; --ink:#E4EFF0; --ink2:#A6BEC2; --ink3:#86A0A5;
+    --line:#24444C; --grid:#1C3840; --band:#2B2E22;
+    --teal:#46BCCD; --sun:#F0B44E; --danger:#E07B5F; --ok:#6CC08A; --warn:#F0B44E;
+    --water:#1F4E59; --pol:#F0A23C; --glass:#1C4651; --glass-edge:#4F8794; --coat:#5E5538; --coat-edge:#A8935A;
+    --sky:#0E2A33; --ground:#20383E; --pipe:#6E878D;
+    --c-claim:#BD8630; --c-ceil:#C06A9A; --c-model:#4E8BD8;
+    --t-file:#46BCCD; --t-ref:#7EA9E4; --t-assume:#F0B44E; --t-need:#D48BB6;
+    --shadow:0 2px 12px rgba(0,0,0,.35); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1D22; --surface:#10272D; --surface2:#16323A; --ink:#E4EFF0; --ink2:#A6BEC2; --ink3:#86A0A5;
+  --line:#24444C; --grid:#1C3840; --band:#2B2E22;
+  --teal:#46BCCD; --sun:#F0B44E; --danger:#E07B5F; --ok:#6CC08A; --warn:#F0B44E;
+  --water:#1F4E59; --pol:#F0A23C; --glass:#1C4651; --glass-edge:#4F8794; --coat:#5E5538; --coat-edge:#A8935A;
+  --sky:#0E2A33; --ground:#20383E; --pipe:#6E878D;
+  --c-claim:#BD8630; --c-ceil:#C06A9A; --c-model:#4E8BD8;
+  --t-file:#46BCCD; --t-ref:#7EA9E4; --t-assume:#F0B44E; --t-need:#D48BB6;
+  --shadow:0 2px 12px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.75}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,3vw,32px);padding-block:28px 72px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.35;text-wrap:balance;margin:0;font-weight:700}
+h1{font-size:clamp(28px,4.2vw,42px)}
+h2{font-size:clamp(21px,2.4vw,26px)}
+h3{font-size:17px}
+p{margin:0}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--sun);outline-offset:2px;border-radius:4px}
+.eyebrow{font-size:13.5px;color:var(--ink2);letter-spacing:.02em}
+.lede{max-width:70ch;color:var(--ink2);font-size:16.5px}
+.muted{color:var(--ink2)}
+.small{font-size:13.5px}
+header.top{display:grid;gap:12px;margin-bottom:18px}
+.status{display:grid;gap:8px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14.5px;max-width:980px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:0 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap;line-height:1.75}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.t-file{color:var(--t-file)} .t-ref{color:var(--t-ref)} .t-assume{color:var(--t-assume)} .t-need{color:var(--t-need)}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.toc a{font-size:13.5px;text-decoration:none;color:var(--ink2);border:1px solid var(--line);background:var(--surface);padding:3px 11px;border-radius:999px}
+.toc a:hover{color:var(--teal);border-color:var(--teal)}
+.layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:28px;align-items:start}
+aside.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 14px);max-height:calc(100vh - 28px);overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 16px 14px}
+.rail summary{cursor:pointer;font-family:var(--f-display);font-size:18px;padding-block:8px;list-style:none}
+.rail summary::-webkit-details-marker{display:none}
+.rail summary::after{content:"اطوِ";font-family:var(--f-body);font-size:12.5px;color:var(--ink2);margin-inline-start:8px}
+.rail details:not([open]) summary::after{content:"افتح"}
+.grp{font-family:var(--f-display);font-size:14.5px;color:var(--ink2);margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.ctl{display:grid;gap:2px;padding-block:8px}
+.ctl-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ctl label{font-weight:500;font-size:14px}
+.ctl output{font-variant-numeric:tabular-nums;font-weight:700;font-size:14.5px;white-space:nowrap}
+.u{font-weight:400;color:var(--ink2);font-size:12.5px}
+.ctl .meta{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
+.ctl .hint{font-size:12.5px;color:var(--ink2)}
+input[type=range]{width:100%;accent-color:var(--teal);margin:2px 0}
+.btn{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--teal);color:var(--teal);background:transparent;border-radius:8px;padding:5px 12px;cursor:pointer}
+.btn:hover{background:var(--surface2)}
+.btn.primary{background:var(--teal);color:var(--surface)}
+.rail .btn{width:100%;margin-top:10px}
+main{display:grid;gap:44px;min-width:0}
+section{display:grid;gap:14px;min-width:0;scroll-margin-top:16px}
+.sec-head{display:grid;gap:6px}
+.sec-head p{max-width:72ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+svg{display:block;width:100%;height:auto;direction:ltr}
+/* scene */
+.scene-box{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sky);box-shadow:var(--shadow)}
+.timebar{display:flex;gap:12px;align-items:center;padding:10px 14px;background:var(--surface);border-top:1px solid var(--line);flex-wrap:wrap}
+.timebar input{flex:1 1 220px}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;min-width:5.5ch;text-align:center;font-size:17px}
+.play{min-width:84px}
+.sky{fill:var(--sky)} .ground{fill:var(--ground)} .arc{fill:none;stroke:var(--ink3);stroke-dasharray:2 7;opacity:.55}
+.sun{fill:var(--sun)} .glow{fill:var(--sun);opacity:.22}
+.ray{stroke:var(--sun);stroke-width:2.2;stroke-dasharray:6 8}
+.glass{fill:var(--glass);stroke:var(--glass-edge);stroke-width:1.2}
+.coat{fill:var(--coat);stroke:var(--coat-edge);stroke-width:.7}
+.water{fill:var(--water)} .polseg{fill:var(--pol)} .pdot{fill:var(--pol)}
+.leg{stroke:var(--pipe);stroke-width:5;stroke-linecap:round}
+.pipe{fill:none;stroke:var(--pipe);stroke-width:9;stroke-linecap:round}
+.trough{fill:var(--surface);stroke:var(--pipe);stroke-width:2}
+.lbl{fill:var(--ink);font:500 17px var(--f-body)}
+.lbl2{fill:var(--ink2);font:400 14px var(--f-body)}
+.big{fill:var(--ink);font:700 24px var(--f-body)}
+.oh{fill:var(--teal)} .photon{fill:none;stroke:var(--sun);stroke-width:2}
+.ring{fill:var(--surface);stroke:var(--ink3);stroke-width:1.5}
+.connector{fill:none;stroke:var(--ink3);stroke-width:1.2;stroke-dasharray:3 4}
+/* steps + kpis */
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;counter-reset:st}
+.step{display:grid;gap:4px;align-content:start;padding:12px;border-radius:10px;background:var(--surface2)}
+.step b{font-family:var(--f-display);font-size:15.5px}
+.step b::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--surface);color:var(--teal);font-size:13px;margin-inline-end:7px;border:1px solid var(--line);font-family:var(--f-body)}
+.step span{font-size:13.5px;color:var(--ink2)}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+main{container-type:inline-size}
+@container (min-width:780px){.kpis,.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:1px;align-content:start}
+.kpi .k{font-size:13px;color:var(--ink2)}
+.kpi .v{font-size:25px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.35}
+.kpi .v small{font-size:13px;font-weight:400;color:var(--ink2);margin-inline-start:4px}
+.kpi .s{font-size:12.5px;color:var(--ink2)}
+/* charts */
+.charts2{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.chart-card{display:grid;gap:6px;min-width:0}
+.chart-card h3{font-size:15.5px}
+.chart{position:relative}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:6px 10px;border-radius:7px;white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));z-index:3;line-height:1.55;box-shadow:var(--shadow)}
+.gl{stroke:var(--grid);stroke-width:1}
+.ax{fill:var(--ink2);font:400 12px var(--f-body)}
+.axt{fill:var(--ink2);font:500 12.5px var(--f-body)}
+.band{fill:var(--band)}
+.ln{fill:none;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.s-teal{stroke:var(--teal)} .f-teal{fill:var(--teal)}
+.ar{opacity:.14}
+.ref{stroke:var(--ink2);stroke-dasharray:4 4;stroke-width:1.2}
+.cur{stroke:var(--sun);stroke-width:1.8}
+.hov{stroke:var(--ink3);stroke-width:1}
+.dot{stroke:var(--surface);stroke-width:2}
+.b-claim{fill:var(--c-claim)} .b-ceil{fill:var(--c-ceil)} .b-model{fill:var(--c-model)}
+.bl{fill:var(--ink);font:500 13px var(--f-body)} .bv{fill:var(--ink);font:700 13px var(--f-body)}
+.mk{fill:var(--teal);stroke:var(--surface);stroke-width:2}
+.note{font-size:14px;color:var(--ink2)}
+/* check */
+.verdict{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:9px;font-weight:700;font-size:15px;border:1px solid currentColor}
+.verdict i{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:currentColor}
+.verdict i::after{content:attr(data-g);color:var(--surface);font-size:13px;font-weight:700}
+.v-bad{color:var(--danger)} .v-warn{color:var(--warn)} .v-ok{color:var(--ok)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fact{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface);display:grid;gap:2px;align-content:start}
+.fact .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.fact .k{font-size:13px;color:var(--ink2)}
+.eq{direction:ltr;text-align:center;font-family:var(--f-mono);background:var(--surface2);padding:8px 12px;border-radius:8px;font-size:14.5px;overflow-x:auto;white-space:nowrap}
+.reading{display:grid;gap:10px;border-inline-start:3px solid var(--c-claim);padding-inline-start:14px}
+/* cost */
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+@container (min-width:900px){.two{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+.tbl th{font-weight:500;color:var(--ink2);font-size:13px}
+.tbl td.n,.tbl th.n{text-align:left;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl tr.sum td{font-weight:700;border-bottom:0}
+.flag{color:var(--danger);font-size:13px;font-weight:500}
+.choice{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px}
+.choice label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+.inline-ctl{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
+/* calibration */
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.field{display:grid;gap:3px}
+.field label{font-size:13.5px;font-weight:500}
+input[type=number]{text-align:right;width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-variant-numeric:tabular-nums}
+.calib-out{display:grid;gap:10px}
+.toast{font-size:13.5px;color:var(--ok);font-weight:500}
+/* needs */
+.need-group{display:grid;gap:0}
+.need-group h3{margin-bottom:4px;margin-top:10px}
+.need{display:grid;grid-template-columns:30px minmax(0,1fr);gap:2px 10px;padding:11px 0;border-bottom:1px solid var(--line)}
+.need .no{grid-row:span 3;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.need .t{font-weight:700;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.need .w,.need .h{font-size:14px;color:var(--ink2)}
+.need .w b,.need .h b{color:var(--ink);font-weight:500}
+.priority{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--surface2);display:grid;gap:6px}
+.priority ol{margin:0;padding-inline-start:20px;display:grid;gap:3px}
+.copy-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+textarea.copybox{width:100%;min-height:140px;font:inherit;font-size:13px;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+/* science */
+.sci{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sci .panel{display:grid;gap:8px;align-content:start}
+.sci h3{font-size:16px}
+.src{font-size:13px;color:var(--ink2)}
+.refs{display:grid;gap:6px;font-size:14px;margin:0;padding-inline-start:22px}
+.refs li{padding-inline-start:4px}
+dl.gloss{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:8px 16px;margin:0;font-size:14.5px}
+dl.gloss dt{font-weight:700}
+dl.gloss dd{margin:0;color:var(--ink2)}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink2);display:grid;gap:4px}
+@media (max-width:980px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  aside.rail{position:static;max-height:none}
+}
+@media (max-width:760px){
+  .sci,.facts{grid-template-columns:minmax(0,1fr)}
+  .fields,.inline-ctl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  dl.gloss{grid-template-columns:minmax(0,1fr)}
+  dl.gloss dd{margin-bottom:6px}
+}
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto!important} }
+</style>
+
+</head>
+<body>
+<a class="backlink" href="./">→ كل النماذج</a>
+<div class="wrap" dir="rtl" lang="ar">
+  <header class="top">
+    <div class="eyebrow">مياهثون 2026 · فكرة سولارشيلد · نموذج حسابي بصري</div>
+    <h1>نموذج لوح سولارشيلد</h1>
+    <p class="lede">لوح زجاجي سطحه مطلي بجسيمات نانوية محفّزة ضوئيًا. الأشعة فوق البنفسجية في ضوء الشمس تولّد على هذه الجسيمات جذورًا مؤكسدة تكسّر الملوثات العضوية في غشاء الماء المنساب فوق اللوح. حرّك ساعة اليوم والمدخلات لترى كم يُزال من الملوث وكم لترًا ينتج اللوح فعلًا.</p>
+    <div class="status">
+      <p><b>نموذج توضيحي:</b> المعادلات منشورة ومحكّمة، وسرعة التكسير هنا افتراض توضيحي إلى أن تُعاير بقياس مخبري من قسم المعايرة. كل رقم في الصفحة موسوم بمصدره:</p>
+      <div class="legend">
+        <span class="tag t-ref">من مرجع منشور</span>
+        <span class="tag t-assume">افتراض للعرض</span>
+        <span class="tag t-need">مطلوب قياسه</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="أقسام الصفحة">
+    <a href="#panel">اللوح</a><a href="#day">يوم كامل</a><a href="#life">العمر والتجديد</a><a href="#calib">المعايرة</a><a href="#science">الأسس العلمية</a>
+  </nav>
+
+  <div class="layout">
+    <aside class="rail" aria-label="مدخلات النموذج">
+      <details id="railDetails" open>
+        <summary>مدخلات النموذج</summary>
+
+        <div class="grp">اللوح</div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="A">مساحة اللوح المطلية</label><output id="o-A"></output></div>
+          <input type="range" id="A" min="0.25" max="10" step="0.25" value="1">
+          <div class="meta"><span class="tag t-need">مطلوب قياسه</span><span class="hint">افتراض مؤقت: متر مربع واحد</span></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="tau">نسبة الضوء الواصل إلى الطلاء</label><output id="o-tau"></output></div>
+          <input type="range" id="tau" min="50" max="100" step="1" value="90">
+          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">فقد عبر الزجاج أو غشاء الماء</span></div>
+        </div>
+
+        <div class="grp">الشمس</div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="H">الأشعة فوق البنفسجية اليومية</label><output id="o-H"></output></div>
+          <input type="range" id="H" min="100" max="300" step="5" value="200">
+          <div class="meta"><span class="tag t-ref">من مرجع منشور</span><span class="hint">قياسات الرياض والظهران</span></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="hours">ساعات التشغيل اليومية</label><output id="o-hours"></output></div>
+          <input type="range" id="hours" min="4" max="10" step="1" value="8">
+          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">ساعات شمس حول الظهيرة</span></div>
+        </div>
+
+        <div class="grp">المحفز والماء</div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="kQ">سرعة التكسير لكل جرعة ضوء</label><output id="o-kQ"></output></div>
+          <input type="range" id="kQ" min="-2" max="0.5" step="0.01" value="-1">
+          <div class="meta"><span class="tag t-need">مطلوب قياسه</span><span class="hint">أهم رقم ينقصنا</span></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="km">سرعة وصول الملوث إلى السطح</label><output id="o-km"></output></div>
+          <input type="range" id="km" min="1" max="50" step="1" value="5">
+          <div class="meta"><span class="tag t-ref">تقدير من مرجع</span><span class="hint">معامل انتقال الكتلة</span></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="flow">تدفق الماء على اللوح</label><output id="o-flow"></output></div>
+          <input type="range" id="flow" min="-0.7" max="2.5" step="0.01" value="0.30103">
+          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">تدفق ثابت أثناء التشغيل</span></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="C0">تركيز الملوث الداخل</label><output id="o-C0"></output></div>
+          <input type="range" id="C0" min="1" max="50" step="1" value="10">
+          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">ملوث عضوي مذاب</span></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-head"><label for="R">نسبة الإزالة المستهدفة</label><output id="o-R"></output></div>
+          <input type="range" id="R" min="50" max="99" step="1" value="90">
+          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">تُحدد حسب الملوث والاستخدام</span></div>
+        </div>
+        <button class="btn" id="reset" type="button">إعادة القيم الافتراضية</button>
+      </details>
+    </aside>
+
+    <main>
+      <!-- ============ PANEL ============ -->
+      <section id="panel">
+        <div class="sec-head">
+          <h2>اللوح تحت الشمس</h2>
+          <p class="muted">الماء الملوث يدخل من أعلى اللوح وينساب في غشاء رقيق فوق الطلاء حتى المخرج. لون الغشاء يتدرج حسب تركيز الملوث المحسوب في كل نقطة: الكهرماني الكثيف ملوث، والأزرق الصافي معالج.</p>
+        </div>
+        <div class="scene-box">
+          <svg id="scene" viewBox="0 0 800 440" role="img" aria-label="رسم متحرك للوح زجاجي مائل تحت الشمس ينساب عليه الماء ويتغير لونه من الملوث إلى الصافي">
+            <defs>
+              <clipPath id="zoomClip"><circle cx="690" cy="360" r="58"/></clipPath>
+            </defs>
+            <rect class="sky" x="0" y="0" width="800" height="440"/>
+            <path class="arc" d="M780 170 Q405 -130 30 170"/>
+            <g id="rays"></g>
+            <circle id="glow" class="glow" cx="405" cy="20" r="34"/>
+            <circle id="sun" class="sun" cx="405" cy="20" r="19"/>
+            <rect class="ground" x="0" y="428" width="800" height="12"/>
+            <line class="leg" x1="261.5" y1="325" x2="261.5" y2="428"/>
+            <line class="leg" x1="534" y1="226" x2="534" y2="428"/>
+            <path class="pipe" d="M792 158 H662 Q646 158 640 166"/>
+            <text class="lbl" x="786" y="190" text-anchor="end">ماء ملوث يدخل</text>
+            <g transform="translate(415 250) rotate(-20)">
+              <rect class="water" x="-240" y="-21" width="480" height="18"/>
+              <g id="film"></g>
+              <g id="parts"></g>
+              <rect class="coat" x="-240" y="-3" width="480" height="3.2"/>
+              <rect class="glass" x="-240" y="0.2" width="480" height="16" rx="2"/>
+            </g>
+            <path class="pipe" d="M190 334 Q182 348 182 358" style="stroke-width:6"/>
+            <rect class="trough" x="128" y="360" width="104" height="44" rx="4"/>
+            <rect id="troughWater" class="water" x="131" y="378" width="98" height="23"/>
+            <rect id="troughPol" class="polseg" x="131" y="378" width="98" height="23" style="fill-opacity:.2"/>
+            <text class="lbl" x="180" y="424" text-anchor="middle">ماء معالج يخرج</text>
+            <text class="lbl2" x="112" y="372" text-anchor="end">أُزيل</text>
+            <text id="remLbl" class="big" x="112" y="400" text-anchor="end">—</text>
+            <!-- zoom -->
+            <path class="connector" d="M552 189 L 646 318"/>
+            <circle class="ring" cx="690" cy="360" r="58"/>
+            <g clip-path="url(#zoomClip)">
+              <rect class="water" x="630" y="300" width="120" height="52"/>
+              <circle class="pdot" cx="652" cy="322" r="5.5" style="opacity:.9"/>
+              <circle class="pdot" cx="703" cy="328" r="5.5" style="opacity:.55"/>
+              <circle class="pdot" cx="731" cy="314" r="5.5" style="opacity:.3"/>
+              <path class="photon" d="M712 298 q4 6 0 10 t0 10 t0 10 t0 10"/>
+              <circle class="oh" cx="672" cy="342" r="3.6"/>
+              <circle class="oh" cx="716" cy="344" r="3.6"/>
+              <circle class="oh" cx="694" cy="340" r="3.6"/>
+              <g id="spheres"></g>
+              <rect class="glass" x="630" y="362" width="120" height="60"/>
+            </g>
+            <text class="lbl2" x="625" y="350" text-anchor="end">جسيمات نانوية</text>
+            <text class="lbl2" x="625" y="368" text-anchor="end">على الزجاج</text>
+          </svg>
+          <div class="timebar">
+            <button class="btn primary play" id="play" type="button" aria-pressed="false">تشغيل اليوم</button>
+            <label for="hour" class="small muted">ساعة اليوم</label>
+            <input type="range" id="hour" min="6" max="18" step="0.05" value="11">
+            <span class="clock" id="clock">11:00</span>
+          </div>
+        </div>
+        <div class="kpis" aria-live="polite">
+          <div class="kpi"><span class="k">الأشعة فوق البنفسجية الآن</span><span class="v" id="k-uv">—</span><span class="s" id="k-uv-s"></span></div>
+          <div class="kpi"><span class="k">نسبة الإزالة الآن</span><span class="v" id="k-rem">—</span><span class="s" id="k-rem-s"></span></div>
+          <div class="kpi"><span class="k">التركيز عند المخرج</span><span class="v" id="k-out">—</span><span class="s" id="k-out-s"></span></div>
+          <div class="kpi"><span class="k" id="k-cap-k">إنتاج اللوح اليومي عند الهدف</span><span class="v" id="k-cap">—</span><span class="s" id="k-cap-s">بالمدخلات الحالية</span></div>
+        </div>
+        <div class="steps">
+          <div class="step"><b>الضوء يصل</b><span>فوتونات الأشعة فوق البنفسجية في ضوء الشمس تعبر غشاء الماء الرقيق وتصل إلى الطلاء.</span></div>
+          <div class="step"><b>الجسيم يُستثار</b><span>كل فوتون طاقته أعلى من فجوة الطاقة يفصل إلكترونًا عن فجوة موجبة داخل الجسيم النانوي.</span></div>
+          <div class="step"><b>تتولد جذور مؤكسدة</b><span>الفجوة الموجبة تؤكسد الماء الملامس للسطح فتنتج جذور الهيدروكسيل، من أقوى المؤكسدات في الماء.</span></div>
+          <div class="step"><b>الملوث يتفكك</b><span>الجذور تهاجم الجزيء العضوي وتكسّره على مراحل حتى يصير ماءً وثاني أكسيد الكربون إن كفى الضوء والزمن.</span></div>
+        </div>
+      </section>
+
+      <!-- ============ DAY ============ -->
+      <section id="day">
+        <div class="sec-head">
+          <h2>يوم كامل على اللوح</h2>
+          <p class="muted">الشمس تشتد حتى الظهيرة ثم تضعف، فتتغير الإزالة على مدار ساعات التشغيل المظللة. مرّر المؤشر على المنحنى لقراءة أي ساعة. الصباح على اليمين كما في الرسم أعلاه.</p>
+        </div>
+        <div class="charts2">
+          <div class="panel chart-card"><h3>شدة الأشعة فوق البنفسجية (واط/م²)</h3><div class="chart" id="ch-uv"></div></div>
+          <div class="panel chart-card"><h3>نسبة الإزالة عند التدفق الثابت (٪)</h3><div class="chart" id="ch-rem"></div></div>
+        </div>
+        <p class="note" id="daySummary"></p>
+      </section>
+
+      <!-- ============ LIFE ============ -->
+      <section id="life">
+        <div class="sec-head">
+          <h2>العمر والتجديد</h2>
+          <p class="muted">نفترض عمرًا للطلاء قدره سنتان وتجديدًا كل ستة أشهر. شكل فقد النشاط بين كل تجديدين يُقاس بتكرار تجربة التكسير على اللوح نفسه.</p>
+        </div>
+        <div class="panel">
+          <div class="ctl">
+            <div class="ctl-head"><label for="loss">فقد النشاط خلال ستة أشهر</label><output id="o-loss"></output></div>
+            <input type="range" id="loss" min="0" max="70" step="5" value="20">
+            <div class="meta"><span class="tag t-need">مطلوب قياسه</span></div>
+          </div>
+        </div>
+        <div class="panel chart-card">
+          <h3>نشاط المحفز على مدى العمر (٪ من النشاط الأول)</h3>
+          <div class="chart" id="ch-life"></div>
+          <p class="note">نفترض أن كل تجديد يعيد النشاط كاملًا.</p>
+        </div>
+      </section>
+
+      <!-- ============ CALIBRATION ============ -->
+      <section id="calib">
+        <div class="sec-head">
+          <h2>معايرة النموذج من تجربة مخبرية واحدة</h2>
+          <p class="muted">أدخل نتيجة تجربة تكسير واحدة بظروفها، فيحسب النموذج سرعة التكسير لكل جرعة ضوء، وهي الرقم الذي ينتقل من الكأس إلى اللوح الكبير. القيم المعبأة مثال توضيحي وليست قياسًا.</p>
+        </div>
+        <div class="panel" style="display:grid;gap:14px">
+          <div class="fields">
+            <div class="field"><label for="cC0">التركيز في البداية (ملغم/لتر)</label><input type="number" id="cC0" value="10" min="0" step="any"></div>
+            <div class="field"><label for="cCt">التركيز في النهاية (ملغم/لتر)</label><input type="number" id="cCt" value="5" min="0" step="any"></div>
+            <div class="field"><label for="ct">زمن الإضاءة (دقيقة)</label><input type="number" id="ct" value="180" min="0" step="any"></div>
+            <div class="field"><label for="cV">حجم الماء (مل)</label><input type="number" id="cV" value="50" min="0" step="any"></div>
+            <div class="field"><label for="cA">مساحة الطلاء المغمورة (سم²)</label><input type="number" id="cA" value="25" min="0" step="any"></div>
+            <div class="field"><label for="cE">الأشعة فوق البنفسجية عند السطح (واط/م²)</label><input type="number" id="cE" value="10" min="0" step="any"></div>
+          </div>
+          <div class="calib-out" id="calibOut"></div>
+          <div class="copy-row">
+            <button class="btn primary" id="applyK" type="button">اعتمد هذه السرعة في النموذج</button>
+            <span class="toast" id="applyMsg" aria-live="polite"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SCIENCE ============ -->
+      <section id="science">
+        <div class="sec-head">
+          <h2>الأسس العلمية</h2>
+          <p class="muted">كل معادلة في النموذج منشورة ومحكّمة. اللمسة الخاصة بالفريق تُضاف فوقها بعد المعايرة.</p>
+        </div>
+        <div class="sci">
+          <div class="panel">
+            <h3>لماذا تكفي الشمس</h3>
+            <p>يمتص الجسيم الفوتون إذا زادت طاقته عن فجوة الطاقة، وهي نحو 3.2 إلكترون فولت لثاني أكسيد التيتانيوم في طور الأناتاز، أي أطوال موجية أقصر من نحو 387 نانومترًا. ينفصل إلكترون عن فجوة موجبة، وتؤكسد الفجوة الماء فتتولد جذور الهيدروكسيل.</p>
+            <p class="src">Fujishima &amp; Honda 1972 · Hoffmann et al. 1995</p>
+          </div>
+          <div class="panel">
+            <h3>سرعة التكسير</h3>
+            <p>معادلة لانجموير وهينشلوود تؤول عند التراكيز المنخفضة إلى تناقص أُسّي من الرتبة الأولى، وهو الشكل المعتمد في النموذج.</p>
+            <div class="eq">C = C₀ · e^(−k·t)</div>
+            <p class="src">Herrmann 1999</p>
+          </div>
+          <div class="panel">
+            <h3>أثر شدة الضوء</h3>
+            <p>السرعة تتناسب طرديًا مع شدة الضوء حتى نحو 250 واط/م². الأشعة فوق البنفسجية الشمسية في المملكة نحو 20 إلى 30 واط/م² في ساعات الذروة، فهي في المنطقة الطردية، لذا نجعل السرعة متناسبة مع الشدة في كل ساعة.</p>
+            <p class="src">Herrmann 1999 · Ollis, Pelizzetti &amp; Serpone 1991</p>
+          </div>
+          <div class="panel">
+            <h3>جرعة الضوء لكل لتر</h3>
+            <p>المقياس المعتمد في مفاعلات الشمس: الطاقة فوق البنفسجية التي تلقاها كل لتر. به ينتقل ثابت السرعة من الكأس إلى اللوح مهما اختلف الحجم والمساحة والشدة.</p>
+            <div class="eq">Q_UV = E · A · t / V   [kJ/L]  →  C = C₀ · e^(−k_Q · Q_UV)</div>
+            <p class="src">Malato et al. 2009</p>
+          </div>
+          <div class="panel">
+            <h3>وصول الملوث إلى السطح</h3>
+            <p>المحفز مثبت على الزجاج، فالملوث يجب أن ينتقل من الماء إلى السطح قبل أن يتكسر. المقاومتان تُجمعان على التوالي، وسرعة الانتقال تقديرها من سماكة غشاء الماء ومعامل الانتشار (نحو جزء من مليار متر مربع في الثانية للجزيئات العضوية الصغيرة)، فتكون نحو 5 ميكرومترات في الثانية لغشاء سمكه نصف مليمتر.</p>
+            <div class="eq">1/k_eff = 1/k_s + 1/k_m ,  k_s = k_Q · E · τ ,  k_m ≈ Sh · D / δ</div>
+            <p class="src">Chen, Li &amp; Ray 2000</p>
+          </div>
+          <div class="panel">
+            <h3>الجريان على اللوح</h3>
+            <p>الماء ينساب في اتجاه واحد دون اختلاط رجعي، فنستخدم معادلة الجريان المكبسي. منها سعة اللوح عند أي هدف إزالة.</p>
+            <div class="eq">C_out = C_in · e^(−k_eff·A/F)  ,  F = k_eff·A / ln(1/(1−R))</div>
+            <p class="src">Levenspiel 1999</p>
+          </div>
+          <div class="panel">
+            <h3>الإشعاع المحلي</h3>
+            <p>متوسط الأشعة فوق البنفسجية اليومية نحو 200 واط·ساعة/م² (198 في الرياض)، وتمثل نحو 3.5٪ من الإشعاع الكلي في السماء الصافية، والإشعاع الكلي اليومي 5.7 إلى 6.7 كيلوواط·ساعة/م². أعلى متوسط ساعي مسجل نحو 28 واط/م². نوزعها على النهار بمنحنى جيبي من السادسة حتى السادسة، وهو تبسيط يُستبدل ببيانات المحطة الأقرب.</p>
+            <p class="src">Mujahid 1994 · Elhadidy et al. 1990 · Al-Dhafiri et al. 2000 · Zell et al. 2015</p>
+          </div>
+          <div class="panel">
+            <h3>كيف نقيس ونقارن</h3>
+            <p>للاختبار المخبري معيار دولي لقياس النشاط الضوئي للأسطح في الماء بصبغة الميثيلين الأزرق. وللمقارنة مع تقنيات الأكسدة الأخرى يوصي الاتحاد الدولي للكيمياء البحتة والتطبيقية بمقياس «مساحة المجمّع لكل رتبة»: المساحة اللازمة لخفض التركيز عشرة أضعاف في متر مكعب.</p>
+            <p class="src">ISO 10678 · Bolton et al. 2001</p>
+          </div>
+        </div>
+        <div class="panel" style="display:grid;gap:10px">
+          <h3>المراجع</h3>
+          <ol class="refs" dir="ltr" style="text-align:left">
+            <li>Fujishima A., Honda K. (1972). Electrochemical photolysis of water at a semiconductor electrode. <i>Nature</i> 238:37–38. <a href="https://doi.org/10.1038/238037a0">doi</a></li>
+            <li>Hoffmann M.R., Martin S.T., Choi W., Bahnemann D.W. (1995). Environmental applications of semiconductor photocatalysis. <i>Chem. Rev.</i> 95:69–96. <a href="https://doi.org/10.1021/cr00033a004">doi</a></li>
+            <li>Ollis D.F., Pelizzetti E., Serpone N. (1991). Photocatalyzed destruction of water contaminants. <i>Environ. Sci. Technol.</i> 25:1522–1529. <a href="https://doi.org/10.1021/es00021a001">doi</a></li>
+            <li>Herrmann J.-M. (1999). Heterogeneous photocatalysis: fundamentals and applications to the removal of various types of aqueous pollutants. <i>Catal. Today</i> 53:115–129. <a href="https://doi.org/10.1016/S0920-5861(99)00107-8">doi</a></li>
+            <li>Chen D., Li F., Ray A.K. (2000). Effect of mass transfer and catalyst layer thickness on photocatalytic reaction. <i>AIChE J.</i> 46:1034–1045. <a href="https://doi.org/10.1002/aic.690460515">doi</a></li>
+            <li>Bolton J.R., Bircher K.G., Tumas W., Tolman C.A. (2001). Figures-of-merit for advanced oxidation technologies for both electric- and solar-driven systems. <i>Pure Appl. Chem.</i> 73:627–637. <a href="https://doi.org/10.1351/pac200173040627">doi</a></li>
+            <li>Malato S., Fernández-Ibáñez P., Maldonado M.I., Blanco J., Gernjak W. (2009). Decontamination and disinfection of water by solar photocatalysis: recent overview and trends. <i>Catal. Today</i> 147:1–59. <a href="https://doi.org/10.1016/j.cattod.2009.06.018">doi</a></li>
+            <li>Levenspiel O. (1999). <i>Chemical Reaction Engineering</i>, 3rd ed. Wiley.</li>
+            <li>Elhadidy M.A. et al. (1990). Ultraviolet solar radiation at Dhahran, Saudi Arabia. <i>Solar Energy</i>. <a href="https://consensus.app/papers/details/85f030b9674c55478196f3166426302b/">link</a></li>
+            <li>Mujahid A. (1994). Correlation between ultraviolet radiation and global radiation in Riyadh, Saudi Arabia. <i>J. Solar Energy Eng.</i> <a href="https://consensus.app/papers/details/b07fa5088f895b3f9e2bacdf901010d9/">link</a></li>
+            <li>Al-Dhafiri A. et al. (2000). Long-term monitoring and analysis of hourly solar UV radiation in the 290–380 nm range in the middle region of Saudi Arabia. <i>J. Air &amp; Waste Manage. Assoc.</i> <a href="https://consensus.app/papers/details/f417772f5a15504fbe9871c3fc060857/">link</a></li>
+            <li>Zell E. et al. (2015). Assessment of solar radiation resources in Saudi Arabia. <i>Solar Energy</i>. <a href="https://consensus.app/papers/details/2e823181b1a05b30aee0eee5ddeb2887/">link</a></li>
+            <li>ISO 10678 — Fine ceramics: determination of photocatalytic activity of surfaces in an aqueous medium by degradation of methylene blue (current edition 2024). <a href="https://www.iso.org/standard/46019.html">iso.org</a></li>
+          </ol>
+        </div>
+        <div class="panel" style="display:grid;gap:10px">
+          <h3>شرح المصطلحات</h3>
+          <dl class="gloss">
+            <dt>محفّز ضوئي</dt><dd>مادة لا تُستهلك في التفاعل، لكنها عند امتصاص الضوء تسرّع تكسير مواد أخرى.</dd>
+            <dt>جسيم نانوي</dt><dd>جسيم قطره بين واحد ومئة نانومتر تقريبًا. صغره يعني مساحة سطح كبيرة لكل جرام.</dd>
+            <dt>فجوة الطاقة</dt><dd>أقل طاقة يحتاجها الفوتون ليستثير الجسيم. تحدد أي جزء من ضوء الشمس يمكن استعماله.</dd>
+            <dt>جذر الهيدروكسيل</dt><dd>جزيء قصير العمر شديد التفاعل يتكون على السطح المضاء، وهو الذي يهاجم الملوث.</dd>
+            <dt>سرعة التكسير لكل جرعة ضوء</dt><dd>كم يتناقص الملوث لكل كيلوجول من الأشعة فوق البنفسجية يتلقاه اللتر. وحدتها لتر لكل كيلوجول.</dd>
+            <dt>انتقال الكتلة</dt><dd>انتقال الملوث من داخل الماء إلى السطح المطلي. إن كان بطيئًا صار هو الحد مهما كان المحفز سريعًا.</dd>
+            <dt>الجريان المكبسي</dt><dd>جريان يتقدم فيه الماء كتلة واحدة دون أن يختلط القديم بالجديد، كما في غشاء ينساب على لوح.</dd>
+            <dt>التمعدن</dt><dd>التكسير الكامل للملوث إلى ماء وثاني أكسيد الكربون، ويُثبت بقياس الكربون العضوي الكلي.</dd>
+            <dt>التجديد</dt><dd>إعادة نشاط الطلاء بعد أن تغطيه الرواسب أو يضعف، بالغسل أو التسخين أو إعادة الطلاء.</dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>نموذج حسابي مبسط للتخطيط والعرض، وليس نتيجة تجربة. كل افتراض موسوم وسيُستبدل بقياسات الفريق.</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  document.documentElement.lang = 'ar';
+  document.documentElement.dir = 'rtl';
+  const RISE = 6, SET = 18;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DEF = {A:1,tau:90,H:200,hours:8,kQ:-1,km:5,flow:0.30103,C0:10,R:90,hour:11,loss:20};
+
+  /* ---------- model ---------- */
+  const uvAt = (h,p) => { if (h <= RISE || h >= SET) return 0; const peak = p.H*Math.PI/(2*(SET-RISE)); return peak*Math.sin(Math.PI*(h-RISE)/(SET-RISE)); };
+  const win = p => [12 - p.hours/2, 12 + p.hours/2];
+  const kEff = (E,p,act=1) => { const ks = p.kQ*act*E*p.tau*1e-6, km = p.km*1e-6; return ks <= 0 ? 0 : 1/(1/ks + 1/km); }; // m/s
+  const kaf = (h,p,act=1) => kEff(uvAt(h,p),p,act)*p.A/(p.flow/3.6e6);           // k·A/F, dimensionless
+  const removalAt = (h,p,act=1) => 1 - Math.exp(-kaf(h,p,act));
+  const lnR = p => Math.log(1/(1-p.R));
+  function capacity(p, act=1){ const [a,b] = win(p), n = 160, dt = (b-a)/n; let v = 0; for (let i=0;i<n;i++){ const h = a+(i+.5)*dt; v += kEff(uvAt(h,p),p,act)*p.A/lnR(p)*3.6e6*dt; } return v; } // L/day
+  const ceiling = p => p.km*1e-6*p.A/lnR(p)*p.hours*3600*1000;                      // L/day
+  function meanUV(p){ const [a,b] = win(p), n = 120; let s = 0; for (let i=0;i<n;i++) s += uvAt(a+(i+.5)*(b-a)/n,p); return s/n; }
+  const act = (m,p) => Math.pow(1 - p.loss/100, (m % 6)/6);
+
+  /* ---------- format ---------- */
+  function f(v){
+    if (!isFinite(v)) return '—';
+    const a = Math.abs(v);
+    if (a === 0) return '0';
+    if (a >= 100) return Math.round(v).toLocaleString('en-US');
+    if (a >= 10) return v.toLocaleString('en-US',{maximumFractionDigits:1});
+    if (a >= 1) return v.toLocaleString('en-US',{maximumFractionDigits:2});
+    return v.toLocaleString('en-US',{maximumSignificantDigits:2});
+  }
+  function pct(v){ const x = Math.max(0, v*100); if (x >= 99) return Math.min(x, 99.9).toFixed(1) + '٪'; return Math.round(x) + '٪'; }
+  const hm = h => { const H = Math.floor(h + 1e-9), M = Math.round((h - H)*60); const mm = M === 60 ? 0 : M; const hh = M === 60 ? H+1 : H; return hh + ':' + String(mm).padStart(2,'0'); };
+  const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  /* ---------- params ---------- */
+  const val = id => +document.getElementById(id).value;
+  function P(){
+    return { A:val('A'), tau:val('tau')/100, H:val('H'), hours:val('hours'), kQ:Math.pow(10,val('kQ')), km:val('km'),
+      flow:Math.pow(10,val('flow')), C0:val('C0'), R:val('R')/100, hour:val('hour'), loss:val('loss') };
+  }
+  function writeOutputs(p){
+    const set = (id, html) => { document.getElementById('o-'+id).innerHTML = html; };
+    set('A', `${f(p.A)} <span class="u">م²</span>`);
+    set('tau', `${Math.round(p.tau*100)}<span class="u">٪</span>`);
+    set('H', `${p.H} <span class="u">واط·ساعة/م²</span>`);
+    set('hours', `${p.hours} <span class="u">ساعات</span>`);
+    set('kQ', `${f(p.kQ)} <span class="u">لتر/كيلوجول</span>`);
+    set('km', `${p.km} <span class="u">ميكرومتر/ث</span>`);
+    set('flow', `${f(p.flow)} <span class="u">لتر/ساعة</span>`);
+    set('C0', `${p.C0} <span class="u">ملغم/لتر</span>`);
+    set('R', `${Math.round(p.R*100)}<span class="u">٪</span>`);
+    set('loss', `${p.loss}<span class="u">٪</span>`);
+  }
+
+  /* ---------- scene ---------- */
+  const N = 32, film = $('#film'), partsG = $('#parts'), svgNS = 'http://www.w3.org/2000/svg';
+  const segs = [];
+  for (let i = 0; i < N; i++){ const r = document.createElementNS(svgNS,'rect'); r.setAttribute('class','polseg'); r.setAttribute('x', 240-(i+1)*(480/N)); r.setAttribute('y',-21); r.setAttribute('width', 480/N + .5); r.setAttribute('height',18); film.appendChild(r); segs.push(r); }
+  const parts = Array.from({length:30}, (_,i) => ({x: 240 - i*16, y: -18 + Math.random()*12}));
+  const dots = parts.map(() => { const c = document.createElementNS(svgNS,'circle'); c.setAttribute('class','pdot'); c.setAttribute('r',3.4); partsG.appendChild(c); return c; });
+  const sph = $('#spheres');
+  for (let x = 636; x <= 746; x += 14){ const c = document.createElementNS(svgNS,'circle'); c.setAttribute('class','coat'); c.setAttribute('cx',x); c.setAttribute('cy',357); c.setAttribute('r',6.6); sph.appendChild(c); }
+  const toG = (x,y) => { const c = Math.cos(20*Math.PI/180), s = Math.sin(20*Math.PI/180); return [415 + x*c + y*s, 250 - x*s + y*c]; };
+  const rayTargets = [-150,-40,70,180].map(x => toG(x,-22));
+  const rays = rayTargets.map(() => { const l = document.createElementNS(svgNS,'line'); l.setAttribute('class','ray'); $('#rays').appendChild(l); return l; });
+  const state = {on:false, kaf:0, playing:false};
+
+  function renderScene(p){
+    const h = p.hour, t = (h-RISE)/(SET-RISE), u = 1-t;
+    const sx = u*u*780 + 2*u*t*405 + t*t*30, sy = u*u*170 + 2*u*t*(-130) + t*t*170;
+    const E = uvAt(h,p), [a,b] = win(p), on = h >= a - 1e-9 && h <= b + 1e-9 && E > 0;
+    const lit = Math.min(1, E/26);
+    ['sun','glow'].forEach(id => { const el = document.getElementById(id); el.setAttribute('cx',sx); el.setAttribute('cy',sy); });
+    $('#sun').style.opacity = E > 0 ? (.45 + .55*lit) : .2;
+    $('#glow').style.opacity = E > 0 ? (.08 + .22*lit) : 0;
+    rays.forEach((l,i) => { l.setAttribute('x1',sx); l.setAttribute('y1',sy); l.setAttribute('x2',rayTargets[i][0]); l.setAttribute('y2',rayTargets[i][1]); l.style.opacity = E > 0 ? (.1 + .65*lit) : 0; });
+    state.on = on; state.kaf = on ? kaf(h,p) : 0;
+    segs.forEach((r,i) => { const c = on ? Math.exp(-state.kaf*(i+.5)/N) : 1; r.style.fillOpacity = (.05 + .8*c).toFixed(3); });
+    const cOut = on ? Math.exp(-state.kaf) : null;
+    $('#troughPol').style.fillOpacity = on ? (.06 + .74*cOut).toFixed(3) : .5;
+    $('#remLbl').textContent = on ? pct(1-cOut) : '—';
+    $('#clock').textContent = hm(h);
+    // KPIs
+    $('#k-uv').innerHTML = `${f(E)}<small>واط/م²</small>`;
+    $('#k-uv-s').textContent = E > 0 ? `الذروة ${f(uvAt(12,p))} واط/م² عند الظهيرة` : 'الشمس تحت الأفق';
+    if (on){
+      $('#k-rem').textContent = pct(1-cOut);
+      $('#k-rem-s').textContent = `عند تدفق ${f(p.flow)} لتر/ساعة`;
+      $('#k-out').innerHTML = `${f(p.C0*cOut)}<small>ملغم/لتر</small>`;
+      $('#k-out-s').textContent = `من ${p.C0} ملغم/لتر عند المدخل`;
+    } else {
+      $('#k-rem').textContent = '—';
+      $('#k-rem-s').textContent = `المضخة متوقفة خارج ساعات التشغيل (${hm(a)} إلى ${hm(b)})`;
+      $('#k-out').textContent = '—';
+      $('#k-out-s').textContent = 'لا جريان الآن';
+    }
+  }
+
+  let last = 0;
+  function tick(ts){
+    const dt = Math.min(.05, last ? (ts-last)/1000 : 0); last = ts;
+    if (state.playing){
+      const hr = document.getElementById('hour'); let h = +hr.value + dt*1.0;
+      if (h >= SET){ h = SET; stopPlay(); }
+      hr.value = h; onHour();
+    }
+    if (state.on && !reduce){ for (const pt of parts){ pt.x -= 60*dt; if (pt.x < -240){ pt.x += 480; pt.y = -18 + Math.random()*12; } } }
+    parts.forEach((pt,i) => { const frac = (240-pt.x)/480; const c = state.on ? Math.exp(-state.kaf*frac) : 1; dots[i].setAttribute('cx', pt.x.toFixed(1)); dots[i].setAttribute('cy', pt.y.toFixed(1)); dots[i].style.opacity = (c*.95).toFixed(3); });
+    requestAnimationFrame(tick);
+  }
+
+  /* ---------- line chart ---------- */
+  function lineChart(host, cfg){
+    const W = 640, H = 230, m = {t:cfg.markers ? 30 : 16, r:46, b:36, l:12};
+    const pw = W-m.l-m.r, ph = H-m.t-m.b;
+    const X = v => (W-m.r) - (v-cfg.xMin)/(cfg.xMax-cfg.xMin)*pw;   // right-to-left
+    const Xinv = px => cfg.xMin + ((W-m.r)-px)/pw*(cfg.xMax-cfg.xMin);
+    const Y = v => H-m.b - (v-cfg.yMin)/(cfg.yMax-cfg.yMin)*ph;
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.label)}">`;
+    if (cfg.band) s += `<rect class="band" x="${X(cfg.band[1])}" y="${m.t}" width="${X(cfg.band[0])-X(cfg.band[1])}" height="${ph}"/>`;
+    cfg.yTicks.forEach(v => { s += `<line class="gl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${W-m.r+8}" y="${Y(v)+4}" text-anchor="start">${cfg.fmtY ? cfg.fmtY(v) : v}</text>`; });
+    cfg.xTicks.forEach(v => { s += `<text class="ax" x="${X(v)}" y="${H-m.b+19}" text-anchor="middle">${cfg.fmtX ? cfg.fmtX(v) : v}</text>`; });
+    if (cfg.xTitle) s += `<text class="axt" x="${m.l+pw/2}" y="${H-2}" text-anchor="middle">${esc(cfg.xTitle)}</text>`;
+    if (cfg.ref) s += `<line class="ref" x1="${m.l}" x2="${W-m.r}" y1="${Y(cfg.ref.y)}" y2="${Y(cfg.ref.y)}"/><text class="ax" x="${m.l+2}" y="${Y(cfg.ref.y)-6}" text-anchor="start">${esc(cfg.ref.label)}</text>`;
+    const pts = cfg.pts;
+    if (pts.length){
+      const d = pts.map((q,i) => (i ? 'L' : 'M') + X(q[0]).toFixed(1) + ' ' + Y(q[1]).toFixed(1)).join(' ');
+      if (cfg.area) s += `<path class="f-teal ar" d="${d} L${X(pts[pts.length-1][0]).toFixed(1)} ${Y(cfg.yMin)} L${X(pts[0][0]).toFixed(1)} ${Y(cfg.yMin)} Z"/>`;
+      s += `<path class="ln s-teal" d="${d}"/>`;
+    }
+    (cfg.markers || []).forEach(mk => { s += `<circle class="mk" cx="${X(mk.x)}" cy="${Y(mk.y)}" r="5"/><text class="ax" x="${X(mk.x)}" y="${Y(mk.y)-10}" text-anchor="middle">${esc(mk.label)}</text>`; });
+    s += `<line class="cur" id="${host.id}-cur" y1="${m.t}" y2="${H-m.b}" x1="-10" x2="-10"/>`;
+    s += `<line class="hov" y1="${m.t}" y2="${H-m.b}" x1="-10" x2="-10" visibility="hidden"/><circle class="dot f-teal" r="5" cx="-10" cy="-10" visibility="hidden"/>`;
+    s += `<rect x="${m.l}" y="${m.t}" width="${pw}" height="${ph}" fill="transparent" style="cursor:crosshair"/></svg><div class="tip" hidden></div>`;
+    host.innerHTML = s;
+    const svg = host.querySelector('svg'), tip = host.querySelector('.tip'), hov = host.querySelector('.hov'), dot = host.querySelector('.dot'), cur = host.querySelector('.cur');
+    const setCursor = x => { if (x == null || x < cfg.xMin || x > cfg.xMax){ cur.setAttribute('x1',-10); cur.setAttribute('x2',-10); return; } cur.setAttribute('x1',X(x)); cur.setAttribute('x2',X(x)); };
+    setCursor(cfg.cursor);
+    const hide = () => { hov.setAttribute('visibility','hidden'); dot.setAttribute('visibility','hidden'); tip.hidden = true; };
+    svg.addEventListener('pointermove', e => {
+      if (!pts.length) return;
+      const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+      const loc = pt.matrixTransform(svg.getScreenCTM().inverse());
+      const xv = Xinv(loc.x);
+      let best = pts[0], bd = Infinity; for (const q of pts){ const d = Math.abs(q[0]-xv); if (d < bd){ bd = d; best = q; } }
+      if (bd > (cfg.xMax-cfg.xMin)*.04){ hide(); return; }
+      hov.setAttribute('x1',X(best[0])); hov.setAttribute('x2',X(best[0])); hov.setAttribute('visibility','visible');
+      dot.setAttribute('cx',X(best[0])); dot.setAttribute('cy',Y(best[1])); dot.setAttribute('visibility','visible');
+      tip.innerHTML = cfg.tip(best[0],best[1]); tip.hidden = false;
+      const bw = host.clientWidth; let left = X(best[0])/W*bw; left = Math.max(70, Math.min(bw-70, left));
+      tip.style.left = left + 'px'; tip.style.top = (Y(best[1])/H*svg.clientHeight) + 'px';
+    });
+    svg.addEventListener('pointerleave', hide);
+    return {setCursor};
+  }
+
+  /* ---------- day ---------- */
+  const charts = {};
+  function renderDay(p){
+    const [a,b] = win(p);
+    const uvPts = []; for (let h = RISE; h <= SET + 1e-9; h += .1) uvPts.push([+h.toFixed(2), uvAt(h,p)]);
+    const yMaxUV = Math.max(10, Math.ceil((uvAt(12,p)+3)/10)*10);
+    const uvTicks = []; for (let v = 0; v <= yMaxUV; v += (yMaxUV > 30 ? 10 : 10)) uvTicks.push(v);
+    charts.uv = lineChart($('#ch-uv'), {label:'شدة الأشعة فوق البنفسجية خلال اليوم', xMin:RISE, xMax:SET, yMin:0, yMax:yMaxUV, pts:uvPts, area:true,
+      xTicks:[6,8,10,12,14,16,18], yTicks:uvTicks, band:[a,b], cursor:p.hour, xTitle:'ساعة اليوم',
+      tip:(x,y) => `الساعة ${hm(x)}<br>${f(y)} واط/م²`});
+    const remPts = []; for (let h = a; h <= b + 1e-9; h += .05) remPts.push([+h.toFixed(2), removalAt(h,p)*100]);
+    charts.rem = lineChart($('#ch-rem'), {label:'نسبة الإزالة خلال ساعات التشغيل', xMin:RISE, xMax:SET, yMin:0, yMax:100, pts:remPts, area:false,
+      xTicks:[6,8,10,12,14,16,18], yTicks:[0,25,50,75,100], band:[a,b], cursor:p.hour, xTitle:'ساعة اليوم', ref:{y:p.R*100, label:'الهدف'},
+      tip:(x,y) => `الساعة ${hm(x)}<br>إزالة ${pct(y/100)}`});
+    const rems = remPts.map(q => q[1]/100), mean = rems.reduce((s,v) => s+v, 0)/rems.length, min = Math.min(...rems);
+    const vol = p.flow*p.hours, meets = rems.filter(r => r >= p.R - 1e-9).length/rems.length;
+    $('#daySummary').textContent = `بتدفق ثابت ${f(p.flow)} لتر/ساعة لمدة ${p.hours} ساعات يعالج اللوح ${f(vol)} لترًا في اليوم بمتوسط إزالة ${pct(mean)}، وأدنى إزالة ${pct(min)} في أطراف ساعات التشغيل. الهدف يتحقق في ${Math.round(meets*100)}٪ من وقت التشغيل.`;
+  }
+
+  /* ---------- capacity ---------- */
+  function renderCap(p){
+    const cap = capacity(p);
+    $('#k-cap-k').textContent = `إنتاج اللوح اليومي عند هدف ${Math.round(p.R*100)}٪`;
+    $('#k-cap').innerHTML = `${f(cap)}<small>لتر/يوم</small>`;
+  }
+
+  /* ---------- life ---------- */
+  function renderLife(p){
+    const pts = [];
+    for (let m = 0; m <= 24 + 1e-9; m += .05){ const mm = +m.toFixed(2); if (mm > 0 && mm < 24 && Math.abs(mm % 6) < 1e-6) pts.push([mm - 0.001, Math.pow(1-p.loss/100, 1)*100]); pts.push([mm, (mm >= 24 ? Math.pow(1-p.loss/100,1) : act(mm,p))*100]); }
+    lineChart($('#ch-life'), {label:'نشاط المحفز على مدى سنتين', xMin:0, xMax:24, yMin:0, yMax:100, pts, area:true,
+      xTicks:[0,6,12,18,24], yTicks:[0,25,50,75,100], xTitle:'الشهر', markers:[6,12,18].map(x => ({x, y:100, label:'تجديد'})),
+      tip:(x,y) => `الشهر ${f(x)}<br>النشاط ${pct(y/100)}`});
+  }
+
+  /* ---------- calibration ---------- */
+  let calibK = null;
+  function renderCalib(){
+    const C0 = val('cC0'), Ct = val('cCt'), t = val('ct'), V = val('cV')/1000, A = val('cA')/1e4, E = val('cE');
+    const out = $('#calibOut');
+    if (!(C0 > 0 && Ct > 0 && Ct < C0 && t > 0 && V > 0 && A > 0 && E > 0)){
+      calibK = null;
+      out.innerHTML = `<p class="flag">تحتاج كل الخانات قيمًا موجبة، والتركيز في النهاية أقل منه في البداية.</p>`; return;
+    }
+    const kapp = Math.log(C0/Ct)/t, half = Math.LN2/kapp, t90 = Math.LN10/kapp;
+    const kQ = (kapp/60)*V/(E*A)*1000;
+    const areaFor1000 = A/V*1000;
+    calibK = kQ;
+    out.innerHTML = `<div class="facts">
+      <div class="fact"><span class="k">ثابت السرعة في التجربة</span><span class="v">${f(kapp)}</span><span class="k">لكل دقيقة · نصف الملوث يزول في ${f(half)} دقيقة</span></div>
+      <div class="fact"><span class="k">سرعة التكسير لكل جرعة ضوء</span><span class="v">${f(kQ)}</span><span class="k">لتر/كيلوجول · هذا ما ينتقل إلى اللوح</span></div>
+      <div class="fact"><span class="k">مساحة تحفظ زمن التجربة لدفعة ألف لتر</span><span class="v">${f(areaFor1000)} م²</span><span class="k">بنفس شدة الضوء ونسبة المساحة إلى الحجم</span></div>
+    </div>
+    <p class="note">في ظروف هذه التجربة تحتاج إزالة 90٪ نحو ${f(t90)} دقيقة. ${kQ < 0.01 || kQ > 3.16 ? 'القيمة خارج مدى المنزلق، وستُقرّب إلى أقرب حد عند اعتمادها.' : ''}</p>`;
+  }
+
+  /* ---------- wiring ---------- */
+  function update(){
+    const p = P(); writeOutputs(p);
+    renderScene(p); renderDay(p); renderCap(p); renderLife(p);
+  }
+  function onHour(){ const p = P(); renderScene(p); charts.uv && charts.uv.setCursor(p.hour); charts.rem && charts.rem.setCursor(p.hour); }
+  ['A','tau','H','hours','kQ','km','flow','C0','R','loss'].forEach(id => document.getElementById(id).addEventListener('input', update));
+  document.getElementById('hour').addEventListener('input', () => { if (state.playing) stopPlay(); onHour(); });
+  const playBtn = $('#play');
+  function stopPlay(){ state.playing = false; playBtn.textContent = 'تشغيل اليوم'; playBtn.setAttribute('aria-pressed','false'); }
+  playBtn.addEventListener('click', () => {
+    if (state.playing){ stopPlay(); return; }
+    const hr = document.getElementById('hour'); if (+hr.value >= SET - .01) hr.value = RISE;
+    state.playing = true; playBtn.textContent = 'إيقاف'; playBtn.setAttribute('aria-pressed','true');
+  });
+  $('#reset').addEventListener('click', () => { Object.entries(DEF).forEach(([k,v]) => { const el = document.getElementById(k); if (el) el.value = v; }); update(); });
+  ['cC0','cCt','ct','cV','cA','cE'].forEach(id => document.getElementById(id).addEventListener('input', renderCalib));
+  $('#applyK').addEventListener('click', () => {
+    if (calibK == null){ $('#applyMsg').textContent = 'أكمل الخانات أولًا.'; return; }
+    const v = Math.max(-2, Math.min(0.5, Math.log10(calibK)));
+    document.getElementById('kQ').value = v; update();
+    $('#applyMsg').textContent = `اعتُمدت السرعة ${f(Math.pow(10,v))} لتر/كيلوجول، وتحدّث النموذج كله.`;
+  });
+  if (window.matchMedia('(max-width: 700px)').matches) document.getElementById('railDetails').open = false;
+
+  document.querySelectorAll('input[type=number]').forEach(i => { i.lang = 'en'; i.dir = 'ltr'; });
+  renderCalib(); update();
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
