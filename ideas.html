@@ -65,7 +65,8 @@ section{display:grid;gap:16px;scroll-margin-top:12px}
 .ecs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .ec{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface2);font-weight:500;font-size:15px}
 .ec svg{width:30px;height:30px;flex:none}
-.spec .ec{background:var(--surface);border:1.5px solid var(--teal);color:var(--ink)}
+.spec-h{font-size:16px}
+.spec .ec{background:var(--surface);border:1.5px solid var(--teal);color:var(--ink);font-weight:400;font-size:14.5px}
 .spec .ec b{font-variant-numeric:tabular-nums}
 /* zoom ladder */
 .ladder{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
@@ -148,7 +149,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
   <header class="hero">
     <div class="eyebrow" data-i18n="eyebrow">فريق Thea · مياهثون 2026</div>
     <h1 data-i18n="h1">سولارشيلد في لمحة</h1>
-    <p class="tagline" data-i18n="tagline">حوض يعالج الملوثات العضوية الناشئة بضوء الشمس: لوح زجاجي مطلي بمحفز نانوي معلّق وسط الحوض على عمق مترين، مع تحريك مستمر للماء.</p>
+    <p class="tagline" data-i18n="tagline">حوض يعالج الملوثات العضوية الناشئة في مياه الصرف الزراعي بالأحساء بضوء الشمس: لوح زجاجي مطلي بمحفز نانوي معلّق وسط الحوض على عمق مترين، مع تحريك مستمر للماء.</p>
     <nav class="toc" aria-label="أقسام الصفحة" data-i18n-label="tocLabel">
       <a href="#idea"><b>1</b><span data-i18n="n1">الفكرة</span></a>
       <a href="#micro"><b>2</b><span data-i18n="n2">التركيب الدقيق</span></a>
@@ -163,9 +164,10 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
     <div class="sec-head"><span class="num">1</span><h2 data-i18n="s1">الفكرة</h2></div>
     <div class="card">
       <div class="art" id="artTank"></div>
+      <h3 class="spec-h" data-i18n="specH">أرقام التصميم من بيانات الفريق</h3>
       <div class="ecs spec" id="spec"></div>
       <div class="ecs" id="ecs"></div>
-      <p class="cap" data-i18n="ecNote">الملوثات العضوية الناشئة توجد بتراكيز ضئيلة، ولا تزيلها المعالجة التقليدية بالكامل.</p>
+      <p class="cap" data-i18n="ecNote">الملوثات العضوية الناشئة لا تزيلها المعالجة التقليدية بالكامل.</p>
     </div>
   </section>
 
@@ -207,11 +209,11 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
         <div class="row"><span class="lbl" data-i18n="cStir">التحريك</span>
           <div class="seg" role="group" aria-label="التحريك" data-i18n-label="cStir"><button type="button" data-k="stir" data-v="1" aria-pressed="true" data-i18n="on">يعمل</button><button type="button" data-k="stir" data-v="0" aria-pressed="false" data-i18n="off">متوقف</button></div></div>
         <div class="row"><span class="lbl" data-i18n="cWater">الماء</span>
-          <div class="seg" role="group" aria-label="الماء" data-i18n-label="cWater"><button type="button" data-k="water" data-v="0" aria-pressed="true" data-i18n="w0">صافٍ بعد معالجة مسبقة</button><button type="button" data-k="water" data-v="1" aria-pressed="false" data-i18n="w1">مرشّح من العكارة فقط</button><button type="button" data-k="water" data-v="2" aria-pressed="false" data-i18n="w2">صرف زراعي خام</button></div></div>
+          <div class="seg" role="group" aria-label="الماء" data-i18n-label="cWater"><button type="button" data-k="water" data-v="0" aria-pressed="false" data-i18n="w0">صافٍ بعد معالجة مسبقة</button><button type="button" data-k="water" data-v="1" aria-pressed="false" data-i18n="w1">مرشّح من العكارة فقط</button><button type="button" data-k="water" data-v="2" aria-pressed="true" data-i18n="w2">ماء الفريق: عكارة 10 إلى 15</button></div></div>
         <div class="readout">
           <div class="ro"><span data-i18n="r1">الضوء الواصل إلى الزجاج</span><b id="rLight">—</b></div>
           <div class="ro"><span data-i18n="r2">الملوث المُزال</span><b id="rRem">—</b></div>
-          <div class="ro"><span data-i18n="r3">المتبقي بالميكروغرام/لتر</span><b id="rLeft">—</b></div>
+          <div class="ro"><span data-i18n="r3">المتبقي بالملغم/لتر</span><b id="rLeft">—</b></div>
         </div>
         <p class="t90" id="t90"></p>
         <p class="note" data-i18n="demoNote">توضيحي: سرعة التكسير وصفاء الماء افتراضان حتى يُقاسا في المختبر.</p>
@@ -228,18 +230,19 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
 <script>
 window.I18N_EN = {
   back: "← Home · Team Thea",
+  specH: "Design numbers from the team's data",
   eyebrow: "Team Thea · Miyahthon 2026",
   h1: "SolarShield at a Glance",
-  tagline: "A tank that removes emerging organic contaminants with sunlight: a glass plate coated with a nano photocatalyst, suspended mid-tank two metres below the surface, with the water stirred continuously.",
+  tagline: "A tank that removes emerging organic contaminants from agricultural drainage water in Al-Ahsa with sunlight: a glass plate coated with a nano photocatalyst, suspended mid-tank two metres below the surface, with the water stirred continuously.",
   tocLabel: "Page sections",
   n1: "The idea", n2: "Microstructure", n3: "How it works", n4: "Work steps", n5: "Run the model",
   s1: "The idea", s2: "Microstructure", s3: "How it works", s4: "Work steps", s5: "Run the model",
-  ecNote: "Emerging organic contaminants occur at trace concentrations, and conventional treatment does not fully remove them.",
+  ecNote: "Conventional treatment does not fully remove emerging organic contaminants.",
   dayLabel: "Operating time", cSpeed: "Speed", sp1: "1 day/s", sp7: "1 week/s", sp30: "1 month/s", sp365: "1 year/s",
   cStir: "Stirring", on: "On", off: "Off",
-  cWater: "Water", w0: "Clear after pre-treatment", w1: "Filtered for turbidity only", w2: "Raw drainage water",
+  cWater: "Water", w0: "Clear after pre-treatment", w1: "Filtered for turbidity only", w2: "Team's water: turbidity 10 to 15",
  
-  r1: "Light reaching the glass", r2: "Contaminant removed", r3: "Left, in µg/L",
+  r1: "Light reaching the glass", r2: "Contaminant removed", r3: "Left, in mg/L",
   demoNote: "Illustrative: the degradation rate and water clarity are assumptions until measured in the lab.",
   foot1: "SolarShield · Team Thea · Miyahthon 2026",
   foot2: "Equations: Herrmann 1999 · Malato 2009 · Chen 2000 · Morris 1995"
@@ -311,7 +314,14 @@ window.I18N_EN = {
     leaf: `<path class="icon" d="M6 24 C 6 12, 14 6, 25 6 C 25 17, 19 24, 6 24 Z M6 24 L 18 12"/>`,
     bottle: `<path class="icon" d="M12 4 h6 v5 l3 4 v13 h-12 v-13 l3 -4 z"/><line class="icon" x1="9" y1="17" x2="21" y2="17"/>`
   };
-  const SPEC = () => [L('وحدة واحدة لكل <b>26,667</b> لترًا','One unit per <b>26,667</b> L'), L('لوح زجاجي <b>1 م × 1 م × 1 سم</b>','Glass plate <b>1 m × 1 m × 1 cm</b>'), L('مغطى بـ <b>0.1 كجم</b> من المحفز','Coated with <b>0.1 kg</b> of photocatalyst')];
+  const SPEC = () => [
+    L('وحدة واحدة لكل <b>26,667</b> لترًا يوميًا', 'One unit per <b>26,667</b> L a day'),
+    L('لوح زجاجي <b>1 م × 1 م × 1 سم</b> مطلي بالكامل', 'Glass plate <b>1 m × 1 m × 1 cm</b>, fully coated'),
+    L('<b>0.1 كجم</b> من ثاني أكسيد التيتانيوم ونتريد الكربون، جسيمات <b>10 إلى 15</b> نانومترًا', '<b>0.1 kg</b> of TiO<sub>2</sub> with g-C<sub>3</sub>N<sub>4</sub>, particles <b>10 to 15</b> nm'),
+    L('صرف زراعي بالأحساء: عكارة <b>10 إلى 15</b>، مواد عالقة <b>10 إلى 20</b> ملغم/لتر', 'Al-Ahsa drainage water: turbidity <b>10 to 15</b>, suspended solids <b>10 to 20</b> mg/L'),
+    L('ملوثات عضوية حتى <b>25</b> ملغم/لتر، حرارة <b>20 إلى 50</b>، حموضة <b>4 إلى 8</b>', 'Organic contaminants up to <b>25</b> mg/L, <b>20 to 50</b> °C, pH <b>4 to 8</b>'),
+    L('الهدف: إزالة <b>100٪</b> في <b>8</b> ساعات شمس', 'Target: <b>100%</b> removal in <b>8</b> sun hours')
+  ];
   const ECS = () => [['pill', L('أدوية ومضادات حيوية','Pharmaceuticals and antibiotics')], ['leaf', L('مبيدات زراعية','Agricultural pesticides')], ['bottle', L('مركبات بلاستيكية وهرمونية','Plasticizers and hormone disruptors')]];
 
   /* ---------- 2. microstructure: metre → micrometre → nanometre ---------- */
@@ -388,14 +398,21 @@ window.I18N_EN = {
   }
 
   /* ---------- 4. steps ---------- */
-  const STEPS = () => [L('تنظيف الزجاج وطلاؤه بالمحفز','Clean the glass and coat it with the catalyst'), L('تعليق اللوح وسط الحوض على عمق مترين','Hang the plate mid-tank, two metres deep'), L('ترشيح العكارة قبل تعبئة الحوض','Filter out turbidity before filling the tank'), L('تشغيل التحريك المستمر','Run the stirrer continuously'), L('الشمس تفعّل المحفز طوال النهار','Sunlight activates the catalyst all day'), L('قياس الملوثات قبل تفريغ الماء','Measure the contaminants before draining')];
+  const STEPS = () => [
+    L('طلاء اللوح بـ 0.1 كجم من المحفز', 'Coat the plate with 0.1 kg of catalyst'),
+    L('تعليقه وسط الحوض على عمق مترين', 'Hang it mid-tank, two metres deep'),
+    L('تعبئة الحوض بـ 26,667 لترًا من مياه الصرف الزراعي', 'Fill the tank with 26,667 L of drainage water'),
+    L('تحريك مستمر للماء', 'Stir the water continuously'),
+    L('ثماني ساعات شمس، ثم القياس والتفريغ', 'Eight sun hours, then measure and drain'),
+    L('تجديد المحفز كل ستة أشهر', 'Regenerate the catalyst every six months')
+  ];
 
   /* ---------- 5. tank model ---------- */
   // Batch tank, first order: ln(C0/C) = Σ ∫ k_eff·A/V dt, with k_eff = 1/(1/k_s + 1/k_m), k_s = k_Q·E_glass, E_glass = E·τ·e^(−K_d·2 m)
-  // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 200 Wh/m² of UV a day over 8 sunny hours. Total tank depth is not specified yet; the drawing shows 3 m.
-  const S = {stir: 1, water: 0, speed: 30};
-  const A_UNIT = 1, V = 26.667, DEPTH = 2, C0 = 10, HORIZON = 3650;   // the team's spec: one 1 m × 1 m unit per 26,667 L, hung 2 m deep
-  const uv = h => (h <= 6 || h >= 18) ? 0 : 200*Math.PI/24*Math.sin(Math.PI*(h - 6)/12);
+  // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 190 Wh/m² of UV a day over 8 sunny hours. Total tank depth is not specified yet; the drawing shows 3 m.
+  const S = {stir: 1, water: 2, speed: 30};   // water 2 = the team's raw drainage water
+  const A_UNIT = 1, V = 26.667, DEPTH = 2, C0 = 25, HORIZON = 3650;   // C0 in mg/L (team data)   // the team's spec: one 1 m × 1 m unit per 26,667 L, hung 2 m deep
+  const uv = h => (h <= 6 || h >= 18) ? 0 : 190*Math.PI/24*Math.sin(Math.PI*(h - 6)/12);   // Al-Ahsa: ~190 Wh/m² of UV a day
   const kd = () => [0.5, 4, 7][S.water];   // UV attenuation per metre: pre-treated / turbidity-filtered (dissolved organics remain) / raw drainage
   const att = () => Math.exp(-kd()*DEPTH);
   function perDay(){
@@ -472,7 +489,9 @@ window.I18N_EN = {
     $('#rLight').textContent = fmtPct(att()*100);
     $('#rRem').textContent = fmtPct((1 - frac)*100);
     $('#rLeft').textContent = (C0*frac).toFixed(C0*frac < 1 ? 2 : 1);
-    $('#t90').textContent = L(`بسرعة التكسير المفترضة قبل القياس، إزالة 90٪ تحتاج نحو ${span(Math.LN10/K)} من التشغيل.`, `At the assumed degradation rate (not yet measured), 90% removal takes about ${span(Math.LN10/K)} of operation.`);
+    const t90 = Math.LN10/K, long = !isFinite(t90) || t90 > 36500;
+    $('#t90').textContent = L(`هدف الفريق إزالة 100٪ في 8 ساعات. بسرعة التكسير المفترضة قبل القياس، إزالة 90٪ تحتاج ${long ? 'أكثر من 100 سنة' : 'نحو ' + span(t90)} من التشغيل.`,
+      `The team's target is 100% removal in 8 hours. At the assumed degradation rate (not yet measured), 90% removal takes ${long ? 'more than 100 years' : 'about ' + span(t90)} of operation.`);
     if (curveX){ const x = curveX.X(simDay), y = curveX.Y(100*frac); const ln = $('#nowLn'), dot = $('#nowDot');
       if (ln){ ln.setAttribute('x1', x); ln.setAttribute('x2', x); dot.setAttribute('cx', x); dot.setAttribute('cy', y); } }
   }
