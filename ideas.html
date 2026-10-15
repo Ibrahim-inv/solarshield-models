@@ -94,7 +94,7 @@ section{display:grid;gap:16px;scroll-margin-top:12px}
 .row input[type=range]{flex:1 1 140px;accent-color:var(--teal)}
 .lbl{font-size:13.5px;color:var(--ink2);min-width:5.5em}
 .btn{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--teal);color:var(--surface);background:var(--teal);border-radius:9px;padding:5px 14px;cursor:pointer}
-.seg{display:inline-flex;padding:3px;border-radius:9px;background:var(--surface2);gap:3px}
+.seg{display:inline-flex;flex-wrap:wrap;padding:3px;border-radius:9px;background:var(--surface2);gap:3px}
 .seg button{font:inherit;font-size:13.5px;border:0;background:transparent;color:var(--ink2);padding:4px 10px;border-radius:7px;cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--teal);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -190,7 +190,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
         <div class="row"><span class="lbl" data-i18n="cStir">التحريك</span>
           <div class="seg" role="group" aria-label="التحريك" data-i18n-label="cStir"><button type="button" data-k="stir" data-v="1" aria-pressed="true" data-i18n="on">يعمل</button><button type="button" data-k="stir" data-v="0" aria-pressed="false" data-i18n="off">متوقف</button></div></div>
         <div class="row"><span class="lbl" data-i18n="cWater">الماء</span>
-          <div class="seg" role="group" aria-label="الماء" data-i18n-label="cWater"><button type="button" data-k="clear" data-v="1" aria-pressed="true" data-i18n="filtered">مرشّح وصافٍ</button><button type="button" data-k="clear" data-v="0" aria-pressed="false" data-i18n="turbid">عكر</button></div></div>
+          <div class="seg" role="group" aria-label="الماء" data-i18n-label="cWater"><button type="button" data-k="water" data-v="0" aria-pressed="true" data-i18n="w0">صافٍ بعد معالجة مسبقة</button><button type="button" data-k="water" data-v="1" aria-pressed="false" data-i18n="w1">مرشّح من العكارة فقط</button><button type="button" data-k="water" data-v="2" aria-pressed="false" data-i18n="w2">صرف زراعي خام</button></div></div>
         <div class="row"><span class="lbl" data-i18n="cGlass">الزجاج</span>
           <div class="seg" role="group" aria-label="الزجاج" data-i18n-label="cGlass"><button type="button" data-k="full" data-v="0" aria-pressed="true" data-i18n="one">لوح واحد</button><button type="button" data-k="full" data-v="1" aria-pressed="false" data-i18n="floor">القاع كاملًا</button></div></div>
         <div class="readout">
@@ -221,7 +221,7 @@ window.I18N_EN = {
   ecNote: "Emerging organic contaminants occur at trace concentrations, and conventional treatment does not fully remove them.",
   dayLabel: "Operating days",
   cStir: "Stirring", on: "On", off: "Off",
-  cWater: "Water", filtered: "Filtered, clear", turbid: "Turbid",
+  cWater: "Water", w0: "Clear after pre-treatment", w1: "Filtered for turbidity only", w2: "Raw drainage water",
   cGlass: "Glass", one: "One plate", floor: "Whole floor",
   r1: "Light reaching the glass", r2: "Contaminant removed", r3: "Left, in µg/L",
   demoNote: "Illustrative: the degradation rate and water clarity are assumptions until measured in the lab.",
@@ -373,10 +373,10 @@ window.I18N_EN = {
   /* ---------- 5. tank model ---------- */
   // Batch tank, first order: ln(C0/C) = Σ ∫ k_eff·A/V dt, with k_eff = 1/(1/k_s + 1/k_m), k_s = k_Q·E_glass, E_glass = E·τ·e^(−K_d·2 m)
   // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 200 Wh/m² of UV a day over 8 sunny hours, floor 13.3 m² × 2 m deep.
-  const S = {stir: 1, clear: 1, full: 0};
+  const S = {stir: 1, water: 0, full: 0};
   const FLOOR = 13.3, V = FLOOR*2, DEPTH = 2, C0 = 10;
   const uv = h => (h <= 6 || h >= 18) ? 0 : 200*Math.PI/24*Math.sin(Math.PI*(h - 6)/12);
-  const kd = () => S.clear ? 0.5 : 7;
+  const kd = () => [0.5, 4, 7][S.water];   // UV attenuation per metre: pre-treated / turbidity-filtered (dissolved organics remain) / raw drainage
   const att = () => Math.exp(-kd()*DEPTH);
   function perDay(){
     const A = S.full ? FLOOR : 1, km = (S.stir ? 20 : 2)*1e-6, n = 64; let I = 0;
