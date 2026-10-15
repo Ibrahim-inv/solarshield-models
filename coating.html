@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-title-en="SolarShield Simulator">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}.backlink{display:inline-block;margin:14px clamp(16px,3vw,32px) 0;font:500 14px "IBM Plex Sans Arabic",Tahoma,sans-serif;color:var(--teal);text-decoration:none}</style>
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}.backlink{font:500 14px "IBM Plex Sans Arabic",Tahoma,sans-serif;color:var(--teal);text-decoration:none}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px clamp(16px,3vw,32px) 0}.langbtn{font:500 14px "IBM Plex Sans Arabic",system-ui,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 14px;cursor:pointer}.langbtn:hover{border-color:var(--teal);color:var(--teal)}.langbtn:focus-visible{outline:2px solid var(--sun);outline-offset:2px}</style>
 <title>محاكي سولارشيلد</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap">
@@ -37,6 +37,7 @@
 
 *{box-sizing:border-box}
 html{direction:rtl}
+html[dir="ltr"]{direction:ltr}
 body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:"IBM Plex Sans Arabic","Geeza Pro",Tahoma,sans-serif;
@@ -130,6 +131,7 @@ select{font:inherit; color:var(--ink); background:var(--surface2); border:1px so
 .chartBox{direction:ltr; position:relative; margin-top:8px}
 .chartBox svg{display:block; width:100%; height:auto}
 .tip{position:absolute; pointer-events:none; background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:10px; padding:8px 12px; font-size:.8rem; direction:rtl; min-width:150px; display:none; z-index:3}
+[dir="ltr"] .tip{direction:ltr}
 .tip .row{display:flex; justify-content:space-between; gap:14px}
 .tip .row .v{font-variant-numeric:tabular-nums; font-weight:700}
 .summary{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
@@ -204,12 +206,12 @@ footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; g
 
 </head>
 <body>
-<a class="backlink" href="./">→ كل النماذج · فريق Thea</a>
+<div class="topbar"><a class="backlink" href="./" data-keep-lang data-i18n="back">→ كل النماذج · فريق Thea</a><button class="langbtn" id="langBtn" type="button" lang="en">English</button></div>
 <div class="wrap">
 
 <header class="top">
   <div class="brand">
-    <svg width="52" height="52" viewBox="0 0 52 52" role="img" aria-label="شعار سولارشيلد: درع يجمع شمسًا وموجة ماء">
+    <svg width="52" height="52" viewBox="0 0 52 52" role="img" aria-label="شعار سولارشيلد: درع يجمع شمسًا وموجة ماء" data-i18n-label="logoLabel">
       <path d="M26 3 45 10 v14 c0 12-8 20-19 25 C15 44 7 36 7 24 V10 Z" fill="none" stroke="var(--teal)" stroke-width="3" stroke-linejoin="round"/>
       <circle cx="26" cy="19" r="6" fill="var(--sun)"/>
       <g stroke="var(--sun)" stroke-width="2" stroke-linecap="round">
@@ -220,22 +222,22 @@ footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; g
       <path d="M16 38 q3.5 -3.5 7 0 t7 0 t6 0" fill="none" stroke="var(--teal)" stroke-width="2.2" stroke-linecap="round" opacity=".6"/>
     </svg>
     <div>
-      <h1>محاكي سولارشيلد</h1>
-      <div class="tag">كيف يحرس الطلاءُ الأسطحَ المائية بالشمس — عرض تفاعلي لآلية العمل</div>
+      <h1 data-i18n="h1">محاكي سولارشيلد</h1>
+      <div class="tag" data-i18n="tagline">كيف يحرس الطلاءُ الأسطحَ المائية بالشمس — عرض تفاعلي لآلية العمل</div>
     </div>
   </div>
   <div class="spacer"></div>
-  <nav class="tabs" role="tablist" aria-label="أوضاع العرض">
-    <button role="tab" id="tab-story" aria-selected="true" aria-controls="panel-story">القصة</button>
-    <button role="tab" id="tab-lab" aria-selected="false" aria-controls="panel-lab">المختبر الافتراضي</button>
-    <button role="tab" id="tab-sci" aria-selected="false" aria-controls="panel-sci">الأسس العلمية</button>
+  <nav class="tabs" role="tablist" aria-label="أوضاع العرض" data-i18n-label="tabsLabel">
+    <button role="tab" id="tab-story" aria-selected="true" aria-controls="panel-story" data-i18n="tabStory">القصة</button>
+    <button role="tab" id="tab-lab" aria-selected="false" aria-controls="panel-lab" data-i18n="tabLab">المختبر الافتراضي</button>
+    <button role="tab" id="tab-sci" aria-selected="false" aria-controls="panel-sci" data-i18n="tabSci">الأسس العلمية</button>
   </nav>
 </header>
 
 <!-- ================= القصة ================= -->
 <section id="panel-story" role="tabpanel" aria-labelledby="tab-story">
   <div class="story">
-    <div class="card steps" id="stepList" aria-label="خطوات القصة"></div>
+    <div class="card steps" id="stepList" aria-label="خطوات القصة" data-i18n-label="stepsLabel"></div>
     <div>
       <div class="card stageCard">
         <div class="stage" id="stage"></div>
@@ -244,7 +246,7 @@ footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; g
           <div id="stBody"></div>
           <div class="basis" id="stBasis"></div>
           <div class="nav">
-            <button id="prevBtn">السابقة</button>
+            <button id="prevBtn" data-i18n="prev">السابقة</button>
             <button id="nextBtn" class="primary">الخطوة التالية</button>
           </div>
         </div>
@@ -260,29 +262,29 @@ footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; g
     <div class="card pad">
       <div class="controls">
         <div class="ctl">
-          <label for="sun">شدة الإشعاع الشمسي</label>
+          <label for="sun" data-i18n="sunLbl">شدة الإشعاع الشمسي</label>
           <input type="range" id="sun" min="0" max="150" value="100" step="5">
           <output id="sunOut" class="num">100٪ — يوم مشمس اعتيادي</output>
         </div>
         <div class="ctl">
-          <label for="turb">صفاء الماء</label>
+          <label for="turb" data-i18n="turbLbl">صفاء الماء</label>
           <select id="turb">
-            <option value="1" selected>صافٍ — الضوء يصل كاملًا تقريبًا</option>
-            <option value="0.7">متوسط العكارة — يصل نحو ثلثي الضوء</option>
-            <option value="0.4">معكّر — يصل أقل من نصف الضوء</option>
+            <option value="1" selected data-i18n="turbClear">صافٍ — الضوء يصل كاملًا تقريبًا</option>
+            <option value="0.7" data-i18n="turbMid">متوسط العكارة — يصل نحو ثلثي الضوء</option>
+            <option value="0.4" data-i18n="turbHigh">معكّر — يصل أقل من نصف الضوء</option>
           </select>
         </div>
         <div class="ctl">
           <label class="check" for="closed" style="margin-top:18px">
             <input type="checkbox" id="closed">
-            وضع الخزان المغلق (بلا ضوء إطلاقًا)
+            <span data-i18n="closedLbl">وضع الخزان المغلق (بلا ضوء إطلاقًا)</span>
           </label>
         </div>
         <div class="ctl">
-          <label>تشغيل حي</label>
+          <label data-i18n="liveLbl">تشغيل حي</label>
           <div class="runRow">
-            <button id="playBtn" class="primary">إعادة التشغيل الحي</button>
-            <button id="pauseBtn" hidden>إيقاف مؤقت</button>
+            <button id="playBtn" class="primary" data-i18n="play">إعادة التشغيل الحي</button>
+            <button id="pauseBtn" hidden data-i18n="pause">إيقاف مؤقت</button>
           </div>
         </div>
         <div class="dayBadge"><span class="sunmoon" id="clockIcon" aria-hidden="true">☀️</span><span class="num" id="dayOut">اليوم 56 من 56</span></div>
@@ -293,12 +295,12 @@ footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; g
 
     <div class="card pad">
       <div class="chartHead">
-        <h2>مؤشر التراكم الحيوي على مدى ثمانية أسابيع</h2>
+        <h2 data-i18n="chartTitle">مؤشر التراكم الحيوي على مدى ثمانية أسابيع</h2>
         <div class="legend" id="legend"></div>
         <button class="tblBtn" id="tblBtn" aria-expanded="false">عرض الجدول</button>
       </div>
       <div class="chartBox" id="chartBox">
-        <svg id="chart" viewBox="0 0 720 300" role="img" aria-label="منحنيات مؤشر التراكم الحيوي للأسطح الأربعة عبر ستة وخمسين يومًا"></svg>
+        <svg id="chart" viewBox="0 0 720 300" role="img" aria-label="منحنيات مؤشر التراكم الحيوي للأسطح الأربعة عبر ستة وخمسين يومًا" data-i18n-label="chartLabel"></svg>
         <div class="tip" id="tip"></div>
       </div>
       <div id="tblWrap" hidden></div>
@@ -307,7 +309,7 @@ footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; g
 
     <div class="integrity">
       <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 18 17 H2 Z" fill="none" stroke="var(--sun-ink)" stroke-width="1.8" stroke-linejoin="round"/><line x1="10" y1="8" x2="10" y2="12.5" stroke="var(--sun-ink)" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="14.8" r="1" fill="var(--sun-ink)"/></svg>
-      <div><b>محاكاة توضيحية لآلية العمل، لا قياسات مخبرية.</b> الاتجاهات والظواهر موثقة من الأدبيات المحكمة، أما معدلات النمو والإزالة فقيَم توضيحية تُعاير بالقياسات المخبرية فور توفرها. «مؤشر التراكم» رقم نسبي من صفر إلى مئة وليس وحدة فيزيائية. راجع تبويب «الأسس العلمية» لوسم كل قيمة.</div>
+      <div data-i18n="integrity"><b>محاكاة توضيحية لآلية العمل، لا قياسات مخبرية.</b> الاتجاهات والظواهر موثقة من الأدبيات المحكمة، أما معدلات النمو والإزالة فقيَم توضيحية تُعاير بالقياسات المخبرية فور توفرها. «مؤشر التراكم» رقم نسبي من صفر إلى مئة وليس وحدة فيزيائية. راجع تبويب «الأسس العلمية» لوسم كل قيمة.</div>
     </div>
 
   </div>
@@ -317,93 +319,210 @@ footer.foot{margin-top:26px; color:var(--ink2); font-size:.8rem; display:flex; g
 <section id="panel-sci" role="tabpanel" aria-labelledby="tab-sci" hidden>
   <div class="card pad sci">
 
-    <h2>ماذا نستمد من الأدبيات المحكمة؟</h2>
+    <h2 data-i18n="sci10">ماذا نستمد من الأدبيات المحكمة؟</h2>
     <div class="tblScroll">
     <table class="ev">
-      <tr><th>الآلية</th><th>خلاصة الدليل</th><th>الوسم</th><th>المصدر</th></tr>
+      <tr><th data-i18n="sci11">الآلية</th><th data-i18n="sci12">خلاصة الدليل</th><th data-i18n="sci13">الوسم</th><th data-i18n="sci14">المصدر</th></tr>
       <tr>
-        <td>خفض الالتصاق بهندسة السطح الدقيقة</td>
-        <td>أسطح منسّجة بمقاييس دقيقة خفّضت استقرار أبواغ الطحالب مخبريًا بنسب تراوحت من 31٪ إلى 77٪ حسب شكل النقوش ومقياسها مقارنة بالسطح الأملس.</td>
-        <td><span class="chip range">نطاق أدبيات</span></td>
-        <td><a href="https://consensus.app/papers/details/35b4d4c727ff5a2899af3bc24175c35b/?utm_source=claude_desktop" target="_blank" rel="noopener">شوماخر وزملاؤه 2007</a></td>
+        <td data-i18n="sci15">خفض الالتصاق بهندسة السطح الدقيقة</td>
+        <td data-i18n="sci16">أسطح منسّجة بمقاييس دقيقة خفّضت استقرار أبواغ الطحالب مخبريًا بنسب تراوحت من 31٪ إلى 77٪ حسب شكل النقوش ومقياسها مقارنة بالسطح الأملس.</td>
+        <td><span class="chip range" data-i18n="chipRange">نطاق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/35b4d4c727ff5a2899af3bc24175c35b/?utm_source=claude_desktop" target="_blank" rel="noopener" data-i18n="sci3">شوماخر وزملاؤه 2007</a></td>
       </tr>
       <tr>
-        <td>تعطيل الطحالب بالمحفز الضوئي تحت الضوء المرئي</td>
-        <td>مركّب نتريد الكربون مع ثاني أكسيد التيتانيوم أزال نحو 88٪ من خلايا الطحالب الضارة وأكثر من نصف سمومها خلال ست ساعات من الضوء المرئي (في صورة مسحوق معلّق عالي التركيز — لذا سقف ادعاء الطلاء الثابت أدنى).</td>
-        <td><span class="chip lit">موثق أدبيات</span></td>
-        <td><a href="https://consensus.app/papers/details/ca544d1473725342932d7c06835f4dd8/?utm_source=claude_desktop" target="_blank" rel="noopener">سونغ وزملاؤه 2018</a></td>
+        <td data-i18n="sci17">تعطيل الطحالب بالمحفز الضوئي تحت الضوء المرئي</td>
+        <td data-i18n="sci18">مركّب نتريد الكربون مع ثاني أكسيد التيتانيوم أزال نحو 88٪ من خلايا الطحالب الضارة وأكثر من نصف سمومها خلال ست ساعات من الضوء المرئي (في صورة مسحوق معلّق عالي التركيز — لذا سقف ادعاء الطلاء الثابت أدنى).</td>
+        <td><span class="chip lit" data-i18n="chipLit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/ca544d1473725342932d7c06835f4dd8/?utm_source=claude_desktop" target="_blank" rel="noopener" data-i18n="sci4">سونغ وزملاؤه 2018</a></td>
       </tr>
       <tr>
-        <td>تعقيم شمسي بالوصلة غير المتجانسة</td>
-        <td>الوصلة بين المادتين تحسّن فصل الشحنات وترفع إنتاج الجذور المؤكسدة؛ تعطيل كامل لبكتيريا القولونية خلال ثلاثين دقيقة تحت ضوء شمسي.</td>
-        <td><span class="chip lit">موثق أدبيات</span></td>
-        <td><a href="https://consensus.app/papers/details/bd6e6c8863335108844cbe763cc31b44/?utm_source=claude_desktop" target="_blank" rel="noopener">ليو وزملاؤه 2019</a></td>
+        <td data-i18n="sci19">تعقيم شمسي بالوصلة غير المتجانسة</td>
+        <td data-i18n="sci20">الوصلة بين المادتين تحسّن فصل الشحنات وترفع إنتاج الجذور المؤكسدة؛ تعطيل كامل لبكتيريا القولونية خلال ثلاثين دقيقة تحت ضوء شمسي.</td>
+        <td><span class="chip lit" data-i18n="chipLit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/bd6e6c8863335108844cbe763cc31b44/?utm_source=claude_desktop" target="_blank" rel="noopener" data-i18n="sci5">ليو وزملاؤه 2019</a></td>
       </tr>
       <tr>
-        <td>التآزر بين النسيج والتحفيز الضوئي</td>
-        <td>الجمع بين نقوش السطح والنشاط الضوئي أعطى حماية أفضل من كل منهما منفردًا ضد الدياتومات والبكتيريا الملوِّثة، وخفض الالتصاق نحو 70٪ مع تعطيل أغلب الملتصق عند الإضاءة.</td>
-        <td><span class="chip lit">موثق أدبيات</span></td>
-        <td><a href="https://consensus.app/papers/details/8d5ca5474df6524e9e2b17c19582aeef/?utm_source=claude_desktop" target="_blank" rel="noopener">يي وزملاؤه 2022</a> · <a href="https://consensus.app/papers/details/186c541780fb5a7fa9067dc6f34e26fa/?utm_source=claude_desktop" target="_blank" rel="noopener">دوندار وزملاؤها 2018</a></td>
+        <td data-i18n="sci21">التآزر بين النسيج والتحفيز الضوئي</td>
+        <td data-i18n="sci22">الجمع بين نقوش السطح والنشاط الضوئي أعطى حماية أفضل من كل منهما منفردًا ضد الدياتومات والبكتيريا الملوِّثة، وخفض الالتصاق نحو 70٪ مع تعطيل أغلب الملتصق عند الإضاءة.</td>
+        <td><span class="chip lit" data-i18n="chipLit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/8d5ca5474df6524e9e2b17c19582aeef/?utm_source=claude_desktop" target="_blank" rel="noopener" data-i18n="sci6">يي وزملاؤه 2022</a> · <a href="https://consensus.app/papers/details/186c541780fb5a7fa9067dc6f34e26fa/?utm_source=claude_desktop" target="_blank" rel="noopener" data-i18n="sci7">دوندار وزملاؤها 2018</a></td>
       </tr>
       <tr>
-        <td>الفعالية القاتلة مشروطة بالإضاءة</td>
-        <td>المقارنة المباشرة بين الظلام والإضاءة أثبتت أن القتل الضوئي يحدث عند الإضاءة فقط، بينما يبقى أثر البنية السطحية قائمًا في الحالين — وهذا مجسَّد في «وضع الخزان المغلق» بالمختبر الافتراضي.</td>
-        <td><span class="chip lit">موثق أدبيات</span></td>
-        <td><a href="https://consensus.app/papers/details/bf730153184152cf993d3857fd76ecbe/?utm_source=claude_desktop" target="_blank" rel="noopener">ديبلوك وزملاؤها 2025</a></td>
+        <td data-i18n="sci23">الفعالية القاتلة مشروطة بالإضاءة</td>
+        <td data-i18n="sci24">المقارنة المباشرة بين الظلام والإضاءة أثبتت أن القتل الضوئي يحدث عند الإضاءة فقط، بينما يبقى أثر البنية السطحية قائمًا في الحالين — وهذا مجسَّد في «وضع الخزان المغلق» بالمختبر الافتراضي.</td>
+        <td><span class="chip lit" data-i18n="chipLit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/bf730153184152cf993d3857fd76ecbe/?utm_source=claude_desktop" target="_blank" rel="noopener" data-i18n="sci8">ديبلوك وزملاؤها 2025</a></td>
       </tr>
       <tr>
-        <td>الصمود الميداني للمصفوفة السيليكية</td>
-        <td>معالجة تيتانيوم في مصفوفة سيليكا حافظت ميدانيًا على خفض النمو الحيوي بنسبة 61٪ بعد أربع سنوات، مع تراجع ملموس بعد أول سنتين — مدخل واقعي لجدولة إعادة الطلاء.</td>
-        <td><span class="chip lit">موثق أدبيات</span></td>
-        <td><a href="https://consensus.app/papers/details/585e08a9999353baac996e435ec1ff31/?utm_source=claude_desktop" target="_blank" rel="noopener">جيميلي وزملاؤها 2022</a></td>
+        <td data-i18n="sci25">الصمود الميداني للمصفوفة السيليكية</td>
+        <td data-i18n="sci26">معالجة تيتانيوم في مصفوفة سيليكا حافظت ميدانيًا على خفض النمو الحيوي بنسبة 61٪ بعد أربع سنوات، مع تراجع ملموس بعد أول سنتين — مدخل واقعي لجدولة إعادة الطلاء.</td>
+        <td><span class="chip lit" data-i18n="chipLit">موثق أدبيات</span></td>
+        <td><a href="https://consensus.app/papers/details/585e08a9999353baac996e435ec1ff31/?utm_source=claude_desktop" target="_blank" rel="noopener" data-i18n="sci9">جيميلي وزملاؤها 2022</a></td>
       </tr>
       <tr>
-        <td>اختراق الضوء لعمود الماء</td>
-        <td>الأشعة فوق البنفسجية تتوهّن في الماء أسرع بكثير من الطيف المرئي؛ ولذلك فإن توسيع امتصاص المحفز نحو المرئي هو ما يجعل العمل تحت سطح الماء ممكنًا أصلًا.</td>
-        <td><span class="chip lit">فيزياء موثقة</span></td>
-        <td>بصريات المياه الأساسية</td>
+        <td data-i18n="sci27">اختراق الضوء لعمود الماء</td>
+        <td data-i18n="sci28">الأشعة فوق البنفسجية تتوهّن في الماء أسرع بكثير من الطيف المرئي؛ ولذلك فإن توسيع امتصاص المحفز نحو المرئي هو ما يجعل العمل تحت سطح الماء ممكنًا أصلًا.</td>
+        <td><span class="chip lit" data-i18n="chipPhys">فيزياء موثقة</span></td>
+        <td data-i18n="sci29">بصريات المياه الأساسية</td>
       </tr>
     </table>
     </div>
 
-    <h2>ثوابت المحاكاة ووسم كل قيمة</h2>
+    <h2 data-i18n="sci30">ثوابت المحاكاة ووسم كل قيمة</h2>
     <div class="tblScroll">
     <table class="ev">
-      <tr><th>الثابت</th><th>قيمته في المحاكي</th><th>وسمه</th></tr>
-      <tr><td>معدل الالتصاق الأساسي على السطح الأملس</td><td class="num">1.1 وحدة مؤشر يوميًا</td><td><span class="chip demo">توضيحي</span></td></tr>
-      <tr><td>خفض الالتصاق بفعل النسيج الدقيق</td><td class="num">65٪ (منتصف نطاق الأدبيات من 31٪ إلى 77٪)</td><td><span class="chip range">نطاق أدبيات</span></td></tr>
-      <tr><td>معدل نمو الغشاء الحيوي الذاتي</td><td class="num">6٪ يوميًا (نموذج لوجستي)</td><td><span class="chip demo">توضيحي</span></td></tr>
-      <tr><td>ثابت الإزالة الضوئية — من الدرجة الأولى: نسبةٌ من الغشاء الفتي تُزال يوميًا عند شمس كاملة وماء صافٍ</td><td class="num">50٪ يوميًا</td><td><span class="chip demo">توضيحي</span></td></tr>
-      <tr><td>عتبة «التدريع»: الغشاء الناضج يحجب المحفز تدريجيًا حتى تتلاشى الإزالة عند مؤشر</td><td class="num">60</td><td><span class="chip demo">توضيحي — يجسّد مبدأ «وقاية لا معالجة»</span></td></tr>
-      <tr><td>عتبة التنظيف الاضطراري وإعادة الضبط بعده</td><td class="num">85 ثم العودة إلى 8</td><td><span class="chip demo">إجرائي للمحاكاة</span></td></tr>
-      <tr><td>توهين الضوء بالعكارة (صافٍ / متوسط / معكّر)</td><td class="num">1.0 / 0.7 / 0.4</td><td><span class="chip demo">الاتجاه فيزيائي موثق والقيم توضيحية</span></td></tr>
-      <tr><td>لترات الماء الموفرة لكل تنظيف مُجنَّب</td><td>لا قيمة معلنة عمدًا</td><td><span class="chip pilot">يُقاس في البايلوت</span></td></tr>
+      <tr><th data-i18n="sci31">الثابت</th><th data-i18n="sci32">قيمته في المحاكي</th><th data-i18n="sci33">وسمه</th></tr>
+      <tr><td data-i18n="sci34">معدل الالتصاق الأساسي على السطح الأملس</td><td class="num" data-i18n="sci35">1.1 وحدة مؤشر يوميًا</td><td><span class="chip demo" data-i18n="chipDemo">توضيحي</span></td></tr>
+      <tr><td data-i18n="sci36">خفض الالتصاق بفعل النسيج الدقيق</td><td class="num" data-i18n="sci37">65٪ (منتصف نطاق الأدبيات من 31٪ إلى 77٪)</td><td><span class="chip range" data-i18n="chipRange">نطاق أدبيات</span></td></tr>
+      <tr><td data-i18n="sci38">معدل نمو الغشاء الحيوي الذاتي</td><td class="num" data-i18n="sci39">6٪ يوميًا (نموذج لوجستي)</td><td><span class="chip demo" data-i18n="chipDemo">توضيحي</span></td></tr>
+      <tr><td data-i18n="sci40">ثابت الإزالة الضوئية — من الدرجة الأولى: نسبةٌ من الغشاء الفتي تُزال يوميًا عند شمس كاملة وماء صافٍ</td><td class="num" data-i18n="sci41">50٪ يوميًا</td><td><span class="chip demo" data-i18n="chipDemo">توضيحي</span></td></tr>
+      <tr><td data-i18n="sci42">عتبة «التدريع»: الغشاء الناضج يحجب المحفز تدريجيًا حتى تتلاشى الإزالة عند مؤشر</td><td class="num">60</td><td><span class="chip demo" data-i18n="sci1">توضيحي — يجسّد مبدأ «وقاية لا معالجة»</span></td></tr>
+      <tr><td data-i18n="sci43">عتبة التنظيف الاضطراري وإعادة الضبط بعده</td><td class="num" data-i18n="sci44">85 ثم العودة إلى 8</td><td><span class="chip demo" data-i18n="chipProc">إجرائي للمحاكاة</span></td></tr>
+      <tr><td data-i18n="sci45">توهين الضوء بالعكارة (صافٍ / متوسط / معكّر)</td><td class="num">1.0 / 0.7 / 0.4</td><td><span class="chip demo" data-i18n="sci2">الاتجاه فيزيائي موثق والقيم توضيحية</span></td></tr>
+      <tr><td data-i18n="sci46">لترات الماء الموفرة لكل تنظيف مُجنَّب</td><td data-i18n="sci47">لا قيمة معلنة عمدًا</td><td><span class="chip pilot" data-i18n="chipPilot">يُقاس في البايلوت</span></td></tr>
     </table>
     </div>
 
-    <h2>شرح المصطلحات</h2>
+    <h2 data-i18n="sci48">شرح المصطلحات</h2>
     <dl class="gloss">
-      <dt>الغشاء الحيوي</dt><dd>طبقة حية لزجة تبنيها الكائنات الدقيقة على الأسطح المبتلة <span class="ltr">(biofilm)</span>؛ تبدأ خلال ساعات وتنضج خلال أيام، وهي مهد استيطان الطحالب.</dd>
-      <dt>طبقة التكييف</dt><dd>أول ما يلتصق بالسطح خلال دقائق: بروتينات وسكريات ذائبة تمهّد الأرضية لالتصاق البكتيريا.</dd>
-      <dt>المحفز الضوئي</dt><dd>مادة شبه موصلة تمتص الضوء فتطلق تفاعلات أكسدة على سطحها دون أن تُستهلك هي نفسها.</dd>
-      <dt>أنواع الأكسجين التفاعلية</dt><dd>جذور مؤكسدة قصيرة العمر <span class="ltr">(ROS)</span> تتولد على سطح المحفز المضاء وتفكك المواد العضوية الملاصقة؛ مداها أقل من ميكرومتر، فهي تعمل حيث يتكون الغشاء بالضبط.</dd>
-      <dt>الوصلة غير المتجانسة</dt><dd>تلامس بين مادتين شبه موصلتين مختلفتين يفصل الشحنات المتولدة ضوئيًا فيقلل التحامها من جديد ويرفع إنتاج الجذور.</dd>
-      <dt>الأناتاز</dt><dd>الطور البلوري الأنشط ضوئيًا من ثاني أكسيد التيتانيوم <span class="ltr">(TiO₂ anatase)</span>، يمتص فوق البنفسجي أساسًا.</dd>
-      <dt>نتريد الكربون الجرافيتي</dt><dd>محفز عضوي رقائقي رخيص خالٍ من المعادن <span class="ltr">(g-C₃N₄)</span> يمتص الطيف المرئي، فيمدّ عمل الطلاء إلى الضوء الذي يخترق الماء فعلًا.</dd>
-      <dt>العكارة</dt><dd>مقياس تشتت الضوء في الماء بفعل العوالق؛ كلما ارتفعت قلّ الضوء الواصل إلى السطح المطلي.</dd>
-      <dt>مؤشر التراكم الحيوي</dt><dd>رقم نسبي في هذا المحاكي من صفر (سطح نظيف) إلى مئة (تلوث كامل)؛ ليس وحدة قياس معيارية، ويُستبدل في البايلوت بقياس الكلوروفيل والعد الخلوي.</dd>
+      <dt data-i18n="sci49">الغشاء الحيوي</dt><dd data-i18n="sci50">طبقة حية لزجة تبنيها الكائنات الدقيقة على الأسطح المبتلة <span class="ltr">(biofilm)</span>؛ تبدأ خلال ساعات وتنضج خلال أيام، وهي مهد استيطان الطحالب.</dd>
+      <dt data-i18n="sci51">طبقة التكييف</dt><dd data-i18n="sci52">أول ما يلتصق بالسطح خلال دقائق: بروتينات وسكريات ذائبة تمهّد الأرضية لالتصاق البكتيريا.</dd>
+      <dt data-i18n="sci53">المحفز الضوئي</dt><dd data-i18n="sci54">مادة شبه موصلة تمتص الضوء فتطلق تفاعلات أكسدة على سطحها دون أن تُستهلك هي نفسها.</dd>
+      <dt data-i18n="sci55">أنواع الأكسجين التفاعلية</dt><dd data-i18n="sci56">جذور مؤكسدة قصيرة العمر <span class="ltr">(ROS)</span> تتولد على سطح المحفز المضاء وتفكك المواد العضوية الملاصقة؛ مداها أقل من ميكرومتر، فهي تعمل حيث يتكون الغشاء بالضبط.</dd>
+      <dt data-i18n="sci57">الوصلة غير المتجانسة</dt><dd data-i18n="sci58">تلامس بين مادتين شبه موصلتين مختلفتين يفصل الشحنات المتولدة ضوئيًا فيقلل التحامها من جديد ويرفع إنتاج الجذور.</dd>
+      <dt data-i18n="sci59">الأناتاز</dt><dd data-i18n="sci60">الطور البلوري الأنشط ضوئيًا من ثاني أكسيد التيتانيوم <span class="ltr">(TiO₂ anatase)</span>، يمتص فوق البنفسجي أساسًا.</dd>
+      <dt data-i18n="sci61">نتريد الكربون الجرافيتي</dt><dd data-i18n="sci62">محفز عضوي رقائقي رخيص خالٍ من المعادن <span class="ltr">(g-C₃N₄)</span> يمتص الطيف المرئي، فيمدّ عمل الطلاء إلى الضوء الذي يخترق الماء فعلًا.</dd>
+      <dt data-i18n="sci63">العكارة</dt><dd data-i18n="sci64">مقياس تشتت الضوء في الماء بفعل العوالق؛ كلما ارتفعت قلّ الضوء الواصل إلى السطح المطلي.</dd>
+      <dt data-i18n="sci65">مؤشر التراكم الحيوي</dt><dd data-i18n="sci66">رقم نسبي في هذا المحاكي من صفر (سطح نظيف) إلى مئة (تلوث كامل)؛ ليس وحدة قياس معيارية، ويُستبدل في البايلوت بقياس الكلوروفيل والعد الخلوي.</dd>
     </dl>
 
   </div>
 </section>
 
 <footer class="foot">
-  <span>سولارشيلد · فريق Thea — مياهثون 2026</span>
-  <span>نسخة توضيحية · الثوابت تُعاير بالقياسات المخبرية</span>
+  <span data-i18n="sci67">سولارشيلد · فريق Thea — مياهثون 2026</span>
+  <span data-i18n="sci68">نسخة توضيحية · الثوابت تُعاير بالقياسات المخبرية</span>
 </footer>
 
 </div>
 
+<script>
+window.I18N_EN = {
+  back: "← All models · Team Thea",
+
+  /* الترويسة والتبويبات */
+  logoLabel: "SolarShield logo: a shield combining a sun and a water wave",
+  h1: "SolarShield Simulator",
+  tagline: "How the coating uses sunlight to protect water-contact surfaces — an interactive look at the mechanism",
+  tabsLabel: "View modes",
+  tabStory: "Story",
+  tabLab: "Virtual lab",
+  tabSci: "Scientific basis",
+
+  /* القصة */
+  stepsLabel: "Story steps",
+  prev: "Previous",
+
+  /* المختبر */
+  sunLbl: "Solar irradiance",
+  turbLbl: "Water clarity",
+  turbClear: "Clear — nearly all the light gets through",
+  turbMid: "Moderately turbid — about two-thirds of the light gets through",
+  turbHigh: "Turbid — less than half of the light gets through",
+  closedLbl: "Closed-tank mode (no light at all)",
+  liveLbl: "Live run",
+  play: "Replay live",
+  pause: "Pause",
+  chartTitle: "Biofouling index over eight weeks",
+  chartLabel: "Biofouling index curves for the four surfaces over 56 days",
+  integrity: "<b>An illustrative simulation of the mechanism, not laboratory measurements.</b> The trends and phenomena are documented in the peer-reviewed literature, whereas the growth and removal rates are illustrative values that will be calibrated against laboratory measurements as soon as they are available. The “biofouling index” is a relative number from 0 to 100, not a physical unit. See the “Scientific basis” tab for the label attached to each value.",
+
+  /* وسوم الأدلة */
+  chipLit: "Literature-documented",
+  chipRange: "Literature range",
+  chipDemo: "Illustrative",
+  chipPhys: "Established physics",
+  chipPilot: "Measured in the pilot",
+  chipProc: "Simulation procedure",
+  sci1: "Illustrative — embodies the “prevention, not cure” principle",
+  sci2: "Trend is documented physics; values are illustrative",
+
+  /* جدول الأدلة */
+  sci10: "What do we take from the peer-reviewed literature?",
+  sci11: "Mechanism",
+  sci12: "Evidence summary",
+  sci13: "Label",
+  sci14: "Source",
+  sci15: "Lower attachment through surface micro-engineering",
+  sci16: "Surfaces micro-textured at fine scales reduced algal spore settlement in the laboratory by 31% to 77%, depending on pattern shape and scale, compared with a smooth surface.",
+  sci3: "Schumacher et al. 2007",
+  sci17: "Photocatalytic inactivation of algae under visible light",
+  sci18: "A graphitic carbon nitride–titanium dioxide composite removed about 88% of harmful algal cells and more than half of their toxins within six hours of visible light (as a concentrated suspended powder — so the ceiling for claims about a fixed coating is lower).",
+  sci4: "Song et al. 2018",
+  sci19: "Solar disinfection via the heterojunction",
+  sci20: "The junction between the two materials improves charge separation and raises the yield of reactive oxygen species; complete inactivation of <i>Escherichia coli</i> within thirty minutes under solar light.",
+  sci5: "Liu et al. 2019",
+  sci21: "Synergy between texture and photocatalysis",
+  sci22: "Combining surface patterns with photocatalytic activity protected better than either alone against diatoms and fouling bacteria, cutting attachment by about 70% and inactivating most of the attached cells under illumination.",
+  sci6: "Yi et al. 2022",
+  sci7: "Dundar Arisoy et al. 2018",
+  sci23: "The killing effect depends on illumination",
+  sci24: "A direct dark-versus-light comparison showed that photocatalytic killing occurs only under illumination, while the effect of the surface structure persists in both conditions — this is reproduced by the “closed-tank mode” in the virtual lab.",
+  sci8: "Deblock et al. 2025",
+  sci25: "Field durability of the silica matrix",
+  sci26: "A titania treatment in a silica matrix still reduced biological growth by 61% in the field after four years, with a marked decline after the first two years — a realistic input for scheduling recoating.",
+  sci9: "Gemelli et al. 2022",
+  sci27: "Light penetration through the water column",
+  sci28: "Ultraviolet light is attenuated in water much faster than the visible spectrum; this is why extending the catalyst’s absorption into the visible range is what makes underwater operation possible at all.",
+  sci29: "Fundamentals of water optics",
+
+  /* جدول الثوابت */
+  sci30: "Simulation constants and the label on each value",
+  sci31: "Constant",
+  sci32: "Value in the simulator",
+  sci33: "Label",
+  sci34: "Baseline attachment rate on a smooth surface",
+  sci35: "1.1 index units per day",
+  sci36: "Attachment reduction from the micro-texture",
+  sci37: "65% (mid-point of the 31%–77% literature range)",
+  sci38: "Intrinsic biofilm growth rate",
+  sci39: "6% per day (logistic model)",
+  sci40: "Photocatalytic removal constant — first order: the fraction of young biofilm removed per day under full sun and clear water",
+  sci41: "50% per day",
+  sci42: "“Shielding” threshold: a mature biofilm progressively covers the catalyst until removal vanishes at an index of",
+  sci43: "Emergency-cleaning threshold and reset after cleaning",
+  sci44: "85, then reset to 8",
+  sci45: "Light attenuation by turbidity (clear / moderate / turbid)",
+  sci46: "Liters of water saved per avoided cleaning",
+  sci47: "Deliberately not stated",
+
+  /* المصطلحات */
+  sci48: "Glossary",
+  sci49: "Biofilm",
+  sci50: "A slimy living layer that microorganisms build on wet surfaces; it starts within hours and matures within days, and it is the cradle of algal colonization.",
+  sci51: "Conditioning film",
+  sci52: "The first material to adhere to a surface, within minutes: dissolved proteins and polysaccharides that prepare the ground for bacterial attachment.",
+  sci53: "Photocatalyst",
+  sci54: "A semiconductor material that absorbs light and drives oxidation reactions on its surface without itself being consumed.",
+  sci55: "Reactive oxygen species",
+  sci56: "Short-lived oxidizing radicals (ROS) generated on the illuminated catalyst surface that break down adjacent organic matter; their range is less than a micrometer, so they act exactly where the biofilm forms.",
+  sci57: "Heterojunction",
+  sci58: "An interface between two different semiconductors that separates photogenerated charges, reducing their recombination and increasing radical production.",
+  sci59: "Anatase",
+  sci60: "The most photoactive crystalline phase of titanium dioxide (TiO₂); it absorbs mainly ultraviolet light.",
+  sci61: "Graphitic carbon nitride",
+  sci62: "An inexpensive, metal-free, layered polymeric photocatalyst (g-C₃N₄) that absorbs visible light, extending the coating’s action to the light that actually penetrates water.",
+  sci63: "Turbidity",
+  sci64: "A measure of light scattering in water caused by suspended particles; the higher it is, the less light reaches the coated surface.",
+  sci65: "Biofouling index",
+  sci66: "A relative number in this simulator, from 0 (clean surface) to 100 (fully fouled); it is not a standard unit of measurement, and in the pilot it will be replaced by chlorophyll-a measurements and cell counts.",
+
+  /* التذييل */
+  sci67: "SolarShield · Team Thea — Miyahthon 2026",
+  sci68: "Illustrative version · constants to be calibrated against laboratory measurements"
+};
+</script>
+<script src="i18n.js"></script>
 <script>
 "use strict";
 
@@ -457,32 +576,37 @@ const texture = (x,y,w,n=14) => {
 
 const scenes = [
 
-/* 1 — كيف يتلوث السطح */
+/* 1 — كيف يتلوث السطح (بالعربية من اليمين إلى اليسار، وبالإنجليزية من اليسار إلى اليمين) */
 () => {
-  const panel=(x,label,content)=>`
+  /* التسمية بسطر واحد بالعربية، وبسطرين بالإنجليزية (المرحلة ثم وصفها) كي تتسع في عرض اللوحة */
+  const panel=(x,label,content,enTop,enSub)=>`
     ${content}
-    <text x="${x+80}" y="392" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${label}</text>`;
+    <text x="${x+80}" y="392" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${L(label,
+      `<tspan x="${x+80}" y="384">${enTop}</tspan><tspan x="${x+80}" y="404" font-size="13.5" font-weight="500" fill="var(--ink2)">${enSub}</tspan>`)}</text>`;
   const base=(x)=>`<rect x="${x}" y="290" width="160" height="52" rx="4" fill="var(--slab)"/>`;
-  return `<svg viewBox="0 0 760 420" role="img" aria-label="أربع مراحل لتلوث سطح مغمور: طبقة التكييف خلال دقائق، ثم بكتيريا خلال ساعات، ثم غشاء ناضج خلال أيام، ثم طحالب خلال أسابيع">
+  /* مواضع اللوحات: دقائق، ساعات، أيام، أسابيع */
+  const [xm,xh,xd,xw] = L([585,393,201,9], [9,201,393,585]);
+  return `<svg viewBox="0 0 760 420" role="img" aria-label="${L("أربع مراحل لتلوث سطح مغمور: طبقة التكييف خلال دقائق، ثم بكتيريا خلال ساعات، ثم غشاء ناضج خلال أيام، ثم طحالب خلال أسابيع", "Four stages of fouling on a submerged surface: a conditioning film within minutes, then bacteria within hours, a mature biofilm within days, and algae within weeks")}">
     ${waterBand(64)}
     ${sunG(66,52,18,"")}
-    <text x="380" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">التسلسل الزمني للتلوث الحيوي — من اليمين إلى اليسار</text>
-    ${panel(585,"دقائق: طبقة التكييف", base(585)+`<rect x="585" y="284" width="160" height="7" rx="3" fill="var(--sun)" opacity=".65"/>`)}
-    ${panel(393,"ساعات: بكتيريا رائدة", base(393)+`<rect x="393" y="284" width="160" height="7" rx="3" fill="var(--sun)" opacity=".65"/>`+
-      [417,445,477,509,531].map((bx,i)=>`<ellipse cx="${bx}" cy="${278-(i%2)*4}" rx="6.5" ry="4" fill="var(--ink2)"/>`).join(""))}
-    ${panel(201,"أيام: غشاء حيوي ناضج", base(201)+`<path d="M201 288 q20 -14 40 -4 t40 -6 t40 2 t40 -6 v18 h-160 Z" fill="var(--algae)" opacity=".45"/>`+
-      [221,255,287,321,341].map((bx,i)=>`<ellipse cx="${bx}" cy="${276-(i%3)*5}" rx="6" ry="4" fill="var(--ink2)"/>`).join(""))}
-    ${panel(9,"أسابيع: استيطان الطحالب", base(9)+`<path d="M9 286 q20 -16 40 -6 t40 -8 t40 4 t40 -8 v22 h-160 Z" fill="var(--algae)" opacity=".6"/>`+
-      algaeTuft(45,288,1.15)+algaeTuft(85,286,1.35)+algaeTuft(127,288,1.1)+algaeTuft(155,287,0.9))}
+    <text x="380" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">${L("التسلسل الزمني للتلوث الحيوي — من اليمين إلى اليسار", "Biofouling timeline — from left to right")}</text>
+    ${panel(xm,"دقائق: طبقة التكييف", base(xm)+`<rect x="${xm}" y="284" width="160" height="7" rx="3" fill="var(--sun)" opacity=".65"/>`, "Minutes", "conditioning film")}
+    ${panel(xh,"ساعات: بكتيريا رائدة", base(xh)+`<rect x="${xh}" y="284" width="160" height="7" rx="3" fill="var(--sun)" opacity=".65"/>`+
+      [24,52,84,116,138].map((o,i)=>`<ellipse cx="${xh+o}" cy="${278-(i%2)*4}" rx="6.5" ry="4" fill="var(--ink2)"/>`).join(""), "Hours", "pioneer bacteria")}
+    ${panel(xd,"أيام: غشاء حيوي ناضج", base(xd)+`<path d="M${xd} 288 q20 -14 40 -4 t40 -6 t40 2 t40 -6 v18 h-160 Z" fill="var(--algae)" opacity=".45"/>`+
+      [20,54,86,120,140].map((o,i)=>`<ellipse cx="${xd+o}" cy="${276-(i%3)*5}" rx="6" ry="4" fill="var(--ink2)"/>`).join(""), "Days", "mature biofilm")}
+    ${panel(xw,"أسابيع: استيطان الطحالب", base(xw)+`<path d="M${xw} 286 q20 -16 40 -6 t40 -8 t40 4 t40 -8 v22 h-160 Z" fill="var(--algae)" opacity=".6"/>`+
+      algaeTuft(xw+36,288,1.15)+algaeTuft(xw+76,286,1.35)+algaeTuft(xw+118,288,1.1)+algaeTuft(xw+146,287,0.9), "Weeks", "algal colonization")}
     <g stroke="var(--ink2)" stroke-width="2" marker-end="url(#arr1)">
-      <line x1="575" y1="316" x2="561" y2="316"/><line x1="383" y1="316" x2="369" y2="316"/><line x1="191" y1="316" x2="177" y2="316"/>
+      ${L(`<line x1="575" y1="316" x2="561" y2="316"/><line x1="383" y1="316" x2="369" y2="316"/><line x1="191" y1="316" x2="177" y2="316"/>`,
+          `<line x1="179" y1="316" x2="193" y2="316"/><line x1="371" y1="316" x2="385" y2="316"/><line x1="563" y1="316" x2="577" y2="316"/>`)}
     </g>
     <defs><marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="var(--ink2)"/></marker></defs>
   </svg>`;
 },
 
 /* 2 — بنية الطلاء */
-() => `<svg viewBox="0 0 760 420" role="img" aria-label="مقطع عرضي في الطلاء: ركيزة، ثم مصفوفة رابطة غير عضوية تحتضن جسيمات المحفز المكشوفة جزئيًا للماء والضوء، وسطح منسّج بنقوش دقيقة">
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="${L("مقطع عرضي في الطلاء: ركيزة، ثم مصفوفة رابطة غير عضوية تحتضن جسيمات المحفز المكشوفة جزئيًا للماء والضوء، وسطح منسّج بنقوش دقيقة", "Cross-section of the coating: a substrate, then an inorganic binder matrix holding catalyst particles partly exposed to water and light, topped by a micro-textured surface")}">
   ${waterBand(60)}
   ${sunG(80,52,18,"")}
   <g stroke="var(--sun)" stroke-width="2.5" stroke-linecap="round" opacity=".85">
@@ -495,34 +619,34 @@ const scenes = [
      <circle cx="${cx}" cy="${i%2? 244:252}" r="11" fill="var(--s-catalyst)"/>
      <circle cx="${cx+13}" cy="${i%2? 252:244}" r="8" fill="var(--teal)"/>`).join("")}
   <g font-family="IBM Plex Sans Arabic" font-size="14" fill="var(--ink)">
-    <text x="700" y="340" text-anchor="middle" font-weight="700">الركيزة</text>
-    <text x="700" y="358" text-anchor="middle" font-size="12" fill="var(--ink2)">خرسانة أو فيبرجلاس</text>
-    <text x="380" y="410" text-anchor="middle" font-weight="700">مصفوفة رابطة غير عضوية مقاومة للجذور المؤكسدة</text>
-    <text x="380" y="226" text-anchor="middle" font-weight="700">نسيج دقيق يقلل نقاط الالتصاق</text>
-    <text x="160" y="180" text-anchor="middle" font-weight="700" fill="var(--sun-ink)">ضوء الشمس</text>
-    <text x="612" y="290" text-anchor="middle" font-size="13"><tspan font-weight="700">جسيمات المحفز الثنائي</tspan></text>
-    <text x="612" y="307" text-anchor="middle" font-size="12" fill="var(--ink2)">مثبتة داخل الطلاء ومكشوفة للماء والضوء</text>
+    <text x="700" y="340" text-anchor="middle" font-weight="700">${L("الركيزة","Substrate")}</text>
+    <text x="700" y="358" text-anchor="middle" font-size="12" fill="var(--ink2)">${L("خرسانة أو فيبرجلاس", `<tspan x="700" y="358">Concrete or</tspan><tspan x="700" y="373">fiberglass</tspan>`)}</text>
+    <text x="380" y="410" text-anchor="middle" font-weight="700">${L("مصفوفة رابطة غير عضوية مقاومة للجذور المؤكسدة","Inorganic binder matrix that withstands reactive oxygen species")}</text>
+    <text x="380" y="226" text-anchor="middle" font-weight="700">${L("نسيج دقيق يقلل نقاط الالتصاق","Micro-texture that reduces attachment points")}</text>
+    <text x="160" y="180" text-anchor="middle" font-weight="700" fill="var(--sun-ink)">${L("ضوء الشمس","Sunlight")}</text>
+    <text x="612" y="290" text-anchor="middle" font-size="13"><tspan font-weight="700">${L("جسيمات المحفز الثنائي","Dual-catalyst particles")}</tspan></text>
+    <text x="612" y="307" text-anchor="middle" font-size="12" fill="var(--ink2)">${L("مثبتة داخل الطلاء ومكشوفة للماء والضوء","Embedded, yet exposed to water and light")}</text>
   </g>
   <line x1="612" y1="272" x2="638" y2="252" stroke="var(--ink2)" stroke-width="1.5"/>
   <line x1="380" y1="230" x2="380" y2="238" stroke="var(--ink2)" stroke-width="1.5"/>
 </svg>`,
 
-/* 3 — الدفاع الأول: النسيج */
-() => `<svg viewBox="0 0 760 420" role="img" aria-label="مقارنة: على السطح الأملس تلتصق الخلية بكامل قاعها، وعلى السطح المنسّج لا تجد إلا نقاط تماس قليلة فيجرفها التيار">
+/* 3 — الدفاع الأول: النسيج (بالإنجليزية تتبادل اللوحتان موضعيهما كي تُقرأ المقارنة من اليسار: الأملس أولًا ثم المنسّج) */
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="${L("مقارنة: على السطح الأملس تلتصق الخلية بكامل قاعها، وعلى السطح المنسّج لا تجد إلا نقاط تماس قليلة فيجرفها التيار", "Comparison: on a smooth surface the cell adheres with its whole underside; on a textured surface it finds only a few contact points and the current sweeps it away")}">
   ${waterBand(46)}
-  <text x="380" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">لماذا يعجز الطحلب عن الاستقرار؟</text>
+  <text x="380" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">${L("لماذا يعجز الطحلب عن الاستقرار؟","Why can’t algae get a foothold?")}</text>
 
-  <g>
+  <g${L("",' transform="translate(-365 0)"')}>
     <rect x="420" y="300" width="290" height="46" rx="4" fill="var(--slab)"/>
     <rect x="420" y="292" width="290" height="10" rx="3" fill="var(--ink2)" opacity=".55"/>
     <ellipse cx="565" cy="281" rx="34" ry="15" fill="var(--algae)"/>
     <g stroke="var(--danger)" stroke-width="2.5" stroke-linecap="round">
       ${[537,551,565,579,593].map(x=>`<line x1="${x}" y1="293" x2="${x}" y2="299"/>`).join("")}
     </g>
-    <text x="565" y="375" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح أملس: تماس كامل والتصاق محكم</text>
+    <text x="565" y="375" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${L("سطح أملس: تماس كامل والتصاق محكم","Smooth: full contact, firm adhesion")}</text>
   </g>
 
-  <g>
+  <g${L("",' transform="translate(365 0)"')}>
     <rect x="55" y="300" width="290" height="46" rx="4" fill="var(--slab)"/>
     ${texture(55,300,290,15)}
     <g class="driftUp">
@@ -532,44 +656,44 @@ const scenes = [
       </g>
     </g>
     <path d="M258 250 q34 10 44 34" fill="none" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#arr3)"/>
-    <text x="298" y="240" text-anchor="middle" font-size="13" fill="var(--teal)" font-weight="700" font-family="IBM Plex Sans Arabic">التيار يجرفها</text>
-    <text x="200" y="375" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح منسّج: نقطتا تماس فقط</text>
+    <text x="298" y="240" text-anchor="middle" font-size="13" fill="var(--teal)" font-weight="700" font-family="IBM Plex Sans Arabic">${L("التيار يجرفها","Current sweeps it away")}</text>
+    <text x="200" y="375" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${L("سطح منسّج: نقطتا تماس فقط","Textured: only two contact points")}</text>
   </g>
 
   <defs><marker id="arr3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--teal)"/></marker></defs>
 </svg>`,
 
 /* 4 — الدفاع الثاني: التحفيز الضوئي */
-() => `<svg viewBox="0 0 760 420" role="img" aria-label="فوتون يضرب زوج المحفز فتنفصل الشحنات عبر الوصلة وتتولد جذور مؤكسدة على السطح تفكك المادة العضوية الملاصقة">
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="${L("فوتون يضرب زوج المحفز فتنفصل الشحنات عبر الوصلة وتتولد جذور مؤكسدة على السطح تفكك المادة العضوية الملاصقة", "A photon strikes the catalyst pair; the charges separate across the junction and reactive oxygen species form at the surface, breaking down adjacent organic matter")}">
   ${waterBand(52)}
   ${sunG(84,54,18,"")}
   <g stroke="var(--sun)" stroke-width="3" stroke-linecap="round">
     <line x1="130" y1="80" x2="330" y2="205" class="pulse"/>
   </g>
-  <text x="205" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">فوتون مرئي</text>
+  <text x="205" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">${L("فوتون مرئي","Visible photon")}</text>
 
   <circle cx="360" cy="252" r="46" fill="var(--s-catalyst)"/>
   <path d="M418 214 l30 17 v34 l-30 17 -30 -17 v-34 Z" fill="var(--teal)"/>
-  <text x="360" y="257" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="IBM Plex Sans Arabic">أكسيد التيتانيوم</text>
-  <text x="418" y="253" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="IBM Plex Sans Arabic">نتريد الكربون</text>
+  <text x="360" y="257" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="IBM Plex Sans Arabic">${L("أكسيد التيتانيوم","TiO₂")}</text>
+  <text x="418" y="253" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="IBM Plex Sans Arabic">${L("نتريد الكربون","g-C₃N₄")}</text>
   <line x1="399" y1="252" x2="392" y2="252" stroke="var(--ink)" stroke-width="2"/>
 
   <g font-family="IBM Plex Sans Arabic" font-size="13" font-weight="700">
     <circle cx="452" cy="200" r="11" fill="none" stroke="var(--teal)" stroke-width="2.5"/><text x="452" y="205" text-anchor="middle" fill="var(--teal)">−</text>
     <circle cx="330" cy="310" r="11" fill="none" stroke="var(--danger)" stroke-width="2.5"/><text x="330" y="315" text-anchor="middle" fill="var(--danger)">+</text>
-    <text x="508" y="188" text-anchor="middle" fill="var(--ink)">إلكترون</text>
-    <text x="292" y="336" text-anchor="middle" fill="var(--ink)">فجوة موجبة</text>
+    <text x="508" y="188" text-anchor="middle" fill="var(--ink)">${L("إلكترون","Electron")}</text>
+    <text x="292" y="336" text-anchor="middle" fill="var(--ink)">${L("فجوة موجبة","Positive hole")}</text>
   </g>
   <path d="M408 226 q26 -14 34 -20" fill="none" stroke="var(--teal)" stroke-width="2" marker-end="url(#arr4t)"/>
   <path d="M346 288 q-8 12 -8 14" fill="none" stroke="var(--danger)" stroke-width="2" marker-end="url(#arr4d)"/>
-  <text x="388" y="180" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">الوصلة تفصل الشحنات فلا تلتحم من جديد</text>
+  <text x="388" y="${L(180,170)}" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">${L("الوصلة تفصل الشحنات فلا تلتحم من جديد","Junction keeps charges apart")}</text>
 
   ${rosSpark(520,262,1.2)} ${rosSpark(556,238,0.9)} ${rosSpark(548,292,1)}
-  <text x="540" y="330" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">جذور مؤكسدة على السطح مباشرة</text>
+  <text x="540" y="330" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">${L("جذور مؤكسدة على السطح مباشرة","ROS form right at the surface")}</text>
 
   <g opacity=".85">
     <path d="M628 250 q10 -18 30 -12 q16 -14 30 0 q14 -4 12 14 q6 16 -12 18 q-8 12 -24 6 q-18 6 -24 -8 q-16 -2 -12 -18 Z" fill="var(--algae)" opacity=".55" stroke-dasharray="5 4" stroke="var(--algae)"/>
-    <text x="660" y="300" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="IBM Plex Sans Arabic" font-weight="700">المادة العضوية تتفكك</text>
+    <text x="660" y="300" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="IBM Plex Sans Arabic" font-weight="700">${L("المادة العضوية تتفكك","Organic matter degrades")}</text>
   </g>
   <line x1="574" y1="262" x2="612" y2="258" stroke="var(--sun-ink)" stroke-width="2" marker-end="url(#arr4s)"/>
 
@@ -581,88 +705,96 @@ const scenes = [
 </svg>`,
 
 /* 5 — الدورة اليومية */
-() => `<svg viewBox="0 0 760 420" role="img" aria-label="دورة يومية: نهارًا تنشط الجذور فتعيد ضبط السطح، وليلًا يصمد النسيج وحده، فلا يبلغ الغشاء طور النضوج أبدًا">
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="${L("دورة يومية: نهارًا تنشط الجذور فتعيد ضبط السطح، وليلًا يصمد النسيج وحده، فلا يبلغ الغشاء طور النضوج أبدًا", "Daily cycle: by day the radicals reset the surface, by night the texture holds out on its own, so the biofilm never reaches maturity")}">
   <path d="M110 150 A 270 270 0 0 1 650 150" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="6 7"/>
   ${sunG(596,128,17,"")}
   <g transform="translate(152 122)"><path d="M8 -14 a15 15 0 1 0 10 26 a12.5 12.5 0 0 1 -10 -26" fill="var(--ink2)"/></g>
-  <text x="596" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">نهار</text>
-  <text x="152" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">ليل</text>
+  <text x="596" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="var(--sun-ink)" font-family="IBM Plex Sans Arabic">${L("نهار","Day")}</text>
+  <text x="152" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">${L("ليل","Night")}</text>
 
   <g>
     <rect x="415" y="250" width="280" height="44" rx="4" fill="var(--slab)"/>
     ${texture(415,250,280,15)}
     ${rosSpark(470,232,0.85)} ${rosSpark(540,228,1)} ${rosSpark(615,234,0.8)}
-    <text x="555" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">النهار: الجذور تمسح طبقة التكييف أولًا بأول</text>
+    <text x="555" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${L("النهار: الجذور تمسح طبقة التكييف أولًا بأول","Day: ROS clear the conditioning film")}</text>
   </g>
   <g>
     <rect x="65" y="250" width="280" height="44" rx="4" fill="var(--slab)"/>
     ${texture(65,250,280,15)}
     <ellipse cx="150" cy="240" rx="6" ry="4" fill="var(--ink2)"/><ellipse cx="230" cy="242" rx="6" ry="4" fill="var(--ink2)"/><ellipse cx="292" cy="239" rx="6" ry="4" fill="var(--ink2)"/>
-    <text x="205" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">الليل: النسيج وحده يبطئ الالتصاق</text>
+    <text x="205" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${L("الليل: النسيج وحده يبطئ الالتصاق","Night: texture alone slows attachment")}</text>
   </g>
 
   <path d="M395 370 q-15 14 -30 0 M395 370 q15 14 30 0" fill="none" stroke="var(--teal)" stroke-width="0"/>
   <path d="M330 384 q50 26 100 0" fill="none" stroke="var(--teal)" stroke-width="2.5" marker-end="url(#arr5)"/>
-  <text x="380" y="414" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--teal)" font-family="IBM Plex Sans Arabic">كل صباح يبدأ السطح من نقطة شبه نظيفة — الغشاء لا يبلغ النضوج</text>
+  <text x="380" y="414" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--teal)" font-family="IBM Plex Sans Arabic">${L("كل صباح يبدأ السطح من نقطة شبه نظيفة — الغشاء لا يبلغ النضوج","Every morning the surface starts almost clean — the biofilm never matures")}</text>
   <defs><marker id="arr5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--teal)"/></marker></defs>
 </svg>`,
 
-/* 6 — النتيجة */
-() => `<svg viewBox="0 0 760 420" role="img" aria-label="مقارنة بعد ثمانية أسابيع: السطح غير المطلي مكسو بالطحالب، وسطح سولارشيلد شبه نظيف">
+/* 6 — النتيجة (بالإنجليزية تتبادل اللوحتان موضعيهما: غير المطلي يسارًا ثم سولارشيلد) */
+() => `<svg viewBox="0 0 760 420" role="img" aria-label="${L("مقارنة بعد ثمانية أسابيع: السطح غير المطلي مكسو بالطحالب، وسطح سولارشيلد شبه نظيف", "Comparison after eight weeks: the uncoated surface is covered in algae, while the SolarShield surface is almost clean")}">
   ${waterBand(48)}
-  <text x="380" y="36" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">بعد ثمانية أسابيع من الغمر المشمس</text>
+  <text x="380" y="36" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" font-family="El Messiri">${L("بعد ثمانية أسابيع من الغمر المشمس","After eight weeks of sunlit immersion")}</text>
 
-  <g>
+  <g${L("",' transform="translate(-360 0)"')}>
     <rect x="410" y="262" width="300" height="52" rx="4" fill="var(--slab)"/>
     <path d="M410 258 q24 -18 48 -6 t48 -8 t48 4 t48 -10 t48 4 t48 -6 v26 h-288 Z" fill="var(--algae)" opacity=".62"/>
     ${algaeTuft(448,262,1.3)}${algaeTuft(500,258,1.6)}${algaeTuft(556,262,1.2)}${algaeTuft(608,259,1.5)}${algaeTuft(664,262,1.25)}
-    <text x="560" y="352" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح غير مطلي</text>
-    <text x="560" y="372" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">تنظيف اضطراري متكرر واستهلاك ماء</text>
+    <text x="560" y="352" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${L("سطح غير مطلي","Uncoated surface")}</text>
+    <text x="560" y="372" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">${L("تنظيف اضطراري متكرر واستهلاك ماء","Frequent emergency cleaning and water use")}</text>
   </g>
-  <g>
+  <g${L("",' transform="translate(360 0)"')}>
     <rect x="50" y="262" width="300" height="52" rx="4" fill="var(--slab)"/>
     ${texture(50,262,300,16)}
     <ellipse cx="130" cy="252" rx="5.5" ry="3.5" fill="var(--ink2)" opacity=".8"/>
     <ellipse cx="252" cy="253" rx="5.5" ry="3.5" fill="var(--ink2)" opacity=".8"/>
     ${rosSpark(200,240,0.8)}
-    <text x="200" y="352" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">سطح بطلاء سولارشيلد</text>
-    <text x="200" y="372" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">التراكم في الطور المبكر دائمًا</text>
+    <text x="200" y="352" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--ink)" font-family="IBM Plex Sans Arabic">${L("سطح بطلاء سولارشيلد","SolarShield-coated surface")}</text>
+    <text x="200" y="372" text-anchor="middle" font-size="12.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">${L("التراكم في الطور المبكر دائمًا","Fouling always held at the early stage")}</text>
   </g>
 </svg>`
 ];
 
-const stepsData = [
+/* نصوص الخطوات تُبنى باللغة الحالية، وتُعاد بناؤها عند تبديل اللغة */
+const buildSteps = () => [
   {
-    t:"كيف يتلوث السطح أصلًا؟",
-    b:`<p>التلوث الحيوي لا يبدأ بالطحالب — يبدأ خلال <b>دقائق</b> بطبقة تكييف عضوية غير مرئية، تتبعها بكتيريا رائدة خلال ساعات، فغشاء حيوي لزج خلال أيام، ثم تستوطن الطحالب فوقه خلال أسابيع.</p><p>التنظيف التقليدي يعالج آخر السلسلة ويستهلك ماءً وموادَّ كيميائية مرارًا. سولارشيلد يستهدف أولها.</p>`,
-    tag:'<span class="chip lit">موثق أدبيات</span>', src:null
+    t:L("كيف يتلوث السطح أصلًا؟", "How does a surface get fouled in the first place?"),
+    b:L(`<p>التلوث الحيوي لا يبدأ بالطحالب — يبدأ خلال <b>دقائق</b> بطبقة تكييف عضوية غير مرئية، تتبعها بكتيريا رائدة خلال ساعات، فغشاء حيوي لزج خلال أيام، ثم تستوطن الطحالب فوقه خلال أسابيع.</p><p>التنظيف التقليدي يعالج آخر السلسلة ويستهلك ماءً وموادَّ كيميائية مرارًا. سولارشيلد يستهدف أولها.</p>`,
+        `<p>Biofouling does not start with algae — it starts within <b>minutes</b>, with an invisible organic conditioning film, followed by pioneer bacteria within hours, a slimy biofilm within days, and finally algae colonizing on top of it within weeks.</p><p>Conventional cleaning tackles the end of this chain, using water and chemicals again and again. SolarShield targets its very beginning.</p>`),
+    tag:L('<span class="chip lit">موثق أدبيات</span>', '<span class="chip lit">Literature-documented</span>'), src:null
   },
   {
-    t:"بنية الطلاء في مقطع واحد",
-    b:`<p>ثلاث طبقات وظيفية: <b>ركيزة</b> (جدار الحوض أو النافورة)، ثم <b>مصفوفة رابطة غير عضوية</b> تقاوم الجذور المؤكسدة كي لا يأكل الطلاء نفسه، تحتضن <b>جسيمات المحفز الثنائي</b> — أكسيد التيتانيوم مع نتريد الكربون — مثبتةً داخل الطلاء ومكشوفةً للماء والضوء في آن، وفوق ذلك كله <b>نسيج سطحي دقيق</b>.</p>`,
-    tag:'<span class="chip lit">موثق أدبيات</span>', src:'https://consensus.app/papers/details/585e08a9999353baac996e435ec1ff31/?utm_source=claude_desktop'
+    t:L("بنية الطلاء في مقطع واحد", "The coating in a single cross-section"),
+    b:L(`<p>ثلاث طبقات وظيفية: <b>ركيزة</b> (جدار الحوض أو النافورة)، ثم <b>مصفوفة رابطة غير عضوية</b> تقاوم الجذور المؤكسدة كي لا يأكل الطلاء نفسه، تحتضن <b>جسيمات المحفز الثنائي</b> — أكسيد التيتانيوم مع نتريد الكربون — مثبتةً داخل الطلاء ومكشوفةً للماء والضوء في آن، وفوق ذلك كله <b>نسيج سطحي دقيق</b>.</p>`,
+        `<p>Three functional layers: a <b>substrate</b> (the basin or fountain wall); then an <b>inorganic binder matrix</b> that resists reactive oxygen species so the coating does not eat itself away, holding the <b>dual-catalyst particles</b> — titanium dioxide (TiO₂) with graphitic carbon nitride (g-C₃N₄) — fixed inside the coating yet exposed to both water and light; and on top of it all, a <b>fine surface micro-texture</b>.</p>`),
+    tag:L('<span class="chip lit">موثق أدبيات</span>', '<span class="chip lit">Literature-documented</span>'), src:'https://consensus.app/papers/details/585e08a9999353baac996e435ec1ff31/?utm_source=claude_desktop'
   },
   {
-    t:"خط الدفاع الأول: هندسة السطح",
-    b:`<p>خلية الطحلب تحتاج مساحة تماس كافية لتلتصق. النقوش الدقيقة — المصممة بمقياس أصغر من الخلية أو قريب منها — تحرمها ذلك: بدل تماس كامل على سطح أملس، نقطتا ارتكاز هشتان يجرفهما أدنى تيار.</p><p>هذا الخط يعمل <b>ليلًا ونهارًا</b> ولا يحتاج ضوءًا، وخفضُه للالتصاق مثبت مخبريًا بنسب من 31٪ إلى 77٪ حسب هندسة النقش.</p>`,
-    tag:'<span class="chip range">نطاق أدبيات</span>', src:'https://consensus.app/papers/details/35b4d4c727ff5a2899af3bc24175c35b/?utm_source=claude_desktop'
+    t:L("خط الدفاع الأول: هندسة السطح", "First line of defense: surface engineering"),
+    b:L(`<p>خلية الطحلب تحتاج مساحة تماس كافية لتلتصق. النقوش الدقيقة — المصممة بمقياس أصغر من الخلية أو قريب منها — تحرمها ذلك: بدل تماس كامل على سطح أملس، نقطتا ارتكاز هشتان يجرفهما أدنى تيار.</p><p>هذا الخط يعمل <b>ليلًا ونهارًا</b> ولا يحتاج ضوءًا، وخفضُه للالتصاق مثبت مخبريًا بنسب من 31٪ إلى 77٪ حسب هندسة النقش.</p>`,
+        `<p>An algal cell needs enough contact area to attach. Micro-patterns — designed at a scale smaller than, or close to, the cell itself — deny it that: instead of full contact on a smooth surface, it gets two fragile anchor points that the slightest current can sweep away.</p><p>This line works <b>day and night</b> and needs no light; its reduction of attachment has been shown in the laboratory at 31% to 77%, depending on the pattern geometry.</p>`),
+    tag:L('<span class="chip range">نطاق أدبيات</span>', '<span class="chip range">Literature range</span>'), src:'https://consensus.app/papers/details/35b4d4c727ff5a2899af3bc24175c35b/?utm_source=claude_desktop'
   },
   {
-    t:"خط الدفاع الثاني: التحفيز الضوئي",
-    b:`<p>حين يضرب فوتونٌ زوجَ المحفز تنفصل شحنتان: إلكترون وفجوة. <b>الوصلة غير المتجانسة</b> بين المادتين تمنعهما من الالتحام مجددًا، فيتفرغان لإنتاج <b>جذور مؤكسدة</b> على السطح تفكك طبقة التكييف والمستوطنين الأوائل.</p><p>ولماذا المادتان معًا؟ لأن أكسيد التيتانيوم وحده يشرب فوق البنفسجي الذي يتوهن سريعًا في الماء، بينما يوسّع نتريد الكربون الامتصاص إلى <b>الطيف المرئي الذي يخترق الماء فعلًا</b> — وهذا ما يجعل العمل تحت السطح ممكنًا.</p>`,
-    tag:'<span class="chip lit">موثق أدبيات</span>', src:'https://consensus.app/papers/details/bd6e6c8863335108844cbe763cc31b44/?utm_source=claude_desktop'
+    t:L("خط الدفاع الثاني: التحفيز الضوئي", "Second line of defense: photocatalysis"),
+    b:L(`<p>حين يضرب فوتونٌ زوجَ المحفز تنفصل شحنتان: إلكترون وفجوة. <b>الوصلة غير المتجانسة</b> بين المادتين تمنعهما من الالتحام مجددًا، فيتفرغان لإنتاج <b>جذور مؤكسدة</b> على السطح تفكك طبقة التكييف والمستوطنين الأوائل.</p><p>ولماذا المادتان معًا؟ لأن أكسيد التيتانيوم وحده يشرب فوق البنفسجي الذي يتوهن سريعًا في الماء، بينما يوسّع نتريد الكربون الامتصاص إلى <b>الطيف المرئي الذي يخترق الماء فعلًا</b> — وهذا ما يجعل العمل تحت السطح ممكنًا.</p>`,
+        `<p>When a photon strikes the catalyst pair, two charges separate: an electron and a hole. The <b>heterojunction</b> between the two materials keeps them from recombining, leaving them free to generate <b>reactive oxygen species</b> at the surface, which break down the conditioning film and the first colonizers.</p><p>Why use both materials together? Because titanium dioxide on its own absorbs ultraviolet light, which is attenuated quickly in water, whereas carbon nitride extends absorption into the <b>visible spectrum that actually penetrates water</b> — and that is what makes working underwater possible.</p>`),
+    tag:L('<span class="chip lit">موثق أدبيات</span>', '<span class="chip lit">Literature-documented</span>'), src:'https://consensus.app/papers/details/bd6e6c8863335108844cbe763cc31b44/?utm_source=claude_desktop'
   },
   {
-    t:"الدورة اليومية: الشمس تعيد ضبط الساعة",
-    b:`<p>الفعالية القاتلة نهارية — وهذا حد صادق نعلنه. لكن الغشاء الحيوي يحتاج <b>أيامًا متصلة</b> لينضج، والنسيج يبطئه طوال الليل، ثم تمسح شمس الصباح ما تراكم قبل أن يتماسك.</p><p>النتيجة المقصودة بالتصميم: سطح محبوس في الطور المبكر إلى الأبد — <b>وقاية لا معالجة</b>.</p>`,
-    tag:'<span class="chip lit">موثق أدبيات</span>', src:'https://consensus.app/papers/details/bf730153184152cf993d3857fd76ecbe/?utm_source=claude_desktop'
+    t:L("الدورة اليومية: الشمس تعيد ضبط الساعة", "The daily cycle: the sun resets the clock"),
+    b:L(`<p>الفعالية القاتلة نهارية — وهذا حد صادق نعلنه. لكن الغشاء الحيوي يحتاج <b>أيامًا متصلة</b> لينضج، والنسيج يبطئه طوال الليل، ثم تمسح شمس الصباح ما تراكم قبل أن يتماسك.</p><p>النتيجة المقصودة بالتصميم: سطح محبوس في الطور المبكر إلى الأبد — <b>وقاية لا معالجة</b>.</p>`,
+        `<p>The killing action works only in daylight — an honest limitation that we state openly. But a biofilm needs <b>several uninterrupted days</b> to mature; the texture slows it down throughout the night, and the morning sun then clears whatever has built up before it can consolidate.</p><p>The result we are designing for: a surface held permanently in the early stage — <b>prevention, not cure</b>.</p>`),
+    tag:L('<span class="chip lit">موثق أدبيات</span>', '<span class="chip lit">Literature-documented</span>'), src:'https://consensus.app/papers/details/bf730153184152cf993d3857fd76ecbe/?utm_source=claude_desktop'
   },
   {
-    t:"النتيجة — وكيف سنقيسها",
-    b:`<p>المحصلة المتوقعة: تراكم أبطأ بكثير، وتباعد كبير بين دورات التنظيف الاضطراري، وماء ومواد أقل.</p><p>مؤشرا النجاح المعلنان للبايلوت: <b>لترات ماء التنظيف الموفرة لكل متر مربع سنويًا</b>، و<b>نسبة خفض تكرار التنظيف</b> — نقيسهما ولا ندّعيهما. جرّب الآن «المختبر الافتراضي» وحرّك الشمس والعكارة بنفسك.</p>`,
-    tag:'<span class="chip pilot">يُقاس في البايلوت</span>', src:null
+    t:L("النتيجة — وكيف سنقيسها", "The outcome — and how we will measure it"),
+    b:L(`<p>المحصلة المتوقعة: تراكم أبطأ بكثير، وتباعد كبير بين دورات التنظيف الاضطراري، وماء ومواد أقل.</p><p>مؤشرا النجاح المعلنان للبايلوت: <b>لترات ماء التنظيف الموفرة لكل متر مربع سنويًا</b>، و<b>نسبة خفض تكرار التنظيف</b> — نقيسهما ولا ندّعيهما. جرّب الآن «المختبر الافتراضي» وحرّك الشمس والعكارة بنفسك.</p>`,
+        `<p>The expected net result: much slower build-up, far longer intervals between emergency cleanings, and less water and fewer chemicals used.</p><p>The two declared success metrics for the pilot: <b>liters of cleaning water saved per square meter per year</b> and <b>the percentage reduction in cleaning frequency</b> — we will measure them, not claim them. Now try the “Virtual lab” and adjust the sun and turbidity yourself.</p>`),
+    tag:L('<span class="chip pilot">يُقاس في البايلوت</span>', '<span class="chip pilot">Measured in the pilot</span>'), src:null
   }
 ];
+let stepsData = buildSteps();
 
 let curStep = 0;
 function renderStepList(){
@@ -676,28 +808,30 @@ function go(i){
   $("#stTitle").textContent = `${curStep+1}. ${stepsData[curStep].t}`;
   $("#stBody").innerHTML = stepsData[curStep].b;
   const s = stepsData[curStep];
-  $("#stBasis").innerHTML = `<span>أساس هذه الخطوة:</span> ${s.tag}` + (s.src?` <a href="${s.src}" target="_blank" rel="noopener">المصدر المحكم</a>`:"");
+  $("#stBasis").innerHTML = `<span>${L("أساس هذه الخطوة:","Basis for this step:")}</span> ${s.tag}` + (s.src?` <a href="${s.src}" target="_blank" rel="noopener">${L("المصدر المحكم","Peer-reviewed source")}</a>`:"");
   $("#prevBtn").disabled = curStep===0;
-  $("#nextBtn").textContent = curStep===scenes.length-1 ? "افتح المختبر الافتراضي" : "الخطوة التالية";
+  $("#nextBtn").textContent = curStep===scenes.length-1 ? L("افتح المختبر الافتراضي","Open the virtual lab") : L("الخطوة التالية","Next step");
   renderStepList();
 }
 $("#prevBtn").onclick = ()=>go(curStep-1);
 $("#nextBtn").onclick = ()=>{ if(curStep===scenes.length-1){ switchTab("lab"); } else go(curStep+1); };
 document.addEventListener("keydown", e=>{
   if($("#panel-story").hidden) return;
-  if(e.key==="ArrowLeft") go(curStep+1);   /* في RTL: اليسار = التالي */
-  if(e.key==="ArrowRight") go(curStep-1);
+  const fwd = document.documentElement.dir==="ltr" ? 1 : -1;   /* في RTL: اليسار = التالي، وفي LTR: اليمين = التالي */
+  if(e.key==="ArrowLeft") go(curStep-fwd);
+  if(e.key==="ArrowRight") go(curStep+fwd);
 });
 
 /* ============================================================
    محرك المحاكاة — كل الثوابت توضيحية موسومة (تبويب الأسس)
 ============================================================ */
 const P = { attach:1.1, textureFactor:0.35, growth:0.06, photoK:0.5, shieldF:60, cleanAt:85, cleanReset:8 };
+/* الاسم يُقرأ باللغة الحالية في كل مرة (getter) */
 const SURFACES = [
-  {id:"control",  name:"الشاهد",      texture:false, catalyst:false, color:"var(--s-control)"},
-  {id:"texture",  name:"نسيج فقط",    texture:true,  catalyst:false, color:"var(--s-texture)"},
-  {id:"catalyst", name:"محفز فقط",    texture:false, catalyst:true,  color:"var(--s-catalyst)"},
-  {id:"shield",   name:"سولارشيلد",   texture:true,  catalyst:true,  color:"var(--s-shield)"}
+  {id:"control",  get name(){ return L("الشاهد","Control"); },          texture:false, catalyst:false, color:"var(--s-control)"},
+  {id:"texture",  get name(){ return L("نسيج فقط","Texture only"); },   texture:true,  catalyst:false, color:"var(--s-texture)"},
+  {id:"catalyst", get name(){ return L("محفز فقط","Catalyst only"); },  texture:false, catalyst:true,  color:"var(--s-catalyst)"},
+  {id:"shield",   get name(){ return L("سولارشيلد","SolarShield"); },    texture:true,  catalyst:true,  color:"var(--s-shield)"}
 ];
 const DAYS = 56;
 
@@ -731,14 +865,22 @@ function surfaceCardHTML(s){
   return `<div class="sCard" id="card-${s.id}">
     <div class="bar" style="background:${s.color}"></div>
     <h3>${s.name}</h3>
-    <svg class="mini" viewBox="0 0 160 84" role="img" aria-label="حالة سطح ${s.name}">
+    <svg class="mini" viewBox="0 0 160 84" role="img" aria-label="${L("حالة سطح "+s.name, "Surface condition: "+s.name)}">
       <rect x="10" y="58" width="140" height="16" rx="3" fill="var(--slab)"/>
       ${s.texture ? texture(10,58,140,12) : `<rect x="10" y="52" width="140" height="6" rx="2" fill="var(--ink2)" opacity=".4"/>`}
       ${s.catalyst ? [30,62,96,128].map(x=>`<circle cx="${x}" cy="55" r="3.4" fill="var(--s-catalyst)"/><circle cx="${x+5}" cy="52" r="2.6" fill="var(--teal)"/>`).join("") : ""}
       <g id="foul-${s.id}"></g>
     </svg>
-    <div class="meta"><span>المؤشر <b class="num" id="f-${s.id}">0</b></span><span>تنظيفات <b class="num" id="c-${s.id}">0</b></span></div>
+    <div class="meta"><span>${L("المؤشر","Index")} <b class="num" id="f-${s.id}">0</b></span><span>${L("تنظيفات","Cleanings")} <b class="num" id="c-${s.id}">0</b></span></div>
   </div>`;
+}
+/* رسم حالة البطاقات من نتيجة محاكاة (نهائية أو لحظية) */
+function paintCards(res){
+  SURFACES.forEach((s,i)=>{
+    renderFoul(s, res.final[i]);
+    document.getElementById("f-"+s.id).textContent = res.final[i].toFixed(0);
+    document.getElementById("c-"+s.id).textContent = res.cleanings[i];
+  });
 }
 function renderFoul(s, f){
   const g = document.getElementById("foul-"+s.id);
@@ -779,9 +921,9 @@ function drawChart(res){
 
   $("#chart").innerHTML = `
     ${grid}${xt}
-    <text x="${(M.l+CW-M.r)/2}" y="${CH-4}" text-anchor="middle" font-size="11.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">الأيام</text>
+    <text x="${(M.l+CW-M.r)/2}" y="${CH-4}" text-anchor="middle" font-size="11.5" fill="var(--ink2)" font-family="IBM Plex Sans Arabic">${L("الأيام","Days")}</text>
     <line x1="${M.l}" y1="${Y(P.cleanAt)}" x2="${CW-M.r}" y2="${Y(P.cleanAt)}" stroke="var(--danger)" stroke-width="1.2" stroke-dasharray="5 5" opacity=".65"/>
-    <text x="${M.l+4}" y="${Y(P.cleanAt)-6}" font-size="10.5" fill="var(--danger)" font-family="IBM Plex Sans Arabic">عتبة التنظيف الاضطراري</text>
+    <text x="${M.l+4}" y="${Y(P.cleanAt)-6}" font-size="10.5" fill="var(--danger)" font-family="IBM Plex Sans Arabic">${L("عتبة التنظيف الاضطراري","Emergency-cleaning threshold")}</text>
     ${paths}${labels}
     <line id="cross" x1="0" y1="${M.t}" x2="0" y2="${CH-M.b}" stroke="var(--ink2)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>`;
 }
@@ -794,8 +936,8 @@ $("#chartBox").addEventListener("pointermove", e=>{
   if(px < M.l || px > CW-M.r){ tip.style.display="none"; $("#cross")?.setAttribute("opacity","0"); return; }
   const d = Math.round((px - M.l)/(CW-M.l-M.r)*DAYS);
   const cross = $("#cross"); if(cross){ cross.setAttribute("x1",X(d)); cross.setAttribute("x2",X(d)); cross.setAttribute("opacity",".7"); }
-  tip.innerHTML = `<div style="font-weight:700; margin-bottom:4px" class="num">اليوم ${d}</div>` +
-    SURFACES.map((s,i)=>`<div class="row"><span><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${s.color};margin-inline-start:6px"></span>${s.name}</span><span class="v num">${simRes.samples[i][d].toFixed(0)}</span></div>`).join("");
+  tip.innerHTML = `<div style="font-weight:700; margin-bottom:4px" class="num">${L("اليوم","Day")} ${d}</div>` +
+    SURFACES.map((s,i)=>`<div class="row"><span><span class="dot" style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${s.color};margin-inline-${L("start","end")}:6px"></span>${s.name}</span><span class="v num">${simRes.samples[i][d].toFixed(0)}</span></div>`).join("");
   tip.style.display="block";
   const bx = $("#chartBox").getBoundingClientRect();
   let lx = e.clientX - bx.left + 14; if(lx > bx.width-170) lx = e.clientX - bx.left - 178;
@@ -804,27 +946,36 @@ $("#chartBox").addEventListener("pointermove", e=>{
 $("#chartBox").addEventListener("pointerleave", ()=>{ tip.style.display="none"; $("#cross")?.setAttribute("opacity","0"); });
 
 /* الجدول البديل */
+let tableRes = null, summaryRes = null;   /* آخر نتيجة عُرضت في الجدول والملخص — لإعادة رسمهما عند تبديل اللغة */
 function drawTable(res){
+  tableRes = res;
   const weeks=[0,7,14,21,28,35,42,49,56];
   $("#tblWrap").innerHTML = `<table class="data">
-    <tr><th>السطح</th>${weeks.map(w=>`<th class="num">يوم ${w}</th>`).join("")}<th>تنظيفات</th></tr>
+    <tr><th>${L("السطح","Surface")}</th>${weeks.map(w=>`<th class="num">${L("يوم","Day")} ${w}</th>`).join("")}<th>${L("تنظيفات","Cleanings")}</th></tr>
     ${SURFACES.map((s,i)=>`<tr><td>${s.name}</td>${weeks.map(w=>`<td>${res.samples[i][w].toFixed(0)}</td>`).join("")}<td>${res.cleanings[i]}</td></tr>`).join("")}
   </table>`;
 }
+function setTblBtn(){
+  const w=$("#tblWrap");
+  $("#tblBtn").textContent = w.hidden?L("عرض الجدول","Show table"):L("إخفاء الجدول","Hide table");
+}
 $("#tblBtn").onclick = ()=>{
   const w=$("#tblWrap"); w.hidden=!w.hidden;
-  $("#tblBtn").textContent = w.hidden?"عرض الجدول":"إخفاء الجدول";
+  setTblBtn();
   $("#tblBtn").setAttribute("aria-expanded", String(!w.hidden));
 };
 
 /* الملخص */
 function drawSummary(res){
+  summaryRes = res;
   const ctrl = res.cleanings[0];
   $("#summary").innerHTML =
-    `<span class="sumChip">الشاهد احتاج <b class="num">${ctrl}</b> ${ctrl===1?"تنظيفًا":ctrl===2?"تنظيفين":"تنظيفات"} في ثمانية أسابيع</span>` +
+    L(`<span class="sumChip">الشاهد احتاج <b class="num">${ctrl}</b> ${ctrl===1?"تنظيفًا":ctrl===2?"تنظيفين":"تنظيفات"} في ثمانية أسابيع</span>`,
+      `<span class="sumChip">Control needed <b class="num">${ctrl}</b> ${ctrl===1?"cleaning":"cleanings"} in eight weeks</span>`) +
     SURFACES.slice(1).map((s,j)=>{
       const i=j+1, saved = ctrl - res.cleanings[i];
-      return `<span class="sumChip">${s.name}: <b class="num">${res.cleanings[i]}</b> — وفّر <b class="num">${saved}</b> مقابل الشاهد</span>`;
+      return L(`<span class="sumChip">${s.name}: <b class="num">${res.cleanings[i]}</b> — وفّر <b class="num">${saved}</b> مقابل الشاهد</span>`,
+               `<span class="sumChip">${s.name}: <b class="num">${res.cleanings[i]}</b> — saved <b class="num">${saved}</b> vs. control</span>`);
     }).join("");
 }
 
@@ -834,21 +985,27 @@ let simRes = null, live=null;
 function controlsState(){
   return { sun: +$("#sun").value/100, turb: +$("#turb").value, closed: $("#closed").checked };
 }
+/* عدّاد اليوم: يُحفظ آخر يوم معروض كي يُعاد بلغة أخرى عند التبديل */
+let shownDay = DAYS;
+function setDay(n){
+  shownDay = n;
+  $("#dayOut").textContent = L(`اليوم ${n} من ${DAYS}`, `Day ${n} of ${DAYS}`);
+}
+function setSunOut(){
+  const c = controlsState(), sunV=+$("#sun").value;
+  $("#sunOut").textContent = c.closed ? L("لا ضوء — الشق الضوئي معطل","No light — photocatalysis switched off") :
+    L(sunV+"٪ — " + (sunV<40?"يوم شديد الغيم":sunV<85?"يوم غائم جزئيًا":sunV<=110?"يوم مشمس اعتيادي":"صيف شديد السطوع"),
+      sunV+"% — " + (sunV<40?"heavily overcast day":sunV<85?"partly cloudy day":sunV<=110?"typical sunny day":"intensely bright summer day"));
+}
 function refresh(){
   stopLive();
   const c = controlsState();
   simRes = simulate(c.sun, c.turb, c.closed);
   drawChart(simRes); drawTable(simRes); drawSummary(simRes);
-  SURFACES.forEach((s,i)=>{
-    renderFoul(s, simRes.final[i]);
-    document.getElementById("f-"+s.id).textContent = simRes.final[i].toFixed(0);
-    document.getElementById("c-"+s.id).textContent = simRes.cleanings[i];
-  });
-  $("#dayOut").textContent = `اليوم ${DAYS} من ${DAYS}`;
+  paintCards(simRes);
+  setDay(DAYS);
   $("#clockIcon").textContent = c.closed ? "🔒" : "☀️";
-  const sunV=+$("#sun").value;
-  $("#sunOut").textContent = c.closed ? "لا ضوء — الشق الضوئي معطل" :
-    sunV+"٪ — " + (sunV<40?"يوم شديد الغيم":sunV<85?"يوم غائم جزئيًا":sunV<=110?"يوم مشمس اعتيادي":"صيف شديد السطوع");
+  setSunOut();
 }
 
 /* تشغيل حي متدرج */
@@ -876,7 +1033,7 @@ $("#playBtn").onclick = ()=>{
       if(live.h%24===0) SURFACES.forEach((s,i)=>samples[i].push(F[i]));
     }
     const day=Math.floor(live.h/24), hh=live.h%24;
-    $("#dayOut").textContent=`اليوم ${Math.min(day+1,DAYS)} من ${DAYS}`;
+    setDay(Math.min(day+1,DAYS));
     $("#clockIcon").textContent = c.closed?"🔒":(hh>=6&&hh<18?"☀️":"🌙");
     SURFACES.forEach((s,i)=>{ renderFoul(s,F[i]);
       document.getElementById("f-"+s.id).textContent=F[i].toFixed(0);
@@ -905,9 +1062,23 @@ $("#tab-lab").onclick=()=>switchTab("lab");
 $("#tab-sci").onclick=()=>switchTab("sci");
 
 /* ---------- الإقلاع ---------- */
-$("#legend").innerHTML = SURFACES.map(s=>`<span class="k"><span class="dot" style="background:${s.color}"></span>${s.name}</span>`).join("");
+const renderLegend = () => { $("#legend").innerHTML = SURFACES.map(s=>`<span class="k"><span class="dot" style="background:${s.color}"></span>${s.name}</span>`).join(""); };
+renderLegend();
 $("#surfaceCards").innerHTML = SURFACES.map(surfaceCardHTML).join("");
-renderStepList(); go(0); refresh();
+renderStepList(); go(0); refresh(); setTblBtn();
+
+/* ---------- تبديل اللغة: إعادة رسم كل ما يولّده هذا السكربت دون المساس بالحالة ---------- */
+window.addEventListener("langchange", ()=>{
+  stepsData = buildSteps();
+  go(curStep);
+  renderLegend();
+  $("#surfaceCards").innerHTML = SURFACES.map(surfaceCardHTML).join("");
+  if(simRes){ paintCards(simRes); drawChart(simRes); }
+  if(tableRes) drawTable(tableRes);
+  if(summaryRes) drawSummary(summaryRes);
+  setTblBtn(); setDay(shownDay); setSunOut();
+  tip.style.display="none"; $("#cross")?.setAttribute("opacity","0");
+});
 </script>
 
 </body>
