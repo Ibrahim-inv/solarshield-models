@@ -35,12 +35,17 @@ a.card:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
 .card .kind{font-size:13px;font-weight:500;color:var(--teal)}
 .card p{color:var(--ink2);font-size:15px}
 .card .go{font-weight:500;color:var(--teal);font-size:15px}
+.team{display:grid;gap:12px}
+.members{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;list-style:none;padding:0;margin:0}
+.members li{display:grid;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.members b{font-weight:700;font-size:15.5px}
+.members span{color:var(--ink2);font-size:14px}
 .note{font-size:13.5px;color:var(--ink2);border-top:1px solid var(--line);padding-top:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow">مياهثون 2026</div>
+  <div class="eyebrow">فريق Thea · مياهثون 2026</div>
   <h1>نماذج سولارشيلد</h1>
   <p class="lede">محفز ضوئي نانوي يستعمل ضوء الشمس ليولّد جذورًا مؤكسدة على سطح ملامس للماء. هنا نموذجان تفاعليان لطريقتين في استعماله. يعملان على الجوال مباشرة دون تثبيت أي شيء.</p>
   <div class="cards">
@@ -57,6 +62,16 @@ a.card:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
       <span class="go">افتح النموذج ←</span>
     </a>
   </div>
+  <section class="team" aria-labelledby="teamTitle">
+    <h2 id="teamTitle">فريق Thea</h2>
+    <ul class="members">
+      <li><b>إبراهيم الزهراني</b><span>علوم بيئية وأحياء دقيقة</span></li>
+      <li><b>ربى الغامدي</b><span>بيئة ومختبرات</span></li>
+      <li><b>إدريس البرناوي</b><span>صحة مهنية وسلامة</span></li>
+      <li><b>د. محمد لوان</b><span>علوم بيئية</span></li>
+      <li><b>أزواردي إيماني</b><span>هندسة بيئية</span></li>
+    </ul>
+  </section>
   <p class="note">النموذجان توضيحيان: المعادلات من أبحاث منشورة ومحكّمة، والثوابت تُعاير بالقياسات المخبرية حين تتوفر.</p>
 </div>
 </body>
