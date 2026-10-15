@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-title-en="SolarShield Panel Model">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}.backlink{display:inline-block;margin:14px clamp(16px,3vw,32px) 0;font:500 14px "IBM Plex Sans Arabic",Tahoma,sans-serif;color:var(--teal);text-decoration:none}</style>
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}.backlink{font:500 14px "IBM Plex Sans Arabic",Tahoma,sans-serif;color:var(--teal);text-decoration:none}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px clamp(16px,3vw,32px) 0}.langbtn{font:500 14px "IBM Plex Sans Arabic",system-ui,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 14px;cursor:pointer}.langbtn:hover{border-color:var(--teal);color:var(--teal)}.langbtn:focus-visible{outline:2px solid var(--sun);outline-offset:2px}</style>
 <title>نموذج لوح سولارشيلد</title>
 <meta name="description" content="نموذج بصري تفاعلي للوح زجاجي مطلي بمحفز ضوئي نانوي يكسر الملوثات بضوء الشمس، مع فحص رقم الإنتاجية والتكلفة وقائمة البيانات المطلوبة.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +76,8 @@ aside.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 14px);max-hei
 .rail summary::-webkit-details-marker{display:none}
 .rail summary::after{content:"اطوِ";font-family:var(--f-body);font-size:12.5px;color:var(--ink2);margin-inline-start:8px}
 .rail details:not([open]) summary::after{content:"افتح"}
+html[lang="en"] .rail summary::after{content:"collapse"}
+html[lang="en"] .rail details:not([open]) summary::after{content:"expand"}
 .grp{font-family:var(--f-display);font-size:14.5px;color:var(--ink2);margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
 .ctl{display:grid;gap:2px;padding-block:8px}
 .ctl-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
@@ -220,82 +222,82 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 
 </head>
 <body>
-<a class="backlink" href="./">→ كل النماذج</a>
-<div class="wrap" dir="rtl" lang="ar">
+<div class="topbar"><a class="backlink" href="./" data-keep-lang data-i18n="back">→ كل النماذج · فريق Thea</a><button class="langbtn" id="langBtn" type="button" lang="en">English</button></div>
+<div class="wrap">
   <header class="top">
-    <div class="eyebrow">فريق Thea · مياهثون 2026 · فكرة سولارشيلد · نموذج حسابي بصري</div>
-    <h1>نموذج لوح سولارشيلد</h1>
-    <p class="lede">لوح زجاجي سطحه مطلي بجسيمات نانوية محفّزة ضوئيًا. الأشعة فوق البنفسجية في ضوء الشمس تولّد على هذه الجسيمات جذورًا مؤكسدة تكسّر الملوثات العضوية في غشاء الماء المنساب فوق اللوح. حرّك ساعة اليوم والمدخلات لترى كم يُزال من الملوث وكم لترًا ينتج اللوح فعلًا.</p>
+    <div class="eyebrow" data-i18n="eyebrow">فريق Thea · مياهثون 2026 · فكرة سولارشيلد · نموذج حسابي بصري</div>
+    <h1 data-i18n="h1">نموذج لوح سولارشيلد</h1>
+    <p class="lede" data-i18n="lede">لوح زجاجي سطحه مطلي بجسيمات نانوية محفّزة ضوئيًا. الأشعة فوق البنفسجية في ضوء الشمس تولّد على هذه الجسيمات جذورًا مؤكسدة تكسّر الملوثات العضوية في غشاء الماء المنساب فوق اللوح. حرّك ساعة اليوم والمدخلات لترى كم يُزال من الملوث وكم لترًا ينتج اللوح فعلًا.</p>
     <div class="status">
-      <p><b>نموذج توضيحي:</b> المعادلات منشورة ومحكّمة، وسرعة التكسير هنا افتراض توضيحي إلى أن تُعاير بقياس مخبري من قسم المعايرة. كل رقم في الصفحة موسوم بمصدره:</p>
+      <p data-i18n="status"><b>نموذج توضيحي:</b> المعادلات منشورة ومحكّمة، وسرعة التكسير هنا افتراض توضيحي إلى أن تُعاير بقياس مخبري من قسم المعايرة. كل رقم في الصفحة موسوم بمصدره:</p>
       <div class="legend">
-        <span class="tag t-ref">من مرجع منشور</span>
-        <span class="tag t-assume">افتراض للعرض</span>
-        <span class="tag t-need">مطلوب قياسه</span>
+        <span class="tag t-ref" data-i18n="tRef">من مرجع منشور</span>
+        <span class="tag t-assume" data-i18n="tAssume">افتراض للعرض</span>
+        <span class="tag t-need" data-i18n="tNeed">مطلوب قياسه</span>
       </div>
     </div>
   </header>
 
-  <nav class="toc" aria-label="أقسام الصفحة">
-    <a href="#panel">اللوح</a><a href="#day">يوم كامل</a><a href="#life">العمر والتجديد</a><a href="#calib">المعايرة</a><a href="#science">الأسس العلمية</a>
+  <nav class="toc" aria-label="أقسام الصفحة" data-i18n-label="tocLabel">
+    <a href="#panel" data-i18n="tocPanel">اللوح</a><a href="#day" data-i18n="tocDay">يوم كامل</a><a href="#life" data-i18n="tocLife">العمر والتجديد</a><a href="#calib" data-i18n="tocCalib">المعايرة</a><a href="#science" data-i18n="tocSci">الأسس العلمية</a>
   </nav>
 
   <div class="layout">
-    <aside class="rail" aria-label="مدخلات النموذج">
+    <aside class="rail" aria-label="مدخلات النموذج" data-i18n-label="railLabel">
       <details id="railDetails" open>
-        <summary>مدخلات النموذج</summary>
+        <summary data-i18n="railSum">مدخلات النموذج</summary>
 
-        <div class="grp">اللوح</div>
+        <div class="grp" data-i18n="grpPanel">اللوح</div>
         <div class="ctl">
-          <div class="ctl-head"><label for="A">مساحة اللوح المطلية</label><output id="o-A"></output></div>
+          <div class="ctl-head"><label for="A" data-i18n="lA">مساحة اللوح المطلية</label><output id="o-A"></output></div>
           <input type="range" id="A" min="0.25" max="10" step="0.25" value="1">
-          <div class="meta"><span class="tag t-need">مطلوب قياسه</span><span class="hint">افتراض مؤقت: متر مربع واحد</span></div>
+          <div class="meta"><span class="tag t-need" data-i18n="tNeed">مطلوب قياسه</span><span class="hint" data-i18n="hA">افتراض مؤقت: متر مربع واحد</span></div>
         </div>
         <div class="ctl">
-          <div class="ctl-head"><label for="tau">نسبة الضوء الواصل إلى الطلاء</label><output id="o-tau"></output></div>
+          <div class="ctl-head"><label for="tau" data-i18n="lTau">نسبة الضوء الواصل إلى الطلاء</label><output id="o-tau"></output></div>
           <input type="range" id="tau" min="50" max="100" step="1" value="90">
-          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">فقد عبر الزجاج أو غشاء الماء</span></div>
+          <div class="meta"><span class="tag t-assume" data-i18n="tAssume">افتراض للعرض</span><span class="hint" data-i18n="hTau">فقد عبر الزجاج أو غشاء الماء</span></div>
         </div>
 
-        <div class="grp">الشمس</div>
+        <div class="grp" data-i18n="grpSun">الشمس</div>
         <div class="ctl">
-          <div class="ctl-head"><label for="H">الأشعة فوق البنفسجية اليومية</label><output id="o-H"></output></div>
+          <div class="ctl-head"><label for="H" data-i18n="lH">الأشعة فوق البنفسجية اليومية</label><output id="o-H"></output></div>
           <input type="range" id="H" min="100" max="300" step="5" value="200">
-          <div class="meta"><span class="tag t-ref">من مرجع منشور</span><span class="hint">قياسات الرياض والظهران</span></div>
+          <div class="meta"><span class="tag t-ref" data-i18n="tRef">من مرجع منشور</span><span class="hint" data-i18n="hH">قياسات الرياض والظهران</span></div>
         </div>
         <div class="ctl">
-          <div class="ctl-head"><label for="hours">ساعات التشغيل اليومية</label><output id="o-hours"></output></div>
+          <div class="ctl-head"><label for="hours" data-i18n="lHours">ساعات التشغيل اليومية</label><output id="o-hours"></output></div>
           <input type="range" id="hours" min="4" max="10" step="1" value="8">
-          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">ساعات شمس حول الظهيرة</span></div>
+          <div class="meta"><span class="tag t-assume" data-i18n="tAssume">افتراض للعرض</span><span class="hint" data-i18n="hHours">ساعات شمس حول الظهيرة</span></div>
         </div>
 
-        <div class="grp">المحفز والماء</div>
+        <div class="grp" data-i18n="grpCat">المحفز والماء</div>
         <div class="ctl">
-          <div class="ctl-head"><label for="kQ">سرعة التكسير لكل جرعة ضوء</label><output id="o-kQ"></output></div>
+          <div class="ctl-head"><label for="kQ" data-i18n="lKQ">سرعة التكسير لكل جرعة ضوء</label><output id="o-kQ"></output></div>
           <input type="range" id="kQ" min="-2" max="0.5" step="0.01" value="-1">
-          <div class="meta"><span class="tag t-need">مطلوب قياسه</span><span class="hint">أهم رقم ينقصنا</span></div>
+          <div class="meta"><span class="tag t-need" data-i18n="tNeed">مطلوب قياسه</span><span class="hint" data-i18n="hKQ">أهم رقم ينقصنا</span></div>
         </div>
         <div class="ctl">
-          <div class="ctl-head"><label for="km">سرعة وصول الملوث إلى السطح</label><output id="o-km"></output></div>
+          <div class="ctl-head"><label for="km" data-i18n="lKm">سرعة وصول الملوث إلى السطح</label><output id="o-km"></output></div>
           <input type="range" id="km" min="1" max="50" step="1" value="5">
-          <div class="meta"><span class="tag t-ref">تقدير من مرجع</span><span class="hint">معامل انتقال الكتلة</span></div>
+          <div class="meta"><span class="tag t-ref" data-i18n="tRefEst">تقدير من مرجع</span><span class="hint" data-i18n="hKm">معامل انتقال الكتلة</span></div>
         </div>
         <div class="ctl">
-          <div class="ctl-head"><label for="flow">تدفق الماء على اللوح</label><output id="o-flow"></output></div>
+          <div class="ctl-head"><label for="flow" data-i18n="lFlow">تدفق الماء على اللوح</label><output id="o-flow"></output></div>
           <input type="range" id="flow" min="-0.7" max="2.5" step="0.01" value="0.30103">
-          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">تدفق ثابت أثناء التشغيل</span></div>
+          <div class="meta"><span class="tag t-assume" data-i18n="tAssume">افتراض للعرض</span><span class="hint" data-i18n="hFlow">تدفق ثابت أثناء التشغيل</span></div>
         </div>
         <div class="ctl">
-          <div class="ctl-head"><label for="C0">تركيز الملوث الداخل</label><output id="o-C0"></output></div>
+          <div class="ctl-head"><label for="C0" data-i18n="lC0">تركيز الملوث الداخل</label><output id="o-C0"></output></div>
           <input type="range" id="C0" min="1" max="50" step="1" value="10">
-          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">ملوث عضوي مذاب</span></div>
+          <div class="meta"><span class="tag t-assume" data-i18n="tAssume">افتراض للعرض</span><span class="hint" data-i18n="hC0">ملوث عضوي مذاب</span></div>
         </div>
         <div class="ctl">
-          <div class="ctl-head"><label for="R">نسبة الإزالة المستهدفة</label><output id="o-R"></output></div>
+          <div class="ctl-head"><label for="R" data-i18n="lR">نسبة الإزالة المستهدفة</label><output id="o-R"></output></div>
           <input type="range" id="R" min="50" max="99" step="1" value="90">
-          <div class="meta"><span class="tag t-assume">افتراض للعرض</span><span class="hint">تُحدد حسب الملوث والاستخدام</span></div>
+          <div class="meta"><span class="tag t-assume" data-i18n="tAssume">افتراض للعرض</span><span class="hint" data-i18n="hR">تُحدد حسب الملوث والاستخدام</span></div>
         </div>
-        <button class="btn" id="reset" type="button">إعادة القيم الافتراضية</button>
+        <button class="btn" id="reset" type="button" data-i18n="reset">إعادة القيم الافتراضية</button>
       </details>
     </aside>
 
@@ -303,11 +305,11 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
       <!-- ============ PANEL ============ -->
       <section id="panel">
         <div class="sec-head">
-          <h2>اللوح تحت الشمس</h2>
-          <p class="muted">الماء الملوث يدخل من أعلى اللوح وينساب في غشاء رقيق فوق الطلاء حتى المخرج. لون الغشاء يتدرج حسب تركيز الملوث المحسوب في كل نقطة: الكهرماني الكثيف ملوث، والأزرق الصافي معالج.</p>
+          <h2 data-i18n="panelH">اللوح تحت الشمس</h2>
+          <p class="muted" data-i18n="panelP">الماء الملوث يدخل من أعلى اللوح وينساب في غشاء رقيق فوق الطلاء حتى المخرج. لون الغشاء يتدرج حسب تركيز الملوث المحسوب في كل نقطة: الكهرماني الكثيف ملوث، والأزرق الصافي معالج.</p>
         </div>
         <div class="scene-box">
-          <svg id="scene" viewBox="0 0 800 440" role="img" aria-label="رسم متحرك للوح زجاجي مائل تحت الشمس ينساب عليه الماء ويتغير لونه من الملوث إلى الصافي">
+          <svg id="scene" viewBox="0 0 800 440" role="img" data-i18n-label="sceneLabel" aria-label="رسم متحرك للوح زجاجي مائل تحت الشمس ينساب عليه الماء ويتغير لونه من الملوث إلى الصافي">
             <defs>
               <clipPath id="zoomClip"><circle cx="690" cy="360" r="58"/></clipPath>
             </defs>
@@ -320,7 +322,7 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
             <line class="leg" x1="261.5" y1="325" x2="261.5" y2="428"/>
             <line class="leg" x1="534" y1="226" x2="534" y2="428"/>
             <path class="pipe" d="M792 158 H662 Q646 158 640 166"/>
-            <text class="lbl" x="786" y="190" text-anchor="end">ماء ملوث يدخل</text>
+            <text class="lbl" x="786" y="190" text-anchor="end" data-i18n="sIn">ماء ملوث يدخل</text>
             <g transform="translate(415 250) rotate(-20)">
               <rect class="water" x="-240" y="-21" width="480" height="18"/>
               <g id="film"></g>
@@ -332,8 +334,8 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
             <rect class="trough" x="128" y="360" width="104" height="44" rx="4"/>
             <rect id="troughWater" class="water" x="131" y="378" width="98" height="23"/>
             <rect id="troughPol" class="polseg" x="131" y="378" width="98" height="23" style="fill-opacity:.2"/>
-            <text class="lbl" x="180" y="424" text-anchor="middle">ماء معالج يخرج</text>
-            <text class="lbl2" x="112" y="372" text-anchor="end">أُزيل</text>
+            <text class="lbl" x="180" y="424" text-anchor="middle" data-i18n="sOut">ماء معالج يخرج</text>
+            <text class="lbl2" x="112" y="372" text-anchor="end" data-i18n="sRem">أُزيل</text>
             <text id="remLbl" class="big" x="112" y="400" text-anchor="end">—</text>
             <!-- zoom -->
             <path class="connector" d="M552 189 L 646 318"/>
@@ -350,39 +352,39 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
               <g id="spheres"></g>
               <rect class="glass" x="630" y="362" width="120" height="60"/>
             </g>
-            <text class="lbl2" x="625" y="350" text-anchor="end">جسيمات نانوية</text>
-            <text class="lbl2" x="625" y="368" text-anchor="end">على الزجاج</text>
+            <text class="lbl2" x="625" y="350" text-anchor="end" data-i18n="sNano">جسيمات نانوية</text>
+            <text class="lbl2" x="625" y="368" text-anchor="end" data-i18n="sGlass">على الزجاج</text>
           </svg>
           <div class="timebar">
-            <button class="btn primary play" id="play" type="button" aria-pressed="false">تشغيل اليوم</button>
-            <label for="hour" class="small muted">ساعة اليوم</label>
+            <button class="btn primary play" id="play" type="button" aria-pressed="false"></button>
+            <label for="hour" class="small muted" data-i18n="lHour">ساعة اليوم</label>
             <input type="range" id="hour" min="6" max="18" step="0.05" value="11">
             <span class="clock" id="clock">11:00</span>
           </div>
         </div>
         <div class="kpis" aria-live="polite">
-          <div class="kpi"><span class="k">الأشعة فوق البنفسجية الآن</span><span class="v" id="k-uv">—</span><span class="s" id="k-uv-s"></span></div>
-          <div class="kpi"><span class="k">نسبة الإزالة الآن</span><span class="v" id="k-rem">—</span><span class="s" id="k-rem-s"></span></div>
-          <div class="kpi"><span class="k">التركيز عند المخرج</span><span class="v" id="k-out">—</span><span class="s" id="k-out-s"></span></div>
-          <div class="kpi"><span class="k" id="k-cap-k">إنتاج اللوح اليومي عند الهدف</span><span class="v" id="k-cap">—</span><span class="s" id="k-cap-s">بالمدخلات الحالية</span></div>
+          <div class="kpi"><span class="k" data-i18n="kUv">الأشعة فوق البنفسجية الآن</span><span class="v" id="k-uv">—</span><span class="s" id="k-uv-s"></span></div>
+          <div class="kpi"><span class="k" data-i18n="kRem">نسبة الإزالة الآن</span><span class="v" id="k-rem">—</span><span class="s" id="k-rem-s"></span></div>
+          <div class="kpi"><span class="k" data-i18n="kOut">التركيز عند المخرج</span><span class="v" id="k-out">—</span><span class="s" id="k-out-s"></span></div>
+          <div class="kpi"><span class="k" id="k-cap-k">إنتاج اللوح اليومي عند الهدف</span><span class="v" id="k-cap">—</span><span class="s" id="k-cap-s" data-i18n="kCapS">بالمدخلات الحالية</span></div>
         </div>
         <div class="steps">
-          <div class="step"><b>الضوء يصل</b><span>فوتونات الأشعة فوق البنفسجية في ضوء الشمس تعبر غشاء الماء الرقيق وتصل إلى الطلاء.</span></div>
-          <div class="step"><b>الجسيم يُستثار</b><span>كل فوتون طاقته أعلى من فجوة الطاقة يفصل إلكترونًا عن فجوة موجبة داخل الجسيم النانوي.</span></div>
-          <div class="step"><b>تتولد جذور مؤكسدة</b><span>الفجوة الموجبة تؤكسد الماء الملامس للسطح فتنتج جذور الهيدروكسيل، من أقوى المؤكسدات في الماء.</span></div>
-          <div class="step"><b>الملوث يتفكك</b><span>الجذور تهاجم الجزيء العضوي وتكسّره على مراحل حتى يصير ماءً وثاني أكسيد الكربون إن كفى الضوء والزمن.</span></div>
+          <div class="step" data-i18n="st1"><b>الضوء يصل</b><span>فوتونات الأشعة فوق البنفسجية في ضوء الشمس تعبر غشاء الماء الرقيق وتصل إلى الطلاء.</span></div>
+          <div class="step" data-i18n="st2"><b>الجسيم يُستثار</b><span>كل فوتون طاقته أعلى من فجوة الطاقة يفصل إلكترونًا عن فجوة موجبة داخل الجسيم النانوي.</span></div>
+          <div class="step" data-i18n="st3"><b>تتولد جذور مؤكسدة</b><span>الفجوة الموجبة تؤكسد الماء الملامس للسطح فتنتج جذور الهيدروكسيل، من أقوى المؤكسدات في الماء.</span></div>
+          <div class="step" data-i18n="st4"><b>الملوث يتفكك</b><span>الجذور تهاجم الجزيء العضوي وتكسّره على مراحل حتى يصير ماءً وثاني أكسيد الكربون إن كفى الضوء والزمن.</span></div>
         </div>
       </section>
 
       <!-- ============ DAY ============ -->
       <section id="day">
         <div class="sec-head">
-          <h2>يوم كامل على اللوح</h2>
-          <p class="muted">الشمس تشتد حتى الظهيرة ثم تضعف، فتتغير الإزالة على مدار ساعات التشغيل المظللة. مرّر المؤشر على المنحنى لقراءة أي ساعة. الصباح على اليمين كما في الرسم أعلاه.</p>
+          <h2 data-i18n="dayH">يوم كامل على اللوح</h2>
+          <p class="muted" data-i18n="dayP">الشمس تشتد حتى الظهيرة ثم تضعف، فتتغير الإزالة على مدار ساعات التشغيل المظللة. مرّر المؤشر على المنحنى لقراءة أي ساعة. الصباح على اليمين كما في الرسم أعلاه.</p>
         </div>
         <div class="charts2">
-          <div class="panel chart-card"><h3>شدة الأشعة فوق البنفسجية (واط/م²)</h3><div class="chart" id="ch-uv"></div></div>
-          <div class="panel chart-card"><h3>نسبة الإزالة عند التدفق الثابت (٪)</h3><div class="chart" id="ch-rem"></div></div>
+          <div class="panel chart-card"><h3 data-i18n="dayUvH">شدة الأشعة فوق البنفسجية (واط/م²)</h3><div class="chart" id="ch-uv"></div></div>
+          <div class="panel chart-card"><h3 data-i18n="dayRemH">نسبة الإزالة عند التدفق الثابت (٪)</h3><div class="chart" id="ch-rem"></div></div>
         </div>
         <p class="note" id="daySummary"></p>
       </section>
@@ -390,41 +392,41 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
       <!-- ============ LIFE ============ -->
       <section id="life">
         <div class="sec-head">
-          <h2>العمر والتجديد</h2>
-          <p class="muted">نفترض عمرًا للطلاء قدره سنتان وتجديدًا كل ستة أشهر. شكل فقد النشاط بين كل تجديدين يُقاس بتكرار تجربة التكسير على اللوح نفسه.</p>
+          <h2 data-i18n="lifeH">العمر والتجديد</h2>
+          <p class="muted" data-i18n="lifeP">نفترض عمرًا للطلاء قدره سنتان وتجديدًا كل ستة أشهر. شكل فقد النشاط بين كل تجديدين يُقاس بتكرار تجربة التكسير على اللوح نفسه.</p>
         </div>
         <div class="panel">
           <div class="ctl">
-            <div class="ctl-head"><label for="loss">فقد النشاط خلال ستة أشهر</label><output id="o-loss"></output></div>
+            <div class="ctl-head"><label for="loss" data-i18n="lLoss">فقد النشاط خلال ستة أشهر</label><output id="o-loss"></output></div>
             <input type="range" id="loss" min="0" max="70" step="5" value="20">
-            <div class="meta"><span class="tag t-need">مطلوب قياسه</span></div>
+            <div class="meta"><span class="tag t-need" data-i18n="tNeed">مطلوب قياسه</span></div>
           </div>
         </div>
         <div class="panel chart-card">
-          <h3>نشاط المحفز على مدى العمر (٪ من النشاط الأول)</h3>
+          <h3 data-i18n="lifeChH">نشاط المحفز على مدى العمر (٪ من النشاط الأول)</h3>
           <div class="chart" id="ch-life"></div>
-          <p class="note">نفترض أن كل تجديد يعيد النشاط كاملًا.</p>
+          <p class="note" data-i18n="lifeNote">نفترض أن كل تجديد يعيد النشاط كاملًا.</p>
         </div>
       </section>
 
       <!-- ============ CALIBRATION ============ -->
       <section id="calib">
         <div class="sec-head">
-          <h2>معايرة النموذج من تجربة مخبرية واحدة</h2>
-          <p class="muted">أدخل نتيجة تجربة تكسير واحدة بظروفها، فيحسب النموذج سرعة التكسير لكل جرعة ضوء، وهي الرقم الذي ينتقل من الكأس إلى اللوح الكبير. القيم المعبأة مثال توضيحي وليست قياسًا.</p>
+          <h2 data-i18n="calH">معايرة النموذج من تجربة مخبرية واحدة</h2>
+          <p class="muted" data-i18n="calP">أدخل نتيجة تجربة تكسير واحدة بظروفها، فيحسب النموذج سرعة التكسير لكل جرعة ضوء، وهي الرقم الذي ينتقل من الكأس إلى اللوح الكبير. القيم المعبأة مثال توضيحي وليست قياسًا.</p>
         </div>
         <div class="panel" style="display:grid;gap:14px">
           <div class="fields">
-            <div class="field"><label for="cC0">التركيز في البداية (ملغم/لتر)</label><input type="number" id="cC0" value="10" min="0" step="any"></div>
-            <div class="field"><label for="cCt">التركيز في النهاية (ملغم/لتر)</label><input type="number" id="cCt" value="5" min="0" step="any"></div>
-            <div class="field"><label for="ct">زمن الإضاءة (دقيقة)</label><input type="number" id="ct" value="180" min="0" step="any"></div>
-            <div class="field"><label for="cV">حجم الماء (مل)</label><input type="number" id="cV" value="50" min="0" step="any"></div>
-            <div class="field"><label for="cA">مساحة الطلاء المغمورة (سم²)</label><input type="number" id="cA" value="25" min="0" step="any"></div>
-            <div class="field"><label for="cE">الأشعة فوق البنفسجية عند السطح (واط/م²)</label><input type="number" id="cE" value="10" min="0" step="any"></div>
+            <div class="field"><label for="cC0" data-i18n="fC0">التركيز في البداية (ملغم/لتر)</label><input type="number" id="cC0" value="10" min="0" step="any"></div>
+            <div class="field"><label for="cCt" data-i18n="fCt">التركيز في النهاية (ملغم/لتر)</label><input type="number" id="cCt" value="5" min="0" step="any"></div>
+            <div class="field"><label for="ct" data-i18n="fT">زمن الإضاءة (دقيقة)</label><input type="number" id="ct" value="180" min="0" step="any"></div>
+            <div class="field"><label for="cV" data-i18n="fV">حجم الماء (مل)</label><input type="number" id="cV" value="50" min="0" step="any"></div>
+            <div class="field"><label for="cA" data-i18n="fA">مساحة الطلاء المغمورة (سم²)</label><input type="number" id="cA" value="25" min="0" step="any"></div>
+            <div class="field"><label for="cE" data-i18n="fE">الأشعة فوق البنفسجية عند السطح (واط/م²)</label><input type="number" id="cE" value="10" min="0" step="any"></div>
           </div>
           <div class="calib-out" id="calibOut"></div>
           <div class="copy-row">
-            <button class="btn primary" id="applyK" type="button">اعتمد هذه السرعة في النموذج</button>
+            <button class="btn primary" id="applyK" type="button" data-i18n="applyK">اعتمد هذه السرعة في النموذج</button>
             <span class="toast" id="applyMsg" aria-live="polite"></span>
           </div>
         </div>
@@ -433,57 +435,57 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
       <!-- ============ SCIENCE ============ -->
       <section id="science">
         <div class="sec-head">
-          <h2>الأسس العلمية</h2>
-          <p class="muted">كل معادلة في النموذج منشورة ومحكّمة. اللمسة الخاصة بالفريق تُضاف فوقها بعد المعايرة.</p>
+          <h2 data-i18n="sciH">الأسس العلمية</h2>
+          <p class="muted" data-i18n="sciP">كل معادلة في النموذج منشورة ومحكّمة. اللمسة الخاصة بالفريق تُضاف فوقها بعد المعايرة.</p>
         </div>
         <div class="sci">
           <div class="panel">
-            <h3>لماذا تكفي الشمس</h3>
-            <p>يمتص الجسيم الفوتون إذا زادت طاقته عن فجوة الطاقة، وهي نحو 3.2 إلكترون فولت لثاني أكسيد التيتانيوم في طور الأناتاز، أي أطوال موجية أقصر من نحو 387 نانومترًا. ينفصل إلكترون عن فجوة موجبة، وتؤكسد الفجوة الماء فتتولد جذور الهيدروكسيل.</p>
+            <h3 data-i18n="sc1h">لماذا تكفي الشمس</h3>
+            <p data-i18n="sc1p">يمتص الجسيم الفوتون إذا زادت طاقته عن فجوة الطاقة، وهي نحو 3.2 إلكترون فولت لثاني أكسيد التيتانيوم في طور الأناتاز، أي أطوال موجية أقصر من نحو 387 نانومترًا. ينفصل إلكترون عن فجوة موجبة، وتؤكسد الفجوة الماء فتتولد جذور الهيدروكسيل.</p>
             <p class="src">Fujishima &amp; Honda 1972 · Hoffmann et al. 1995</p>
           </div>
           <div class="panel">
-            <h3>سرعة التكسير</h3>
-            <p>معادلة لانجموير وهينشلوود تؤول عند التراكيز المنخفضة إلى تناقص أُسّي من الرتبة الأولى، وهو الشكل المعتمد في النموذج.</p>
+            <h3 data-i18n="sc2h">سرعة التكسير</h3>
+            <p data-i18n="sc2p">معادلة لانجموير وهينشلوود تؤول عند التراكيز المنخفضة إلى تناقص أُسّي من الرتبة الأولى، وهو الشكل المعتمد في النموذج.</p>
             <div class="eq">C = C₀ · e^(−k·t)</div>
             <p class="src">Herrmann 1999</p>
           </div>
           <div class="panel">
-            <h3>أثر شدة الضوء</h3>
-            <p>السرعة تتناسب طرديًا مع شدة الضوء حتى نحو 250 واط/م². الأشعة فوق البنفسجية الشمسية في المملكة نحو 20 إلى 30 واط/م² في ساعات الذروة، فهي في المنطقة الطردية، لذا نجعل السرعة متناسبة مع الشدة في كل ساعة.</p>
+            <h3 data-i18n="sc3h">أثر شدة الضوء</h3>
+            <p data-i18n="sc3p">السرعة تتناسب طرديًا مع شدة الضوء حتى نحو 250 واط/م². الأشعة فوق البنفسجية الشمسية في المملكة نحو 20 إلى 30 واط/م² في ساعات الذروة، فهي في المنطقة الطردية، لذا نجعل السرعة متناسبة مع الشدة في كل ساعة.</p>
             <p class="src">Herrmann 1999 · Ollis, Pelizzetti &amp; Serpone 1991</p>
           </div>
           <div class="panel">
-            <h3>جرعة الضوء لكل لتر</h3>
-            <p>المقياس المعتمد في مفاعلات الشمس: الطاقة فوق البنفسجية التي تلقاها كل لتر. به ينتقل ثابت السرعة من الكأس إلى اللوح مهما اختلف الحجم والمساحة والشدة.</p>
+            <h3 data-i18n="sc4h">جرعة الضوء لكل لتر</h3>
+            <p data-i18n="sc4p">المقياس المعتمد في مفاعلات الشمس: الطاقة فوق البنفسجية التي تلقاها كل لتر. به ينتقل ثابت السرعة من الكأس إلى اللوح مهما اختلف الحجم والمساحة والشدة.</p>
             <div class="eq">Q_UV = E · A · t / V   [kJ/L]  →  C = C₀ · e^(−k_Q · Q_UV)</div>
             <p class="src">Malato et al. 2009</p>
           </div>
           <div class="panel">
-            <h3>وصول الملوث إلى السطح</h3>
-            <p>المحفز مثبت على الزجاج، فالملوث يجب أن ينتقل من الماء إلى السطح قبل أن يتكسر. المقاومتان تُجمعان على التوالي، وسرعة الانتقال تقديرها من سماكة غشاء الماء ومعامل الانتشار (نحو جزء من مليار متر مربع في الثانية للجزيئات العضوية الصغيرة)، فتكون نحو 5 ميكرومترات في الثانية لغشاء سمكه نصف مليمتر.</p>
+            <h3 data-i18n="sc5h">وصول الملوث إلى السطح</h3>
+            <p data-i18n="sc5p">المحفز مثبت على الزجاج، فالملوث يجب أن ينتقل من الماء إلى السطح قبل أن يتكسر. المقاومتان تُجمعان على التوالي، وسرعة الانتقال تقديرها من سماكة غشاء الماء ومعامل الانتشار (نحو جزء من مليار متر مربع في الثانية للجزيئات العضوية الصغيرة)، فتكون نحو 5 ميكرومترات في الثانية لغشاء سمكه نصف مليمتر.</p>
             <div class="eq">1/k_eff = 1/k_s + 1/k_m ,  k_s = k_Q · E · τ ,  k_m ≈ Sh · D / δ</div>
             <p class="src">Chen, Li &amp; Ray 2000</p>
           </div>
           <div class="panel">
-            <h3>الجريان على اللوح</h3>
-            <p>الماء ينساب في اتجاه واحد دون اختلاط رجعي، فنستخدم معادلة الجريان المكبسي. منها سعة اللوح عند أي هدف إزالة.</p>
+            <h3 data-i18n="sc6h">الجريان على اللوح</h3>
+            <p data-i18n="sc6p">الماء ينساب في اتجاه واحد دون اختلاط رجعي، فنستخدم معادلة الجريان المكبسي. منها سعة اللوح عند أي هدف إزالة.</p>
             <div class="eq">C_out = C_in · e^(−k_eff·A/F)  ,  F = k_eff·A / ln(1/(1−R))</div>
             <p class="src">Levenspiel 1999</p>
           </div>
           <div class="panel">
-            <h3>الإشعاع المحلي</h3>
-            <p>متوسط الأشعة فوق البنفسجية اليومية نحو 200 واط·ساعة/م² (198 في الرياض)، وتمثل نحو 3.5٪ من الإشعاع الكلي في السماء الصافية، والإشعاع الكلي اليومي 5.7 إلى 6.7 كيلوواط·ساعة/م². أعلى متوسط ساعي مسجل نحو 28 واط/م². نوزعها على النهار بمنحنى جيبي من السادسة حتى السادسة، وهو تبسيط يُستبدل ببيانات المحطة الأقرب.</p>
+            <h3 data-i18n="sc7h">الإشعاع المحلي</h3>
+            <p data-i18n="sc7p">متوسط الأشعة فوق البنفسجية اليومية نحو 200 واط·ساعة/م² (198 في الرياض)، وتمثل نحو 3.5٪ من الإشعاع الكلي في السماء الصافية، والإشعاع الكلي اليومي 5.7 إلى 6.7 كيلوواط·ساعة/م². أعلى متوسط ساعي مسجل نحو 28 واط/م². نوزعها على النهار بمنحنى جيبي من السادسة حتى السادسة، وهو تبسيط يُستبدل ببيانات المحطة الأقرب.</p>
             <p class="src">Mujahid 1994 · Elhadidy et al. 1990 · Al-Dhafiri et al. 2000 · Zell et al. 2015</p>
           </div>
           <div class="panel">
-            <h3>كيف نقيس ونقارن</h3>
-            <p>للاختبار المخبري معيار دولي لقياس النشاط الضوئي للأسطح في الماء بصبغة الميثيلين الأزرق. وللمقارنة مع تقنيات الأكسدة الأخرى يوصي الاتحاد الدولي للكيمياء البحتة والتطبيقية بمقياس «مساحة المجمّع لكل رتبة»: المساحة اللازمة لخفض التركيز عشرة أضعاف في متر مكعب.</p>
+            <h3 data-i18n="sc8h">كيف نقيس ونقارن</h3>
+            <p data-i18n="sc8p">للاختبار المخبري معيار دولي لقياس النشاط الضوئي للأسطح في الماء بصبغة الميثيلين الأزرق. وللمقارنة مع تقنيات الأكسدة الأخرى يوصي الاتحاد الدولي للكيمياء البحتة والتطبيقية بمقياس «مساحة المجمّع لكل رتبة»: المساحة اللازمة لخفض التركيز عشرة أضعاف في متر مكعب.</p>
             <p class="src">ISO 10678 · Bolton et al. 2001</p>
           </div>
         </div>
         <div class="panel" style="display:grid;gap:10px">
-          <h3>المراجع</h3>
+          <h3 data-i18n="refsH">المراجع</h3>
           <ol class="refs" dir="ltr" style="text-align:left">
             <li>Fujishima A., Honda K. (1972). Electrochemical photolysis of water at a semiconductor electrode. <i>Nature</i> 238:37–38. <a href="https://doi.org/10.1038/238037a0">doi</a></li>
             <li>Hoffmann M.R., Martin S.T., Choi W., Bahnemann D.W. (1995). Environmental applications of semiconductor photocatalysis. <i>Chem. Rev.</i> 95:69–96. <a href="https://doi.org/10.1021/cr00033a004">doi</a></li>
@@ -501,17 +503,17 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
           </ol>
         </div>
         <div class="panel" style="display:grid;gap:10px">
-          <h3>شرح المصطلحات</h3>
+          <h3 data-i18n="glossH">شرح المصطلحات</h3>
           <dl class="gloss">
-            <dt>محفّز ضوئي</dt><dd>مادة لا تُستهلك في التفاعل، لكنها عند امتصاص الضوء تسرّع تكسير مواد أخرى.</dd>
-            <dt>جسيم نانوي</dt><dd>جسيم قطره بين واحد ومئة نانومتر تقريبًا. صغره يعني مساحة سطح كبيرة لكل جرام.</dd>
-            <dt>فجوة الطاقة</dt><dd>أقل طاقة يحتاجها الفوتون ليستثير الجسيم. تحدد أي جزء من ضوء الشمس يمكن استعماله.</dd>
-            <dt>جذر الهيدروكسيل</dt><dd>جزيء قصير العمر شديد التفاعل يتكون على السطح المضاء، وهو الذي يهاجم الملوث.</dd>
-            <dt>سرعة التكسير لكل جرعة ضوء</dt><dd>كم يتناقص الملوث لكل كيلوجول من الأشعة فوق البنفسجية يتلقاه اللتر. وحدتها لتر لكل كيلوجول.</dd>
-            <dt>انتقال الكتلة</dt><dd>انتقال الملوث من داخل الماء إلى السطح المطلي. إن كان بطيئًا صار هو الحد مهما كان المحفز سريعًا.</dd>
-            <dt>الجريان المكبسي</dt><dd>جريان يتقدم فيه الماء كتلة واحدة دون أن يختلط القديم بالجديد، كما في غشاء ينساب على لوح.</dd>
-            <dt>التمعدن</dt><dd>التكسير الكامل للملوث إلى ماء وثاني أكسيد الكربون، ويُثبت بقياس الكربون العضوي الكلي.</dd>
-            <dt>التجديد</dt><dd>إعادة نشاط الطلاء بعد أن تغطيه الرواسب أو يضعف، بالغسل أو التسخين أو إعادة الطلاء.</dd>
+            <dt data-i18n="gt0">محفّز ضوئي</dt><dd data-i18n="gd0">مادة لا تُستهلك في التفاعل، لكنها عند امتصاص الضوء تسرّع تكسير مواد أخرى.</dd>
+            <dt data-i18n="gt1">جسيم نانوي</dt><dd data-i18n="gd1">جسيم قطره بين واحد ومئة نانومتر تقريبًا. صغره يعني مساحة سطح كبيرة لكل جرام.</dd>
+            <dt data-i18n="gt2">فجوة الطاقة</dt><dd data-i18n="gd2">أقل طاقة يحتاجها الفوتون ليستثير الجسيم. تحدد أي جزء من ضوء الشمس يمكن استعماله.</dd>
+            <dt data-i18n="gt3">جذر الهيدروكسيل</dt><dd data-i18n="gd3">جزيء قصير العمر شديد التفاعل يتكون على السطح المضاء، وهو الذي يهاجم الملوث.</dd>
+            <dt data-i18n="gt4">سرعة التكسير لكل جرعة ضوء</dt><dd data-i18n="gd4">كم يتناقص الملوث لكل كيلوجول من الأشعة فوق البنفسجية يتلقاه اللتر. وحدتها لتر لكل كيلوجول.</dd>
+            <dt data-i18n="gt5">انتقال الكتلة</dt><dd data-i18n="gd5">انتقال الملوث من داخل الماء إلى السطح المطلي. إن كان بطيئًا صار هو الحد مهما كان المحفز سريعًا.</dd>
+            <dt data-i18n="gt6">الجريان المكبسي</dt><dd data-i18n="gd6">جريان يتقدم فيه الماء كتلة واحدة دون أن يختلط القديم بالجديد، كما في غشاء ينساب على لوح.</dd>
+            <dt data-i18n="gt7">التمعدن</dt><dd data-i18n="gd7">التكسير الكامل للملوث إلى ماء وثاني أكسيد الكربون، ويُثبت بقياس الكربون العضوي الكلي.</dd>
+            <dt data-i18n="gt8">التجديد</dt><dd data-i18n="gd8">إعادة نشاط الطلاء بعد أن تغطيه الرواسب أو يضعف، بالغسل أو التسخين أو إعادة الطلاء.</dd>
           </dl>
         </div>
       </section>
@@ -519,15 +521,131 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
   </div>
 
   <footer>
-    <p>نموذج حسابي مبسط للتخطيط والعرض، وليس نتيجة تجربة. كل افتراض موسوم وسيُستبدل بقياسات الفريق.</p>
+    <p data-i18n="foot">نموذج حسابي مبسط للتخطيط والعرض، وليس نتيجة تجربة. كل افتراض موسوم وسيُستبدل بقياسات الفريق.</p>
   </footer>
 </div>
 
 <script>
+window.I18N_EN = {
+ "back": "← All models · Team Thea",
+ "eyebrow": "Team Thea · Miyahthon 2026 · SolarShield idea · Visual computational model",
+ "h1": "SolarShield Panel Model",
+ "lede": "A glass panel whose surface is coated with photocatalytic nanoparticles. The ultraviolet part of sunlight generates oxidizing radicals on these particles, which break down organic pollutants in the thin film of water flowing over the panel. Move the time of day and the inputs to see how much pollutant is removed and how many litres the panel actually treats.",
+ "status": "<b>Illustrative model:</b> the equations are published and peer-reviewed, while the degradation rate here is an illustrative assumption until it is calibrated with a lab measurement in the calibration section. Every number on the page is tagged with its source:",
+ "tRef": "From a published source",
+ "tAssume": "Assumption for display",
+ "tNeed": "Needs measurement",
+ "tRefEst": "Estimate from a source",
+ "tocLabel": "Page sections",
+ "tocPanel": "The panel",
+ "tocDay": "A full day",
+ "tocLife": "Lifetime",
+ "tocCalib": "Calibration",
+ "tocSci": "Scientific basis",
+ "railLabel": "Model inputs",
+ "railSum": "Model inputs",
+ "grpPanel": "The panel",
+ "grpSun": "The sun",
+ "grpCat": "Catalyst and water",
+ "lA": "Coated panel area",
+ "lTau": "Light reaching the coating",
+ "lH": "Daily ultraviolet dose",
+ "lHours": "Daily operating hours",
+ "lKQ": "Degradation rate per light dose",
+ "lKm": "Pollutant transfer to the surface",
+ "lFlow": "Water flow over the panel",
+ "lC0": "Inlet pollutant concentration",
+ "lR": "Target removal",
+ "lLoss": "Activity loss over six months",
+ "hA": "Placeholder: one square metre",
+ "hTau": "Losses through the glass or water film",
+ "hH": "Riyadh and Dhahran measurements",
+ "hHours": "Sun hours around noon",
+ "hKQ": "The key missing number",
+ "hKm": "Mass-transfer coefficient",
+ "hFlow": "Constant flow while running",
+ "hC0": "Dissolved organic pollutant",
+ "hR": "Set by pollutant and end use",
+ "reset": "Reset to defaults",
+ "panelH": "The panel in the sun",
+ "panelP": "Polluted water enters at the top of the panel and flows in a thin film over the coating to the outlet. The film colour follows the calculated pollutant concentration at each point: dense amber is polluted, clear blue is treated.",
+ "sceneLabel": "Animated drawing of a tilted glass panel in the sun, with water flowing over it and changing from polluted to clear",
+ "sIn": "Polluted water in",
+ "sOut": "Treated water out",
+ "sRem": "Removed",
+ "sNano": "Nanoparticles",
+ "sGlass": "on the glass",
+ "lHour": "Time of day",
+ "kUv": "UV right now",
+ "kRem": "Removal right now",
+ "kOut": "Outlet concentration",
+ "kCapS": "With the current inputs",
+ "st1": "<b>Light arrives</b><span>Ultraviolet photons in sunlight pass through the thin water film and reach the coating.</span>",
+ "st2": "<b>The particle is excited</b><span>Each photon with energy above the band gap separates an electron from a positive hole inside the nanoparticle.</span>",
+ "st3": "<b>Oxidizing radicals form</b><span>The positive hole oxidizes water at the surface, producing hydroxyl radicals, among the strongest oxidants in water.</span>",
+ "st4": "<b>The pollutant breaks down</b><span>The radicals attack the organic molecule and break it down step by step into water and carbon dioxide, given enough light and time.</span>",
+ "dayH": "A full day on the panel",
+ "dayP": "Sunlight strengthens until noon and then weakens, so removal changes across the shaded operating hours. Hover over a curve to read any hour. Morning is on the left, as in the scene above.",
+ "dayUvH": "Ultraviolet intensity (W/m²)",
+ "dayRemH": "Removal at constant flow (%)",
+ "lifeH": "Lifetime and regeneration",
+ "lifeP": "We assume a two-year coating life with regeneration every six months. The shape of the activity loss between regenerations is measured by repeating the degradation test on the same panel.",
+ "lifeChH": "Catalyst activity over its lifetime (% of initial activity)",
+ "lifeNote": "We assume each regeneration fully restores activity.",
+ "calH": "Calibrating the model from one lab test",
+ "calP": "Enter the result of one degradation test with its conditions, and the model calculates the degradation rate per light dose, the number that carries over from the beaker to the full-size panel. The pre-filled values are an illustrative example, not a measurement.",
+ "fC0": "Starting concentration (mg/L)",
+ "fCt": "Final concentration (mg/L)",
+ "fT": "Illumination time (min)",
+ "fV": "Water volume (mL)",
+ "fA": "Submerged coated area (cm²)",
+ "fE": "UV at the surface (W/m²)",
+ "applyK": "Use this rate in the model",
+ "sciH": "Scientific basis",
+ "sciP": "Every equation in the model is published and peer-reviewed. The team's own contribution is added on top after calibration.",
+ "sc1h": "Why sunlight is enough",
+ "sc1p": "The particle absorbs a photon whose energy exceeds the band gap, about 3.2 eV for anatase titanium dioxide, which means wavelengths shorter than about 387 nm. An electron separates from a positive hole, and the hole oxidizes water to form hydroxyl radicals.",
+ "sc2h": "Degradation rate",
+ "sc2p": "At low concentrations the Langmuir–Hinshelwood equation reduces to first-order exponential decay, the form used in the model.",
+ "sc3h": "Effect of light intensity",
+ "sc3p": "The rate is proportional to light intensity up to about 250 W/m². Solar UV in Saudi Arabia is about 20 to 30 W/m² at peak hours, well inside that linear range, so the model scales the rate with intensity hour by hour.",
+ "sc4h": "Light dose per litre",
+ "sc4p": "The standard metric for solar reactors: the ultraviolet energy received by each litre. It lets the rate constant carry over from the beaker to the panel whatever the volume, area or intensity.",
+ "sc5h": "Pollutant reaching the surface",
+ "sc5p": "The catalyst is fixed on the glass, so the pollutant must move from the water to the surface before it can be degraded. The two resistances add in series. The transfer rate is estimated from the water-film thickness and the diffusion coefficient (about 10⁻⁹ m²/s for small organic molecules), giving about 5 micrometres per second for a half-millimetre film.",
+ "sc6h": "Flow over the panel",
+ "sc6p": "Water flows one way without back-mixing, so the model uses the plug-flow equation. It gives the panel capacity for any removal target.",
+ "sc7h": "Local irradiance",
+ "sc7p": "Average daily UV is about 200 Wh/m² (198 in Riyadh), about 3.5% of total radiation under clear skies, and total daily radiation is 5.7 to 6.7 kWh/m². The highest recorded hourly mean is about 28 W/m². The model spreads it over the day with a sine curve from 6:00 to 18:00, a simplification to be replaced with data from the nearest station.",
+ "sc8h": "How to measure and compare",
+ "sc8p": "An international standard measures the photocatalytic activity of surfaces in water using methylene blue dye. To compare with other oxidation technologies, IUPAC recommends the \"collector area per order\": the area needed to cut the concentration tenfold in one cubic metre.",
+ "refsH": "References",
+ "glossH": "Glossary",
+ "gt0": "Photocatalyst",
+ "gd0": "A material that is not consumed in the reaction but, when it absorbs light, speeds up the breakdown of other substances.",
+ "gt1": "Nanoparticle",
+ "gd1": "A particle roughly 1 to 100 nm across. Its small size means a large surface area per gram.",
+ "gt2": "Band gap",
+ "gd2": "The minimum photon energy needed to excite the particle. It sets which part of sunlight can be used.",
+ "gt3": "Hydroxyl radical",
+ "gd3": "A short-lived, highly reactive species formed on the lit surface; it is what attacks the pollutant.",
+ "gt4": "Degradation rate per light dose",
+ "gd4": "How fast the pollutant declines per kilojoule of UV received by each litre, in litres per kilojoule.",
+ "gt5": "Mass transfer",
+ "gd5": "Movement of the pollutant from the bulk water to the coated surface. If it is slow, it becomes the limit however fast the catalyst is.",
+ "gt6": "Plug flow",
+ "gd6": "Flow in which water advances as one block without old and new water mixing, as in a film running down a panel.",
+ "gt7": "Mineralization",
+ "gd7": "Complete breakdown of the pollutant to water and carbon dioxide, confirmed by measuring total organic carbon.",
+ "gt8": "Regeneration",
+ "gd8": "Restoring the coating activity after deposits cover it or it weakens, by washing, heating or recoating.",
+ "foot": "A simplified computational model for planning and presentation, not an experimental result. Every assumption is tagged and will be replaced with the team's measurements."
+};
+</script>
+<script src="i18n.js"></script>
+<script>
 (() => {
   const $ = s => document.querySelector(s);
-  document.documentElement.lang = 'ar';
-  document.documentElement.dir = 'rtl';
   const RISE = 6, SET = 18;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const DEF = {A:1,tau:90,H:200,hours:8,kQ:-1,km:5,flow:0.30103,C0:10,R:90,hour:11,loss:20};
@@ -554,7 +672,8 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
     if (a >= 1) return v.toLocaleString('en-US',{maximumFractionDigits:2});
     return v.toLocaleString('en-US',{maximumSignificantDigits:2});
   }
-  function pct(v){ const x = Math.max(0, v*100); if (x >= 99) return Math.min(x, 99.9).toFixed(1) + '٪'; return Math.round(x) + '٪'; }
+  const PC = () => L('٪','%');
+  function pct(v){ const x = Math.max(0, v*100); if (x >= 99) return Math.min(x, 99.9).toFixed(1) + PC(); return Math.round(x) + PC(); }
   const hm = h => { const H = Math.floor(h + 1e-9), M = Math.round((h - H)*60); const mm = M === 60 ? 0 : M; const hh = M === 60 ? H+1 : H; return hh + ':' + String(mm).padStart(2,'0'); };
   const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 
@@ -566,16 +685,16 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
   }
   function writeOutputs(p){
     const set = (id, html) => { document.getElementById('o-'+id).innerHTML = html; };
-    set('A', `${f(p.A)} <span class="u">م²</span>`);
-    set('tau', `${Math.round(p.tau*100)}<span class="u">٪</span>`);
-    set('H', `${p.H} <span class="u">واط·ساعة/م²</span>`);
-    set('hours', `${p.hours} <span class="u">ساعات</span>`);
-    set('kQ', `${f(p.kQ)} <span class="u">لتر/كيلوجول</span>`);
-    set('km', `${p.km} <span class="u">ميكرومتر/ث</span>`);
-    set('flow', `${f(p.flow)} <span class="u">لتر/ساعة</span>`);
-    set('C0', `${p.C0} <span class="u">ملغم/لتر</span>`);
-    set('R', `${Math.round(p.R*100)}<span class="u">٪</span>`);
-    set('loss', `${p.loss}<span class="u">٪</span>`);
+    set('A', `${f(p.A)} <span class="u">${L('م²','m²')}</span>`);
+    set('tau', `${Math.round(p.tau*100)}<span class="u">${PC()}</span>`);
+    set('H', `${p.H} <span class="u">${L('واط·ساعة/م²','Wh/m²')}</span>`);
+    set('hours', `${p.hours} <span class="u">${L('ساعات','h')}</span>`);
+    set('kQ', `${f(p.kQ)} <span class="u">${L('لتر/كيلوجول','L/kJ')}</span>`);
+    set('km', `${p.km} <span class="u">${L('ميكرومتر/ث','µm/s')}</span>`);
+    set('flow', `${f(p.flow)} <span class="u">${L('لتر/ساعة','L/h')}</span>`);
+    set('C0', `${p.C0} <span class="u">${L('ملغم/لتر','mg/L')}</span>`);
+    set('R', `${Math.round(p.R*100)}<span class="u">${PC()}</span>`);
+    set('loss', `${p.loss}<span class="u">${PC()}</span>`);
   }
 
   /* ---------- scene ---------- */
@@ -593,7 +712,8 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 
   function renderScene(p){
     const h = p.hour, t = (h-RISE)/(SET-RISE), u = 1-t;
-    const sx = u*u*780 + 2*u*t*405 + t*t*30, sy = u*u*170 + 2*u*t*(-130) + t*t*170;
+    const sx0 = u*u*780 + 2*u*t*405 + t*t*30, sy = u*u*170 + 2*u*t*(-130) + t*t*170;
+    const sx = document.documentElement.dir === 'rtl' ? sx0 : 800 - sx0;   // morning on the reading-start side
     const E = uvAt(h,p), [a,b] = win(p), on = h >= a - 1e-9 && h <= b + 1e-9 && E > 0;
     const lit = Math.min(1, E/26);
     ['sun','glow'].forEach(id => { const el = document.getElementById(id); el.setAttribute('cx',sx); el.setAttribute('cy',sy); });
@@ -607,18 +727,18 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
     $('#remLbl').textContent = on ? pct(1-cOut) : '—';
     $('#clock').textContent = hm(h);
     // KPIs
-    $('#k-uv').innerHTML = `${f(E)}<small>واط/م²</small>`;
-    $('#k-uv-s').textContent = E > 0 ? `الذروة ${f(uvAt(12,p))} واط/م² عند الظهيرة` : 'الشمس تحت الأفق';
+    $('#k-uv').innerHTML = `${f(E)}<small>${L('واط/م²','W/m²')}</small>`;
+    $('#k-uv-s').textContent = E > 0 ? L(`الذروة ${f(uvAt(12,p))} واط/م² عند الظهيرة`, `Peak ${f(uvAt(12,p))} W/m² at noon`) : L('الشمس تحت الأفق','Sun below the horizon');
     if (on){
       $('#k-rem').textContent = pct(1-cOut);
-      $('#k-rem-s').textContent = `عند تدفق ${f(p.flow)} لتر/ساعة`;
-      $('#k-out').innerHTML = `${f(p.C0*cOut)}<small>ملغم/لتر</small>`;
-      $('#k-out-s').textContent = `من ${p.C0} ملغم/لتر عند المدخل`;
+      $('#k-rem-s').textContent = L(`عند تدفق ${f(p.flow)} لتر/ساعة`, `At ${f(p.flow)} L/h flow`);
+      $('#k-out').innerHTML = `${f(p.C0*cOut)}<small>${L('ملغم/لتر','mg/L')}</small>`;
+      $('#k-out-s').textContent = L(`من ${p.C0} ملغم/لتر عند المدخل`, `From ${p.C0} mg/L at the inlet`);
     } else {
       $('#k-rem').textContent = '—';
-      $('#k-rem-s').textContent = `المضخة متوقفة خارج ساعات التشغيل (${hm(a)} إلى ${hm(b)})`;
+      $('#k-rem-s').textContent = L(`المضخة متوقفة خارج ساعات التشغيل (${hm(a)} إلى ${hm(b)})`, `Pump off outside operating hours (${hm(a)} to ${hm(b)})`);
       $('#k-out').textContent = '—';
-      $('#k-out-s').textContent = 'لا جريان الآن';
+      $('#k-out-s').textContent = L('لا جريان الآن','No flow right now');
     }
   }
 
@@ -637,17 +757,18 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
 
   /* ---------- line chart ---------- */
   function lineChart(host, cfg){
-    const W = 640, H = 230, m = {t:cfg.markers ? 30 : 16, r:46, b:36, l:12};
+    const rtl = document.documentElement.dir === 'rtl';   // Arabic: x runs right-to-left, y axis on the right
+    const W = 640, H = 230, m = {t:cfg.markers ? 30 : 16, r:rtl ? 46 : 12, b:36, l:rtl ? 12 : 46};
     const pw = W-m.l-m.r, ph = H-m.t-m.b;
-    const X = v => (W-m.r) - (v-cfg.xMin)/(cfg.xMax-cfg.xMin)*pw;   // right-to-left
-    const Xinv = px => cfg.xMin + ((W-m.r)-px)/pw*(cfg.xMax-cfg.xMin);
+    const X = v => rtl ? (W-m.r) - (v-cfg.xMin)/(cfg.xMax-cfg.xMin)*pw : m.l + (v-cfg.xMin)/(cfg.xMax-cfg.xMin)*pw;
+    const Xinv = px => rtl ? cfg.xMin + ((W-m.r)-px)/pw*(cfg.xMax-cfg.xMin) : cfg.xMin + (px-m.l)/pw*(cfg.xMax-cfg.xMin);
     const Y = v => H-m.b - (v-cfg.yMin)/(cfg.yMax-cfg.yMin)*ph;
     let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.label)}">`;
-    if (cfg.band) s += `<rect class="band" x="${X(cfg.band[1])}" y="${m.t}" width="${X(cfg.band[0])-X(cfg.band[1])}" height="${ph}"/>`;
-    cfg.yTicks.forEach(v => { s += `<line class="gl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${W-m.r+8}" y="${Y(v)+4}" text-anchor="start">${cfg.fmtY ? cfg.fmtY(v) : v}</text>`; });
+    if (cfg.band) s += `<rect class="band" x="${Math.min(X(cfg.band[0]),X(cfg.band[1]))}" y="${m.t}" width="${Math.abs(X(cfg.band[0])-X(cfg.band[1]))}" height="${ph}"/>`;
+    cfg.yTicks.forEach(v => { s += `<line class="gl" x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${rtl ? W-m.r+8 : m.l-8}" y="${Y(v)+4}" text-anchor="${rtl ? 'start' : 'end'}">${cfg.fmtY ? cfg.fmtY(v) : v}</text>`; });
     cfg.xTicks.forEach(v => { s += `<text class="ax" x="${X(v)}" y="${H-m.b+19}" text-anchor="middle">${cfg.fmtX ? cfg.fmtX(v) : v}</text>`; });
     if (cfg.xTitle) s += `<text class="axt" x="${m.l+pw/2}" y="${H-2}" text-anchor="middle">${esc(cfg.xTitle)}</text>`;
-    if (cfg.ref) s += `<line class="ref" x1="${m.l}" x2="${W-m.r}" y1="${Y(cfg.ref.y)}" y2="${Y(cfg.ref.y)}"/><text class="ax" x="${m.l+2}" y="${Y(cfg.ref.y)-6}" text-anchor="start">${esc(cfg.ref.label)}</text>`;
+    if (cfg.ref) s += `<line class="ref" x1="${m.l}" x2="${W-m.r}" y1="${Y(cfg.ref.y)}" y2="${Y(cfg.ref.y)}"/><text class="ax" x="${rtl ? m.l+2 : W-m.r-2}" y="${Y(cfg.ref.y)-6}" text-anchor="${rtl ? 'start' : 'end'}">${esc(cfg.ref.label)}</text>`;
     const pts = cfg.pts;
     if (pts.length){
       const d = pts.map((q,i) => (i ? 'L' : 'M') + X(q[0]).toFixed(1) + ' ' + Y(q[1]).toFixed(1)).join(' ');
@@ -687,32 +808,33 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
     const uvPts = []; for (let h = RISE; h <= SET + 1e-9; h += .1) uvPts.push([+h.toFixed(2), uvAt(h,p)]);
     const yMaxUV = Math.max(10, Math.ceil((uvAt(12,p)+3)/10)*10);
     const uvTicks = []; for (let v = 0; v <= yMaxUV; v += (yMaxUV > 30 ? 10 : 10)) uvTicks.push(v);
-    charts.uv = lineChart($('#ch-uv'), {label:'شدة الأشعة فوق البنفسجية خلال اليوم', xMin:RISE, xMax:SET, yMin:0, yMax:yMaxUV, pts:uvPts, area:true,
-      xTicks:[6,8,10,12,14,16,18], yTicks:uvTicks, band:[a,b], cursor:p.hour, xTitle:'ساعة اليوم',
-      tip:(x,y) => `الساعة ${hm(x)}<br>${f(y)} واط/م²`});
+    charts.uv = lineChart($('#ch-uv'), {label:L('شدة الأشعة فوق البنفسجية خلال اليوم','Ultraviolet intensity through the day'), xMin:RISE, xMax:SET, yMin:0, yMax:yMaxUV, pts:uvPts, area:true,
+      xTicks:[6,8,10,12,14,16,18], yTicks:uvTicks, band:[a,b], cursor:p.hour, xTitle:L('ساعة اليوم','Time of day'),
+      tip:(x,y) => L(`الساعة ${hm(x)}<br>${f(y)} واط/م²`, `Time ${hm(x)}<br>${f(y)} W/m²`)});
     const remPts = []; for (let h = a; h <= b + 1e-9; h += .05) remPts.push([+h.toFixed(2), removalAt(h,p)*100]);
-    charts.rem = lineChart($('#ch-rem'), {label:'نسبة الإزالة خلال ساعات التشغيل', xMin:RISE, xMax:SET, yMin:0, yMax:100, pts:remPts, area:false,
-      xTicks:[6,8,10,12,14,16,18], yTicks:[0,25,50,75,100], band:[a,b], cursor:p.hour, xTitle:'ساعة اليوم', ref:{y:p.R*100, label:'الهدف'},
-      tip:(x,y) => `الساعة ${hm(x)}<br>إزالة ${pct(y/100)}`});
+    charts.rem = lineChart($('#ch-rem'), {label:L('نسبة الإزالة خلال ساعات التشغيل','Removal during operating hours'), xMin:RISE, xMax:SET, yMin:0, yMax:100, pts:remPts, area:false,
+      xTicks:[6,8,10,12,14,16,18], yTicks:[0,25,50,75,100], band:[a,b], cursor:p.hour, xTitle:L('ساعة اليوم','Time of day'), ref:{y:p.R*100, label:L('الهدف','Target')},
+      tip:(x,y) => L(`الساعة ${hm(x)}<br>إزالة ${pct(y/100)}`, `Time ${hm(x)}<br>Removal ${pct(y/100)}`)});
     const rems = remPts.map(q => q[1]/100), mean = rems.reduce((s,v) => s+v, 0)/rems.length, min = Math.min(...rems);
     const vol = p.flow*p.hours, meets = rems.filter(r => r >= p.R - 1e-9).length/rems.length;
-    $('#daySummary').textContent = `بتدفق ثابت ${f(p.flow)} لتر/ساعة لمدة ${p.hours} ساعات يعالج اللوح ${f(vol)} لترًا في اليوم بمتوسط إزالة ${pct(mean)}، وأدنى إزالة ${pct(min)} في أطراف ساعات التشغيل. الهدف يتحقق في ${Math.round(meets*100)}٪ من وقت التشغيل.`;
+    $('#daySummary').textContent = L(`بتدفق ثابت ${f(p.flow)} لتر/ساعة لمدة ${p.hours} ساعات يعالج اللوح ${f(vol)} لترًا في اليوم بمتوسط إزالة ${pct(mean)}، وأدنى إزالة ${pct(min)} في أطراف ساعات التشغيل. الهدف يتحقق في ${Math.round(meets*100)}٪ من وقت التشغيل.`,
+      `At a constant ${f(p.flow)} L/h for ${p.hours} hours the panel treats ${f(vol)} L a day with an average removal of ${pct(mean)}, dropping to ${pct(min)} at the edges of the operating window. The target is met ${Math.round(meets*100)}% of the operating time.`);
   }
 
   /* ---------- capacity ---------- */
   function renderCap(p){
     const cap = capacity(p);
-    $('#k-cap-k').textContent = `إنتاج اللوح اليومي عند هدف ${Math.round(p.R*100)}٪`;
-    $('#k-cap').innerHTML = `${f(cap)}<small>لتر/يوم</small>`;
+    $('#k-cap-k').textContent = L(`إنتاج اللوح اليومي عند هدف ${Math.round(p.R*100)}٪`, `Daily panel output at a ${Math.round(p.R*100)}% target`);
+    $('#k-cap').innerHTML = `${f(cap)}<small>${L('لتر/يوم','L/day')}</small>`;
   }
 
   /* ---------- life ---------- */
   function renderLife(p){
     const pts = [];
     for (let m = 0; m <= 24 + 1e-9; m += .05){ const mm = +m.toFixed(2); if (mm > 0 && mm < 24 && Math.abs(mm % 6) < 1e-6) pts.push([mm - 0.001, Math.pow(1-p.loss/100, 1)*100]); pts.push([mm, (mm >= 24 ? Math.pow(1-p.loss/100,1) : act(mm,p))*100]); }
-    lineChart($('#ch-life'), {label:'نشاط المحفز على مدى سنتين', xMin:0, xMax:24, yMin:0, yMax:100, pts, area:true,
-      xTicks:[0,6,12,18,24], yTicks:[0,25,50,75,100], xTitle:'الشهر', markers:[6,12,18].map(x => ({x, y:100, label:'تجديد'})),
-      tip:(x,y) => `الشهر ${f(x)}<br>النشاط ${pct(y/100)}`});
+    lineChart($('#ch-life'), {label:L('نشاط المحفز على مدى سنتين','Catalyst activity over two years'), xMin:0, xMax:24, yMin:0, yMax:100, pts, area:true,
+      xTicks:[0,6,12,18,24], yTicks:[0,25,50,75,100], xTitle:L('الشهر','Month'), markers:[6,12,18].map(x => ({x, y:100, label:L('تجديد','Regeneration')})),
+      tip:(x,y) => L(`الشهر ${f(x)}<br>النشاط ${pct(y/100)}`, `Month ${f(x)}<br>Activity ${pct(y/100)}`)});
   }
 
   /* ---------- calibration ---------- */
@@ -722,18 +844,18 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
     const out = $('#calibOut');
     if (!(C0 > 0 && Ct > 0 && Ct < C0 && t > 0 && V > 0 && A > 0 && E > 0)){
       calibK = null;
-      out.innerHTML = `<p class="flag">تحتاج كل الخانات قيمًا موجبة، والتركيز في النهاية أقل منه في البداية.</p>`; return;
+      out.innerHTML = `<p class="flag">${L('تحتاج كل الخانات قيمًا موجبة، والتركيز في النهاية أقل منه في البداية.','All fields need positive values, and the final concentration must be below the starting one.')}</p>`; return;
     }
     const kapp = Math.log(C0/Ct)/t, half = Math.LN2/kapp, t90 = Math.LN10/kapp;
     const kQ = (kapp/60)*V/(E*A)*1000;
     const areaFor1000 = A/V*1000;
     calibK = kQ;
     out.innerHTML = `<div class="facts">
-      <div class="fact"><span class="k">ثابت السرعة في التجربة</span><span class="v">${f(kapp)}</span><span class="k">لكل دقيقة · نصف الملوث يزول في ${f(half)} دقيقة</span></div>
-      <div class="fact"><span class="k">سرعة التكسير لكل جرعة ضوء</span><span class="v">${f(kQ)}</span><span class="k">لتر/كيلوجول · هذا ما ينتقل إلى اللوح</span></div>
-      <div class="fact"><span class="k">مساحة تحفظ زمن التجربة لدفعة ألف لتر</span><span class="v">${f(areaFor1000)} م²</span><span class="k">بنفس شدة الضوء ونسبة المساحة إلى الحجم</span></div>
+      <div class="fact"><span class="k">${L('ثابت السرعة في التجربة','Rate constant in the test')}</span><span class="v">${f(kapp)}</span><span class="k">${L(`لكل دقيقة · نصف الملوث يزول في ${f(half)} دقيقة`, `per minute · half the pollutant is gone in ${f(half)} min`)}</span></div>
+      <div class="fact"><span class="k">${L('سرعة التكسير لكل جرعة ضوء','Degradation rate per light dose')}</span><span class="v">${f(kQ)}</span><span class="k">${L('لتر/كيلوجول · هذا ما ينتقل إلى اللوح','L/kJ · this is what carries over to the panel')}</span></div>
+      <div class="fact"><span class="k">${L('مساحة تحفظ زمن التجربة لدفعة ألف لتر','Area that keeps the test time for a 1,000 L batch')}</span><span class="v">${f(areaFor1000)} ${L('م²','m²')}</span><span class="k">${L('بنفس شدة الضوء ونسبة المساحة إلى الحجم','At the same light intensity and area-to-volume ratio')}</span></div>
     </div>
-    <p class="note">في ظروف هذه التجربة تحتاج إزالة 90٪ نحو ${f(t90)} دقيقة. ${kQ < 0.01 || kQ > 3.16 ? 'القيمة خارج مدى المنزلق، وستُقرّب إلى أقرب حد عند اعتمادها.' : ''}</p>`;
+    <p class="note">${L(`في ظروف هذه التجربة تحتاج إزالة 90٪ نحو ${f(t90)} دقيقة.`, `Under this test's conditions, 90% removal takes about ${f(t90)} min.`)} ${kQ < 0.01 || kQ > 3.16 ? L('القيمة خارج مدى المنزلق، وستُقرّب إلى أقرب حد عند اعتمادها.','The value is outside the slider range and will be clamped to the nearest limit when applied.') : ''}</p>`;
   }
 
   /* ---------- wiring ---------- */
@@ -745,23 +867,26 @@ footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-si
   ['A','tau','H','hours','kQ','km','flow','C0','R','loss'].forEach(id => document.getElementById(id).addEventListener('input', update));
   document.getElementById('hour').addEventListener('input', () => { if (state.playing) stopPlay(); onHour(); });
   const playBtn = $('#play');
-  function stopPlay(){ state.playing = false; playBtn.textContent = 'تشغيل اليوم'; playBtn.setAttribute('aria-pressed','false'); }
+  const playLabel = () => state.playing ? L('إيقاف','Pause') : L('تشغيل اليوم','Play the day');
+  function stopPlay(){ state.playing = false; playBtn.textContent = playLabel(); playBtn.setAttribute('aria-pressed','false'); }
   playBtn.addEventListener('click', () => {
     if (state.playing){ stopPlay(); return; }
     const hr = document.getElementById('hour'); if (+hr.value >= SET - .01) hr.value = RISE;
-    state.playing = true; playBtn.textContent = 'إيقاف'; playBtn.setAttribute('aria-pressed','true');
+    state.playing = true; playBtn.textContent = playLabel(); playBtn.setAttribute('aria-pressed','true');
   });
   $('#reset').addEventListener('click', () => { Object.entries(DEF).forEach(([k,v]) => { const el = document.getElementById(k); if (el) el.value = v; }); update(); });
   ['cC0','cCt','ct','cV','cA','cE'].forEach(id => document.getElementById(id).addEventListener('input', renderCalib));
   $('#applyK').addEventListener('click', () => {
-    if (calibK == null){ $('#applyMsg').textContent = 'أكمل الخانات أولًا.'; return; }
+    if (calibK == null){ $('#applyMsg').textContent = L('أكمل الخانات أولًا.','Fill in all fields first.'); return; }
     const v = Math.max(-2, Math.min(0.5, Math.log10(calibK)));
     document.getElementById('kQ').value = v; update();
-    $('#applyMsg').textContent = `اعتُمدت السرعة ${f(Math.pow(10,v))} لتر/كيلوجول، وتحدّث النموذج كله.`;
+    $('#applyMsg').textContent = L(`اعتُمدت السرعة ${f(Math.pow(10,v))} لتر/كيلوجول، وتحدّث النموذج كله.`, `Applied ${f(Math.pow(10,v))} L/kJ; the whole model has been updated.`);
   });
   if (window.matchMedia('(max-width: 700px)').matches) document.getElementById('railDetails').open = false;
 
   document.querySelectorAll('input[type=number]').forEach(i => { i.lang = 'en'; i.dir = 'ltr'; });
+  playBtn.textContent = playLabel();
+  window.addEventListener('langchange', () => { playBtn.textContent = playLabel(); $('#applyMsg').textContent = ''; renderCalib(); update(); });
   renderCalib(); update();
   requestAnimationFrame(tick);
 })();

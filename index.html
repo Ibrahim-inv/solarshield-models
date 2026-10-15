@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-title-en="SolarShield Models">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -40,39 +40,72 @@ a.card:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
 .members li{display:grid;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
 .members b{font-weight:700;font-size:15.5px}
 .members span{color:var(--ink2);font-size:14px}
+.topbar{display:flex;justify-content:flex-end}
+.langbtn{font:500 14px var(--f-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 14px;cursor:pointer}
+.langbtn:hover{border-color:var(--teal);color:var(--teal)}
+.langbtn:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
 .note{font-size:13.5px;color:var(--ink2);border-top:1px solid var(--line);padding-top:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow">فريق Thea · مياهثون 2026</div>
-  <h1>نماذج سولارشيلد</h1>
-  <p class="lede">محفز ضوئي نانوي يستعمل ضوء الشمس ليولّد جذورًا مؤكسدة على سطح ملامس للماء. هنا نموذجان تفاعليان لطريقتين في استعماله. يعملان على الجوال مباشرة دون تثبيت أي شيء.</p>
+  <div class="topbar"><button class="langbtn" id="langBtn" type="button" lang="en">English</button></div>
+  <div class="eyebrow" data-i18n="eyebrow">فريق Thea · مياهثون 2026</div>
+  <h1 data-i18n="h1">نماذج سولارشيلد</h1>
+  <p class="lede" data-i18n="lede">محفز ضوئي نانوي يستعمل ضوء الشمس ليولّد جذورًا مؤكسدة على سطح ملامس للماء. هنا نموذجان تفاعليان لطريقتين في استعماله. يعملان على الجوال مباشرة دون تثبيت أي شيء.</p>
   <div class="cards">
-    <a class="card" href="coating.html">
-      <span class="kind">الطلاء الوقائي · الفكرة المقدَّمة</span>
-      <h2>محاكي الطلاء المضاد للطحالب</h2>
-      <p>كيف يمنع النسيج الدقيق مع المحفز الضوئي تراكم الطحالب والغشاء الحيوي على الأسطح المائية، مع مختبر افتراضي يقارن أربعة أسطح على مدى ثمانية أسابيع.</p>
-      <span class="go">افتح المحاكي ←</span>
+    <a class="card" href="coating.html" data-keep-lang>
+      <span class="kind" data-i18n="k1">الطلاء الوقائي · الفكرة المقدَّمة</span>
+      <h2 data-i18n="t1">محاكي الطلاء المضاد للطحالب</h2>
+      <p data-i18n="p1">كيف يمنع النسيج الدقيق مع المحفز الضوئي تراكم الطحالب والغشاء الحيوي على الأسطح المائية، مع مختبر افتراضي يقارن أربعة أسطح على مدى ثمانية أسابيع.</p>
+      <span class="go" data-i18n="go1">افتح المحاكي ←</span>
     </a>
-    <a class="card" href="panel.html">
-      <span class="kind">لوح المعالجة</span>
-      <h2>نموذج اللوح الضوئي</h2>
-      <p>لوح زجاجي مطلي ينساب عليه الماء فيتكسر الملوث المذاب بضوء الشمس، مع يوم كامل من الإشعاع وحاسبة معايرة من تجربة مخبرية واحدة.</p>
-      <span class="go">افتح النموذج ←</span>
+    <a class="card" href="panel.html" data-keep-lang>
+      <span class="kind" data-i18n="k2">لوح المعالجة</span>
+      <h2 data-i18n="t2">نموذج اللوح الضوئي</h2>
+      <p data-i18n="p2">لوح زجاجي مطلي ينساب عليه الماء فيتكسر الملوث المذاب بضوء الشمس، مع يوم كامل من الإشعاع وحاسبة معايرة من تجربة مخبرية واحدة.</p>
+      <span class="go" data-i18n="go2">افتح النموذج ←</span>
     </a>
   </div>
   <section class="team" aria-labelledby="teamTitle">
-    <h2 id="teamTitle">فريق Thea</h2>
+    <h2 id="teamTitle" data-i18n="teamH">فريق Thea</h2>
     <ul class="members">
-      <li><b>إبراهيم الزهراني</b><span>علوم بيئية وأحياء دقيقة</span></li>
-      <li><b>ربى الغامدي</b><span>بيئة ومختبرات</span></li>
-      <li><b>إدريس البرناوي</b><span>صحة مهنية وسلامة</span></li>
-      <li><b>د. محمد لوان</b><span>علوم بيئية</span></li>
-      <li><b>أزواردي إيماني</b><span>هندسة بيئية</span></li>
+      <li><b data-i18n="m0">إبراهيم الزهراني</b><span data-i18n="s0">علوم بيئية وأحياء دقيقة</span></li>
+      <li><b data-i18n="m1">ربى الغامدي</b><span data-i18n="s1">بيئة ومختبرات</span></li>
+      <li><b data-i18n="m2">إدريس البرناوي</b><span data-i18n="s2">صحة مهنية وسلامة</span></li>
+      <li><b data-i18n="m3">د. محمد لوان</b><span data-i18n="s3">علوم بيئية</span></li>
+      <li><b data-i18n="m4">أزواردي إيماني</b><span data-i18n="s4">هندسة بيئية</span></li>
     </ul>
   </section>
-  <p class="note">النموذجان توضيحيان: المعادلات من أبحاث منشورة ومحكّمة، والثوابت تُعاير بالقياسات المخبرية حين تتوفر.</p>
+  <p class="note" data-i18n="note">النموذجان توضيحيان: المعادلات من أبحاث منشورة ومحكّمة، والثوابت تُعاير بالقياسات المخبرية حين تتوفر.</p>
 </div>
+<script>
+window.I18N_EN = {
+ "eyebrow": "Team Thea · Miyahthon 2026",
+ "h1": "SolarShield Models",
+ "lede": "A nanoscale photocatalyst that uses sunlight to generate oxidizing radicals on a surface in contact with water. Here are two interactive models for two ways of using it. Both run directly on a phone with nothing to install.",
+ "k1": "Protective coating · Submitted idea",
+ "t1": "Anti-algae coating simulator",
+ "p1": "How a fine surface texture combined with a photocatalyst keeps algae and biofilm from building up on water-contact surfaces, with a virtual lab comparing four surfaces over eight weeks.",
+ "go1": "Open the simulator →",
+ "k2": "Treatment panel",
+ "t2": "Photocatalytic panel model",
+ "p2": "A coated glass panel with water flowing over it, where sunlight breaks down the dissolved pollutant, with a full day of irradiance and a calibration calculator from a single lab test.",
+ "go2": "Open the model →",
+ "teamH": "Team Thea",
+ "m0": "Ibrahim Alzahrani",
+ "s0": "Environmental science and microbiology",
+ "m1": "Ruba Alghamdi",
+ "s1": "Environment and laboratories",
+ "m2": "Idris Albarnawi",
+ "s2": "Occupational health and safety",
+ "m3": "Dr. Mohammed Lwan",
+ "s3": "Environmental science",
+ "m4": "Azwardi Imani",
+ "s4": "Environmental engineering",
+ "note": "Both models are illustrative: the equations come from published, peer-reviewed research, and the constants will be calibrated with lab measurements as they become available."
+};
+</script>
+<script src="i18n.js"></script>
 </body>
 </html>
