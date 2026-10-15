@@ -65,6 +65,8 @@ section{display:grid;gap:16px;scroll-margin-top:12px}
 .ecs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .ec{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface2);font-weight:500;font-size:15px}
 .ec svg{width:30px;height:30px;flex:none}
+.spec .ec{background:var(--surface);border:1.5px solid var(--teal);color:var(--ink)}
+.spec .ec b{font-variant-numeric:tabular-nums}
 /* zoom ladder */
 .ladder{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
 .tile{display:grid;gap:6px;min-width:0}
@@ -161,6 +163,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
     <div class="sec-head"><span class="num">1</span><h2 data-i18n="s1">الفكرة</h2></div>
     <div class="card">
       <div class="art" id="artTank"></div>
+      <div class="ecs spec" id="spec"></div>
       <div class="ecs" id="ecs"></div>
       <p class="cap" data-i18n="ecNote">الملوثات العضوية الناشئة توجد بتراكيز ضئيلة، ولا تزيلها المعالجة التقليدية بالكامل.</p>
     </div>
@@ -205,8 +208,6 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-si
           <div class="seg" role="group" aria-label="التحريك" data-i18n-label="cStir"><button type="button" data-k="stir" data-v="1" aria-pressed="true" data-i18n="on">يعمل</button><button type="button" data-k="stir" data-v="0" aria-pressed="false" data-i18n="off">متوقف</button></div></div>
         <div class="row"><span class="lbl" data-i18n="cWater">الماء</span>
           <div class="seg" role="group" aria-label="الماء" data-i18n-label="cWater"><button type="button" data-k="water" data-v="0" aria-pressed="true" data-i18n="w0">صافٍ بعد معالجة مسبقة</button><button type="button" data-k="water" data-v="1" aria-pressed="false" data-i18n="w1">مرشّح من العكارة فقط</button><button type="button" data-k="water" data-v="2" aria-pressed="false" data-i18n="w2">صرف زراعي خام</button></div></div>
-        <div class="row"><span class="lbl" data-i18n="cGlass">الزجاج</span>
-          <div class="seg" role="group" aria-label="الزجاج" data-i18n-label="cGlass"><button type="button" data-k="full" data-v="0" aria-pressed="true" data-i18n="one">لوح واحد</button><button type="button" data-k="full" data-v="1" aria-pressed="false" data-i18n="floor">ألواح بعرض الحوض</button></div></div>
         <div class="readout">
           <div class="ro"><span data-i18n="r1">الضوء الواصل إلى الزجاج</span><b id="rLight">—</b></div>
           <div class="ro"><span data-i18n="r2">الملوث المُزال</span><b id="rRem">—</b></div>
@@ -237,7 +238,7 @@ window.I18N_EN = {
   dayLabel: "Operating time", cSpeed: "Speed", sp1: "1 day/s", sp7: "1 week/s", sp30: "1 month/s", sp365: "1 year/s",
   cStir: "Stirring", on: "On", off: "Off",
   cWater: "Water", w0: "Clear after pre-treatment", w1: "Filtered for turbidity only", w2: "Raw drainage water",
-  cGlass: "Glass", one: "One plate", floor: "Plates across the tank",
+ 
   r1: "Light reaching the glass", r2: "Contaminant removed", r3: "Left, in µg/L",
   demoNote: "Illustrative: the degradation rate and water clarity are assumptions until measured in the lab.",
   foot1: "SolarShield · Team Thea · Miyahthon 2026",
@@ -310,6 +311,7 @@ window.I18N_EN = {
     leaf: `<path class="icon" d="M6 24 C 6 12, 14 6, 25 6 C 25 17, 19 24, 6 24 Z M6 24 L 18 12"/>`,
     bottle: `<path class="icon" d="M12 4 h6 v5 l3 4 v13 h-12 v-13 l3 -4 z"/><line class="icon" x1="9" y1="17" x2="21" y2="17"/>`
   };
+  const SPEC = () => [L('وحدة واحدة لكل <b>26,667</b> لترًا','One unit per <b>26,667</b> L'), L('لوح زجاجي <b>1 م × 1 م × 1 سم</b>','Glass plate <b>1 m × 1 m × 1 cm</b>'), L('مغطى بـ <b>0.1 كجم</b> من المحفز','Coated with <b>0.1 kg</b> of photocatalyst')];
   const ECS = () => [['pill', L('أدوية ومضادات حيوية','Pharmaceuticals and antibiotics')], ['leaf', L('مبيدات زراعية','Agricultural pesticides')], ['bottle', L('مركبات بلاستيكية وهرمونية','Plasticizers and hormone disruptors')]];
 
   /* ---------- 2. microstructure: metre → micrometre → nanometre ---------- */
@@ -340,8 +342,8 @@ window.I18N_EN = {
       <text class="chem2" x="${mx(W, 182)}" y="40" text-anchor="middle">${CN}</text>
       ${T(W, 110, 150, L('وصلة بين مادتين','Two-material junction'), 't2')}
     </svg>`;
-    return tile(t1, L('متر','Metre'), L('لوح مطلي معلّق على عمق مترين والماء حوله','A coated plate hung two metres deep, with water all around it')) + ZOOM
-         + tile(t2, L('ميكرومتر','Micrometre'), L('طبقة جسيمات بحجم 10 إلى 15 نانومترًا','A layer of 10 to 15 nm particles')) + ZOOM
+    return tile(t1, L('متر','Metre'), L('لوح 1 م × 1 م × 1 سم معلّق على عمق مترين، لكل 26,667 لترًا','A 1 m × 1 m × 1 cm plate hung two metres deep, one per 26,667 L')) + ZOOM
+         + tile(t2, L('ميكرومتر','Micrometre'), L('0.1 كجم من جسيمات بحجم 10 إلى 15 نانومترًا','0.1 kg of particles 10 to 15 nm across')) + ZOOM
          + tile(t3, L('نانومتر','Nanometre'), L('جسيم يولّد الجذور المؤكسدة بالضوء','A particle that makes oxidizing radicals in light'));
   }
 
@@ -390,15 +392,14 @@ window.I18N_EN = {
 
   /* ---------- 5. tank model ---------- */
   // Batch tank, first order: ln(C0/C) = Σ ∫ k_eff·A/V dt, with k_eff = 1/(1/k_s + 1/k_m), k_s = k_Q·E_glass, E_glass = E·τ·e^(−K_d·2 m)
-  // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 200 Wh/m² of UV a day over 8 sunny hours, 26.6 m³ of water, plate hung 2 m deep
-  // (one 1 m² plate, or plates across the 13.3 m² tank section). Total tank depth is not specified yet; the drawing shows 3 m.
-  const S = {stir: 1, water: 0, full: 0, speed: 30};
-  const FLOOR = 13.3, V = FLOOR*2, DEPTH = 2, C0 = 10, HORIZON = 3650;
+  // Illustrative constants: k_Q 0.1 L/kJ, τ 0.9, 200 Wh/m² of UV a day over 8 sunny hours. Total tank depth is not specified yet; the drawing shows 3 m.
+  const S = {stir: 1, water: 0, speed: 30};
+  const A_UNIT = 1, V = 26.667, DEPTH = 2, C0 = 10, HORIZON = 3650;   // the team's spec: one 1 m × 1 m unit per 26,667 L, hung 2 m deep
   const uv = h => (h <= 6 || h >= 18) ? 0 : 200*Math.PI/24*Math.sin(Math.PI*(h - 6)/12);
   const kd = () => [0.5, 4, 7][S.water];   // UV attenuation per metre: pre-treated / turbidity-filtered (dissolved organics remain) / raw drainage
   const att = () => Math.exp(-kd()*DEPTH);
   function perDay(){
-    const A = S.full ? FLOOR : 1, km = (S.stir ? 20 : 2)*1e-6, n = 64; let I = 0;
+    const A = A_UNIT, km = (S.stir ? 20 : 2)*1e-6, n = 64; let I = 0;
     for (let i = 0; i < n; i++){ const h = 8 + (i + .5)*8/n, ks = 0.1*uv(h)*0.9*att()*1e-6; if (ks > 0) I += 1/(1/ks + 1/km)*A/V*(8/n)*3600; }
     return I;
   }
@@ -421,7 +422,7 @@ window.I18N_EN = {
     K = perDay();
     const W = 400, H = 260;
     // plate(s) hung two thirds down the drawn water column, i.e. 2 m below the surface
-    const spans = S.full ? [0,1,2,3,4].map(i => [46 + i*63.5, 56]) : [[170, 60]];
+    const spans = [[170, 60]];
     const plates = spans.map(([x, w]) => `<line class="hang" x1="${x + w/2}" y1="30" x2="${x + w/2}" y2="171" style="stroke-width:1.5"/><rect class="tealf" x="${x}" y="171" width="${w}" height="4"/><rect class="glass" x="${x}" y="175" width="${w}" height="8"/>`).join('');
     const geo = `<rect class="sky" x="0" y="0" width="400" height="260"/><rect class="slab" x="0" y="242" width="400" height="18"/>
       <rect class="water" x="42" y="44" width="316" height="196"/>${bands(42, 44, 316, 196, 12, kd(), DEPTH*1.5, 1)}
@@ -471,7 +472,7 @@ window.I18N_EN = {
     $('#rLight').textContent = fmtPct(att()*100);
     $('#rRem').textContent = fmtPct((1 - frac)*100);
     $('#rLeft').textContent = (C0*frac).toFixed(C0*frac < 1 ? 2 : 1);
-    $('#t90').textContent = L(`إزالة 90٪ تحتاج نحو ${span(Math.LN10/K)} من التشغيل.`, `90% removal takes about ${span(Math.LN10/K)} of operation.`);
+    $('#t90').textContent = L(`بسرعة التكسير المفترضة قبل القياس، إزالة 90٪ تحتاج نحو ${span(Math.LN10/K)} من التشغيل.`, `At the assumed degradation rate (not yet measured), 90% removal takes about ${span(Math.LN10/K)} of operation.`);
     if (curveX){ const x = curveX.X(simDay), y = curveX.Y(100*frac); const ln = $('#nowLn'), dot = $('#nowDot');
       if (ln){ ln.setAttribute('x1', x); ln.setAttribute('x2', x); dot.setAttribute('cx', x); dot.setAttribute('cy', y); } }
   }
@@ -497,6 +498,7 @@ window.I18N_EN = {
   /* ---------- render ---------- */
   function renderAll(){
     $('#artTank').innerHTML = artTank();
+    $('#spec').innerHTML = SPEC().map(t => `<div class="ec"><span>${t}</span></div>`).join('');
     $('#ecs').innerHTML = ECS().map(([k, t]) => `<div class="ec"><svg viewBox="0 0 30 30" aria-hidden="true">${EC_ICONS[k]}</svg><span>${t}</span></div>`).join('');
     $('#ladder').innerHTML = ladder();
     $('#mechArt').innerHTML = mechArt();
