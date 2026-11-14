@@ -1,4 +1,4 @@
-// Shared language switch for the Thea site: Arabic (default, right-to-left) and English (left-to-right).
+// Shared language switch for the THEIA site: Arabic (default, right-to-left) and English (left-to-right).
 // Static text: give an element data-i18n="key" and put the English HTML in window.I18N_EN[key]
 // (a page script that runs before this file). aria-label: data-i18n-label="key".
 // Dynamic text in page scripts: L('عربي', 'English'), and re-render on the 'langchange' event.
